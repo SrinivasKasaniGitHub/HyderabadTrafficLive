@@ -1,0 +1,354 @@
+﻿[
+  {
+    "ambulance": [
+      {
+        "serviceName": "Ambulance",
+        "contactNumber": 102
+      },
+      {
+        "serviceName": "Ambulance",
+        "contactNumber": 108
+      },
+      {
+        "serviceName": "Asian institute of Gastroenterology",
+        "contactNumber": 23378888
+      },
+      {
+        "serviceName": "Cancer Hospital",
+        "contactNumber": 23318422
+      },
+      {
+        "serviceName": "CDR Hospital (Hyderguda)",
+        "contactNumber": 23221221
+      },
+      {
+        "serviceName": "Durgabai Deshmukh Hospital",
+        "contactNumber": 27617801
+      },
+      {
+        "serviceName": "Govt. Chest Hospital",
+        "contactNumber": 23814421
+      },
+      {
+        "serviceName": "Osmania Gen, Hospital",
+        "contactNumber": 24600122
+      },
+      {
+        "serviceName": "ESI, Erragadda",
+        "contactNumber": 23700531
+      },
+      {
+        "serviceName": "ENT, Koti",
+        "contactNumber": 24740245
+      },
+      {
+        "serviceName": "Golconda Hospital",
+        "contactNumber": 23513776
+      },
+      {
+        "serviceName": "Govt. Maternity Hosp. Koti",
+        "contactNumber": 24653647
+      },
+      {
+        "serviceName": "King Koti Hospital",
+        "contactNumber": 24756085
+      },
+      {
+        "serviceName": "Mental Hospital, Erragadda",
+        "contactNumber": 23813231
+      },
+      {
+        "serviceName": "Military Hospital, Secbad",
+        "contactNumber": 27792580
+      },
+      {
+        "serviceName": "MNJ Cancer Hospital",
+        "contactNumber": 23318422
+      },
+      {
+        "serviceName": "NIMS, Panjagutta",
+        "contactNumber": 23396552
+      },
+      {
+        "serviceName": "Railway Hospital, Secbad",
+        "contactNumber": 27001134
+      },
+      {
+        "serviceName": "SD Eye Hosp.Mehdipatnam",
+        "contactNumber": 23317274
+      },
+      {
+        "serviceName": "State TB Centre, Erragadda",
+        "contactNumber": 23811797
+      },
+      {
+        "serviceName": "Andhra Mahila Sabha",
+        "contactNumber": 27617801
+      },
+      {
+        "serviceName": "Apollo Hospital Jubilee Hills",
+        "contactNumber": 23607777
+      },
+      {
+        "serviceName": "Care Hospital",
+        "contactNumber": 24735465
+      },
+      {
+        "serviceName": "Care Hospital JBHills",
+        "contactNumber": 23309162
+      },
+      {
+        "serviceName": "Chandramati Hospital",
+        "contactNumber": 23814628
+      },
+      {
+        "serviceName": "Fernandez Hospital",
+        "contactNumber": 24756997
+      },
+      {
+        "serviceName": "Genesis Hospital",
+        "contactNumber": 23222142
+      },
+      {
+        "serviceName": "Heritage Medical Centre",
+        "contactNumber": 23379202
+      },
+      {
+        "serviceName": "Kamineni Wockhardt Hospital",
+        "contactNumber": 66924444
+      },
+      {
+        "serviceName": "KIMS",
+        "contactNumber": 27725105
+      },
+      {
+        "serviceName": "L.V.Prasad Eye Institute",
+        "contactNumber": 30612100
+      },
+      {
+        "serviceName": "Matrika Hospital",
+        "contactNumber": 23404038
+      },
+      {
+        "serviceName": "Mahaveer Hospital",
+        "contactNumber": 23393134
+      },
+      {
+        "serviceName": "Mediciti, Adarshnagar",
+        "contactNumber": 23231111
+      },
+      {
+        "serviceName": "Medwin, Nampally",
+        "contactNumber": 23202902
+      },
+      {
+        "serviceName": "Medinova",
+        "contactNumber": 23311122
+      },
+      {
+        "serviceName": "Nature Cure, Balkampet",
+        "contactNumber": 23731786
+      },
+      {
+        "serviceName": "Princess Esra.Purani Haveli",
+        "contactNumber": 24524416
+      },
+      {
+        "serviceName": "Sagarlal Memorial Hospital",
+        "contactNumber": 27616456
+      },
+      {
+        "serviceName": "St. Theresas Erragadda",
+        "contactNumber": 23701013
+      },
+      {
+        "serviceName": "Sai Krishna Neuro Hospital",
+        "contactNumber": 27551412
+      },
+      {
+        "serviceName": "Usha Mullapudi Cardiac Centre",
+        "contactNumber": 23090609
+      },
+      {
+        "serviceName": "Vijay Marie",
+        "contactNumber": 23307350
+      },
+      {
+        "serviceName": "Yasoda Hospital Somajiguda",
+        "contactNumber": 23319999
+      }
+    ]
+  },
+  {
+    "bloodBank": [
+      {
+        "serviceName": "Bhanji Kheraj Blood Bank ",
+        "contactNumber": 24745243
+      },
+      {
+        "serviceName": "Bhagyanagar",
+        "contactNumber": 23390956
+      },
+      {
+        "serviceName": "Blood Bank, Narayanguda ",
+        "contactNumber": 27567892
+      },
+      {
+        "serviceName": "Chiranjeevi Blood Bank ",
+        "contactNumber": 23359066
+      },
+      {
+        "serviceName": "Lions Club Blood Bank",
+        "contactNumber": 32411317
+      },
+      {
+        "serviceName": "Matadin Goel",
+        "contactNumber": 3226624
+      },
+      {
+        "serviceName": "Medwin Blood Bank",
+        "contactNumber": 23202902
+      },
+      {
+        "serviceName": "Modern Blood Bank",
+        "contactNumber": 24606106
+      },
+      {
+        "serviceName": "Mythri Charitable Trust",
+        "contactNumber": 27550238
+      },
+      {
+        "serviceName": "NTR Blood Bank...",
+        "contactNumber": 30799999
+      },
+      {
+        "serviceName": "Nagarjuna Blood Bank",
+        "contactNumber": 27700733
+      },
+      {
+        "serviceName": "Red Cross Vidyanagar",
+        "contactNumber": 27633087
+      },
+      {
+        "serviceName": "Red Hills",
+        "contactNumber": 23390956
+      },
+      {
+        "serviceName": "ITMR",
+        "contactNumber": 23319491
+      },
+      {
+        "serviceName": "IPM",
+        "contactNumber": 27567892
+      }
+    ]
+  },
+  {
+    "fireStations": [
+      {
+        "serviceName": "Fire control room",
+        "contactNumber": 101
+      },
+      {
+        "serviceName": "District Fire Officer",
+        "contactNumber": 23449222
+      },
+      {
+        "serviceName": "Malakpet",
+        "contactNumber": 23449213
+      },
+      {
+        "serviceName": "Musheerabad",
+        "contactNumber": 23449216
+      },
+      {
+        "serviceName": "Moula Ali",
+        "contactNumber": 23449218
+      },
+      {
+        "serviceName": "Sanathnagar",
+        "contactNumber": 23442946
+      },
+      {
+        "serviceName": "Secunderabad",
+        "contactNumber": 23449224
+      },
+      {
+        "serviceName": "Punjagutta",
+        "contactNumber": 23449227
+      },
+      {
+        "serviceName": "Langer House",
+        "contactNumber": 23442945
+      },
+      {
+        "serviceName": "Secretariat",
+        "contactNumber": 23442947
+      },
+      {
+        "serviceName": "Chandulal Baradari",
+        "contactNumber": 23449219
+      },
+      {
+        "serviceName": "Mogulpura",
+        "contactNumber": 23449226
+      },
+      {
+        "serviceName": "Gowliguda",
+        "contactNumber": 23449214
+      }
+    ]
+  },
+  {
+    "crimeAlerts": [
+      {
+        "serviceName": "Crime Stopper",
+        "contactNumber": 1090
+      },
+      {
+        "serviceName": "Dy. Commissioner of Police",
+        "contactNumber": 27852251
+      },
+      {
+        "serviceName": "Addl. Commissioner of Police ",
+        "contactNumber": 27852231
+      }
+    ]
+  },
+  {
+    "childrens": [
+      {
+        "serviceName": "Child Line",
+        "contactNumber": 1098
+      },
+      {
+        "serviceName": "Women Protection",
+        "contactNumber": 23320539
+      },
+      {
+        "serviceName": "Women Police",
+        "contactNumber": 27853508
+      },
+      {
+        "serviceName": "Roshini Help Line",
+        "contactNumber": 66202000
+      },
+      {
+        "serviceName": "Child Rights",
+        "contactNumber": 18004252933
+      }
+    ]
+  },
+  {
+    "seniors": [
+      {
+        "serviceName": "Sr. Citizen Helpline",
+        "contactNumber": 1253
+      },
+      {
+        "serviceName": "Sr. Citizens Counselling",
+        "contactNumber": 23390000
+      }
+    ]
+  }
+]

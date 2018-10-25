@@ -1,0 +1,237 @@
+<resources>
+    <string name="app_name">Hyd Traffic Live</string>
+    <string name="app_full_name">Hyderabad Traffic Live</string>
+    <string name="for_you_with_you_always">FOR YOU, WITH YOU, ALWAYS</string>
+    <string name="select_your_language_below">Select your Language below</string>
+    <string name="language_telugu">తెలుగు</string>
+    <string name="language_english">English</string>
+    <string name="footer_text">TELANGANA STATE POLICE</string>
+    <string name="app_version">1.0.0</string>
+    <string name="public_interface">Public Interface</string>
+    <string name="auto_fare_estimation">Auto Fare Estimation</string>
+    <string name="live_traffic">Live Traffic</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="submit">Submit</string>
+    <string name="enter_phone_no">Enter Phone No.</string>
+    <string name="when_why_whom_and_how">When, Why, Whom and How ?</string>
+    <string name="type_location">Type Location</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
+    <string name="false_report_to_police_is_a_punishable_offence">* Note: False report to police is a punishable offence</string>
+    <string name="clear">Clear</string>
+    <string name="get_data">Get Data</string>
+    <string name="enter_above_captcha">Enter Above Captcha</string>
+    <string name="enter_valid_captcha">Enter Valid Captcha</string>
+    <string name="enter_vehicle_no">Enter Vehicle No.</string>
+    <string name="vehicle_details">Vehicle Details</string>
+    <string name="captcha_text">14214</string>
+    <string name="settings">Settings</string>
+    <string name="language">Language</string>
+    <string name="home">Home</string>
+    <string name="hyderabad_traffic_live">Hyderabad Traffic Live</string>
+    <string name="public_complaints">Public Complaints</string>
+    <string name="public_information">Public Information</string>
+    <string name="vehicle_rta_details">Vehicle\nRTA Details</string>
+    <string name="find_your_towed_vehicle">Find your\nTowed Vehicle</string>
+    <string name="e_challan_status">e-Challan Status</string>
+    <string name="near_by">Near by</string>
+    <string name="comment">Comment</string>
+    <string name="enter_driver_name">Enter Driver Name</string>
+    <string name="complaint_type">Complaint Type</string>
+    <string name="complaint">Complaint</string>
+    <string name="cancel">Cancel</string>
+    <string name="select_file">Select File</string>
+    <string name="browse">Browse</string>
+    <string name="regn_no">Regn. No.</string>
+    <string name="close">Close</string>
+    <string name="please_contact_htc_room">* Note: Please contact Hyderabad Traffic Control Room at Phone: 9010203626</string>
+    <string name="towed_vehicle_details">Towed Vehicle Details</string>
+    <string name="owner_name">Owner Name</string>
+    <string name="detained_date">Detained Date</string>
+    <string name="trps_name">TRPS Name</string>
+    <string name="location">Location</string>
+    <string name="officer_name">Officer Name</string>
+    <string name="ps_contact_no">TRPS Contact No.</string>
+    <string name="title_activity_autofare_estm">Map</string>
+    <string name="enter_a_location">Enter a location</string>
+    <string name="estimation">Estimation</string>
+    <string name="rate_chart">Rate Chart</string>
+    <string name="auto_fare_chart">Auto Fare Chart</string>
+    <string name="meter_kms">Meter\n(Kms)</string>
+    <string name="day_inr">Day\n(INR)</string>
+    <string name="night_inr">Night\n(INR)</string>
+    <string name="note">Note:</string>
+    <string name="auto_fare_chart_note">* Minimum fare: \u20B9 20 for first 1.6km.\n* Fare above minimum fare: \u20B9 11 per km.\n* Waiting charges per hour \u20B9 30.\n* Night charges apply from 11:00pm to 05:00am.</string>
+    <string name="Rs">\u20B9</string>
+    <string name="rs">\u20A8</string>
+    <string name="fare_estimation">Fare Estimation</string>
+    <string name="select_destination">Select Destination</string>
+    <string name="fare_estimation_note">* Note: The above fare and Kilometers are approx. values, this may vary depends on the route journey, waiting time amd journey time, Fare is subject Local RTA.</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="title_activity_liva_traffic">Map</string>
+    <string name="enter_source">Enter Source</string>
+    <string name="enter_destination">Enter Destination</string>
+    <string name="title_activity_near_by">Map</string>
+    <string name="check_parking_space">Check Parking Space</string>
+    <string name="alerts">Alerts</string>
+    <string name="suggestions">Suggestions</string>
+    <string name="rules_and_information">Rules &amp; Information</string>
+    <string name="about_traffic_police">About Traffic Police</string>
+    <string name="alert_text">Dt: 12–09–2018 at 09:22 hrs - Slow movement of traffic from Karkhana to Secunderabad club.</string>
+    <string name="updated_dt_text">Updated Dt: 12–09–2018 09:25hrs</string>
+    <string name="load_more"><u>Load More</u></string>
+    <string name="we_are_waiting_for_your_valuable_suggestions">We are waiting for your valuable Suggestions</string>
+    <string name="please_let_us_know_your_valuable_suggestions">Please let us know your valuable suggestions</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="contact_no">Contact No.</string>
+    <string name="write_a_suggestion">Write a Suggestion</string>
+    <string name="complaint_against_all_public_services">Complaint against all Public services</string>
+    <string name="your_details">Your Details</string>
+    <string name="your_name">Your Name</string>
+    <string name="your_email_id">Your Email ID</string>
+    <string name="your_mobile_no">Your Mobile No.</string>
+    <string name="traffic_violation_fines">Traffic Violation Fines</string>
+    <string name="useful_websites">Useful Websites</string>
+    <string name="faqs">FAQs</string>
+    <string name="road_safety_tips">Road Safety Tips</string>
+    <string name="traffic_signs">Traffic Signs</string>
+    <string name="htl_on_fb">HTL on FB</string>
+    <string name="traffic_officers">Traffic Officers</string>
+    <string name="organization_chart">Organization Chart</string>
+    <string name="traffic_police_info">Traffic Police Info</string>
+    <string name="about_htl">About HTL</string>
+    <string name="traffic_control_room">Traffic Control Room</string>
+    <string name="hyd_traffic_police_stations">Hyd Traffic Police Stations</string>
+    <string name="emergency_contacts">Emergency Contacts</string>
+    <string name="ambulance">Ambulance</string>
+    <string name="fire_station">Fire Station</string>
+    <string name="blood_bank">Blood Bank</string>
+    <string name="crime_alert">Crime Alert</string>
+    <string name="women_children_helpline">Women/Children Helpline</string>
+    <string name="senior_citizen_helpline">Senior Citizen Helpline</string>
+    <string name="contin_u">Continue</string>
+    <string name="go">Go</string>
+    <string name="click_to_continue">Click to continue</string>
+    <string name="government_of_india">Government of India.</string>
+    <string name="colon">:</string>
+    <string name="what_documents_should_a_driver_carry_when_driving">What documents should a driver carry when driving ?</string>
+    <string name="captcha">Captcha</string>
+    <string name="na">-</string>
+    <string name="fuel_type">Fuel Type</string>
+    <string name="vehicle_color">Vehicle Color</string>
+    <string name="maker_s_name">Makers Name</string>
+    <string name="mfg_year">Mfg. Year</string>
+    <string name="date_of_registration">Date of Registration</string>
+    <string name="chassis_no">Chassis No.</string>
+    <string name="tr_ps_gopalapuram">Tr.PS Gopalapuram</string>
+
+    <string name="tip_helmet">Helmet - Why wear a safety helmet ?. A safety helmet is one of the most important items of
+        personal protective equipment used by motorcycle riders primarily to protect the head against impact.
+        Helmets wont prevent accidents, but they clearly will cut down on death and injuries when collisions occur.
+        Facts about helmet:It should not obstruct vision It should not impair with hearing It should be light weight It should not cause skin diseases.
+        Kinds of helmet to be used:It should have a thick padding of thermo Cole- at least 20mm-which must extend to the sides of the head.
+        A full face helmet is safer by all means. Components of helmets and their role:It should not increase the probability of neck injuries. The shell:
+        The shell of a helmet is an injection molded thermoplastic or a pressure molded thermoset that is reinforced with glass fibers of made of fiber glass.\n
+            1) It absorbs energy in an impact\n
+            2) It distributes local forces from an impact\n
+            3) It allows sliding on road surfaces\n
+            4) It protects the face and temples\n
+        The foam liner:This is a molding of polystyrene beads or polyurethane foam. It provides a stopping distance for the head.
+        The foam can compress by 90 Percentage during an impact, although it recovers partially afterwards.
+        But this helps increase the stopping distance thus reducing the peak deceleration of the head.
+        It also protects as much as possible of the head. Proper strapping system:
+        It is essential to wear a well-fitting helmet for the effective working of chinstrap system.
+        To test if the helmet fits your head properly, tightly fasten the chinstrap and then pull helmet off forward by gripping the near and then pulling.
+        The strap must be threaded correctly so that buckle locks the strap when it is pulled from the chin side.
+        The strap must be pulled as tight as is bearable under the chin.
+        Section 129 motor vehicles act?88 Wearing a protective headgear:Every person driving or riding otherwise than in a side car,
+        on a motor cycle of any class or description, shall while in public place, war protective headgear conforming to
+        the standards of bureau of Indian standards: Provided that the provisions of this section shall not apply to a
+        person who is a Sikhs if he is, while driving or riding on the motorcycle, in a public place, wearing a turban:
+        Provided further that the state government may, by such rules, provide for such expectations as it may think fit.
+        Explanation ? protective headgear ? means a helmet which-By virtue of its shape, material and construction,
+        could reasonably be expected to afford to the person driving or riding on a motorcycle a degree of protection
+        from injury in the event of an accident; and is securely fastened to lthe head of the wearer by means of straps or other fastening provided on the headgear.
+    </string>
+
+    <string name="tip_seat_belt">Seat Belt - SEAT BELTS: STAY SAFE AND SECURE:\n A seat belt or seat belt, sometimes called a safety belt,
+    is a safety harness designed to secure the occupant of a vehicle against harmful movement that may result from a collision or a sudden stop.
+    As part of an overall automobile passive safety system, seat belts are intended to reduce injuries by stopping the wearer from hitting hard interior elements of the vehicle,
+    or other passengers (the so-called second impact), are in the correct position for the airbag to deploy and prevent the passenger from being thrown from the vehicle.
+    Seat belts also absorb energy by being designed to stretch during any sudden deceleration, so that there is less speed differential between
+    the passengers body and their vehicle interior, and also to spread the loading of impact on the passenger?s body.
+        PROPER USE OF SEAT BELTS:\n
+        1) Properly worn seat belt greatly increases your chances of surviving a motor vehicle collision.\n
+            2) No doubling up ? only one person to a seat belt.\n
+            3) A typical seat belt assembly consists of a lap and shoulder belt.
+            The shoulder belt should be worn closely against the body and over the shoulder and across the chest,
+            never under the arm. The lap belt should be firm against the body and low across the hips.\n
+            4) Air bags do not take the place of a seat belt. When air bags activate during a motor vehicle collision,
+    they reduce the forward movement of the upper torso and minimize impact. They do not prevent drivers and passengers from being thrown from the car.
+    Proper Use of Seat Belts A properly worn seat belt greatly increases your chances of surviving a motor vehicle collision.
+    No doubling up ? only one person to a seat belt. A typical seat belt assembly consists of a lap and shoulder belt.
+    The shoulder belt should be worn closely against the body and over the shoulder and across the chest, never under the arm.
+    The lap belt should be firm against the body and low across the hips. Air bags do not take the place of a seat belt.
+    When air bags activate during a motor vehicle collision, they reduce the forward movement of the upper torso and minimize impact.
+    They do not prevent drivers and passengers from being thrown from the car.\n </string>
+
+    <string name="tip_speeding">Speeding - SPEEDING\nSpeeding is defined as exceeding the posted speed limit or driving too fast for
+        conditions - is a factor in nearly one-third of all fatal crashes. Speed reduces the amount of available time needed to avoid a crash,
+        increases the likelihood of crashing and increases the severity of a crash once it occurs.\n
+        The public needs to be made more aware of the dangers of speeding. Crash risk increases as speed increases especially at road junctions and while
+            overtaking - as road users underestimate this speed and overestimate the distance of an approaching vehicle. Further, in developing countries
+        with a mixed traffic and high volume of vulnerable road users, increased speed has significantly contributed to an
+        increasing trend of fatalities on Indian roads.\n
+        Empirical evidence from speed studies has shown that an increase of one KM per hour in mean traffic speed typically results in a 3 Percentage
+        increase in the incidence of injury crashes or an increase of 4 Percentage to 5 Percentage for fatal crashes. Speed has an exponentially detrimental effect on safety.
+        As speed increase so do the number and severity of injuries. Studies show that the higher the impact speed the greater the likelihood of serious and
+        fatal injuries.\n
+        1) For car occupant, an increase in speed from 20 Kms to 100 Kms, the probability of fatal injuries increases from close to zero to almost 100 Percentage.\n
+        2) The probability of serious injury for belted front seat occupants is three times as great at 48 km/hrs. and four times as great at 64 km/hr., compared with the risk at 32 km/hr.\n
+        3) Pedestrians have a 90 Percentage chance of surviving car crashes at 30 km/hrs. Or below, but less than a 50 Percentage chance of surviving impacts at 45 km/hrs. or above.\n
+        4) The probability of pedestrians being killed rises by a factor of 8 as the impact speed of the car increases from 30 km/hr. to 50 km/hr.\n
+        Older pedestrians are even more physically vulnerable as speed increases. SPEEDING CAN BE A CAUSE OF SEVERE CRASH\n
+        1) Drivers get lesser time to avoid mishap and the stopping distance lengthens which increases both the likelihood of crashing and the severity of the crashes.\n
+        2) The vehicle structure is rendered incapable of withstanding the force of the crash which results in serious injury to the occupants.\n
+        3) The protection capability of restraint systems such as airbags and safety belts and roadside hardware and safety features such as barriers and bridge rails become nullified.\n
+        4) Vehicles become prone to increased tire tread wear, rise in tire weakening operation temperature, longer stopping distances and increased brake wear.\n
+        5) At faster speeds the drivers ability to accurately see and judge the distances get compromised.\n
+    </string>
+
+    <string name="about_htl_text">Hyderabad Traffic Live Mobile Application is a bridge between
+        Hyderabad Traffic Police and Traffic commuters for getting immediate information.
+        Main aim of Hyderabad Traffic Police is commuters to have traffic police information on their hands,
+        with this Hyderabad Traffic Live Mobile Application commuters or users can easily get the information
+        about local traffic police station addresses with concern officer contact numbers to know traffic rules
+        and regulations. Road safety tips, emergency contact information, traffic violation fines, vehicle towed
+        status, auto fare, etc. moreover mobile users can see five traffic view.
+    </string>
+    <string name="dummy_phone_no">9985672798</string>
+    <string name="no_details_found">No details found !</string>
+    <string name="about_htp_text">Hyderabad Traffic Live Mobile application is a bridge between Hyderabad Traffic Police and traffic commuters for getting immediate information. Main aim of Hyderabad Traffic Police is commuters to have traffic police information on their hands, with this Hyderabad Traffic Live mobile application commuters or users can easily get the information about local traffic police station address with concern officer contact numbers to know traffic rules and regulations, road safety tips, emergency contact information, traffic violation fines, vehicle towed status, auto fare, etc., Moreover mobile users can see live traffic view.</string>
+    <string name="traffic_cell">TRAFFIC CELL</string>
+    <string name="network_error">Network Error, Please check your internet connection</string>
+    <string name="click_back_again_to_close">Please click on back again to close the app !</string>
+    <string name="do_you_want_exit">Do you want to exit ?</string>
+    <string name="permission_denied">Permission denied</string>
+    <string name="please_wait">Please wait…</string>
+    <string name="error">Error !</string>
+    <string name="empty_response">Empty response</string>
+    <string name="something_went_wrong">Something went wrong !</string>
+    <string name="parking_details">Parking Details</string>
+    <string name="vehicle_type">Vehicle Type</string>
+    <string name="type">Type</string>
+    <string name="select_all">Select All</string>
+    <string name="free_parking">Free Parking</string>
+    <string name="paid_parking">Paid Parking</string>
+    <string name="water_loggings">Water Loggings</string>
+    <string name="bus_bays_stops">Bus Bays / Stops</string>
+    <string name="auto_parking">Auto Parking</string>
+    <string name="please_select_parking_type">Please Select Parking Type</string>
+    <string name="search">Search</string>
+    <string name="search_website_name">Search Website Name</string>
+    <string name="search_officer_name">Search Officer Name</string>
+    <string name="search_traffic_ps_name">Search Traffic PS Name</string>
+    <string name="search_contact_no">Search Contact Number</string>
+</resources>

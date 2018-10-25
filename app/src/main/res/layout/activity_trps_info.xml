@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ic_bg"
+    tools:context=".activities.TrPSInfoActivity">
+
+    <include
+        android:id="@+id/toolbar_main"
+        layout="@layout/toolbar_home" />
+
+    <LinearLayout
+        android:id="@+id/content_frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_below="@+id/toolbar_main"
+        android:layout_above="@id/footer">
+
+        <EditText
+            android:id="@+id/et_search_traffic_ps_name"
+            style="@style/edit_text_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:hint="@string/search_traffic_ps_name"
+            android:inputType="text"
+            android:maxLines="1"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/mRecyclerViewTrPSInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="1dp"
+            android:scrollbars="vertical" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/footer"
+        style="@style/footer_text_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>

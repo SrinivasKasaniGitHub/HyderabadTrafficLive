@@ -1,0 +1,334 @@
+﻿[
+  {
+    "ambulance": [
+      {
+        "serviceName": "అంబులెన్స్",
+        "contactNumber": "142"
+      },
+      {
+        "serviceName": "అంబులెన్స్",
+        "contactNumber": "148"
+      },
+      {
+        "serviceName": "గ్యాస్ట్రోఎంటరాలజీ ఆసియన్ ఇన్స్టిట్యూట్",
+        "contactNumber": "914023378928"
+      },
+      {
+        "serviceName": "క్యాన్సర్ హాస్పిటల్",
+        "contactNumber": "914023318462"
+      },
+      {
+        "serviceName": "సీడీఆర్ హాస్పిటల్ (Hyderguda)",
+        "contactNumber": "914023221261"
+      },
+      {
+        "serviceName": "దుర్గాబాయి దేశ్ ముఖ్ హాస్పిటల్",
+        "contactNumber": "914027617841"
+      },
+      {
+        "serviceName": "గవర్నమెంట్ చెస్ట్ ఆస్పత్రి",
+        "contactNumber": "914023814461"
+      },
+      {
+        "serviceName": "ఉస్మానియా జనరల్, హాస్పిటల్",
+        "contactNumber": "914024600162"
+      },
+      {
+        "serviceName": "ఇ.స్.ఐ,   ఎర్రగడ్డ",
+        "contactNumber": "914023700571"
+      },
+      {
+        "serviceName": "చెవి,ముక్కు,గొంతు హాస్పిటల్,కోటి",
+        "contactNumber": "914024740285"
+      },
+      {
+        "serviceName": "గోల్కొండ హాస్పిటల్",
+        "contactNumber": "914023513816"
+      },
+      {
+        "serviceName": "గవర్నమెంట్ ప్రసూతి ఆసుపత్రి కోటి",
+        "contactNumber": "914024653687"
+      },
+      {
+        "serviceName": "కింగ్ కోటి హాస్పిటల్",
+        "contactNumber": "914024756125"
+      },
+      {
+        "serviceName": "మెంటల్ హాస్పిటల్, ఎర్రగడ్డ",
+        "contactNumber": "914023813271"
+      },
+      {
+        "serviceName": "మిలటరీ హాస్పిటల్, సికింద్రాబాద్",
+        "contactNumber": "914027792620"
+      },
+      {
+        "serviceName": "MNJ క్యాన్సర్ హాస్పిటల్, లక్డి క పూల్",
+        "contactNumber": "914023318462"
+      },
+      {
+        "serviceName": "నిమ్స్, పంజాగుట్ట",
+        "contactNumber": "914023396592"
+      },
+      {
+        "serviceName": "రైల్వే హాస్పిటల్, సికింద్రాబాద్",
+        "contactNumber": "914027001174"
+      },
+      {
+        "serviceName": "ఎస్ డీ ఐ ఆస్పత్రి, మెహ్ది పట్నం",
+        "contactNumber": "914023317314"
+      },
+      {
+        "serviceName": "స్టేట్ TB. సెంటర్, ఎర్రగడ్డ",
+        "contactNumber": "914023811837"
+      },
+      {
+        "serviceName": "ఆంధ్ర మహిళా సభ",
+        "contactNumber": "914027617841"
+      },
+      {
+        "serviceName": "అపోలో హాస్పిటల్, జూబ్లీ హిల్స్",
+        "contactNumber": "914023607817"
+      },
+      {
+        "serviceName": "కేర్ హాస్పిటల్",
+        "contactNumber": "914024735505"
+      },
+      {
+        "serviceName": "కేర్ హాస్పిటల్, జూబ్లీ హిల్స్",
+        "contactNumber": "914023309202"
+      },
+      {
+        "serviceName": "చంద్రమతి హాస్పిటల్",
+        "contactNumber": "914023814668"
+      },
+      {
+        "serviceName": "ఫెర్నాండెజ్ హాస్పిటల్",
+        "contactNumber": "914024757037"
+      },
+      {
+        "serviceName": "జెనెసిస్ హాస్పిటల్",
+        "contactNumber": "914023222182"
+      },
+      {
+        "serviceName": "హెరిటేజ్ మెడికల్ సెంటర్",
+        "contactNumber": "914023379242"
+      },
+      {
+        "serviceName": "కామినేని Wockhardt హాస్పిటల్",
+        "contactNumber": "914066924484"
+      },
+      {
+        "serviceName": "కిమ్స్",
+        "contactNumber": "914027725145"
+      },
+      {
+        "serviceName": "L.V. ప్రసాద్ ఐ ఇన్స్టిట్యూట్",
+        "contactNumber": "914030612140"
+      },
+      {
+        "serviceName": "చంద్రమతి హాస్పిటల్",
+        "contactNumber": "914023404078"
+      },
+      {
+        "serviceName": "మహావీర్ హాస్పిటల్",
+        "contactNumber": "914023393174"
+      },
+      {
+        "serviceName": "మెడిసిటి , ఆదర్శనగర్",
+        "contactNumber": "914023231151"
+      },
+      {
+        "serviceName": "మెడ్విన్, నాంపల్లి",
+        "contactNumber": "914023202942"
+      },
+      {
+        "serviceName": "మెడినోవ",
+        "contactNumber": "914023311162"
+      },
+      {
+        "serviceName": "ప్రకృతి చికిత్సా, బల్కమ్పేట్",
+        "contactNumber": "914023731826"
+      },
+      {
+        "serviceName": "ప్రిన్సెస్ ESRA, పురాని హవేలీ",
+        "contactNumber": "914024524456"
+      },
+      {
+        "serviceName": "సాగర్ లాల్ మెమోరియల్ హాస్పిటల్",
+        "contactNumber": "914027616496"
+      },
+      {
+        "serviceName": "సెయింట్ తేరేసాస్, ఎర్రగడ్డ",
+        "contactNumber": "914023701053"
+      },
+      {
+        "serviceName": "సాయికృష్ణ న్యూరో హాస్పిటల్",
+        "contactNumber": "914027551452"
+      },
+      {
+        "serviceName": "ఉషా ముళ్ళపూడి కార్డియాక్ సెంటర్",
+        "contactNumber": "914023090649"
+      },
+      {
+        "serviceName": "విజయ్ మేరీ",
+        "contactNumber": "914023307390"
+      },
+      {
+        "serviceName": "యశోద హాస్పిటల్",
+        "contactNumber": "914023320039"
+      }
+    ]
+  },
+  {
+    "bloodBank": [
+      {
+        "serviceName": "భాంజి ఖేరాజ్ హాస్పిటల్",
+        "contactNumber": "914024745283"
+      },
+      {
+        "serviceName": "భాగ్యనగర్",
+        "contactNumber": "914023390996"
+      },
+      {
+        "serviceName": "బ్లడ్ బ్యాంక్, నారాయణగూడ",
+        "contactNumber": "914027567932"
+      },
+      {
+        "serviceName": "చిరంజీవి బ్లడ్ బ్యాంక్",
+        "contactNumber": "914023359106"
+      },
+      {
+        "serviceName": "లయన్స్ క్లబ్ బ్లడ్ బ్యాంక్",
+        "contactNumber": "914032411357"
+      },
+      {
+        "serviceName": "మేతాదిన్ గోయల్",
+        "contactNumber": "91403226664"
+      },
+      {
+        "serviceName": "మెడ్విన్ బ్లడ్ బ్యాంకు",
+        "contactNumber": "914023202942"
+      },
+      {
+        "serviceName": "మోడరన్ బ్లడ్ బ్యాంక్",
+        "contactNumber": "914024606146"
+      },
+      {
+        "serviceName": "మైత్ చారిటబుల్ ట్రస్ట్",
+        "contactNumber": "914027550278"
+      },
+      {
+        "serviceName": "ఎన్టీఆర్ బ్లడ్ బ్యాంక్",
+        "contactNumber": "914030800039"
+      },
+      {
+        "serviceName": "నాగార్జున బ్లడ్ బ్యాంక్",
+        "contactNumber": "914027700773"
+      },
+      {
+        "serviceName": "రెడ్ క్రాస్ విద్యానగర్",
+        "contactNumber": "914027633127"
+      },
+      {
+        "serviceName": "రెడ్ హిల్స్",
+        "contactNumber": "914023390996"
+      }
+    ]
+  },
+  {
+    "fireStations": [
+      {
+        "serviceName": "ఫైర్ కంట్రోల్ రూమ్",
+        "contactNumber": "141"
+      },
+      {
+        "serviceName": "జిల్లా ఫైర్ ఆఫీసర్",
+        "contactNumber": "914023449262"
+      },
+      {
+        "serviceName": "మలక్ పెట్",
+        "contactNumber": "914023449253"
+      },
+      {
+        "serviceName": "ముషీరాబాద్",
+        "contactNumber": "914023449256"
+      },
+      {
+        "serviceName": "మౌలాలి",
+        "contactNumber": "914023449258"
+      },
+      {
+        "serviceName": "సనత్ నగర్",
+        "contactNumber": "914023442986"
+      },
+      {
+        "serviceName": "సికింద్రాబాద్",
+        "contactNumber": "914023449264"
+      },
+      {
+        "serviceName": "పంజాగుట్ట",
+        "contactNumber": "914023449267"
+      },
+      {
+        "serviceName": "లoగర్ హౌస్",
+        "contactNumber": "914023442985"
+      },
+      {
+        "serviceName": "సెక్రటేరియట్",
+        "contactNumber": "914023442987"
+      }
+    ]
+  },
+  {
+    "crimeAlerts": [
+      {
+        "serviceName": "క్రైమ్ స్టాపర్",
+        "contactNumber": "91401130"
+      },
+      {
+        "serviceName": "డిప్యూటీ పోలీస్ కమిషనర్",
+        "contactNumber": "914027852291"
+      },
+      {
+        "serviceName": "అడిషనల్. పోలీస్ కమిషనర్",
+        "contactNumber": "914027852271"
+      }
+    ]
+  },
+  {
+    "childrens": [
+      {
+        "serviceName": "చైల్డ్ లైన్",
+        "contactNumber": "91401138"
+      },
+      {
+        "serviceName": "మహిళలు రక్షణ",
+        "contactNumber": "914023320579"
+      },
+      {
+        "serviceName": "మహిళా పోలీస్",
+        "contactNumber": "914027853548"
+      },
+      {
+        "serviceName": "రోషిని సహాయం లైన్",
+        "contactNumber": "914066202040"
+      },
+      {
+        "serviceName": "చైల్డ్ రైట్స్",
+        "contactNumber": "18004252973"
+      }
+    ]
+  },
+  {
+    "seniors": [
+      {
+        "serviceName": "సీనియర్ సిటిజన్ హెల్ప్లైన్",
+        "contactNumber": "91401293"
+      },
+      {
+        "serviceName": "సీనియర్ సిటిజన్ కౌన్సెలింగ్",
+        "contactNumber": "914023390040"
+      }
+    ]
+  }
+]

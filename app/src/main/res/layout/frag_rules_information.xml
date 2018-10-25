@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ic_bg">
+
+    <LinearLayout
+        android:id="@+id/horz_layout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="3"
+        android:baselineAligned="false">
+
+        <RelativeLayout
+            android:id="@+id/rel_traffic_violations_fines"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/iv_traffic_violations_fines"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:contentDescription="@null"
+                android:padding="8dp"
+                android:src="@drawable/ic_echallan_status" />
+
+            <TextView
+                android:id="@+id/tv_traffic_violations_fines"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/iv_traffic_violations_fines"
+                android:gravity="center_horizontal"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:textStyle="bold"
+                android:text="@string/traffic_violation_fines" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rel_useful_websites"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/iv_useful_websites"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_gravity="center"
+                android:contentDescription="@null"
+                android:padding="8dp"
+                android:src="@drawable/ic_usefulwebsites" />
+
+            <TextView
+                android:id="@+id/tv_useful_websites"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/iv_useful_websites"
+                android:gravity="center_horizontal"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:textStyle="bold"
+                android:text="@string/useful_websites" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rel_faqs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/iv_faqs"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_gravity="center"
+                android:contentDescription="@null"
+                android:padding="8dp"
+                android:src="@drawable/ic_faq" />
+
+            <TextView
+                android:id="@+id/tv_faqs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/iv_faqs"
+                android:gravity="center_horizontal"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:textStyle="bold"
+                android:text="@string/faqs" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/horz_layout2"
+        android:layout_below="@id/horz_layout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="3"
+        android:baselineAligned="false">
+
+        <RelativeLayout
+            android:id="@+id/rel_road_safety_tips"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/iv_road_safety_tips"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:contentDescription="@null"
+                android:padding="8dp"
+                android:src="@drawable/ic_roadsafety" />
+
+            <TextView
+                android:id="@+id/tv_road_safety_tips"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/iv_road_safety_tips"
+                android:gravity="center_horizontal"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:textStyle="bold"
+                android:text="@string/road_safety_tips" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rel_traffic_signs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/iv_traffic_signs"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_gravity="center"
+                android:contentDescription="@null"
+                android:padding="8dp"
+                android:src="@drawable/ic_trafficsignage" />
+
+            <TextView
+                android:id="@+id/tv_traffic_signs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/iv_traffic_signs"
+                android:gravity="center_horizontal"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:textStyle="bold"
+                android:text="@string/traffic_signs" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rel_htl_on_fb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/iv_htl_on_fb"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_gravity="center"
+                android:contentDescription="@null"
+                android:padding="8dp"
+                android:src="@drawable/ic_socialmedia" />
+
+            <TextView
+                android:id="@+id/tv_htl_on_fb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/iv_htl_on_fb"
+                android:gravity="center_horizontal"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:textStyle="bold"
+                android:text="@string/htl_on_fb" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

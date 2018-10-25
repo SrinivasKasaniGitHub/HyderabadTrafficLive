@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "question": "What documents should a driver carry when driving?",
+    "answer": "Original Driving License,Original Registration Certificate,Taxation Certificate,Emission Test Certificate,Insurance Certificate,Fitness Certificate & Permit (in case of transport vehicles)"
+  },
+  {
+    "id": 2,
+    "question": "Is it Mandatory to carry Original Documents and license?",
+    "answer": "Yes"
+  },
+  {
+    "id": 3,
+    "question": "What is the rule for use of mobile phone while driving?",
+    "answer": "No driver while driving a motor vehicle shall use a mobile phone. (250 (A) MMVR, r/w 177 M.V.Act)"
+  },
+  {
+    "id": 4,
+    "question": "Can other occupants of the motor vehicle use the mobile phone?",
+    "answer": "Yes. Other than driver, occupants of the motor vehicle can use mobile phone"
+  },
+  {
+    "id": 5,
+    "question": "Under what conditions is the towing of a vehicle allowed?",
+    "answer": "Abandoned vehicle or unattended vehicle or Parked in a parking restricted zone or Parked in a way causing obstruction to other road user can be towed away."
+  },
+  {
+    "id": 6,
+    "question": "Is wearing helmet compulsory for Scooter and Motorcycle riders?",
+    "answer": "Yes. Wearing helmet is compulsory. Violators will be charged U/sec.129/177 of M.V.Act-1988 for which Compounding Amount is Rs.100/- "
+  }
+]

@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimary">
+
+    <TextView
+        android:id="@+id/tv_vehicle_details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="6dp"
+        android:text="@string/vehicle_details"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/tbl_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_vehicle_details"
+        android:orientation="vertical"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingBottom="12dp"
+        android:shrinkColumns="*"
+        android:stretchColumns="*">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorBlack">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="1dp"
+                android:layout_marginLeft="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginRight="1dp"
+                android:background="@color/colorWhite"
+                android:gravity="end"
+                android:paddingStart="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="4dp"
+                android:paddingEnd="6dp"
+                android:paddingRight="6dp"
+                android:paddingBottom="4dp"
+                android:text="@string/regn_no"
+                android:textColor="@color/colorBlack" />
+
+            <TextView
+                android:id="@+id/tv_regn_no"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="0dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginRight="1dp"
+                android:background="@color/colorWhite"
+                android:gravity="start"
+                android:paddingStart="6dp"
+                android:paddingLeft="6dp"
+                android:paddingTop="4dp"
+                android:paddingEnd="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="4dp"
+                android:text="@string/na"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorBlack">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="1dp"
+                android:layout_marginLeft="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginRight="1dp"
+                android:background="@color/colorWhite"
+                android:gravity="end"
+                android:paddingStart="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="4dp"
+                android:paddingEnd="6dp"
+                android:paddingRight="6dp"
+                android:paddingBottom="4dp"
+                android:text="@string/owner_name"
+                android:textColor="@color/colorBlack" />
+
+            <TextView
+                android:id="@+id/tv_owner_name"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="0dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginRight="1dp"
+                android:background="@color/colorWhite"
+                android:gravity="start"
+                android:paddingStart="6dp"
+                android:paddingLeft="6dp"
+                android:paddingTop="4dp"
+                android:paddingEnd="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="4dp"
+                android:text="@string/na"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorBlack">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="1dp"
+                android:layout_marginLeft="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginRight="1dp"
+                android:background="@color/colorWhite"
+                android:gravity="end"
+                android:paddingStart="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="4dp"
+                android:paddingEnd="6dp"
+                android:paddingRight="6dp"
+                android:paddingBottom="4dp"
+                android:text="@string/fuel_type"
+                android:textColor="@color/colorBlack" />
+
+            <TextView
+                android:id="@+id/tv_fuel_type"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="0dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginRight="1dp"
+                android:background="@color/colorWhite"
+                android:gravity="start"
+                android:paddingStart="6dp"
+                android:paddingLeft="6dp"
+                android:paddingTop="4dp"
+                android:paddingEnd="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="4dp"
+                android:text="@string/na"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorBlack">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="1dp"
+                android:layout_marginLeft="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginRight="1dp"
+                android:background="@color/colorWhite"
+                android:gravity="end"
+                android:paddingStart="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="4dp"
+                android:paddingEnd="6dp"
+                android:paddingRight="6dp"
+                android:paddingBottom="4dp"
+                android:text="@string/vehicle_color"
+                android:textColor="@color/colorBlack" />
+
+            <TextView
+                android:id="@+id/tv_vehicle_color"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="0dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginRight="1dp"
+                android:background="@color/colorWhite"
+                android:gravity="start"
+                android:paddingStart="6dp"
+                android:paddingLeft="6dp"
+                android:paddingTop="4dp"
+                android:paddingEnd="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="4dp"
+                android:text="@string/na"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorBlack">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="1dp"
+                android:layout_marginLeft="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginRight="1dp"
+                android:background="@color/colorWhite"
+                android:gravity="end"
+                android:paddingStart="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="4dp"
+                android:paddingEnd="6dp"
+                android:paddingRight="6dp"
+                android:paddingBottom="4dp"
+                android:text="@string/maker_s_name"
+                android:textColor="@color/colorBlack" />
+
+            <TextView
+                android:id="@+id/tv_makers_name"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="0dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginRight="1dp"
+                android:background="@color/colorWhite"
+                android:gravity="start"
+                android:paddingStart="6dp"
+                android:paddingLeft="6dp"
+                android:paddingTop="4dp"
+                android:paddingEnd="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="4dp"
+                android:text="@string/na"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorBlack">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="1dp"
+                android:layout_marginLeft="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginRight="1dp"
+                android:background="@color/colorWhite"
+                android:gravity="end"
+                android:paddingStart="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="4dp"
+                android:paddingEnd="6dp"
+                android:paddingRight="6dp"
+                android:paddingBottom="4dp"
+                android:text="@string/mfg_year"
+                android:textColor="@color/colorBlack" />
+
+            <TextView
+                android:id="@+id/tv_mfg_year"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="0dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginRight="1dp"
+                android:background="@color/colorWhite"
+                android:gravity="start"
+                android:paddingStart="6dp"
+                android:paddingLeft="6dp"
+                android:paddingTop="4dp"
+                android:paddingEnd="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="4dp"
+                android:text="@string/na"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorBlack">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="1dp"
+                android:layout_marginLeft="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginRight="1dp"
+                android:background="@color/colorWhite"
+                android:gravity="end"
+                android:paddingStart="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="4dp"
+                android:paddingEnd="6dp"
+                android:paddingRight="6dp"
+                android:paddingBottom="4dp"
+                android:text="@string/date_of_registration"
+                android:textColor="@color/colorBlack" />
+
+            <TextView
+                android:id="@+id/tv_date_of_registration"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="0dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginRight="1dp"
+                android:background="@color/colorWhite"
+                android:gravity="start"
+                android:paddingStart="6dp"
+                android:paddingLeft="6dp"
+                android:paddingTop="4dp"
+                android:paddingEnd="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="4dp"
+                android:text="@string/na"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorBlack">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="1dp"
+                android:layout_marginLeft="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginRight="1dp"
+                android:layout_marginBottom="1dp"
+                android:background="@color/colorWhite"
+                android:gravity="end"
+                android:paddingStart="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="4dp"
+                android:paddingEnd="6dp"
+                android:paddingRight="6dp"
+                android:paddingBottom="4dp"
+                android:text="@string/chassis_no"
+                android:textColor="@color/colorBlack" />
+
+            <TextView
+                android:id="@+id/tv_chassis_no"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="0dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginRight="1dp"
+                android:layout_marginBottom="1dp"
+                android:background="@color/colorWhite"
+                android:gravity="start"
+                android:paddingStart="6dp"
+                android:paddingLeft="6dp"
+                android:paddingTop="4dp"
+                android:paddingEnd="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="4dp"
+                android:text="@string/na"
+                android:textStyle="bold" />
+        </TableRow>
+
+    </TableLayout>
+
+    <Button
+        android:id="@+id/btn_dialog_close"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tbl_layout"
+        android:background="@color/colorBlack"
+        android:text="@string/close"
+        android:textColor="@color/colorWhite"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+</RelativeLayout>
