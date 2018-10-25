@@ -408,6 +408,7 @@ public class AutoFareEstmActivity extends FragmentActivity implements
                     }
                 }));
     }
+    // zjh g
 
     public void getAutoFaresByDistance(final String distance) {
         mUiHelper.showProgressDialog(getResources().getString(R.string.please_wait), false);
