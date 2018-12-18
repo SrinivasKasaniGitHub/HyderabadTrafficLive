@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "391430358860",
+    "firebase_url": "https://hydtrafficlive.firebaseio.com",
+    "project_id": "hydtrafficlive",
+    "storage_bucket": "hydtrafficlive.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:391430358860:android:8ff0398e65752750",
+        "android_client_info": {
+          "package_name": "com.tspolice.htplive"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "391430358860-c0pohv5bdghpqiahgt2ofqmgnpotkalg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBGNt5gXEDqH318rw6gN-S0-IsJgLjkrBE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

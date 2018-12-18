@@ -85,7 +85,7 @@ public class LiveTrafficActivity extends FragmentActivity implements
             @Override
             public void afterTextChanged(Editable s) {
                 if (et_destination.getText().toString().length() > 0) {
-                    requestAutoComplete(DEST_PLACE_AUTO_COMPLETE_REQUEST_CODE);
+                    autoCompleteMethod(DEST_PLACE_AUTO_COMPLETE_REQUEST_CODE);
                 }
             }
         });
@@ -213,14 +213,14 @@ public class LiveTrafficActivity extends FragmentActivity implements
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.et_source:
-                requestAutoComplete(SOURCE_PLACE_AUTO_COMPLETE_REQUEST_CODE);
+                autoCompleteMethod(SOURCE_PLACE_AUTO_COMPLETE_REQUEST_CODE);
                 break;
             default:
                 break;
         }
     }
 
-    public void requestAutoComplete(final int placeCode) {
+    public void autoCompleteMethod(final int placeCode) {
         try {
             Intent intent = new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_OVERLAY).build(this);
             startActivityForResult(intent, placeCode);

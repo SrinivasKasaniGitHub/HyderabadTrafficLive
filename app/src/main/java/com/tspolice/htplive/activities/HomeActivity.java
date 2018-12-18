@@ -4,7 +4,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.widget.FrameLayout;
@@ -52,11 +51,11 @@ public class HomeActivity extends AppCompatActivity {
         }
     }
 
-    public void setTitle(int resource) {
-        ((AppCompatActivity) getApplicationContext()).getSupportActionBar().setTitle(resource);
+    /*public void setTitle(int resource) {
+        Objects.requireNonNull(((AppCompatActivity) getApplicationContext()).getSupportActionBar()).setTitle(resource);
     }
 
     public void setSubTitle(int resource) {
-        ((AppCompatActivity) getApplicationContext()).getSupportActionBar().setSubtitle(resource);
-    }
+        Objects.requireNonNull(((AppCompatActivity) getApplicationContext()).getSupportActionBar()).setSubtitle(resource);
+    }*/
 }

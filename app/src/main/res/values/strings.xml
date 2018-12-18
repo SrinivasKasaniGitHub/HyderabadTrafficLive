@@ -36,9 +36,10 @@
     <string name="e_challan_status">e-Challan Status</string>
     <string name="near_by">Near by</string>
     <string name="comment">Comment</string>
-    <string name="enter_driver_name">Enter Driver Name</string>
+    <string name="enter_driver_name">Enter Drivers Name</string>
     <string name="complaint_type">Complaint Type</string>
     <string name="complaint">Complaint</string>
+    <string name="type_a_complaint">Type a complaint</string>
     <string name="cancel">Cancel</string>
     <string name="select_file">Select File</string>
     <string name="browse">Browse</string>
@@ -234,4 +235,37 @@
     <string name="search_officer_name">Search Officer Name</string>
     <string name="search_traffic_ps_name">Search Traffic PS Name</string>
     <string name="search_contact_no">Search Contact Number</string>
+    <string name="zero_km">0.0 km</string>
+    <string name="please_select_destination_place">Please select destination place</string>
+    <string name="day_price">Rs: 20 in Day</string>
+    <string name="night_price">Rs: 30 in Night</string>
+    <string name="user_canceled_the_operation">User canceled the operation</string>
+    <string name="please_select_category">Please select category</string>
+    <string name="please_attach_photo">Please select photo</string>
+    <string name="please_select_the_reason">Please select the reason</string>
+    <string name="please_enter_phone_no">Please enter phone no.</string>
+    <string name="please_enter_a_location">Please enter a location</string>
+    <string name="enter_complaint">Enter Complaint</string>
+    <string name="enter_complaint_type">Enter Complaint type</string>
+    <string name="enter_your_name">Enter your Name</string>
+    <string name="enter_your_email_id">Enter your Email ID</string>
+    <string name="enter_your_mobile_no">Enter your Mobile No.</string>
+    <string name="enter_valid_email_id">Enter valid Email ID</string>
+    <string name="enter_valid_mobile_no">Enter valid Mobile No.</string>
+    <string name="enter_your_contact_no">Enter your contact no.</string>
+    <string name="enter_a_suggestion">Enter a suggestion</string>
+    <string name="enter_valid_contact_no">Enter valid Contact No.</string>
+    <string name="device_is_ready">Device is Ready</string>
+    <string name="ready_to_recieve_push_notifications">Ready to receive Push Notifications</string>
+    <string name="gcm_registration_error">GCM Registration Error!</string>
+    <string name="error_occured">Error Occurred</string>
+
+    <string-array name="categories">
+        <item>-- Select Category --</item>
+        <item>Traffic Violation</item>
+        <item>Happening Crime</item>
+        <item>Violation by Police</item>
+        <item>Suggestions</item>
+        <item>Others</item>
+    </string-array>
 </resources>

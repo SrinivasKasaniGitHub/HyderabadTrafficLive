@@ -4,13 +4,13 @@ public class Constants {
     public static final int REQUEST_CAMERA = 125;
     public static final int REQUEST_STORAGE = 225;
     public static final int REQUEST_FINE_LOCATION = 325;
-    public static final int REQUEST_COARSE_LOCATION = 425;
+    static final int REQUEST_COARSE_LOCATION = 425;
     public static final int REQUEST_CALL_PHONE = 525;
 
     public static final int INT_CAMERA = 1;
     public static final int INT_STORAGE = 2;
     public static final int INT_FINE_LOCATION = 3;
-    public static final int INT_COARSE_LOCATION = 4;
+    static final int INT_COARSE_LOCATION = 4;
     public static final int INT_CALL_PHONE = 5;
 
     public static final String CAMERA = "CAMERA";
@@ -18,7 +18,6 @@ public class Constants {
     public static final String FINE_LOCATION = "FINE_LOCATION";
     public static final String CALL_PHONE = "CALL_PHONE";
 
-    //SharedPrefManager_Values
     public static final String EMERGENCY_CONTACTS = "EMERGENCY_CONTACTS";
     public static final String USEFUL_WEBSITES = "USEFUL_WEBSITES";
     public static final String FAQS = "FAQS";
@@ -27,5 +26,19 @@ public class Constants {
     public static final String CONTROL_ROOM_PH_NO = "914027852482";
     public static final String RTA_TOWING = "RTA_TOWING";
 
-    public static final String FIRE_BASE_TOKEN = "token";
+    static final String DEVICE_UUID = "DEVICE_UUID";
+    public static final String ANDROID = "ANDROID";
+
+    public static final String FCM_TOKEN = "FCM_TOKEN";
+    public static final String GCM_TOKEN = "GCM_TOKEN";
+
+    public static final String CHANNEL_ID = "CHANNEL_ID";
+    public static final String CHANNEL_NAME = "CHANNEL_NAME";
+    public static final String CHANNEL_DESCRIPTION = "CHANNEL_DESCRIPTION";
+
+    public static final String REGISTRATION_SUCCESS = "REGISTRATION_SUCCESS";
+    public static final String REGISTRATION_ERROR = "REGISTRATION_ERROR";
+    public static final String REGISTRATION_TOKEN_SENT = "REGISTRATION_TOKEN_SENT";
+
+    public static final String GCM_SENDER_ID = "ANDROID";
 }

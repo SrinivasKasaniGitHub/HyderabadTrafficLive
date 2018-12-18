@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,11 +36,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.frag_home, container, false);
-
         mUiHelper = new UiHelper(getActivity());
         mSharedPrefManager = SharedPrefManager.getInstance(getActivity());
         //GPSTracker mGpsTracker = new GPSTracker(getActivity());
-
         iv_public_interface = view.findViewById(R.id.iv_public_interface);
         iv_auto_fare_estimation = view.findViewById(R.id.iv_auto_fare_estimation);
         iv_live_traffic = view.findViewById(R.id.iv_live_traffic);
@@ -49,7 +48,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         iv_getRTADetails = view.findViewById(R.id.iv_getRTADetails);
         iv_public_complaints = view.findViewById(R.id.iv_public_complaints);
         iv_public_info = view.findViewById(R.id.iv_public_info);
-
         return view;
     }
 

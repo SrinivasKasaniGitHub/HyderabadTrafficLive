@@ -7,6 +7,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.tspolice.htplive.R;
@@ -160,6 +162,14 @@ public class UiHelper {
                 .commit();
     }
 
+    public void setTitle(Context context, int resource) {
+        ((AppCompatActivity) context).getSupportActionBar().setTitle(resource);
+    }
+
+    public void setSubTitle(Context context, int resource) {
+        ((AppCompatActivity) context).getSupportActionBar().setSubtitle(resource);
+    }
+
     public String loadJSONFromAssets(final String fileName) {
         String jsonString;
         try {
@@ -174,5 +184,13 @@ public class UiHelper {
             return null;
         }
         return jsonString;
+    }
+
+    public void setError(EditText editText, String msg) {
+        editText.setError(msg);
+    }
+
+    public void requestFocus(EditText editText) {
+        editText.requestFocus();
     }
 }

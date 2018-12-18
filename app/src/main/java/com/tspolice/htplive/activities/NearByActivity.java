@@ -42,6 +42,7 @@ import com.tspolice.htplive.R;
 import com.tspolice.htplive.models.ParkingDetailsModel;
 import com.tspolice.htplive.models.ParkingTypeModel;
 import com.tspolice.htplive.models.VehicleTypeModel;
+import com.tspolice.htplive.network.URLParams;
 import com.tspolice.htplive.network.URLs;
 import com.tspolice.htplive.network.VolleySingleton;
 import com.tspolice.htplive.utils.Constants;
@@ -80,7 +81,7 @@ public class NearByActivity extends FragmentActivity implements
     private Button btn_check_parking_space;
     private Dialog mDialogParkingSpace;
     private List<String> vehicleTypes;
-    private List<ParkingDetailsModel> parkingDetailsList;
+    //private List<ParkingDetailsModel> parkingDetailsList;
     private int vehicleTypeId = 0, parkingTypeId = 0, psId = 0;
 
     @Override
@@ -432,14 +433,11 @@ public class NearByActivity extends FragmentActivity implements
         final String mRequestBody;
         try {
             Map<String, String> params = new HashMap<>();
-            params.put("parkingTypeId", String.valueOf(parkingTypeId));
-            params.put("vehicleTypeId", String.valueOf(vehicleTypeId));
-            params.put("psId", String.valueOf(psId));
-            Log.i(TAG, "getParkingDetails: parkingTypeId-->" + String.valueOf(parkingTypeId));
-            Log.i(TAG, "getParkingDetails: vehicleTypeId-->" + String.valueOf(vehicleTypeId));
+            params.put(URLParams.parkingTypeId, String.valueOf(parkingTypeId));
+            params.put(URLParams.vehicleTypeId, String.valueOf(vehicleTypeId));
+            params.put(URLParams.psId, String.valueOf(psId));
             jsonRequest = new JSONObject(params);
             mRequestBody = jsonRequest.toString();
-
             VolleySingleton.getInstance(this).addToRequestQueue(new StringRequest(Request.Method.POST,
                     URLs.getParkingDetails,
                     new Response.Listener<String>() {
@@ -448,7 +446,7 @@ public class NearByActivity extends FragmentActivity implements
                             mUiHelper.dismissProgressDialog();
                             try {
                                 JSONArray jsonArray = new JSONArray(response);
-                                parkingDetailsList = new ArrayList<>(jsonArray.length());
+                                //parkingDetailsList = new ArrayList<>(jsonArray.length());
                                 for (int i = 0; i < jsonArray.length(); i++) {
                                     JSONObject jsonObject = jsonArray.getJSONObject(i);
 
@@ -493,7 +491,7 @@ public class NearByActivity extends FragmentActivity implements
                                     parkingDetails.setLatitude(stLat);
                                     parkingDetails.setLongitude(stLong);
 
-                                    parkingDetailsList.add(parkingDetails);
+                                    //parkingDetailsList.add(parkingDetails);
 
                                     if (stLat != null && !"null".equals(stLat) && stLat.length() > 0
                                             && stLong != null && !"null".equals(stLong) && stLong.length() > 0) {

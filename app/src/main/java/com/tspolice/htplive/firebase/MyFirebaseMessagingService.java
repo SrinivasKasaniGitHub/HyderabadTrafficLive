@@ -17,6 +17,7 @@ import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 import com.tspolice.htplive.R;
 import com.tspolice.htplive.activities.AlertsActivity;
+import com.tspolice.htplive.gcm.GCMPushReceiverService;
 
 import java.util.Map;
 
@@ -28,13 +29,15 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
-        // TODO(developer): Handle FCM messages here.
-        // Not getting messages here? See why this may be: https://goo.gl/39bRNJ
-        Log.d(TAG, "From: " + remoteMessage.getFrom());
-
-        // Check if message contains a data payload.
+        super.onMessageReceived(remoteMessage);
         if (remoteMessage.getData().size() > 0) {
+            String title = remoteMessage.getNotification().getTitle();
+            String body = remoteMessage.getNotification().getBody();
             Log.d(TAG, "Message data payload: " + remoteMessage.getData());
+            Log.d(TAG, "From: " + remoteMessage.getFrom());
+
+            sendUserNotification(title, body);
+
             if (/* Check if data needs to be processed by long running job */ true) {
                 // For long-running tasks (10 seconds or more) use Firebase Job Dispatcher.
                 //scheduleJob();
@@ -47,6 +50,8 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         // Check if message contains a notification payload.
         if (remoteMessage.getNotification() != null) {
             Log.d(TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody());
+            Log.d(TAG,"Title: "+remoteMessage.getNotification().getTitle());
+            sendNotificationToUser(remoteMessage.getNotification().getTitle(),remoteMessage.getNotification().getBody());
         }
 
         // Also if you intend on generating your own notifications as a result of a received FCM
@@ -114,5 +119,19 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         } else {
             return R.mipmap.ic_launcher;
         }
+    }
+
+
+    private void sendNotificationToUser(String title,String message) {
+        Intent intent = new Intent(context, AlertsActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(MyFirebaseMessagingService.this);
+        builder.setSmallIcon(R.drawable.ic_logo);
+        builder.setContentIntent(PendingIntent.getActivity(MyFirebaseMessagingService.this, 0, intent, 0));
+        builder.setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.ic_logo));
+        builder.setContentTitle(title);
+        builder.setContentText(message);
+        NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        notificationManager.notify(1, builder.build());
     }
 }
