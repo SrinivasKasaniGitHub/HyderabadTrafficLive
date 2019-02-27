@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +13,6 @@ import android.widget.ImageView;
 
 import com.tspolice.htplive.R;
 import com.tspolice.htplive.activities.AutoFareEstmActivity;
-import com.tspolice.htplive.activities.LiveTrafficActivity;
 import com.tspolice.htplive.activities.NearByActivity;
 import com.tspolice.htplive.activities.PublicComplaintsActivity;
 import com.tspolice.htplive.activities.PublicInterfaceActivity;
@@ -22,23 +20,30 @@ import com.tspolice.htplive.activities.RtaTowingActivity;
 import com.tspolice.htplive.network.Networking;
 import com.tspolice.htplive.network.URLs;
 import com.tspolice.htplive.utils.Constants;
+import com.tspolice.htplive.utils.GPSTracker;
 import com.tspolice.htplive.utils.SharedPrefManager;
 import com.tspolice.htplive.utils.UiHelper;
 
-public class HomeFragment extends Fragment implements View.OnClickListener {
+import java.util.Locale;
+
+public class HomeFragment extends Fragment implements
+        View.OnClickListener {
 
     private ImageView iv_public_interface, iv_auto_fare_estimation, iv_live_traffic, iv_near_by,
             iv_echallan_status, iv_find_towed_vhcl, iv_getRTADetails, iv_public_complaints, iv_public_info;
     private UiHelper mUiHelper;
     private SharedPrefManager mSharedPrefManager;
+    private GPSTracker mGpsTracker;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.frag_home, container, false);
+
         mUiHelper = new UiHelper(getActivity());
         mSharedPrefManager = SharedPrefManager.getInstance(getActivity());
-        //GPSTracker mGpsTracker = new GPSTracker(getActivity());
+        mGpsTracker = new GPSTracker(getActivity());
+
         iv_public_interface = view.findViewById(R.id.iv_public_interface);
         iv_auto_fare_estimation = view.findViewById(R.id.iv_auto_fare_estimation);
         iv_live_traffic = view.findViewById(R.id.iv_live_traffic);
@@ -48,6 +53,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         iv_getRTADetails = view.findViewById(R.id.iv_getRTADetails);
         iv_public_complaints = view.findViewById(R.id.iv_public_complaints);
         iv_public_info = view.findViewById(R.id.iv_public_info);
+
         return view;
     }
 
@@ -75,12 +81,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 nextActivity(AutoFareEstmActivity.class);
                 break;
             case R.id.iv_live_traffic:
-                nextActivity(LiveTrafficActivity.class);
-                /*if (mGpsTracker.canGetLocation()) {
+                //nextActivity(LiveTrafficActivity.class);
+                if (mGpsTracker.canGetLocation()) {
                     String uri = String.format(Locale.ENGLISH, "geo:%f,%f", mGpsTracker.getLatitude(), mGpsTracker.getLongitude());
                     Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
                     startActivity(intent);
-                }*/
+                }
                 break;
             case R.id.iv_near_by:
                 nextActivity(NearByActivity.class);
@@ -90,11 +96,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 startActivity(browserIntent);
                 break;
             case R.id.iv_find_towed_vhcl:
-                mSharedPrefManager.putString(Constants.RTA_TOWING, "TOWING");
+                mSharedPrefManager.putString(Constants.RTA_TOWING, Constants.TOWING);
                 nextActivity(RtaTowingActivity.class);
                 break;
             case R.id.iv_getRTADetails:
-                mSharedPrefManager.putString(Constants.RTA_TOWING, "RTA");
+                mSharedPrefManager.putString(Constants.RTA_TOWING, Constants.RTA);
                 nextActivity(RtaTowingActivity.class);
                 break;
             case R.id.iv_public_complaints:

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/trps_info_lyt_padding"
+    android:id="@+id/rel_trps_info"
+    android:background="@color/colorWhite">
+
+    <TextView
+        android:id="@+id/tv_trps_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@id/img_right_arrow"
+        android:layout_toStartOf="@id/img_right_arrow"
+        android:text="@string/tr_ps_gopalapuram"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/trps_info_text_margin_left"
+        android:layout_marginStart="@dimen/trps_info_text_margin_left"
+        android:layout_marginRight="@dimen/trps_info_text_margin_right"
+        android:layout_marginEnd="@dimen/trps_info_text_margin_right"
+        android:textColor="@color/colorAccentDark"
+        android:textStyle="bold"
+        android:gravity="start"
+        tools:ignore="RelativeOverlap" />
+
+    <ImageView
+        android:id="@+id/img_right_arrow"
+        android:layout_width="@dimen/trps_info_arrow_img_width"
+        android:layout_height="@dimen/trps_info_arrow_img_height"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:contentDescription="@null"
+        android:src="@drawable/ic_call_img_3x"/>
+
+</RelativeLayout>

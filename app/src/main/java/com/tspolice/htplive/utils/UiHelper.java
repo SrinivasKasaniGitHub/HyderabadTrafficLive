@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -61,10 +62,10 @@ public class UiHelper {
         builder.setIcon(mContext.getResources().getDrawable(R.drawable.ic_logo));
         builder.setMessage(message);
         builder.setCancelable(cancelable);
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                if ("HOME".equals(actionFlag)) {
+                if (Constants.HOME.equals(actionFlag)) {
                     Activity activity = (Activity) mContext;
                     activity.finish();
                     Intent intent_Login = new Intent(mContext, MainActivity.class);
@@ -73,7 +74,7 @@ public class UiHelper {
                 }
             }
         });
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
@@ -89,7 +90,7 @@ public class UiHelper {
         builder.setIcon(mContext.getResources().getDrawable(R.drawable.ic_logo));
         builder.setMessage(message);
         builder.setCancelable(cancelable);
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
@@ -105,19 +106,19 @@ public class UiHelper {
         builder.setIcon(mContext.getResources().getDrawable(R.drawable.ic_logo));
         builder.setMessage(message);
         builder.setCancelable(cancelable);
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
             }
         });
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
             }
         });
-        builder.setNeutralButton("Neutral", new DialogInterface.OnClickListener() {
+        builder.setNeutralButton(R.string.neutral, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
@@ -131,7 +132,7 @@ public class UiHelper {
         AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
         builder.setMessage(message);
         builder.setCancelable(cancelable);
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
@@ -147,6 +148,18 @@ public class UiHelper {
 
     public void showToastLong(String message) {
         Toast.makeText(mContext, "" + message, Toast.LENGTH_LONG).show();
+    }
+
+    public void showToastShortCentre(String message) {
+        Toast toast = Toast.makeText(mContext, "" + message, Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.show();
+    }
+
+    public void showToastLongCentre(String message) {
+        Toast toast = Toast.makeText(mContext, "" + message, Toast.LENGTH_LONG);
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.show();
     }
 
     public void intent(Class<?> mClass) {

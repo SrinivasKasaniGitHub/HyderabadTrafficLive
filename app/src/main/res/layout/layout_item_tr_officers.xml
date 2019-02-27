@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rel_tr_officers"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorWhite"
+    android:padding="@dimen/tr_officer_info_lyt_padding">
+
+    <ImageView
+        android:id="@+id/img_contact"
+        android:layout_width="@dimen/tr_officer_img_width"
+        android:layout_height="@dimen/tr_officer_img_height"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:contentDescription="@null"
+        android:src="@drawable/ic_traffic_police_officers" />
+
+    <LinearLayout
+        android:id="@+id/lnr_name_cadre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="@dimen/tr_officer_lnr_lyt_margin_left"
+        android:layout_marginLeft="@dimen/tr_officer_lnr_lyt_margin_right"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_toEndOf="@id/img_contact"
+        android:layout_toRightOf="@id/img_contact"
+        android:layout_toLeftOf="@id/img_call_btn"
+        android:layout_toStartOf="@id/img_call_btn"
+        android:gravity="start"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/traffic_cell"
+            android:textColor="@color/colorAccentDark"
+            android:textStyle="bold"
+            tools:ignore="RelativeOverlap" />
+
+        <TextView
+            android:id="@+id/tv_cadre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/dummy_phone_no"
+            android:textColor="@color/colorPrimaryDark"
+            tools:ignore="RelativeOverlap" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/img_call_btn"
+        android:layout_width="@dimen/tr_officer_call_img_width"
+        android:layout_height="@dimen/tr_officer_call_img_height"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:contentDescription="@null"
+        android:src="@drawable/ic_call_img_3x" />
+
+</RelativeLayout>

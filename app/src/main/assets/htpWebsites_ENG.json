@@ -1,13 +1,46 @@
 [
-	{"name":"Government of India","url":"http://india.gov.in"},
-	{"name":"Government of Telangana","url":"http://telangana.gov.in"},
-	{"name":"Hyderabad Police","url":"http://hyderabadpolice.gov.in"},
-	{"name":"Hyderabad Traffic Police","url":"http://htp.gov.in"},
-	{"name":"Cyberabad Police","url":"http://cyberabadpolice.gov.in"},
-	{"name":"Hyderabad Municipal Corporation","url":"http://ghmc.gov.in"},
-	{"name":"Hyderabad RTO","url":"http://transport.telangana.gov.in"},
-	{"name":"Hyderabad Collector Office","url":"http://telangana.gov.in"},
-	{"name":"National Informatics Centre","url":"http://home.nic.in"},
-	{"name":"Telangana Technology Services","url":"http://tsts.telangana.gov.in"},
-	{"name":"Telangana Road & Transport","url":"http://tgsrtc.net"}
+  {
+    "name": "Government of India",
+    "url": "http://india.gov.in"
+  },
+  {
+    "name": "Government of Telangana",
+    "url": "http://telangana.gov.in"
+  },
+  {
+    "name": "Hyderabad Police",
+    "url": "http://hyderabadpolice.gov.in"
+  },
+  {
+    "name": "Hyderabad Traffic Police",
+    "url": "http://htp.gov.in"
+  },
+  {
+    "name": "Cyberabad Police",
+    "url": "http://cyberabadpolice.gov.in"
+  },
+  {
+    "name": "Hyderabad Municipal Corporation",
+    "url": "http://ghmc.gov.in"
+  },
+  {
+    "name": "Hyderabad RTO",
+    "url": "http://transport.telangana.gov.in"
+  },
+  {
+    "name": "Hyderabad Collector Office",
+    "url": "http://telangana.gov.in"
+  },
+  {
+    "name": "National Informatics Centre",
+    "url": "http://home.nic.in"
+  },
+  {
+    "name": "Telangana Technology Services",
+    "url": "http://tsts.telangana.gov.in"
+  },
+  {
+    "name": "Telangana Road & Transport",
+    "url": "http://tgsrtc.net"
+  }
 ]

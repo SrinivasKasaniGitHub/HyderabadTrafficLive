@@ -1,281 +1,515 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/ic_bg">
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/horz_layout0"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:ignore="UseCompoundDrawables">
+
+        <ImageView
+            android:id="@+id/header_image"
+            android:layout_width="@dimen/dashboard_htp_logo_width"
+            android:layout_height="@dimen/dashboard_htp_logo_height"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dashboard_htp_logo_margin_top"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_logo" />
+
+        <TextView
+            android:id="@+id/tv_app_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/dashboard_htp_header_text_margin_top"
+            android:paddingTop="@dimen/dashboard_htp_header_padding_top"
+            android:paddingBottom="@dimen/dashboard_htp_header_padding_bottom"
+            android:text="@string/hyderabad_traffic_live"
+            android:textColor="@color/colorAccentDark"
+            android:textSize="@dimen/dashboard_htp_header_text_size"
+            android:textStyle="bold" />
+
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/horz_layout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/horz_layout0"
+        android:layout_marginTop="0dp"
+        android:layout_marginStart="@dimen/dashboard_horz_layout_margin_left"
+        android:layout_marginLeft="@dimen/dashboard_horz_layout_margin_left"
+        android:layout_marginEnd="@dimen/dashboard_horz_layout_margin_right"
+        android:layout_marginRight="@dimen/dashboard_horz_layout_margin_right"
+        android:gravity="center"
         android:orientation="horizontal"
-        android:weightSum="3"
-        android:baselineAligned="false">
+        android:weightSum="3">
 
-        <RelativeLayout
-            android:id="@+id/rel_public_interface"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
+        <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/dashboard_card_view_margin"
+            android:layout_weight="1"
+            android:foreground="?android:attr/selectableItemBackground"
+            card_view:cardBackgroundColor="@color/cardview_light_background"
+            card_view:cardCornerRadius="@dimen/dashboard_card_view_corners">
 
-            <ImageView
-                android:id="@+id/iv_public_interface"
+            <RelativeLayout
+                android:id="@+id/rel_public_interface"
                 android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:contentDescription="@null"
-                android:padding="8dp"
-                android:src="@drawable/ic_notes" />
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/tv_public_interface"
+                <ImageView
+                    android:id="@+id/iv_public_interface"
+                    android:layout_width="@dimen/dashboard_img_width"
+                    android:layout_height="@dimen/dashboard_img_height"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center"
+                    android:contentDescription="@null"
+                    android:paddingStart="@dimen/dashboard_img_padding_left"
+                    android:paddingLeft="@dimen/dashboard_img_padding_left"
+                    android:paddingTop="@dimen/dashboard_img_padding_top"
+                    android:paddingEnd="@dimen/dashboard_img_padding_right"
+                    android:paddingRight="@dimen/dashboard_img_padding_right"
+                    android:paddingBottom="@dimen/dashboard_img_padding_bottom"
+                    android:src="@drawable/ic_public_interface" />
+
+                <TextView
+                    android:id="@+id/tv_public_interface"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/iv_public_interface"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="@dimen/dashboard_img_text_padding_left"
+                    android:paddingStart="@dimen/dashboard_img_text_padding_left"
+                    android:paddingRight="@dimen/dashboard_img_text_padding_right"
+                    android:paddingEnd="@dimen/dashboard_img_text_padding_right"
+                    android:paddingBottom="@dimen/dashboard_img_text_padding_bottom"
+                    android:text="@string/public_interface"
+                    android:textColor="@color/colorAccentDark"
+                    android:textSize="@dimen/dashboard_img_text_size" />
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/dashboard_card_view_margin"
+            android:layout_weight="1"
+            android:foreground="?android:attr/selectableItemBackground"
+            card_view:cardBackgroundColor="@color/cardview_light_background"
+            card_view:cardCornerRadius="@dimen/dashboard_card_view_corners">
+
+            <RelativeLayout
+                android:id="@+id/rel_auto_fare_estimation"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/iv_public_interface"
-                android:gravity="center_horizontal"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
-                android:textStyle="bold"
-                android:text="@string/public_interface" />
+                android:layout_height="wrap_content">
 
-        </RelativeLayout>
+                <ImageView
+                    android:id="@+id/iv_auto_fare_estimation"
+                    android:layout_width="@dimen/dashboard_img_width"
+                    android:layout_height="@dimen/dashboard_img_height"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center"
+                    android:contentDescription="@null"
+                    android:paddingStart="@dimen/dashboard_img_padding_left"
+                    android:paddingLeft="@dimen/dashboard_img_padding_left"
+                    android:paddingTop="@dimen/dashboard_img_padding_top"
+                    android:paddingEnd="@dimen/dashboard_img_padding_right"
+                    android:paddingRight="@dimen/dashboard_img_padding_right"
+                    android:paddingBottom="@dimen/dashboard_img_padding_bottom"
+                    android:src="@drawable/ic_autofare_estimation" />
 
-        <RelativeLayout
-            android:id="@+id/rel_auto_fare_estimation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
+                <TextView
+                    android:id="@+id/tv_auto_fare_estimation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/iv_auto_fare_estimation"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="@dimen/dashboard_img_text_padding_left"
+                    android:paddingStart="@dimen/dashboard_img_text_padding_left"
+                    android:paddingRight="@dimen/dashboard_img_text_padding_right"
+                    android:paddingEnd="@dimen/dashboard_img_text_padding_right"
+                    android:paddingBottom="@dimen/dashboard_img_text_padding_bottom"
+                    android:text="@string/auto_fare_estimation"
+                    android:textColor="@color/colorAccentDark"
+                    android:textSize="@dimen/dashboard_img_text_size" />
 
-            <ImageView
-                android:id="@+id/iv_auto_fare_estimation"
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/dashboard_card_view_margin"
+            android:layout_weight="1"
+            android:foreground="?android:attr/selectableItemBackground"
+            card_view:cardBackgroundColor="@color/cardview_light_background"
+            card_view:cardCornerRadius="@dimen/dashboard_card_view_corners">
+
+            <RelativeLayout
+                android:id="@+id/rel_live_traffic"
                 android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:layout_gravity="center"
-                android:contentDescription="@null"
-                android:padding="8dp"
-                android:src="@drawable/ic_autofare" />
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/tv_auto_fare_estimation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/iv_auto_fare_estimation"
-                android:gravity="center_horizontal"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
-                android:textStyle="bold"
-                android:text="@string/auto_fare_estimation" />
+                <ImageView
+                    android:id="@+id/iv_live_traffic"
+                    android:layout_width="@dimen/dashboard_img_width"
+                    android:layout_height="@dimen/dashboard_img_height"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center"
+                    android:contentDescription="@null"
+                    android:paddingStart="@dimen/dashboard_img_padding_left"
+                    android:paddingLeft="@dimen/dashboard_img_padding_left"
+                    android:paddingTop="@dimen/dashboard_img_padding_top"
+                    android:paddingEnd="@dimen/dashboard_img_padding_right"
+                    android:paddingRight="@dimen/dashboard_img_padding_right"
+                    android:paddingBottom="@dimen/dashboard_img_padding_bottom"
+                    android:src="@drawable/ic_live_traffic" />
 
-        </RelativeLayout>
+                <TextView
+                    android:id="@+id/tv_live_traffic"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/iv_live_traffic"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="@dimen/dashboard_img_text_padding_left"
+                    android:paddingStart="@dimen/dashboard_img_text_padding_left"
+                    android:paddingRight="@dimen/dashboard_img_text_padding_right"
+                    android:paddingEnd="@dimen/dashboard_img_text_padding_right"
+                    android:paddingBottom="@dimen/dashboard_img_text_padding_bottom"
+                    android:text="@string/live_traffic"
+                    android:textColor="@color/colorAccentDark"
+                    android:textSize="@dimen/dashboard_img_text_size" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
+            </RelativeLayout>
 
-            <ImageView
-                android:id="@+id/iv_live_traffic"
-                android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:layout_gravity="center"
-                android:contentDescription="@null"
-                android:padding="8dp"
-                android:src="@drawable/ic_livetraffic" />
-
-            <TextView
-                android:id="@+id/tv_live_traffic"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/iv_live_traffic"
-                android:gravity="center_horizontal"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
-                android:textStyle="bold"
-                android:text="@string/live_traffic" />
-
-        </RelativeLayout>
+        </android.support.v7.widget.CardView>
 
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/horz_layout2"
-        android:layout_below="@id/horz_layout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/horz_layout1"
+        android:layout_marginStart="@dimen/dashboard_horz_layout_margin_left"
+        android:layout_marginLeft="@dimen/dashboard_horz_layout_margin_left"
+        android:layout_marginEnd="@dimen/dashboard_horz_layout_margin_right"
+        android:layout_marginRight="@dimen/dashboard_horz_layout_margin_right"
+        android:gravity="center"
         android:orientation="horizontal"
-        android:weightSum="3"
-        android:baselineAligned="false">
+        android:weightSum="3">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
+        <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/dashboard_card_view_margin"
+            android:layout_weight="1"
+            android:foreground="?android:attr/selectableItemBackground"
+            card_view:cardBackgroundColor="@color/cardview_light_background"
+            card_view:cardCornerRadius="@dimen/dashboard_card_view_corners">
 
-            <ImageView
-                android:id="@+id/iv_near_by"
+            <RelativeLayout
+                android:id="@+id/rel_near_by"
                 android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:contentDescription="@null"
-                android:padding="8dp"
-                android:src="@drawable/ic_nearby" />
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/tv_near_by"
+                <ImageView
+                    android:id="@+id/iv_near_by"
+                    android:layout_width="@dimen/dashboard_img_width"
+                    android:layout_height="@dimen/dashboard_img_height"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center"
+                    android:contentDescription="@null"
+                    android:paddingStart="@dimen/dashboard_img_padding_left"
+                    android:paddingLeft="@dimen/dashboard_img_padding_left"
+                    android:paddingTop="@dimen/dashboard_img_padding_top"
+                    android:paddingEnd="@dimen/dashboard_img_padding_right"
+                    android:paddingRight="@dimen/dashboard_img_padding_right"
+                    android:paddingBottom="@dimen/dashboard_img_padding_bottom"
+                    android:src="@drawable/ic_near_by" />
+
+                <TextView
+                    android:id="@+id/tv_near_by"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/iv_near_by"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="@dimen/dashboard_img_text_padding_left"
+                    android:paddingStart="@dimen/dashboard_img_text_padding_left"
+                    android:paddingRight="@dimen/dashboard_img_text_padding_right"
+                    android:paddingEnd="@dimen/dashboard_img_text_padding_right"
+                    android:paddingBottom="@dimen/dashboard_img_text_padding_bottom"
+                    android:text="@string/near_by"
+                    android:textColor="@color/colorAccentDark"
+                    android:textSize="@dimen/dashboard_img_text_size" />
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/dashboard_card_view_margin"
+            android:layout_weight="1"
+            android:foreground="?android:attr/selectableItemBackground"
+            card_view:cardBackgroundColor="@color/cardview_light_background"
+            card_view:cardCornerRadius="@dimen/dashboard_card_view_corners">
+
+            <RelativeLayout
+                android:id="@+id/rel_echallan_status"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/iv_near_by"
-                android:gravity="center_horizontal"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
-                android:textStyle="bold"
-                android:text="@string/near_by" />
+                android:layout_height="wrap_content">
 
-        </RelativeLayout>
+                <ImageView
+                    android:id="@+id/iv_echallan_status"
+                    android:layout_width="@dimen/dashboard_img_width"
+                    android:layout_height="@dimen/dashboard_img_height"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center"
+                    android:contentDescription="@null"
+                    android:paddingStart="@dimen/dashboard_img_padding_left"
+                    android:paddingLeft="@dimen/dashboard_img_padding_left"
+                    android:paddingTop="@dimen/dashboard_img_padding_top"
+                    android:paddingEnd="@dimen/dashboard_img_padding_right"
+                    android:paddingRight="@dimen/dashboard_img_padding_right"
+                    android:paddingBottom="@dimen/dashboard_img_padding_bottom"
+                    android:src="@drawable/ic_echallan_status" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
+                <TextView
+                    android:id="@+id/tv_echallan_status"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/iv_echallan_status"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="@dimen/dashboard_img_text_padding_left"
+                    android:paddingStart="@dimen/dashboard_img_text_padding_left"
+                    android:paddingRight="@dimen/dashboard_img_text_padding_right"
+                    android:paddingEnd="@dimen/dashboard_img_text_padding_right"
+                    android:paddingBottom="@dimen/dashboard_img_text_padding_bottom"
+                    android:text="@string/e_challan_status"
+                    android:textColor="@color/colorAccentDark"
+                    android:textSize="@dimen/dashboard_img_text_size" />
 
-            <ImageView
-                android:id="@+id/iv_echallan_status"
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/dashboard_card_view_margin"
+            android:layout_weight="1"
+            android:foreground="?android:attr/selectableItemBackground"
+            card_view:cardBackgroundColor="@color/cardview_light_background"
+            card_view:cardCornerRadius="@dimen/dashboard_card_view_corners">
+
+            <RelativeLayout
+                android:id="@+id/rel_find_towed_vhcl"
                 android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:layout_gravity="center"
-                android:contentDescription="@null"
-                android:padding="8dp"
-                android:src="@drawable/ic_echallan_status" />
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/tv_echallan_status"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/iv_echallan_status"
-                android:gravity="center_horizontal"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
-                android:textStyle="bold"
-                android:text="@string/e_challan_status" />
+                <ImageView
+                    android:id="@+id/iv_find_towed_vhcl"
+                    android:layout_width="@dimen/dashboard_img_width"
+                    android:layout_height="@dimen/dashboard_img_height"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center"
+                    android:contentDescription="@null"
+                    android:paddingStart="@dimen/dashboard_img_padding_left"
+                    android:paddingLeft="@dimen/dashboard_img_padding_left"
+                    android:paddingTop="@dimen/dashboard_img_padding_top"
+                    android:paddingEnd="@dimen/dashboard_img_padding_right"
+                    android:paddingRight="@dimen/dashboard_img_padding_right"
+                    android:paddingBottom="@dimen/dashboard_img_padding_bottom"
+                    android:src="@drawable/ic_towing" />
 
-        </RelativeLayout>
+                <TextView
+                    android:id="@+id/tv_find_towed_vhcl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/iv_find_towed_vhcl"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="@dimen/dashboard_img_text_padding_left"
+                    android:paddingStart="@dimen/dashboard_img_text_padding_left"
+                    android:paddingRight="@dimen/dashboard_img_text_padding_right"
+                    android:paddingEnd="@dimen/dashboard_img_text_padding_right"
+                    android:paddingBottom="@dimen/dashboard_img_text_padding_bottom"
+                    android:text="@string/towed_vehicle_details"
+                    android:textColor="@color/colorAccentDark"
+                    android:textSize="@dimen/dashboard_img_text_size" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
+            </RelativeLayout>
 
-            <ImageView
-                android:id="@+id/iv_find_towed_vhcl"
-                android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:layout_gravity="center"
-                android:contentDescription="@null"
-                android:padding="8dp"
-                android:src="@drawable/ic_towedvehicles" />
-
-            <TextView
-                android:id="@+id/tv_find_towed_vhcl"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/iv_find_towed_vhcl"
-                android:gravity="center_horizontal"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
-                android:textStyle="bold"
-                android:text="@string/find_your_towed_vehicle" />
-
-        </RelativeLayout>
+        </android.support.v7.widget.CardView>
 
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/horz_layout3"
-        android:layout_below="@id/horz_layout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/horz_layout2"
+        android:layout_marginStart="@dimen/dashboard_horz_layout_margin_left"
+        android:layout_marginLeft="@dimen/dashboard_horz_layout_margin_left"
+        android:layout_marginEnd="@dimen/dashboard_horz_layout_margin_right"
+        android:layout_marginRight="@dimen/dashboard_horz_layout_margin_right"
+        android:gravity="center"
         android:orientation="horizontal"
-        android:weightSum="3"
-        android:baselineAligned="false">
+        android:weightSum="3">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
+        <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/dashboard_card_view_margin"
+            android:layout_weight="1"
+            android:foreground="?android:attr/selectableItemBackground"
+            card_view:cardBackgroundColor="@color/cardview_light_background"
+            card_view:cardCornerRadius="@dimen/dashboard_card_view_corners">
 
-            <ImageView
-                android:id="@+id/iv_getRTADetails"
+            <RelativeLayout
+                android:id="@+id/rel_getRTADetails"
                 android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:contentDescription="@null"
-                android:padding="8dp"
-                android:src="@drawable/ic_vehicle_rtadetails" />
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/tv_getRTADetails"
+                <ImageView
+                    android:id="@+id/iv_getRTADetails"
+                    android:layout_width="@dimen/dashboard_img_width"
+                    android:layout_height="@dimen/dashboard_img_height"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center"
+                    android:contentDescription="@null"
+                    android:paddingStart="@dimen/dashboard_img_padding_left"
+                    android:paddingLeft="@dimen/dashboard_img_padding_left"
+                    android:paddingTop="@dimen/dashboard_img_padding_top"
+                    android:paddingEnd="@dimen/dashboard_img_padding_right"
+                    android:paddingRight="@dimen/dashboard_img_padding_right"
+                    android:paddingBottom="@dimen/dashboard_img_padding_bottom"
+                    android:src="@drawable/ic_vehicle_rta_details" />
+
+                <TextView
+                    android:id="@+id/tv_getRTADetails"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/iv_getRTADetails"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="@dimen/dashboard_img_text_padding_left"
+                    android:paddingStart="@dimen/dashboard_img_text_padding_left"
+                    android:paddingRight="@dimen/dashboard_img_text_padding_right"
+                    android:paddingEnd="@dimen/dashboard_img_text_padding_right"
+                    android:paddingBottom="@dimen/dashboard_img_text_padding_bottom"
+                    android:text="@string/vehicle_rta_details"
+                    android:textColor="@color/colorAccentDark"
+                    android:textSize="@dimen/dashboard_img_text_size" />
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/dashboard_card_view_margin"
+            android:layout_weight="1"
+            android:foreground="?android:attr/selectableItemBackground"
+            card_view:cardBackgroundColor="@color/cardview_light_background"
+            card_view:cardCornerRadius="@dimen/dashboard_card_view_corners">
+
+            <RelativeLayout
+                android:id="@+id/rel_public_complaints"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/iv_getRTADetails"
-                android:gravity="center_horizontal"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
-                android:textStyle="bold"
-                android:text="@string/vehicle_rta_details" />
+                android:layout_height="wrap_content">
 
-        </RelativeLayout>
+                <ImageView
+                    android:id="@+id/iv_public_complaints"
+                    android:layout_width="@dimen/dashboard_img_width"
+                    android:layout_height="@dimen/dashboard_img_height"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center"
+                    android:contentDescription="@null"
+                    android:paddingStart="@dimen/dashboard_img_padding_left"
+                    android:paddingLeft="@dimen/dashboard_img_padding_left"
+                    android:paddingTop="@dimen/dashboard_img_padding_top"
+                    android:paddingEnd="@dimen/dashboard_img_padding_right"
+                    android:paddingRight="@dimen/dashboard_img_padding_right"
+                    android:paddingBottom="@dimen/dashboard_img_padding_bottom"
+                    android:src="@drawable/ic_public_complaints" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
+                <TextView
+                    android:id="@+id/tv_public_complaints"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/iv_public_complaints"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="@dimen/dashboard_img_text_padding_left"
+                    android:paddingStart="@dimen/dashboard_img_text_padding_left"
+                    android:paddingRight="@dimen/dashboard_img_text_padding_right"
+                    android:paddingEnd="@dimen/dashboard_img_text_padding_right"
+                    android:paddingBottom="@dimen/dashboard_img_text_padding_bottom"
+                    android:text="@string/public_complaints"
+                    android:textColor="@color/colorAccentDark"
+                    android:textSize="@dimen/dashboard_img_text_size" />
 
-            <ImageView
-                android:id="@+id/iv_public_complaints"
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/dashboard_card_view_margin"
+            android:layout_weight="1"
+            android:foreground="?android:attr/selectableItemBackground"
+            card_view:cardBackgroundColor="@color/cardview_light_background"
+            card_view:cardCornerRadius="@dimen/dashboard_card_view_corners">
+
+            <RelativeLayout
+                android:id="@+id/rel_public_info"
                 android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:layout_gravity="center"
-                android:contentDescription="@null"
-                android:padding="8dp"
-                android:src="@drawable/ic_public_complaint" />
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/tv_public_complaints"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/iv_public_complaints"
-                android:gravity="center_horizontal"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
-                android:textStyle="bold"
-                android:text="@string/public_complaints" />
+                <ImageView
+                    android:id="@+id/iv_public_info"
+                    android:layout_width="@dimen/dashboard_img_width"
+                    android:layout_height="@dimen/dashboard_img_height"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center"
+                    android:contentDescription="@null"
+                    android:paddingStart="@dimen/dashboard_img_padding_left"
+                    android:paddingLeft="@dimen/dashboard_img_padding_left"
+                    android:paddingTop="@dimen/dashboard_img_padding_top"
+                    android:paddingEnd="@dimen/dashboard_img_padding_right"
+                    android:paddingRight="@dimen/dashboard_img_padding_right"
+                    android:paddingBottom="@dimen/dashboard_img_padding_bottom"
+                    android:src="@drawable/ic_public_information" />
 
-        </RelativeLayout>
+                <TextView
+                    android:id="@+id/tv_public_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/iv_public_info"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="@dimen/dashboard_img_text_padding_left"
+                    android:paddingStart="@dimen/dashboard_img_text_padding_left"
+                    android:paddingRight="@dimen/dashboard_img_text_padding_right"
+                    android:paddingEnd="@dimen/dashboard_img_text_padding_right"
+                    android:paddingBottom="@dimen/dashboard_img_text_padding_bottom"
+                    android:text="@string/public_information"
+                    android:textColor="@color/colorAccentDark"
+                    android:textSize="@dimen/dashboard_img_text_size" />
 
-        <RelativeLayout
-            android:id="@+id/rel_public_info"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
+            </RelativeLayout>
 
-            <ImageView
-                android:id="@+id/iv_public_info"
-                android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:layout_gravity="center"
-                android:contentDescription="@null"
-                android:padding="8dp"
-                android:src="@drawable/ic_public_info" />
-
-            <TextView
-                android:id="@+id/tv_public_info"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/iv_public_info"
-                android:gravity="center_horizontal"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
-                android:textStyle="bold"
-                android:text="@string/public_information" />
-
-        </RelativeLayout>
+        </android.support.v7.widget.CardView>
 
     </LinearLayout>
 

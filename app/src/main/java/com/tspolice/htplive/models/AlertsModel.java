@@ -1,24 +1,32 @@
 package com.tspolice.htplive.models;
 
 public class AlertsModel {
-    private String alertText, alertUpdatedDt;
+    private String id, advise, updatedDate;
 
     public AlertsModel() {
     }
 
-    public String getAlertText() {
-        return alertText;
+    public String getId() {
+        return id;
     }
 
-    public void setAlertText(String alertText) {
-        this.alertText = alertText;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getAlertUpdatedDt() {
-        return alertUpdatedDt;
+    public String getAdvise() {
+        return advise;
     }
 
-    public void setAlertUpdatedDt(String alertUpdatedDt) {
-        this.alertUpdatedDt = alertUpdatedDt;
+    public void setAdvise(String advise) {
+        this.advise = advise;
+    }
+
+    public String getUpdatedDate() {
+        return updatedDate;
+    }
+
+    public void setUpdatedDate(String updatedDate) {
+        this.updatedDate = updatedDate;
     }
 }

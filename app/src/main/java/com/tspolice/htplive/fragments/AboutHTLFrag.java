@@ -60,7 +60,8 @@ public class AboutHTLFrag extends Fragment {
                     @Override
                     public void onResponse(JSONArray response) {
                         mUiHelper.dismissProgressDialog();
-                        if (response != null && !"".equals(response.toString()) && response.length() > 0) {
+                        if (response != null && !"".equals(response.toString())
+                                && !"null".equals(response.toString()) && response.length() > 0) {
                             try {
                                 for (int i = 0; i < response.length(); i++) {
                                     JSONObject jsonObject = response.getJSONObject(i);
@@ -75,19 +76,18 @@ public class AboutHTLFrag extends Fragment {
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();
-                                mUiHelper.showToastShort(getResources().getString(R.string.something_went_wrong));
+                                mUiHelper.showToastLongCentre(getResources().getString(R.string.something_went_wrong));
                             }
                         } else {
-                            mUiHelper.showToastShort(getResources().getString(R.string.empty_response));
+                            mUiHelper.showToastLongCentre(getResources().getString(R.string.empty_response));
                         }
                     }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        mUiHelper.dismissProgressDialog();
-                        mUiHelper.showToastShort(getResources().getString(R.string.error));
-                    }
-                }));
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                mUiHelper.dismissProgressDialog();
+                mUiHelper.showToastLongCentre(getResources().getString(R.string.error));
+            }
+        }));
     }
 }

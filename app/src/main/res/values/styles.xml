@@ -22,25 +22,34 @@
         <item name="android:textStyle">italic</item>
         <item name="android:textSize">12sp</item>
         <item name="android:textColor">@color/colorWhite</item>
-        <item name="android:background">@color/colorPrimaryDark</item>
+        <item name="android:background">@drawable/header_background</item>
     </style>
 
     <style name="spinner_style">
         <item name="android:background">@drawable/spinner_style</item>
         <item name="android:textColor">@color/colorBlack</item>
         <item name="android:gravity">start</item>
-        <item name="android:textSize">16sp</item>
-        <item name="android:paddingTop">8dp</item>
-        <item name="android:paddingBottom">8dp</item>
-        <item name="android:paddingRight">6dp</item>
-        <item name="android:paddingLeft">6dp</item>
+        <item name="android:textSize">@dimen/spinner_text_size</item>
+        <item name="android:paddingLeft">@dimen/spinner_padding_left</item>
+        <item name="android:paddingRight">@dimen/spinner_padding_right</item>
+        <item name="android:paddingTop">@dimen/spinner_padding_top</item>
+        <item name="android:paddingBottom">@dimen/spinner_padding_bottom</item>
     </style>
 
     <style name="text_view_style">
-        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:singleLine">true</item>
+        <!--<item name="android:textStyle">bold</item>-->
+        <item name="android:textSize">@dimen/text_view_size</item>
+    </style>
+
+    <style name="text_view_style_heading">
+        <item name="android:textColor">@color/colorAccentDark</item>
         <item name="android:singleLine">true</item>
         <item name="android:textSize">18sp</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:paddingTop">6dp</item>
+        <item name="android:paddingBottom">6dp</item>
     </style>
 
     <style name="normal_text_view_style">
@@ -49,27 +58,52 @@
         <item name="android:singleLine">true</item>
     </style>
 
+    <style name="edit_text_style_drawable">
+        <item name="android:background">@drawable/edit_text_style</item>
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:gravity">start|center_vertical</item>
+        <item name="android:textSize">@dimen/edittext_text_size</item>
+        <item name="android:paddingLeft">@dimen/edittext_padding_left</item>
+        <item name="android:paddingStart">@dimen/edittext_padding_left</item>
+        <item name="android:drawableRight">@drawable/ic_edit_text_right_shape</item>
+    </style>
+
+    <style name="edit_text_style_square">
+        <item name="android:background">@drawable/edit_text_style_square</item>
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:gravity">start</item>
+        <item name="android:textSize">@dimen/edittext_text_size</item>
+        <item name="android:paddingLeft">@dimen/edittext_padding_left</item>
+        <item name="android:paddingStart">@dimen/edittext_padding_left</item>
+        <item name="android:paddingRight">@dimen/edittext_padding_right</item>
+        <item name="android:paddingTop">@dimen/edittext_padding_top</item>
+        <item name="android:paddingBottom">@dimen/edittext_padding_bottom</item>
+    </style>
+
     <style name="edit_text_style">
         <item name="android:background">@drawable/edit_text_style</item>
         <item name="android:textColor">@color/colorBlack</item>
         <item name="android:singleLine">true</item>
-        <item name="android:gravity">start</item>
-        <item name="android:textSize">16sp</item>
-        <item name="android:paddingTop">8dp</item>
-        <item name="android:paddingBottom">8dp</item>
-        <item name="android:paddingRight">6dp</item>
-        <item name="android:paddingLeft">6dp</item>
+        <item name="android:gravity">start|center_vertical</item>
+        <item name="android:textSize">@dimen/edittext_text_size</item>
+        <item name="android:paddingLeft">@dimen/edittext_padding_left</item>
+        <item name="android:paddingStart">@dimen/edittext_padding_left</item>
+        <item name="android:paddingRight">@dimen/edittext_padding_right</item>
+        <item name="android:paddingTop">@dimen/edittext_padding_top</item>
+        <item name="android:paddingBottom">@dimen/edittext_padding_bottom</item>
     </style>
 
     <style name="button_style">
         <item name="android:background">@drawable/button_style</item>
         <item name="android:textColor">@color/colorWhite</item>
-        <item name="android:textSize">16sp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:paddingTop">12dp</item>
-        <item name="android:paddingBottom">12dp</item>
-        <item name="android:paddingRight">6dp</item>
-        <item name="android:paddingLeft">6dp</item>
+        <item name="android:textSize">@dimen/button_text_size</item>
+        <item name="android:paddingLeft">@dimen/button_padding_left</item>
+        <item name="android:paddingRight">@dimen/button_padding_right</item>
+        <item name="android:paddingTop">@dimen/button_padding_top</item>
+        <item name="android:paddingBottom">@dimen/button_padding_bottom</item>
     </style>
 
 </resources>

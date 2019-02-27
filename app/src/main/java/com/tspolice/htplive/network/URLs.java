@@ -1,12 +1,16 @@
 package com.tspolice.htplive.network;
 
+import android.net.Uri;
+
 public class URLs {
 
     private static final String rootUrl = "http://117.239.149.90:8080/HTP/rest/htpService/";
 
     private static final String testUrl = "http://61.95.168.181:8282/";
 
-    public static final String saveCapturedImage = rootUrl + "saveCapturedImage";
+    private static final String sectionsUrl = "http://61.95.168.181:8080/echallan/";
+
+    public static final String saveCapturedImage = testUrl + "saveCapturedImage";
 
     public static final String getAutoFares = rootUrl + "getAutoFares";
 
@@ -23,6 +27,11 @@ public class URLs {
                 + dest_latitude + "," + dest_longitude + "&sensor=false&units=metric";
     }*/
 
+    public static Uri getUri(double latitude, double longitude, double destLatitude, double destLongitude) {
+        return Uri.parse("http://maps.google.com/maps?saddr=" + latitude + "," + longitude
+                + "&daddr=" + destLatitude + "," + destLongitude);
+    }
+
     private static final String googleDirectionsApi = "https://maps.googleapis.com/maps/api/distancematrix/json";
 
     private static final String googleApiKey = "AIzaSyAdJ3Z4n1oMYfyViKxK2G1rjCf1pUYpY6Y";
@@ -35,6 +44,8 @@ public class URLs {
                 + "&" + URLParams.departure_time + "=now"
                 + "&" + URLParams.key + "=" + googleApiKey;
     }
+
+    //https://maps.googleapis.com/maps/api/distancematrix/json?origins=17.4014434,78.4765565&destinations=17.439929499999998,78.4982741&departure_time=now&key=AIzaSyAdJ3Z4n1oMYfyViKxK2G1rjCf1pUYpY6Y
 
     public static final String getHydPoliceStations = rootUrl + "getHydPoliceStations"
             + "?" + URLParams.updatedDate + "=" + URLParams.updatedDate
@@ -55,9 +66,17 @@ public class URLs {
                 + "&" + URLParams.ctrl + "=" + ctrl;
     }
 
-    public static final String saveAutocomplainData = rootUrl + "saveAutocomplainData";
+    public static final String saveAutocomplainData = testUrl + "saveAutocomplainData";
 
     public static final String saveSuggestions = rootUrl + "saveSuggestions";
+
+    public static final String getPublicAdvisaryData = rootUrl + "getPublicAdvisaryData";
+
+    private static final String loadPubAdvNextRec = rootUrl + "loadPubAdvNextRec";
+
+    public static String loadPubAdvNextRec(String id) {
+        return loadPubAdvNextRec + "?" + URLParams.id + "=" + id;
+    }
 
     public static final String getTrafficOfficers = rootUrl + "getTrafficOfficers"
             + "?" + URLParams.updatedDate + "=" + URLParams.updatedDate
@@ -86,11 +105,15 @@ public class URLs {
     }
 
     private static final String saveRegIds = testUrl + "saveRegIds";
-
     public static String saveRegIds(String regId, String deviceType, String deviceId) {
         return saveRegIds + "?" + URLParams.regId + "=" + regId
                 + "&" + URLParams.deviceType + "=" + deviceType
                 + "&" + URLParams.deviceId + "=" + deviceId;
+    }
+
+    private static final String sectionMasterByWheeler = sectionsUrl + "sectionMasterByWheeler";
+    public static String sectionMasterByWheeler(String wheelerCd) {
+        return sectionMasterByWheeler + "?" + URLParams.wheelerCd + "=" + wheelerCd;
     }
 
     public static final String contentType = "application/json; charset=utf-8";

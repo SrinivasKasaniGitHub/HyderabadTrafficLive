@@ -24,7 +24,6 @@ public class EmergencyContactsFrag extends Fragment implements
     private SharedPrefManager sharedPrefManager;
 
     public EmergencyContactsFrag() {
-        //default constructor
     }
 
     @Nullable
@@ -60,22 +59,22 @@ public class EmergencyContactsFrag extends Fragment implements
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.iv_ambulance:
-                nextActivity(EmergencyContactsActivity.class, "AMBULANCE");
+                nextActivity(EmergencyContactsActivity.class, Constants.AMBULANCE);
                 break;
             case R.id.iv_blood_bank:
-                nextActivity(EmergencyContactsActivity.class, "BLOOD_BANK");
+                nextActivity(EmergencyContactsActivity.class, Constants.BLOOD_BANK);
                 break;
             case R.id.iv_fire_station:
-                nextActivity(EmergencyContactsActivity.class, "FIRE_STATION");
+                nextActivity(EmergencyContactsActivity.class, Constants.FIRE_STATION);
                 break;
             case R.id.iv_crime_alert:
-                nextActivity(EmergencyContactsActivity.class, "CRIME_ALERT");
+                nextActivity(EmergencyContactsActivity.class, Constants.CRIME_ALERT);
                 break;
             case R.id.iv_women_child:
-                nextActivity(EmergencyContactsActivity.class, "WOMEN_CHILD");
+                nextActivity(EmergencyContactsActivity.class, Constants.WOMEN_CHILD);
                 break;
             case R.id.iv_senior_citizen_helpline:
-                nextActivity(EmergencyContactsActivity.class, "SENIOR_CITIZEN");
+                nextActivity(EmergencyContactsActivity.class, Constants.SENIOR_CITIZEN);
                 break;
             default:
                 break;
@@ -84,7 +83,7 @@ public class EmergencyContactsFrag extends Fragment implements
 
     public void nextActivity(Class<?> mClass, String contactType) {
         if (!Networking.isNetworkAvailable(getActivity())) {
-            mUiHelper.showToastLong("Network Error, Please check your internet connection !");
+            mUiHelper.showToastLongCentre(getResources().getString(R.string.network_error));
         } else {
             sharedPrefManager.putString(Constants.EMERGENCY_CONTACTS, contactType);
             mUiHelper.intent(mClass);

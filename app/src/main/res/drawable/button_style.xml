@@ -10,16 +10,16 @@
         android:top="12dp" />-->
 
     <stroke
-        android:width="0.05dp"
-        android:color="@color/colorBlack" />
+        android:width="0dp"
+        android:color="@color/colorAccentDark" />
 
-    <corners android:radius="5dp" />
+    <corners android:radius="6dp" />
 
     <gradient
         android:angle="270"
-        android:centerColor="@color/colorBlack"
-        android:endColor="@color/colorBlack"
-        android:startColor="@color/colorBlack"
+        android:centerColor="@color/colorAccentDark"
+        android:endColor="@color/colorAccentDark"
+        android:startColor="@color/colorAccentDark"
         android:type="linear" />
 
 </shape>

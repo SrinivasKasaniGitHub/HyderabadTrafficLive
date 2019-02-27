@@ -9,10 +9,8 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
 import android.text.Editable;
 import android.text.TextWatcher;
 
@@ -22,7 +20,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.tspolice.htplive.R;
 import com.tspolice.htplive.adapters.CommonRecyclerAdapter;
-import com.tspolice.htplive.adapters.MyRecyclerViewItemDecoration;
 import com.tspolice.htplive.models.CommonModel;
 import com.tspolice.htplive.network.URLs;
 import com.tspolice.htplive.network.VolleySingleton;
@@ -64,17 +61,17 @@ public class EmergencyContactsActivity extends AppCompatActivity {
         recyclerViewSetup();
 
         String serviceType;
-        if ("AMBULANCE".equals(mSharedPrefManager.getString(Constants.EMERGENCY_CONTACTS))) {
+        if (Constants.AMBULANCE.equals(mSharedPrefManager.getString(Constants.EMERGENCY_CONTACTS))) {
             serviceType = "0";
-        } else if ("BLOOD_BANK".equals(mSharedPrefManager.getString(Constants.EMERGENCY_CONTACTS))) {
+        } else if (Constants.BLOOD_BANK.equals(mSharedPrefManager.getString(Constants.EMERGENCY_CONTACTS))) {
             serviceType = "1";
-        } else if ("FIRE_STATION".equals(mSharedPrefManager.getString(Constants.EMERGENCY_CONTACTS))) {
+        } else if (Constants.FIRE_STATION.equals(mSharedPrefManager.getString(Constants.EMERGENCY_CONTACTS))) {
             serviceType = "2";
-        } else if ("CRIME_ALERT".equals(mSharedPrefManager.getString(Constants.EMERGENCY_CONTACTS))) {
+        } else if (Constants.CRIME_ALERT.equals(mSharedPrefManager.getString(Constants.EMERGENCY_CONTACTS))) {
             serviceType = "3";
-        } else if ("WOMEN_CHILD".equals(mSharedPrefManager.getString(Constants.EMERGENCY_CONTACTS))) {
+        } else if (Constants.WOMEN_CHILD.equals(mSharedPrefManager.getString(Constants.EMERGENCY_CONTACTS))) {
             serviceType = "4";
-        } else if ("SENIOR_CITIZEN".equals(mSharedPrefManager.getString(Constants.EMERGENCY_CONTACTS))) {
+        } else if (Constants.SENIOR_CITIZEN.equals(mSharedPrefManager.getString(Constants.EMERGENCY_CONTACTS))) {
             serviceType = "5";
         } else {
             serviceType = "0";
@@ -129,7 +126,7 @@ public class EmergencyContactsActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mRecyclerView.setSelected(true);
-        mRecyclerView.addItemDecoration(new MyRecyclerViewItemDecoration(this, DividerItemDecoration.VERTICAL, 8));
+        //mRecyclerView.addItemDecoration(new MyRecyclerViewItemDecoration(this, DividerItemDecoration.VERTICAL, 8));
     }
 
     public void getEmergencyContacts(String serviceType) {
@@ -140,7 +137,8 @@ public class EmergencyContactsActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONArray response) {
                         mUiHelper.dismissProgressDialog();
-                        if (response != null && !"".equals(response.toString()) && response.length() > 0) {
+                        if (response != null && !"".equals(response.toString())
+                                && !"null".equals(response.toString()) && response.length() > 0) {
                             try {
                                 mCommonList = new ArrayList<>(response.length());
                                 for (int i = 0; i < response.length(); i++) {
@@ -155,7 +153,7 @@ public class EmergencyContactsActivity extends AppCompatActivity {
                                     model.setLanguage(jsonObject.getString("language"));
                                     mCommonList.add(model);
                                 }
-                                mCommonRecyclerAdapter = new CommonRecyclerAdapter(""+Constants.EMERGENCY_CONTACTS, mCommonList,
+                                mCommonRecyclerAdapter = new CommonRecyclerAdapter(Constants.EMERGENCY_CONTACTS, mCommonList,
                                         new CommonRecyclerAdapter.OnItemClickListener() {
                                             @Override
                                             public void onItemClick(CommonModel item, int position) {
@@ -181,26 +179,26 @@ public class EmergencyContactsActivity extends AppCompatActivity {
                                 mRecyclerView.setAdapter(mCommonRecyclerAdapter);
                             } catch (JSONException e) {
                                 e.printStackTrace();
-                                mUiHelper.showToastShort(getResources().getString(R.string.something_went_wrong));
+                                mUiHelper.showToastShortCentre(getResources().getString(R.string.something_went_wrong));
                             }
                         } else {
-                            mUiHelper.showToastShort(getResources().getString(R.string.empty_response));
+                            mUiHelper.showToastShortCentre(getResources().getString(R.string.empty_response));
                         }
                     }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        mUiHelper.dismissProgressDialog();
-                        mUiHelper.showToastShort(getResources().getString(R.string.error));
-                    }
-                }));
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                mUiHelper.dismissProgressDialog();
+                mUiHelper.showToastShortCentre(getResources().getString(R.string.error));
+            }
+        }));
     }
 
     private void makeCall() {
         Intent intent = new Intent(Intent.ACTION_DIAL);
         intent.setData(Uri.parse("tel:" + "+" + mCommonModel.getContactNumber()));
-        if (PermissionUtil.checkPermission(EmergencyContactsActivity.this, Constants.INT_CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
+        if (PermissionUtil.checkPermission(EmergencyContactsActivity.this,
+                Constants.INT_CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
             startActivity(intent);
         }
     }
@@ -212,7 +210,7 @@ public class EmergencyContactsActivity extends AppCompatActivity {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     makeCall();
                 } else {
-                    mUiHelper.showToastShort(getResources().getString(R.string.permission_denied));
+                    mUiHelper.showToastLongCentre(getResources().getString(R.string.permission_denied));
                 }
                 break;
             default:
@@ -232,7 +230,7 @@ public class EmergencyContactsActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (et_search_emergency_contacts.getText().toString().length()>0) {
+        if (et_search_emergency_contacts.getText().toString().length() > 0) {
             et_search_emergency_contacts.setText("");
             et_search_emergency_contacts.setHint(R.string.search_contact_no);
         } else {

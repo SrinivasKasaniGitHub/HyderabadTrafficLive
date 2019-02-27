@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/emerg_cont_rel_lyt_padding"
+    android:id="@+id/rel_emergency_contacts"
+    android:background="@color/colorWhite">
+
+    <TextView
+        android:id="@+id/tv_trps_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@id/tv_contact_no"
+        android:layout_toStartOf="@id/tv_contact_no"
+        android:text="@string/traffic_cell"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/emerg_cont_contact_name_margin_left"
+        android:layout_marginStart="@dimen/emerg_cont_contact_name_margin_left"
+        android:layout_marginRight="@dimen/emerg_cont_contact_name_margin_right"
+        android:layout_marginEnd="@dimen/emerg_cont_contact_name_margin_right"
+        android:textColor="@color/colorAccentDark"
+        android:textStyle="bold"
+        android:gravity="start"
+        tools:ignore="RelativeOverlap" />
+
+    <TextView
+        android:id="@+id/tv_contact_no"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@id/img_call_btn"
+        android:layout_toStartOf="@id/img_call_btn"
+        android:text="@string/dummy_phone_no"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/emerg_cont_contact_no_margin_left"
+        android:layout_marginStart="@dimen/emerg_cont_contact_no_margin_left"
+        android:layout_marginRight="@dimen/emerg_cont_contact_no_margin_right"
+        android:layout_marginEnd="@dimen/emerg_cont_contact_no_margin_right"
+        android:textColor="@color/colorPrimaryDark"
+        tools:ignore="RelativeOverlap" />
+
+    <ImageView
+        android:id="@+id/img_call_btn"
+        android:layout_width="@dimen/emerg_cont_call_img_width"
+        android:layout_height="@dimen/emerg_cont_call_img_height"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:contentDescription="@null"
+        android:src="@drawable/ic_call_img_3x"/>
+
+</RelativeLayout>

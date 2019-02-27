@@ -5,7 +5,6 @@ import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
@@ -18,7 +17,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.tspolice.htplive.R;
 import com.tspolice.htplive.adapters.CommonRecyclerAdapter;
-import com.tspolice.htplive.adapters.MyRecyclerViewItemDecoration;
 import com.tspolice.htplive.models.CommonModel;
 import com.tspolice.htplive.network.URLs;
 import com.tspolice.htplive.network.VolleySingleton;
@@ -77,7 +75,7 @@ public class UsefulWebsitesActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mRecyclerView.setSelected(true);
-        mRecyclerView.addItemDecoration(new MyRecyclerViewItemDecoration(this, DividerItemDecoration.VERTICAL, 8));
+        //mRecyclerView.addItemDecoration(new MyRecyclerViewItemDecoration(this, DividerItemDecoration.VERTICAL, 8));
     }
 
     private void initObjects() {
@@ -92,7 +90,8 @@ public class UsefulWebsitesActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONArray response) {
                         mUiHelper.dismissProgressDialog();
-                        if (response != null && !"".equals(response.toString()) && response.length() > 0) {
+                        if (response != null && !"".equals(response.toString())
+                                && !"null".equals(response.toString()) && response.length() > 0) {
                             try {
                                 mCommonList = new ArrayList<>(response.length());
                                 for (int i = 0; i < response.length(); i++) {
@@ -106,7 +105,7 @@ public class UsefulWebsitesActivity extends AppCompatActivity {
                                     model.setLanguage(jsonObject.getString("language"));
                                     mCommonList.add(model);
                                 }
-                                mCommonRecyclerAdapter = new CommonRecyclerAdapter(""+Constants.USEFUL_WEBSITES, mCommonList,
+                                mCommonRecyclerAdapter = new CommonRecyclerAdapter("" + Constants.USEFUL_WEBSITES, mCommonList,
                                         new CommonRecyclerAdapter.OnItemClickListener() {
                                             @Override
                                             public void onItemClick(CommonModel item, int position) {
@@ -119,20 +118,19 @@ public class UsefulWebsitesActivity extends AppCompatActivity {
                                 mRecyclerView.setAdapter(mCommonRecyclerAdapter);
                             } catch (JSONException e) {
                                 e.printStackTrace();
-                                mUiHelper.showToastShort(getResources().getString(R.string.something_went_wrong));
+                                mUiHelper.showToastShortCentre(getResources().getString(R.string.something_went_wrong));
                             }
                         } else {
-                            mUiHelper.showToastShort(getResources().getString(R.string.empty_response));
+                            mUiHelper.showToastShortCentre(getResources().getString(R.string.empty_response));
                         }
                     }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        mUiHelper.dismissProgressDialog();
-                        mUiHelper.showToastShort(getResources().getString(R.string.error));
-                    }
-                }));
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                mUiHelper.dismissProgressDialog();
+                mUiHelper.showToastShortCentre(getResources().getString(R.string.error));
+            }
+        }));
     }
 
     private void filter(String text) {
@@ -147,7 +145,7 @@ public class UsefulWebsitesActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (et_search_website.getText().toString().length()>0) {
+        if (et_search_website.getText().toString().length() > 0) {
             et_search_website.setText("");
             et_search_website.setHint(R.string.search_website_name);
         } else {

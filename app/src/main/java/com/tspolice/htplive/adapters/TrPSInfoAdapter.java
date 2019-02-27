@@ -7,18 +7,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Filter;
-import android.widget.Filterable;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.tspolice.htplive.R;
-import com.tspolice.htplive.activities.TrPSInfoActivity;
-import com.tspolice.htplive.models.CommonModel;
 import com.tspolice.htplive.models.TrPSInfoModel;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class TrPSInfoAdapter extends RecyclerView.Adapter<TrPSInfoAdapter.MyViewHolder> {
@@ -53,13 +47,18 @@ public class TrPSInfoAdapter extends RecyclerView.Adapter<TrPSInfoAdapter.MyView
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_trps_info, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_item_trps_info, parent, false);
         return new MyViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, @SuppressLint("RecyclerView") final int position) {
         final TrPSInfoModel trPSInfoModel = trPSInfoList.get(position);
+        if (position % 2 == 0) {
+            holder.rel_trps_info.setBackgroundColor(mContext.getResources().getColor(R.color.colorRecyclerViewItem));
+        } else {
+            holder.rel_trps_info.setBackgroundColor(mContext.getResources().getColor(R.color.colorWhite));
+        }
         holder.tv_trps_name.setText(trPSInfoModel.getStationName());
         holder.rel_trps_info.setOnClickListener(new View.OnClickListener() {
             @Override

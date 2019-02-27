@@ -4,22 +4,13 @@ import java.util.regex.Pattern;
 
 public class ValidationUtils {
 
-    public static boolean isValidMobileNo(String phone) {
+    public static boolean isValidMobile(final String phone) {
         boolean check = false;
-        if (!Pattern.matches("[a-zA-Z]+", phone)) {
-            if (phone.length() < 10 || phone.length() > 10) {
-                // if(phone.length() != 10) {
-                check = false;
-            } else if (phone.length()==10){
-                if (((phone.charAt(0)=='6')) || ((phone.charAt(0)=='7'))|| ((phone.charAt(0)=='8'))
-                        || ((phone.charAt(0)=='9'))) {
-                    check = true;
-                }else {
-                    check = false;
-                }
+        if (!Pattern.matches(Constants.isValidMobile, phone)) {
+            if (phone.length() == 10) {
+                check = ((phone.charAt(0) == '6')) || ((phone.charAt(0) == '7'))
+                        || ((phone.charAt(0) == '8')) || ((phone.charAt(0) == '9'));
             }
-        } else {
-            check = false;
         }
         return check;
     }

@@ -2,371 +2,331 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/colorPrimary">
+    android:background="@color/colorWhite">
+
+    <ImageView
+        android:id="@+id/img_towed_vehicle_details_close"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="4dp"
+        android:contentDescription="@null"
+        android:src="@drawable/ic_close_red" />
 
     <TextView
-        android:id="@+id/tv_vehicle_details"
+        android:id="@+id/tv_towed_vehicle_details"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="6dp"
+        android:gravity="center_horizontal"
+        android:paddingStart="12dp"
+        android:paddingLeft="12dp"
+        android:paddingTop="6dp"
+        android:paddingEnd="6dp"
+        android:paddingRight="6dp"
+        android:paddingBottom="6dp"
         android:text="@string/towed_vehicle_details"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="20sp"
         android:textStyle="bold" />
 
-    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/tbl_layout"
+    <LinearLayout
+        android:id="@+id/lnr_lyt_towed_vehicle_details"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tv_vehicle_details"
-        android:orientation="vertical"
-        android:paddingLeft="12dp"
-        android:paddingRight="12dp"
-        android:paddingBottom="12dp"
-        android:shrinkColumns="*"
-        android:stretchColumns="*">
+        android:layout_below="@id/tv_towed_vehicle_details"
+        android:paddingTop="6dp"
+        android:paddingBottom="0dp"
+        android:orientation="vertical">
 
-        <TableRow
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorBlack">
+            android:background="@color/colorLayoutBorder"
+            android:orientation="horizontal"
+            android:weightSum="1">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="1dp"
-                android:layout_marginLeft="1dp"
-                android:layout_marginTop="1dp"
-                android:layout_marginEnd="1dp"
-                android:layout_marginRight="1dp"
+                android:layout_marginTop="0.1dp"
+                android:layout_marginEnd="0.1dp"
+                android:layout_marginRight="0.1dp"
+                android:layout_weight="0.5"
                 android:background="@color/colorWhite"
-                android:gravity="end"
-                android:paddingStart="0dp"
-                android:paddingLeft="0dp"
-                android:paddingTop="4dp"
-                android:paddingEnd="6dp"
-                android:paddingRight="6dp"
-                android:paddingBottom="4dp"
-                android:text="@string/regn_no"
-                android:textColor="@color/colorBlack" />
+                android:paddingLeft="12dp"
+                android:paddingTop="6dp"
+                android:paddingRight="12dp"
+                android:paddingBottom="6dp"
+                android:text="@string/regn_no" />
 
             <TextView
                 android:id="@+id/tv_regn_no"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="0dp"
-                android:layout_marginLeft="0dp"
-                android:layout_marginTop="1dp"
-                android:layout_marginEnd="1dp"
-                android:layout_marginRight="1dp"
+                android:layout_marginTop="0.1dp"
+                android:layout_weight="0.5"
                 android:background="@color/colorWhite"
-                android:gravity="start"
-                android:paddingStart="6dp"
-                android:paddingLeft="6dp"
-                android:paddingTop="4dp"
-                android:paddingEnd="0dp"
-                android:paddingRight="0dp"
-                android:paddingBottom="4dp"
-                android:text="@string/na"
-                android:textStyle="bold" />
-        </TableRow>
+                android:paddingLeft="12dp"
+                android:paddingTop="6dp"
+                android:paddingRight="12dp"
+                android:paddingBottom="6dp"
+                android:text="@string/na" />
+        </LinearLayout>
 
-        <TableRow
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorBlack">
+            android:background="@color/colorLayoutBorder"
+            android:orientation="horizontal"
+            android:weightSum="1">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="1dp"
-                android:layout_marginLeft="1dp"
-                android:layout_marginTop="1dp"
-                android:layout_marginEnd="1dp"
-                android:layout_marginRight="1dp"
+                android:layout_marginTop="0.1dp"
+                android:layout_marginEnd="0.1dp"
+                android:layout_marginRight="0.1dp"
+                android:layout_weight="0.5"
                 android:background="@color/colorWhite"
-                android:gravity="end"
-                android:paddingStart="0dp"
-                android:paddingLeft="0dp"
-                android:paddingTop="4dp"
-                android:paddingEnd="6dp"
-                android:paddingRight="6dp"
-                android:paddingBottom="4dp"
-                android:text="@string/owner_name"
-                android:textColor="@color/colorBlack" />
+                android:paddingLeft="12dp"
+                android:paddingTop="6dp"
+                android:paddingRight="12dp"
+                android:paddingBottom="6dp"
+                android:text="@string/owner_name" />
 
             <TextView
                 android:id="@+id/tv_owner_name"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="0dp"
-                android:layout_marginLeft="0dp"
-                android:layout_marginTop="1dp"
-                android:layout_marginEnd="1dp"
-                android:layout_marginRight="1dp"
+                android:layout_marginTop="0.1dp"
+                android:layout_weight="0.5"
                 android:background="@color/colorWhite"
-                android:gravity="start"
-                android:paddingStart="6dp"
-                android:paddingLeft="6dp"
-                android:paddingTop="4dp"
-                android:paddingEnd="0dp"
-                android:paddingRight="0dp"
-                android:paddingBottom="4dp"
-                android:text="@string/na"
-                android:textStyle="bold" />
-        </TableRow>
+                android:paddingLeft="12dp"
+                android:paddingTop="6dp"
+                android:paddingRight="12dp"
+                android:paddingBottom="6dp"
+                android:text="@string/na" />
+        </LinearLayout>
 
-        <TableRow
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorBlack">
+            android:background="@color/colorLayoutBorder"
+            android:orientation="horizontal"
+            android:weightSum="1">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="1dp"
-                android:layout_marginLeft="1dp"
-                android:layout_marginTop="1dp"
-                android:layout_marginEnd="1dp"
-                android:layout_marginRight="1dp"
+                android:layout_marginTop="0.1dp"
+                android:layout_marginEnd="0.1dp"
+                android:layout_marginRight="0.1dp"
+                android:layout_weight="0.5"
                 android:background="@color/colorWhite"
-                android:gravity="end"
-                android:paddingStart="0dp"
-                android:paddingLeft="0dp"
-                android:paddingTop="4dp"
-                android:paddingEnd="6dp"
-                android:paddingRight="6dp"
-                android:paddingBottom="4dp"
-                android:text="@string/detained_date"
-                android:textColor="@color/colorBlack" />
+                android:paddingLeft="12dp"
+                android:paddingTop="6dp"
+                android:paddingRight="12dp"
+                android:paddingBottom="6dp"
+                android:text="@string/detained_date" />
 
             <TextView
                 android:id="@+id/tv_detained_date"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="0dp"
-                android:layout_marginLeft="0dp"
-                android:layout_marginTop="1dp"
-                android:layout_marginEnd="1dp"
-                android:layout_marginRight="1dp"
+                android:layout_marginTop="0.1dp"
+                android:layout_weight="0.5"
                 android:background="@color/colorWhite"
-                android:gravity="start"
-                android:paddingStart="6dp"
-                android:paddingLeft="6dp"
-                android:paddingTop="4dp"
-                android:paddingEnd="0dp"
-                android:paddingRight="0dp"
-                android:paddingBottom="4dp"
-                android:text="@string/na"
-                android:textStyle="bold" />
-        </TableRow>
+                android:paddingLeft="12dp"
+                android:paddingTop="6dp"
+                android:paddingRight="12dp"
+                android:paddingBottom="6dp"
+                android:text="@string/na" />
+        </LinearLayout>
 
-        <TableRow
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorBlack">
+            android:background="@color/colorLayoutBorder"
+            android:orientation="horizontal"
+            android:weightSum="1">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="1dp"
-                android:layout_marginLeft="1dp"
-                android:layout_marginTop="1dp"
-                android:layout_marginEnd="1dp"
-                android:layout_marginRight="1dp"
+                android:layout_marginTop="0.1dp"
+                android:layout_marginEnd="0.1dp"
+                android:layout_marginRight="0.1dp"
+                android:layout_weight="0.5"
                 android:background="@color/colorWhite"
-                android:gravity="end"
-                android:paddingStart="0dp"
-                android:paddingLeft="0dp"
-                android:paddingTop="4dp"
-                android:paddingEnd="6dp"
-                android:paddingRight="6dp"
-                android:paddingBottom="4dp"
-                android:text="@string/trps_name"
-                android:textColor="@color/colorBlack" />
+                android:paddingLeft="12dp"
+                android:paddingTop="6dp"
+                android:paddingRight="12dp"
+                android:paddingBottom="6dp"
+                android:text="@string/trps_name" />
 
             <TextView
                 android:id="@+id/tv_trps_name"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="0dp"
-                android:layout_marginLeft="0dp"
-                android:layout_marginTop="1dp"
-                android:layout_marginEnd="1dp"
-                android:layout_marginRight="1dp"
+                android:layout_marginTop="0.1dp"
+                android:layout_weight="0.5"
                 android:background="@color/colorWhite"
-                android:gravity="start"
-                android:paddingStart="6dp"
-                android:paddingLeft="6dp"
-                android:paddingTop="4dp"
-                android:paddingEnd="0dp"
-                android:paddingRight="0dp"
-                android:paddingBottom="4dp"
-                android:text="@string/na"
-                android:textStyle="bold" />
-        </TableRow>
+                android:paddingLeft="12dp"
+                android:paddingTop="6dp"
+                android:paddingRight="12dp"
+                android:paddingBottom="6dp"
+                android:text="@string/na" />
+        </LinearLayout>
 
-        <TableRow
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorBlack">
+            android:background="@color/colorLayoutBorder"
+            android:orientation="horizontal"
+            android:weightSum="1">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="1dp"
-                android:layout_marginLeft="1dp"
-                android:layout_marginTop="1dp"
-                android:layout_marginEnd="1dp"
-                android:layout_marginRight="1dp"
+                android:layout_marginTop="0.1dp"
+                android:layout_marginEnd="0.1dp"
+                android:layout_marginRight="0.1dp"
+                android:layout_weight="0.5"
                 android:background="@color/colorWhite"
-                android:gravity="end"
-                android:paddingStart="0dp"
-                android:paddingLeft="0dp"
-                android:paddingTop="4dp"
-                android:paddingEnd="6dp"
-                android:paddingRight="6dp"
-                android:paddingBottom="4dp"
-                android:text="@string/location"
-                android:textColor="@color/colorBlack" />
+                android:paddingLeft="12dp"
+                android:paddingTop="6dp"
+                android:paddingRight="12dp"
+                android:paddingBottom="6dp"
+                android:text="@string/location" />
 
             <TextView
                 android:id="@+id/tv_location"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="0dp"
-                android:layout_marginLeft="0dp"
-                android:layout_marginTop="1dp"
-                android:layout_marginEnd="1dp"
-                android:layout_marginRight="1dp"
+                android:layout_marginTop="0.1dp"
+                android:layout_weight="0.5"
                 android:background="@color/colorWhite"
-                android:gravity="start"
-                android:paddingStart="6dp"
-                android:paddingLeft="6dp"
-                android:paddingTop="4dp"
-                android:paddingEnd="0dp"
-                android:paddingRight="0dp"
-                android:paddingBottom="4dp"
-                android:text=""
-                android:textStyle="bold" />
-        </TableRow>
+                android:paddingLeft="12dp"
+                android:paddingTop="6dp"
+                android:paddingRight="12dp"
+                android:paddingBottom="6dp"
+                android:text="@string/na" />
+        </LinearLayout>
 
-        <TableRow
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorBlack">
+            android:background="@color/colorLayoutBorder"
+            android:orientation="horizontal"
+            android:weightSum="1">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="1dp"
-                android:layout_marginLeft="1dp"
-                android:layout_marginTop="1dp"
-                android:layout_marginEnd="1dp"
-                android:layout_marginRight="1dp"
+                android:layout_marginTop="0.1dp"
+                android:layout_marginEnd="0.1dp"
+                android:layout_marginRight="0.1dp"
+                android:layout_weight="0.5"
                 android:background="@color/colorWhite"
-                android:gravity="end"
-                android:paddingStart="0dp"
-                android:paddingLeft="0dp"
-                android:paddingTop="4dp"
-                android:paddingEnd="6dp"
-                android:paddingRight="6dp"
-                android:paddingBottom="4dp"
-                android:text="@string/officer_name"
-                android:textColor="@color/colorBlack" />
+                android:paddingLeft="12dp"
+                android:paddingTop="6dp"
+                android:paddingRight="12dp"
+                android:paddingBottom="6dp"
+                android:text="@string/officer_name" />
 
             <TextView
                 android:id="@+id/tv_officer_name"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="0dp"
-                android:layout_marginLeft="0dp"
-                android:layout_marginTop="1dp"
-                android:layout_marginEnd="1dp"
-                android:layout_marginRight="1dp"
+                android:layout_marginTop="0.1dp"
+                android:layout_weight="0.5"
                 android:background="@color/colorWhite"
-                android:gravity="start"
-                android:paddingStart="6dp"
-                android:paddingLeft="6dp"
-                android:paddingTop="4dp"
-                android:paddingEnd="0dp"
-                android:paddingRight="0dp"
-                android:paddingBottom="4dp"
-                android:text="@string/na"
-                android:textStyle="bold" />
-        </TableRow>
+                android:paddingLeft="12dp"
+                android:paddingTop="6dp"
+                android:paddingRight="12dp"
+                android:paddingBottom="6dp"
+                android:text="@string/na" />
+        </LinearLayout>
 
-        <TableRow
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorBlack">
+            android:background="@color/colorLayoutBorder"
+            android:orientation="horizontal"
+            android:weightSum="1">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="1dp"
-                android:layout_marginLeft="1dp"
-                android:layout_marginTop="1dp"
-                android:layout_marginEnd="1dp"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
+                android:layout_marginTop="0.1dp"
+                android:layout_marginEnd="0.1dp"
+                android:layout_marginRight="0.1dp"
+                android:layout_marginBottom="0.1dp"
+                android:layout_weight="0.5"
                 android:background="@color/colorWhite"
-                android:gravity="end"
-                android:paddingStart="0dp"
-                android:paddingLeft="0dp"
-                android:paddingTop="4dp"
-                android:paddingEnd="6dp"
-                android:paddingRight="6dp"
-                android:paddingBottom="4dp"
-                android:text="@string/ps_contact_no"
-                android:textColor="@color/colorBlack" />
+                android:paddingLeft="12dp"
+                android:paddingTop="6dp"
+                android:paddingRight="12dp"
+                android:paddingBottom="6dp"
+                android:text="@string/ps_contact_no" />
 
             <TextView
                 android:id="@+id/tv_trps_contact_no"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="0dp"
-                android:layout_marginLeft="0dp"
-                android:layout_marginTop="1dp"
-                android:layout_marginEnd="1dp"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
+                android:layout_marginTop="0.1dp"
+                android:layout_marginBottom="0.1dp"
+                android:layout_weight="0.5"
                 android:background="@color/colorWhite"
-                android:gravity="start"
-                android:paddingStart="6dp"
-                android:paddingLeft="6dp"
-                android:paddingTop="4dp"
-                android:paddingEnd="0dp"
-                android:paddingRight="0dp"
-                android:paddingBottom="4dp"
-                android:text="@string/na"
-                android:textStyle="bold" />
-        </TableRow>
+                android:paddingLeft="12dp"
+                android:paddingTop="6dp"
+                android:paddingRight="12dp"
+                android:paddingBottom="6dp"
+                android:text="@string/na" />
+        </LinearLayout>
 
-    </TableLayout>
+    </LinearLayout>
 
-    <TextView
-        android:id="@+id/tv_please_contact_control_room"
+    <LinearLayout
+        android:id="@+id/lnr_lyt_towed_note"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tbl_layout"
-        android:paddingLeft="12dp"
-        android:paddingRight="12dp"
-        android:text="@string/please_contact_htc_room"
-        android:textColor="@color/colorBlack"
-        android:textStyle="italic" />
+        android:layout_below="@+id/lnr_lyt_towed_vehicle_details"
+        android:layout_margin="12dp"
+        android:background="@drawable/layout_border_style"
+        android:orientation="vertical"
+        android:padding="6dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/note"
+            android:textColor="@color/colorRed"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_note_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="6dp"
+            android:paddingRight="6dp"
+            android:paddingBottom="6dp"
+            android:text="@string/please_contact_htc_room"
+            android:textColor="@color/colorBlack" />
+
+    </LinearLayout>
 
     <Button
-        android:id="@+id/btn_dialog_close"
+        android:id="@+id/btn_dialog_towed_detials_close"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tv_please_contact_control_room"
-        android:layout_marginTop="12dp"
-        android:background="@color/colorBlack"
-        android:text="@string/close"
+        android:layout_below="@id/lnr_lyt_towed_note"
+        android:background="@color/colorPrimaryDark"
         android:textColor="@color/colorWhite"
-        android:textSize="16sp"
-        android:textStyle="bold" />
+        android:textSize="@dimen/button_text_size"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:text="@string/close" />
 
 </RelativeLayout>

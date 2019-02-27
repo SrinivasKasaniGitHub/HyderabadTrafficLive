@@ -1,91 +1,161 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ic_bg"
     tools:context=".activities.RtaTowingActivity">
 
     <include
-        android:id="@+id/toolbar_main"
+        android:id="@+id/toolbar_rta_towing"
         layout="@layout/toolbar_home" />
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/footer"
-        android:layout_below="@id/toolbar_main"
-        android:layout_margin="8dp"
-        android:orientation="vertical"
-        tools:ignore="UselessParent">
-
-        <EditText
-            android:id="@+id/et_vehicle_no"
-            style="@style/edit_text_style"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/enter_vehicle_no"
-            android:inputType="textCapCharacters"
-            android:maxLines="1" />
-
-        <EditText
-            android:id="@+id/et_captcha"
-            style="@style/edit_text_style"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:enabled="false"
-            android:hint="@string/captcha"
-            android:inputType="number"
-            android:maxLines="1" />
-
-        <EditText
-            android:id="@+id/et_enter_above_captcha"
-            style="@style/edit_text_style"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="@string/enter_above_captcha"
-            android:inputType="number"
-            android:maxLines="1" />
+        android:layout_below="@id/toolbar_rta_towing">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="8dp"
-            android:orientation="horizontal"
-            android:weightSum="1">
+            android:layout_margin="@dimen/rta_towing_lnr_lyt_margin"
+            android:orientation="vertical"
+            android:padding="@dimen/rta_towing_lnr_lyt_padding">
+
+            <TextView
+                android:id="@+id/tv_rta_towing"
+                style="@style/text_view_style_heading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:singleLine="false"
+                android:text="@string/vehicle_details"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold" />
+
+            <TextView
+                style="@style/text_view_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pub_complaints_tv_label_margin_top"
+                android:paddingStart="@dimen/pub_complaints_tv_label_padding_left"
+                android:paddingLeft="@dimen/pub_complaints_tv_label_padding_left"
+                android:paddingEnd="@dimen/pub_complaints_tv_label_padding_right"
+                android:paddingRight="@dimen/pub_complaints_tv_label_padding_right"
+                android:text="@string/vehicle_number"
+                android:textColor="@color/colorBlack" />
+
+            <EditText
+                android:id="@+id/et_vehicle_no"
+                style="@style/edit_text_style_drawable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pub_complaints_et_margin_top"
+                android:hint="@string/enter_vehicle_no"
+                android:inputType="textCapCharacters"
+                android:maxLines="1"
+                tools:ignore="Autofill" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginLeft="48dp"
+                android:layout_marginRight="48dp"
+                android:layout_marginBottom="@dimen/pub_complaints_et_margin_bottom"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <EditText
+                    android:id="@+id/et_captcha"
+                    style="@style/edit_text_style_square"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_weight="0.5"
+                    android:enabled="false"
+                    android:gravity="center"
+                    android:hint="@string/_12345"
+                    android:inputType="number"
+                    android:maxLines="1"
+                    android:textSize="30sp"
+                    tools:ignore="Autofill" />
+
+                <ImageView
+                    android:id="@+id/img_refresh"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_weight="0.5"
+                    android:contentDescription="@null"
+                    android:src="@drawable/ic_refresh" />
+
+            </LinearLayout>
+
+            <TextView
+                style="@style/text_view_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pub_complaints_tv_label_margin_top"
+                android:paddingStart="@dimen/pub_complaints_tv_label_padding_left"
+                android:paddingLeft="@dimen/pub_complaints_tv_label_padding_left"
+                android:paddingEnd="@dimen/pub_complaints_tv_label_padding_right"
+                android:paddingRight="@dimen/pub_complaints_tv_label_padding_right"
+                android:text="@string/captcha"
+                android:textColor="@color/colorBlack" />
+
+            <EditText
+                android:id="@+id/et_enter_above_captcha"
+                style="@style/edit_text_style_drawable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pub_complaints_et_margin_top"
+                android:layout_marginBottom="@dimen/pub_complaints_et_margin_bottom"
+                android:hint="@string/enter_above_captcha"
+                android:inputType="number"
+                android:maxLines="1"
+                tools:ignore="Autofill" />
 
             <Button
-                android:id="@+id/btn_clear"
+                android:id="@+id/btn_submit"
                 style="@style/button_style"
-                android:layout_width="0dp"
+                android:layout_width="@dimen/button_width"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="2dp"
-                android:layout_marginRight="2dp"
-                android:layout_weight="0.5"
-                android:text="@string/clear" />
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/pub_complaints_submit_btn_margin_top"
+                android:layout_marginBottom="@dimen/pub_complaints_submit_btn_margin_bottom"
+                android:gravity="center"
+                android:text="@string/submit" />
 
-            <Button
-                android:id="@+id/btn_get_data"
-                style="@style/button_style"
-                android:layout_width="0dp"
+            <!--<LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="2dp"
-                android:layout_marginLeft="2dp"
-                android:layout_weight="0.5"
-                android:text="@string/get_data" />
+                android:layout_marginTop="@dimen/pub_complaints_submit_btn_margin_top"
+                android:layout_marginBottom="@dimen/pub_complaints_submit_btn_margin_bottom"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <Button
+                    android:id="@+id/btn_clear"
+                    style="@style/button_style"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="0.5"
+                    android:text="@string/clear" />
+
+                <Button
+                    android:id="@+id/btn_get_data"
+                    style="@style/button_style"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="0.5"
+                    android:text="@string/get_data" />
+
+            </LinearLayout>-->
 
         </LinearLayout>
 
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/footer"
-        style="@style/footer_text_style"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+    </ScrollView>
 
 </RelativeLayout>

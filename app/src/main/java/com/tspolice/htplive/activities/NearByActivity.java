@@ -46,7 +46,7 @@ import com.tspolice.htplive.network.URLParams;
 import com.tspolice.htplive.network.URLs;
 import com.tspolice.htplive.network.VolleySingleton;
 import com.tspolice.htplive.utils.Constants;
-import com.tspolice.htplive.utils.LocationTrack;
+import com.tspolice.htplive.utils.GPSTracker;
 import com.tspolice.htplive.utils.PermissionUtil;
 import com.tspolice.htplive.utils.SharedPrefManager;
 import com.tspolice.htplive.utils.UiHelper;
@@ -75,7 +75,8 @@ public class NearByActivity extends FragmentActivity implements
     private GoogleMap mMap;
     private SharedPrefManager mSharedPrefManager;
     private UiHelper mUiHelper;
-    private LocationTrack mLocationTrack;
+    private GPSTracker mGpsTracker;
+    //private LocationTrack mLocationTrack;
     private LatLng latLng;
     private double mLatitude, mLongitude;
     private Button btn_check_parking_space;
@@ -90,6 +91,7 @@ public class NearByActivity extends FragmentActivity implements
         setContentView(R.layout.activity_nearby);
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+        assert mapFragment != null;
         mapFragment.getMapAsync(this);
 
         initViews();
@@ -105,8 +107,9 @@ public class NearByActivity extends FragmentActivity implements
 
     private void initObjects() {
         mUiHelper = new UiHelper(this);
-        mLocationTrack = new LocationTrack(this);
+        //mLocationTrack = new LocationTrack(this);
         mSharedPrefManager = SharedPrefManager.getInstance(this);
+        mGpsTracker = new GPSTracker(this);
     }
 
     @Override
@@ -135,9 +138,9 @@ public class NearByActivity extends FragmentActivity implements
     }
 
     public void setCurrentLocation() {
-        if (mLocationTrack.canGetLocation()) {
-            mLatitude = mLocationTrack.getLatitude();
-            mLongitude = mLocationTrack.getLongitude();
+        if (mGpsTracker.canGetLocation()) {
+            mLatitude = mGpsTracker.getLatitude();
+            mLongitude = mGpsTracker.getLongitude();
             latLng = new LatLng(mLatitude, mLongitude);
             addMarker(latLng);
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 12));
@@ -163,7 +166,8 @@ public class NearByActivity extends FragmentActivity implements
                     @Override
                     public void onResponse(JSONArray response) {
                         mUiHelper.dismissProgressDialog();
-                        if (response != null && !"".equals(response.toString()) && response.length() > 0) {
+                        if (response != null && !"".equals(response.toString())
+                                && !"null".equals(response.toString()) && response.length() > 0) {
                             ArrayList<Double> distances = new ArrayList<>();
                             ArrayList<Double> lat = new ArrayList<>();
                             ArrayList<Double> lang = new ArrayList<>();
@@ -218,20 +222,19 @@ public class NearByActivity extends FragmentActivity implements
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();
-                                mUiHelper.showToastShort(getResources().getString(R.string.something_went_wrong));
+                                mUiHelper.showToastShortCentre(getResources().getString(R.string.something_went_wrong));
                             }
                         } else {
-                            mUiHelper.showToastShort(getResources().getString(R.string.empty_response));
+                            mUiHelper.showToastShortCentre(getResources().getString(R.string.empty_response));
                         }
                     }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        mUiHelper.dismissProgressDialog();
-                        mUiHelper.showToastShort(getResources().getString(R.string.error));
-                    }
-                }));
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                mUiHelper.dismissProgressDialog();
+                mUiHelper.showToastShortCentre(getResources().getString(R.string.error));
+            }
+        }));
     }
 
     public static int minIndex(ArrayList<Double> list) {
@@ -245,7 +248,7 @@ public class NearByActivity extends FragmentActivity implements
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     setCurrentLocation();
                 } else {
-                    mUiHelper.showToastShort(getResources().getString(R.string.permission_denied));
+                    mUiHelper.showToastLongCentre(getResources().getString(R.string.permission_denied));
                 }
                 break;
             default:
@@ -280,7 +283,7 @@ public class NearByActivity extends FragmentActivity implements
             case R.id.btn_check_parking_space:
                 getZones();
                 break;
-            case R.id.img_close_btn:
+            case R.id.img_parking_details_close:
                 mDialogParkingSpace.dismiss();
                 setCurrentLocation();
                 getHydPoliceStations();
@@ -298,7 +301,8 @@ public class NearByActivity extends FragmentActivity implements
                     @Override
                     public void onResponse(JSONObject response) {
                         mUiHelper.dismissProgressDialog();
-                        if (response != null && !"".equals(response.toString()) && response.length() > 0) {
+                        if (response != null && !"".equals(response.toString())
+                                && !"null".equals(response.toString()) && response.length() > 0) {
                             try {
                                 JSONArray jsonArray = response.getJSONArray("vehicleTypes");
                                 vehicleTypes = new ArrayList<>(jsonArray.length());
@@ -309,32 +313,31 @@ public class NearByActivity extends FragmentActivity implements
                                 parkingSpaceDialog();
                             } catch (JSONException e) {
                                 e.printStackTrace();
-                                mUiHelper.showToastShort(getResources().getString(R.string.something_went_wrong));
+                                mUiHelper.showToastShortCentre(getResources().getString(R.string.something_went_wrong));
                             }
                         } else {
-                            mUiHelper.showToastShort(getResources().getString(R.string.empty_response));
+                            mUiHelper.showToastShortCentre(getResources().getString(R.string.empty_response));
                         }
                     }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        mUiHelper.dismissProgressDialog();
-                        mUiHelper.showToastShort(getResources().getString(R.string.error));
-                    }
-                }));
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                mUiHelper.dismissProgressDialog();
+                mUiHelper.showToastShortCentre(getResources().getString(R.string.error));
+            }
+        }));
     }
 
     private void parkingSpaceDialog() {
         final AlertDialog.Builder builder = new AlertDialog.Builder(NearByActivity.this);
         LayoutInflater inflater = LayoutInflater.from(NearByActivity.this);
-        @SuppressLint("InflateParams") View view = inflater.inflate(R.layout.dlg_check_parking_details, null);
+        @SuppressLint("InflateParams") View view = inflater.inflate(R.layout.dlg_parking_details, null);
         builder.setView(view);
         builder.setCancelable(false);
         mDialogParkingSpace = builder.create();
         mDialogParkingSpace.show();
 
-        ImageView img_close_btn = view.findViewById(R.id.img_close_btn);
+        ImageView img_parking_details_close = view.findViewById(R.id.img_parking_details_close);
         final Spinner spinner_vehicle_type = view.findViewById(R.id.spinner_vehicle_type);
         final CheckBox chb_select_all, chb_free_parking, chb_paid_parking, chb_water_loggings, chb_busbays_stops, chb_auto_parking;
         chb_select_all = view.findViewById(R.id.chb_select_all);
@@ -345,7 +348,7 @@ public class NearByActivity extends FragmentActivity implements
         chb_auto_parking = view.findViewById(R.id.chb_auto_parking);
         Button btn_parking_details_dialog_submit = view.findViewById(R.id.btn_parking_details_dialog_submit);
 
-        img_close_btn.setOnClickListener(this);
+        img_parking_details_close.setOnClickListener(this);
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, vehicleTypes);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -380,7 +383,7 @@ public class NearByActivity extends FragmentActivity implements
                 if (!chb_select_all.isChecked() && !chb_free_parking.isChecked()
                         && !chb_paid_parking.isChecked() && !chb_water_loggings.isChecked()
                         && !chb_busbays_stops.isChecked() && !chb_auto_parking.isChecked()) {
-                    mUiHelper.showToastShort("Please select parking type");
+                    mUiHelper.showToastShortCentre(getString(R.string.please_select_parking_type));
                 } else {
                     if (chb_select_all.isChecked()) {
                         parkingTypeId = 1;
@@ -444,130 +447,132 @@ public class NearByActivity extends FragmentActivity implements
                         @Override
                         public void onResponse(String response) {
                             mUiHelper.dismissProgressDialog();
-                            try {
-                                JSONArray jsonArray = new JSONArray(response);
-                                //parkingDetailsList = new ArrayList<>(jsonArray.length());
-                                for (int i = 0; i < jsonArray.length(); i++) {
-                                    JSONObject jsonObject = jsonArray.getJSONObject(i);
+                            if (response != null && !"".equals(response)
+                                    && !"null".equals(response) && response.length() > 0) {
+                                try {
+                                    JSONArray jsonArray = new JSONArray(response);
+                                    //parkingDetailsList = new ArrayList<>(jsonArray.length());
+                                    for (int i = 0; i < jsonArray.length(); i++) {
+                                        JSONObject jsonObject = jsonArray.getJSONObject(i);
 
-                                    ParkingDetailsModel parkingDetails = new ParkingDetailsModel();
-                                    parkingDetails.setId(Integer.parseInt(jsonObject.getString("id")));
+                                        ParkingDetailsModel parkingDetails = new ParkingDetailsModel();
+                                        parkingDetails.setId(Integer.parseInt(jsonObject.getString("id")));
 
-                                    JSONObject vehicleTypeObject = jsonObject.getJSONObject("vehicleType");
-                                    VehicleTypeModel vehicleType = new VehicleTypeModel();
-                                    int vehicleTypeNewId = 0;
-                                    try {
-                                        vehicleTypeNewId = Integer.parseInt(vehicleTypeObject.getString("id"));
-                                    } catch (NumberFormatException e) {
-                                        e.printStackTrace();
-                                    }
-                                    vehicleType.setId(vehicleTypeNewId);
-
-                                    String vehicleTypeName = vehicleTypeObject.getString("name");
-                                    vehicleType.setName(vehicleTypeName);
-                                    parkingDetails.setVehicleType(vehicleType);
-
-                                    JSONObject parkingTypeObject = jsonObject.getJSONObject("parkingType");
-                                    ParkingTypeModel parkingType = new ParkingTypeModel();
-                                    int parkingTypeNewId = 0;
-                                    try {
-                                        parkingTypeNewId = Integer.parseInt(parkingTypeObject.getString("id"));
-                                    } catch (NumberFormatException e) {
-                                        e.printStackTrace();
-                                    }
-                                    parkingType.setId(parkingTypeNewId);
-
-                                    String parkingTypeName = parkingTypeObject.getString("name");
-                                    parkingType.setName(parkingTypeName);
-                                    parkingType.setIcon(parkingTypeObject.getString("icon"));
-                                    parkingType.setBigicon(parkingTypeObject.getString("bigicon"));
-                                    parkingDetails.setParkingType(parkingType);
-
-                                    parkingDetails.setLocation(jsonObject.getString("location"));
-                                    parkingDetails.setRemarks(jsonObject.getString("remarks"));
-
-                                    String stLat = jsonObject.getString("latitude");
-                                    String stLong = jsonObject.getString("langitude");
-                                    parkingDetails.setLatitude(stLat);
-                                    parkingDetails.setLongitude(stLong);
-
-                                    //parkingDetailsList.add(parkingDetails);
-
-                                    if (stLat != null && !"null".equals(stLat) && stLat.length() > 0
-                                            && stLong != null && !"null".equals(stLong) && stLong.length() > 0) {
-                                        MarkerOptions markerOptions = new MarkerOptions();
+                                        JSONObject vehicleTypeObject = jsonObject.getJSONObject("vehicleType");
+                                        VehicleTypeModel vehicleType = new VehicleTypeModel();
+                                        int vehicleTypeNewId = 0;
                                         try {
-                                            double psLatitude, psLongitude;
-                                            psLatitude = Double.parseDouble(stLat);
-                                            psLongitude = Double.parseDouble(stLong);
-                                            markerOptions.position(new LatLng(psLatitude, psLongitude));
+                                            vehicleTypeNewId = Integer.parseInt(vehicleTypeObject.getString("id"));
                                         } catch (NumberFormatException e) {
                                             e.printStackTrace();
                                         }
+                                        vehicleType.setId(vehicleTypeNewId);
 
-                                        // vehicle type
-                                        if (vehicleTypeName != null && !"null".equals(vehicleTypeName) && vehicleTypeName.length() > 0) {
-                                            markerOptions.title(vehicleTypeName);
-                                            if (vehicleTypeNewId == 1) {
-                                                markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW)); // need logo
-                                            }
-                                            if (vehicleTypeNewId == 2) {
-                                                markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW)); // need logo
-                                            }
-                                            if (vehicleTypeNewId == 3) {
-                                                markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_auto));
-                                            }
-                                            if (vehicleTypeNewId == 4) {
-                                                markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_bus));
-                                            }
-                                            if (vehicleTypeNewId == 5) {
-                                                markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_bus));
-                                            }
-                                            if (vehicleTypeNewId == 6) {
-                                                markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_bus));
-                                            }
-                                        }
+                                        String vehicleTypeName = vehicleTypeObject.getString("name");
+                                        vehicleType.setName(vehicleTypeName);
+                                        parkingDetails.setVehicleType(vehicleType);
 
-                                        // parking type
-                                        if (parkingTypeName != null && !"null".equals(parkingTypeName) && parkingTypeName.length() > 0) {
-                                            markerOptions.title(parkingTypeName);
-                                            if (parkingTypeNewId == 1) {
-                                                markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_bigbus));// all icon
-                                            }
-                                            if (parkingTypeNewId == 2) {
-                                                markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_bigfreepark));
-                                            }
-                                            if (parkingTypeNewId == 3) {
-                                                markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_paidpark));
-                                            }
-                                            if (parkingTypeNewId == 4) {
-                                                markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_water));
-                                            }
-                                            if (parkingTypeNewId == 5) {
-                                                markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_bigbus));
-                                            }
-                                            if (parkingTypeNewId == 6) {
-                                                markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_bigauto));
-                                            }
+                                        JSONObject parkingTypeObject = jsonObject.getJSONObject("parkingType");
+                                        ParkingTypeModel parkingType = new ParkingTypeModel();
+                                        int parkingTypeNewId = 0;
+                                        try {
+                                            parkingTypeNewId = Integer.parseInt(parkingTypeObject.getString("id"));
+                                        } catch (NumberFormatException e) {
+                                            e.printStackTrace();
                                         }
-                                        mMap.addMarker(markerOptions);
+                                        parkingType.setId(parkingTypeNewId);
+
+                                        String parkingTypeName = parkingTypeObject.getString("name");
+                                        parkingType.setName(parkingTypeName);
+                                        parkingType.setIcon(parkingTypeObject.getString("icon"));
+                                        parkingType.setBigicon(parkingTypeObject.getString("bigicon"));
+                                        parkingDetails.setParkingType(parkingType);
+
+                                        parkingDetails.setLocation(jsonObject.getString("location"));
+                                        parkingDetails.setRemarks(jsonObject.getString("remarks"));
+
+                                        String stLat = jsonObject.getString("latitude");
+                                        String stLong = jsonObject.getString("langitude");
+                                        parkingDetails.setLatitude(stLat);
+                                        parkingDetails.setLongitude(stLong);
+
+                                        //parkingDetailsList.add(parkingDetails);
+
+                                        if (stLat != null && !"null".equals(stLat) && stLat.length() > 0
+                                                && stLong != null && !"null".equals(stLong) && stLong.length() > 0) {
+                                            MarkerOptions markerOptions = new MarkerOptions();
+                                            try {
+                                                double psLatitude, psLongitude;
+                                                psLatitude = Double.parseDouble(stLat);
+                                                psLongitude = Double.parseDouble(stLong);
+                                                markerOptions.position(new LatLng(psLatitude, psLongitude));
+                                            } catch (NumberFormatException e) {
+                                                e.printStackTrace();
+                                            }
+
+                                            if (vehicleTypeName != null && !"null".equals(vehicleTypeName) && vehicleTypeName.length() > 0) {
+                                                markerOptions.title(vehicleTypeName);
+                                                if (vehicleTypeNewId == 1) {
+                                                    markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW)); // need logo
+                                                }
+                                                if (vehicleTypeNewId == 2) {
+                                                    markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW)); // need logo
+                                                }
+                                                if (vehicleTypeNewId == 3) {
+                                                    markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_auto));
+                                                }
+                                                if (vehicleTypeNewId == 4) {
+                                                    markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_bus));
+                                                }
+                                                if (vehicleTypeNewId == 5) {
+                                                    markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_bus));
+                                                }
+                                                if (vehicleTypeNewId == 6) {
+                                                    markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_bus));
+                                                }
+                                            }
+
+                                            if (parkingTypeName != null && !"null".equals(parkingTypeName) && parkingTypeName.length() > 0) {
+                                                markerOptions.title(parkingTypeName);
+                                                if (parkingTypeNewId == 1) {
+                                                    markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_bigbus));// all icon
+                                                }
+                                                if (parkingTypeNewId == 2) {
+                                                    markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_bigfreepark));
+                                                }
+                                                if (parkingTypeNewId == 3) {
+                                                    markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_paidpark));
+                                                }
+                                                if (parkingTypeNewId == 4) {
+                                                    markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_water));
+                                                }
+                                                if (parkingTypeNewId == 5) {
+                                                    markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_bigbus));
+                                                }
+                                                if (parkingTypeNewId == 6) {
+                                                    markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_bigauto));
+                                                }
+                                            }
+                                            mMap.addMarker(markerOptions);
+                                        }
                                     }
+                                    mDialogParkingSpace.dismiss();
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                    mUiHelper.dismissProgressDialog();
+                                    mUiHelper.showToastShortCentre(getResources().getString(R.string.something_went_wrong));
                                 }
-                                mDialogParkingSpace.dismiss();
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                                mUiHelper.dismissProgressDialog();
-                                mUiHelper.showToastShort(getResources().getString(R.string.something_went_wrong));
+                            } else {
+                                mUiHelper.showToastShortCentre(getResources().getString(R.string.empty_response));
                             }
                         }
-                    },
-                    new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-                            mUiHelper.dismissProgressDialog();
-                            mUiHelper.showToastShort(getResources().getString(R.string.error));
-                        }
-                    }) {
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    mUiHelper.dismissProgressDialog();
+                    mUiHelper.showToastShortCentre(getResources().getString(R.string.error));
+                }
+            }) {
                 @Override
                 public String getBodyContentType() {
                     return URLs.contentType;
@@ -576,9 +581,9 @@ public class NearByActivity extends FragmentActivity implements
                 @Override
                 public byte[] getBody() {
                     try {
-                        return mRequestBody == null ? null : mRequestBody.getBytes(URLs.utf_8);
+                        return mRequestBody.getBytes(URLs.utf_8);
                     } catch (UnsupportedEncodingException uee) {
-                        VolleyLog.wtf("Unsupported Encoding while trying to get the bytes of %s using %s", mRequestBody, "utf-8");
+                        VolleyLog.wtf(URLs.unSupportedEncodingException, mRequestBody, URLs.utf_8);
                         return null;
                     }
                 }
@@ -586,7 +591,7 @@ public class NearByActivity extends FragmentActivity implements
         } catch (Exception e) {
             e.printStackTrace();
             mUiHelper.dismissProgressDialog();
-            mUiHelper.showToastShort(getResources().getString(R.string.something_went_wrong));
+            mUiHelper.showToastShortCentre(getResources().getString(R.string.something_went_wrong));
         }
     }
 }

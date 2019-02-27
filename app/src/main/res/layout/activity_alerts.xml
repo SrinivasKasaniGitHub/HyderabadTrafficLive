@@ -3,51 +3,44 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ic_bg"
     tools:context=".activities.AlertsActivity">
 
     <include
-        android:id="@+id/toolbar_main"
+        android:id="@+id/toolbar_alerts"
         layout="@layout/toolbar_home" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/ll_btns"
-        android:layout_below="@+id/toolbar_main"
-        android:layout_marginBottom="8dp"
-        android:orientation="vertical">
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/mRecyclerViewAlerts"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scrollbars="vertical" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/ll_btns"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/footer"
-        android:layout_marginBottom="8dp">
+        android:layout_below="@id/toolbar_alerts">
 
-        <TextView
-            android:id="@+id/tv_load_more"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:text="@string/load_more"
-            android:textColor="@color/colorAccent"
-            android:textStyle="bold" />
+            android:orientation="vertical">
 
-    </LinearLayout>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/mRecyclerViewAlerts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="vertical" />
 
-    <TextView
-        android:id="@+id/footer"
-        style="@style/footer_text_style"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tv_load_more"
+                style="@style/text_view_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/alerts_load_more_text_margin_top"
+                android:layout_marginBottom="@dimen/alerts_load_more_text_margin_bottom"
+                android:paddingTop="@dimen/alerts_load_more_text_padding_top"
+                android:paddingBottom="@dimen/alerts_load_more_text_padding_bottom"
+                android:text="@string/load_more"
+                android:gravity="center_horizontal"
+                android:textColor="@color/colorAccentDark"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </RelativeLayout>

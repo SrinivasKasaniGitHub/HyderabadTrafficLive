@@ -64,7 +64,7 @@ public class TrafficPoliceInfoFrag extends Fragment implements View.OnClickListe
 
     public void nextActivity(Class<?> mClass) {
         if (!Networking.isNetworkAvailable(getActivity())) {
-            mUiHelper.showToastShort(getResources().getString(R.string.network_error));
+            mUiHelper.showToastLongCentre(getResources().getString(R.string.network_error));
         } else {
             mUiHelper.intent(mClass);
         }

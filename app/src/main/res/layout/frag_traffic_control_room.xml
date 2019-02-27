@@ -1,14 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/ic_bg">
+    android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/img_traffic_control_room"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/about_htl_bg_lyt_height"
+        android:background="@drawable/ic_header"
+        android:orientation="vertical" />
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:contentDescription="@null"
-        android:src="@drawable/ic_controlroom_address" />
+        android:scrollbars="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/about_htl_lnr_lyt_margin"
+            android:background="@drawable/corners_background"
+            android:orientation="vertical"
+            android:padding="@dimen/about_htl_lnr_lyt_padding">
+
+            <ImageView
+                android:id="@+id/img_traffic_control_room"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="@null"
+                android:src="@drawable/ic_controlroom_address"/>
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </RelativeLayout>

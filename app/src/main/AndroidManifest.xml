@@ -29,9 +29,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_logo"
         android:label="@string/app_full_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/ic_logo"
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
@@ -68,7 +68,7 @@
             android:label="@string/title_activity_near_by" />
         <activity android:name=".activities.AlertsActivity" />
         <activity android:name=".activities.TrOfficersContactsActivity" />
-        <activity android:name=".activities.TrafficViolationsActivity" />
+        <activity android:name=".activities.TrViolationsActivity" />
         <activity android:name=".activities.UsefulWebsitesActivity" />
         <activity android:name=".activities.FAQsActivity" />
         <activity android:name=".activities.RoadSafetyTipsActivity" />
@@ -78,7 +78,7 @@
         <activity android:name=".activities.RtaTowingActivity" />
         <activity android:name=".activities.SuggestionsActivity" />
 
-        <service android:name=".firebase.MyFirebaseInstanceIdService">
+        <!--<service android:name=".firebase.MyFirebaseInstanceIdService">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
@@ -88,7 +88,7 @@
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
-        </service>
+        </service>-->
 
         <!--GCM Receiver -->
         <receiver

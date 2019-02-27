@@ -3,34 +3,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ic_bg"
     tools:context=".activities.RoadSafetyTipsActivity">
 
     <include
-        android:id="@+id/toolbar_main"
+        android:id="@+id/toolbar_road_safety_tips"
         layout="@layout/toolbar_home" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/footer"
-        android:layout_below="@id/toolbar_main"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar_road_safety_tips"
         android:orientation="vertical">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/mRecyclerViewRoadSafetyTips"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="1dp"
-            android:layout_marginRight="1dp"
+            android:layout_marginLeft="@dimen/emerg_cont_recycler_view_margin_left"
+            android:layout_marginStart="@dimen/emerg_cont_recycler_view_margin_left"
+            android:layout_marginRight="@dimen/emerg_cont_recycler_view_margin_right"
+            android:layout_marginEnd="@dimen/emerg_cont_recycler_view_margin_right"
             android:scrollbars="vertical" />
 
     </LinearLayout>
 
-    <TextView
+    <!--<TextView
         android:id="@+id/footer"
         style="@style/footer_text_style"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content" />-->
 
 </RelativeLayout>

@@ -16,29 +16,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
-import com.google.firebase.iid.FirebaseInstanceId;
-import com.google.firebase.messaging.FirebaseMessaging;
 import com.tspolice.htplive.R;
-import com.tspolice.htplive.firebase.MyFirebaseInstanceIdService;
 import com.tspolice.htplive.gcm.GCMRegistrationIntentService;
 import com.tspolice.htplive.network.Networking;
-import com.tspolice.htplive.network.URLs;
-import com.tspolice.htplive.network.VolleySingleton;
 import com.tspolice.htplive.utils.Constants;
-import com.tspolice.htplive.utils.HardwareUtils;
 import com.tspolice.htplive.utils.UiHelper;
 
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private static final String TAG = "HomeActivity-->";
+    private static final String TAG = "MainActivity-->";
     private final int SPLASH_DIALOG = 0, SPLASH_TIME_OUT = 2000;
     private Button btn_english;
     private UiHelper mUiHelper;
@@ -52,11 +42,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         btn_english = findViewById(R.id.btn_english);
 
-        mUiHelper = new UiHelper(this);
+        mUiHelper = new UiHelper(MainActivity.this);
 
         showDialog(SPLASH_DIALOG);
 
-        if (!Networking.isNetworkAvailable(this)) {
+        if (!Networking.isNetworkAvailable(MainActivity.this)) {
             mUiHelper.showToastLong(getResources().getString(R.string.network_error));
         } else {
             new Handler().postDelayed(new Runnable() {
@@ -73,16 +63,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onReceive(Context context, Intent intent) {
                 switch (Objects.requireNonNull(intent.getAction())) {
                     case Constants.REGISTRATION_SUCCESS:
-                        mUiHelper.showToastLong(getString(R.string.device_is_ready));
-                        break;
-                    case Constants.REGISTRATION_TOKEN_SENT:
-                        mUiHelper.showToastLong(getString(R.string.ready_to_recieve_push_notifications));
+                        Log.i(TAG, "Success--> success");
                         break;
                     case Constants.REGISTRATION_ERROR:
-                        mUiHelper.showToastLong(getString(R.string.gcm_registration_error));
+                        Log.i(TAG, "Error--> error");
+                        break;
+                    case Constants.REGISTRATION_TOKEN_SENT:
+                        Log.i(TAG, "Token Sent--> sent");
                         break;
                     default:
-                        mUiHelper.showToastLong(getString(R.string.error_occured));
+                        Log.i(TAG, "Default--> default");
                         break;
                 }
             }
@@ -110,17 +100,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onResume() {
         super.onResume();
-        Log.i(TAG, "onResume");
         LocalBroadcastManager.getInstance(this).registerReceiver(gcmBroadcastReceiver,
                 new IntentFilter(Constants.REGISTRATION_SUCCESS));
         LocalBroadcastManager.getInstance(this).registerReceiver(gcmBroadcastReceiver,
                 new IntentFilter(Constants.REGISTRATION_ERROR));
+        LocalBroadcastManager.getInstance(this).registerReceiver(gcmBroadcastReceiver,
+                new IntentFilter(Constants.REGISTRATION_TOKEN_SENT));
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        Log.i(TAG,  "onPause");
         LocalBroadcastManager.getInstance(this).unregisterReceiver(gcmBroadcastReceiver);
     }
 
@@ -145,10 +135,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()) {
             case R.id.btn_english:
                 mUiHelper.intent(HomeActivity.class);
-                /*FirebaseMessaging.getInstance().subscribeToTopic("NEWS");
-                String fcmToken = FirebaseInstanceId.getInstance().getToken();
-                sendFcmTokenToServer(fcmToken);*/
-                startService(new Intent(MainActivity.this, GCMRegistrationIntentService.class));
                 break;
             case R.id.rel_splash:
                 if (!Networking.isNetworkAvailable(MainActivity.this)) {
@@ -162,33 +148,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    private void sendFcmTokenToServer(String fcmToken) {
-        mUiHelper = new UiHelper(MainActivity.this);
-        mUiHelper.showProgressDialog(getResources().getString(R.string.please_wait), false);
-        String deviceId = HardwareUtils.getDeviceUUID(MainActivity.this);
-        String[] split = fcmToken.split(":");
-        Log.i(TAG, "fcmToken-->" + fcmToken);
-        Log.i(TAG, "deviceId-->" + deviceId);
-        String hardCodeToken = "APA91bH9V7C3jLunme8X3WB9KvlruIGmJJvQUr1gswbnTEDo6TcB4_4Rl0om1dFH4SQHMFVwH773c5pYVb4fFf1Kwi43vzs8C9nUJIaFXpNCIjwFJpASXDJLUenZZo26c0Q9KV7NifQf";
-        String url = URLs.saveRegIds(split[1], Constants.ANDROID, deviceId);
-        VolleySingleton.getInstance(MainActivity.this).addToRequestQueue(new StringRequest(Request.Method.GET, url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        mUiHelper.dismissProgressDialog();
-                        Log.i(TAG, "response-->" + response);
-                        mUiHelper.showToastLong(response);
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                mUiHelper.dismissProgressDialog();
-                Log.i(TAG, "error-->" + error.toString());
-                mUiHelper.showToastShort(getResources().getString(R.string.error));
-            }
-        }));
-    }
-
     @Override
     public void onBackPressed() {
         if (doubleBackToExitPressedOnce) {
@@ -197,7 +156,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             return;
         }
         this.doubleBackToExitPressedOnce = true;
-        mUiHelper.showToastShort(getResources().getString(R.string.click_back_again_to_close));
+        mUiHelper.showToastShortCentre(getResources().getString(R.string.click_back_again_to_close));
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

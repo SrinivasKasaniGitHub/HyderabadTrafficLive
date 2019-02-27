@@ -15,16 +15,26 @@ import com.tspolice.htplive.activities.AlertsActivity;
 
 public class GCMPushReceiverService extends GcmListenerService {
 
+    private static final String TAG = "GCMReceiverService-->";
     private Context context = this;
 
     @Override
     public void onMessageReceived(String from, Bundle data) {
-        Log.d("Bundle_Data",""+data.toString());
-        Bundle notificationData = data.getBundle("notification");
-        String message = notificationData.getString("body");
-        String title = notificationData.getString("title");
-        Log.d("BundleMessage",""+message+"  BundleTitle"+title);
-        sendNotificationToUser(message, title);
+        if (data != null) {
+            try {
+                Bundle notificationData = data.getBundle("notification");
+                assert notificationData != null;
+                String message = notificationData.getString("body");
+                String title = notificationData.getString("title");
+                sendNotificationToUser(message, title);
+                Log.d(TAG, "onMessageReceived()= [" + from + "], data = [" + data + "]");
+            } catch (Exception e) {
+                e.printStackTrace();
+                String message = data.getString("message");
+                sendNotificationToUser(message, "");
+                Log.d(TAG, "onMessageReceived()= [" + from + "], data = [" + data + "]");
+            }
+        }
     }
 
     private void sendNotificationToUser(String message, String title) {

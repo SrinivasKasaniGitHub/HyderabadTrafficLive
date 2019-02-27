@@ -6,7 +6,7 @@
     tools:context=".activities.NearByActivity">
 
     <include
-        android:id="@+id/toolbar_main"
+        android:id="@+id/toolbar_nearby"
         layout="@layout/toolbar_home" />
 
     <ProgressBar
@@ -15,17 +15,15 @@
         android:layout_height="24dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:visibility="invisible"
+        android:visibility="gone"
         android:minHeight="50dp"
         android:minWidth="50dp"
         android:max="100"/>
 
-    <LinearLayout
+    <RelativeLayout
+        android:layout_below="@+id/toolbar_nearby"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/footer"
-        android:layout_below="@id/toolbar_main"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
         <fragment xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:tools="http://schemas.android.com/tools"
@@ -34,26 +32,22 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 
-    </LinearLayout>
+    </RelativeLayout>
 
     <Button
         android:id="@+id/btn_check_parking_space"
         android:layout_width="wrap_content"
-        android:layout_height="36dp"
-        android:layout_above="@id/footer"
-        android:background="@color/colorBtns"
+        android:layout_height="@dimen/nearby_parking_space_btn_height"
+        android:background="@drawable/header_background"
+        android:layout_alignParentBottom="true"
         android:text="@string/check_parking_space"
         android:textColor="@color/colorWhite"
-        android:textSize="12sp"
-        android:paddingLeft="12dp"
-        android:paddingRight="12dp"
-        android:layout_margin="8dp"
+        android:textSize="@dimen/nearby_parking_space_btn_text_size"
+        android:paddingLeft="@dimen/nearby_parking_space_btn_padding_left"
+        android:paddingStart="@dimen/nearby_parking_space_btn_padding_left"
+        android:paddingRight="@dimen/nearby_parking_space_btn_padding_right"
+        android:paddingEnd="@dimen/nearby_parking_space_btn_padding_right"
+        android:layout_margin="@dimen/nearby_parking_space_btn_margin"
         android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/footer"
-        style="@style/footer_text_style"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
 
 </RelativeLayout>

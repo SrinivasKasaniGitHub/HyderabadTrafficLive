@@ -3,66 +3,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ic_bg"
     tools:context=".activities.UsefulWebsitesActivity">
 
     <include
-        android:id="@+id/toolbar_main"
+        android:id="@+id/toolbar_useful_websites"
         layout="@layout/toolbar_home" />
 
     <LinearLayout
+        android:id="@+id/content_frame"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/footer"
-        android:layout_below="@id/toolbar_main"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar_useful_websites"
         android:orientation="vertical">
 
-        <RelativeLayout
-            android:id="@+id/rel_parking_details"
+        <EditText
+            android:id="@+id/et_search_website"
+            style="@style/edit_text_style_drawable"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp">
-
-            <EditText
-                android:id="@+id/et_search_website"
-                style="@style/edit_text_style"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/search_website_name"
-                android:inputType="text"
-                android:maxLines="1" />
-
-            <ImageView
-                android:id="@+id/img_clear_text"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="6dp"
-                android:layout_marginRight="6dp"
-                android:contentDescription="@null"
-                android:src="@drawable/ic_close"
-                android:visibility="gone"/>
-
-        </RelativeLayout>
+            android:layout_marginTop="@dimen/emerg_cont_search_et_margin_top"
+            android:layout_marginLeft="@dimen/emerg_cont_search_et_margin_left"
+            android:layout_marginStart="@dimen/emerg_cont_search_et_margin_left"
+            android:layout_marginRight="@dimen/emerg_cont_search_et_margin_right"
+            android:layout_marginEnd="@dimen/emerg_cont_search_et_margin_right"
+            android:drawableRight="@drawable/ic_edit_text_right_search"
+            android:drawableEnd="@drawable/ic_edit_text_right_search"
+            android:hint="@string/search_website_name"
+            android:inputType="text"
+            android:maxLines="1"
+            tools:ignore="Autofill" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/mRecyclerViewUsefulWebsites"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="1dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginRight="1dp"
+            android:layout_marginTop="@dimen/emerg_cont_recycler_view_margin_top"
+            android:layout_marginLeft="@dimen/emerg_cont_recycler_view_margin_left"
+            android:layout_marginStart="@dimen/emerg_cont_recycler_view_margin_left"
+            android:layout_marginRight="@dimen/emerg_cont_recycler_view_margin_right"
+            android:layout_marginEnd="@dimen/emerg_cont_recycler_view_margin_right"
             android:scrollbars="vertical" />
 
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/footer"
-        style="@style/footer_text_style"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
 
 </RelativeLayout>

@@ -1,99 +1,243 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/ic_bg">
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_public_information"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingTop="@dimen/inner_dashbd_header_text_padding_top"
+        android:paddingBottom="@dimen/inner_dashbd_header_text_padding_top"
+        android:text="@string/rules_and_information"
+        android:textColor="@color/colorAccentDark"
+        android:textSize="@dimen/inner_dashbd_header_text_size"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:id="@+id/horz_layout0"
+        android:layout_below="@+id/tv_public_information"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginStart="@dimen/inner_dashbd_horz_layout_margin_left"
+        android:layout_marginLeft="@dimen/inner_dashbd_horz_layout_margin_left"
+        android:layout_marginEnd="@dimen/inner_dashbd_horz_layout_margin_right"
+        android:layout_marginRight="@dimen/inner_dashbd_horz_layout_margin_right"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/inner_dashbd_card_view_margin"
+            android:layout_weight="1"
+            android:foreground="?android:attr/selectableItemBackground"
+            card_view:cardBackgroundColor="@color/cardview_light_background"
+            card_view:cardCornerRadius="@dimen/inner_dashbd_card_view_corners">
+
+            <RelativeLayout
+                android:id="@+id/rel_traffic_violations_fines"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/iv_traffic_violations_fines"
+                    android:layout_width="@dimen/inner_dashbd_img_width"
+                    android:layout_height="@dimen/inner_dashbd_img_height"
+                    android:layout_gravity="center"
+                    android:layout_centerHorizontal="true"
+                    android:contentDescription="@null"
+                    android:paddingStart="@dimen/inner_dashbd_img_padding_left"
+                    android:paddingLeft="@dimen/inner_dashbd_img_padding_left"
+                    android:paddingTop="@dimen/inner_dashbd_img_padding_top"
+                    android:paddingEnd="@dimen/inner_dashbd_img_padding_right"
+                    android:paddingRight="@dimen/inner_dashbd_img_padding_right"
+                    android:paddingBottom="@dimen/inner_dashbd_img_padding_bottom"
+                    android:src="@drawable/ic_traffic_violation_fines" />
+
+                <TextView
+                    android:id="@+id/tv_traffic_violations_fines"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/iv_traffic_violations_fines"
+                    android:gravity="center_horizontal"
+                    android:paddingStart="@dimen/inner_dashbd_img_text_padding_left"
+                    android:paddingLeft="@dimen/inner_dashbd_img_text_padding_left"
+                    android:paddingTop="@dimen/inner_dashbd_img_text_padding_top"
+                    android:paddingEnd="@dimen/inner_dashbd_img_text_padding_right"
+                    android:paddingRight="@dimen/inner_dashbd_img_text_padding_right"
+                    android:paddingBottom="@dimen/inner_dashbd_img_text_padding_bottom"
+                    android:textSize="@dimen/inner_dashbd_img_text_size"
+                    android:textColor="@color/colorAccentDark"
+                    android:text="@string/traffic_violation_fines" />
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/inner_dashbd_card_view_margin"
+            android:layout_weight="1"
+            android:foreground="?android:attr/selectableItemBackground"
+            card_view:cardBackgroundColor="@color/cardview_light_background"
+            card_view:cardCornerRadius="@dimen/inner_dashbd_card_view_corners">
+
+            <RelativeLayout
+                android:id="@+id/rel_useful_websites"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/iv_useful_websites"
+                    android:layout_width="@dimen/inner_dashbd_img_width"
+                    android:layout_height="@dimen/inner_dashbd_img_height"
+                    android:layout_gravity="center"
+                    android:layout_centerHorizontal="true"
+                    android:contentDescription="@null"
+                    android:paddingStart="@dimen/inner_dashbd_img_padding_left"
+                    android:paddingLeft="@dimen/inner_dashbd_img_padding_left"
+                    android:paddingTop="@dimen/inner_dashbd_img_padding_top"
+                    android:paddingEnd="@dimen/inner_dashbd_img_padding_right"
+                    android:paddingRight="@dimen/inner_dashbd_img_padding_right"
+                    android:paddingBottom="@dimen/inner_dashbd_img_padding_bottom"
+                    android:src="@drawable/ic_usefulwebsites" />
+
+                <TextView
+                    android:id="@+id/tv_useful_websites"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/iv_useful_websites"
+                    android:gravity="center_horizontal"
+                    android:paddingStart="@dimen/inner_dashbd_img_text_padding_left"
+                    android:paddingLeft="@dimen/inner_dashbd_img_text_padding_left"
+                    android:paddingTop="@dimen/inner_dashbd_img_text_padding_top"
+                    android:paddingEnd="@dimen/inner_dashbd_img_text_padding_right"
+                    android:paddingRight="@dimen/inner_dashbd_img_text_padding_right"
+                    android:paddingBottom="@dimen/inner_dashbd_img_text_padding_bottom"
+                    android:textSize="@dimen/inner_dashbd_img_text_size"
+                    android:textColor="@color/colorAccentDark"
+                    android:text="@string/useful_websites" />
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/horz_layout1"
+        android:layout_below="@id/horz_layout0"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginStart="@dimen/inner_dashbd_horz_layout_margin_left"
+        android:layout_marginLeft="@dimen/inner_dashbd_horz_layout_margin_left"
+        android:layout_marginEnd="@dimen/inner_dashbd_horz_layout_margin_right"
+        android:layout_marginRight="@dimen/inner_dashbd_horz_layout_margin_right"
         android:orientation="horizontal"
-        android:weightSum="3"
-        android:baselineAligned="false">
+        android:weightSum="2">
 
-        <RelativeLayout
-            android:id="@+id/rel_traffic_violations_fines"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
+        <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/inner_dashbd_card_view_margin"
+            android:layout_weight="1"
+            android:foreground="?android:attr/selectableItemBackground"
+            card_view:cardBackgroundColor="@color/cardview_light_background"
+            card_view:cardCornerRadius="@dimen/inner_dashbd_card_view_corners">
 
-            <ImageView
-                android:id="@+id/iv_traffic_violations_fines"
+            <RelativeLayout
+                android:id="@+id/rel_faqs"
                 android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:contentDescription="@null"
-                android:padding="8dp"
-                android:src="@drawable/ic_echallan_status" />
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/tv_traffic_violations_fines"
+                <ImageView
+                    android:id="@+id/iv_faqs"
+                    android:layout_width="@dimen/inner_dashbd_img_width"
+                    android:layout_height="@dimen/inner_dashbd_img_height"
+                    android:layout_gravity="center"
+                    android:layout_centerHorizontal="true"
+                    android:contentDescription="@null"
+                    android:paddingStart="@dimen/inner_dashbd_img_padding_left"
+                    android:paddingLeft="@dimen/inner_dashbd_img_padding_left"
+                    android:paddingTop="@dimen/inner_dashbd_img_padding_top"
+                    android:paddingEnd="@dimen/inner_dashbd_img_padding_right"
+                    android:paddingRight="@dimen/inner_dashbd_img_padding_right"
+                    android:paddingBottom="@dimen/inner_dashbd_img_padding_bottom"
+                    android:src="@drawable/ic_faq" />
+
+                <TextView
+                    android:id="@+id/tv_faqs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/iv_faqs"
+                    android:gravity="center_horizontal"
+                    android:paddingStart="@dimen/inner_dashbd_img_text_padding_left"
+                    android:paddingLeft="@dimen/inner_dashbd_img_text_padding_left"
+                    android:paddingTop="@dimen/inner_dashbd_img_text_padding_top"
+                    android:paddingEnd="@dimen/inner_dashbd_img_text_padding_right"
+                    android:paddingRight="@dimen/inner_dashbd_img_text_padding_right"
+                    android:paddingBottom="@dimen/inner_dashbd_img_text_padding_bottom"
+                    android:textSize="@dimen/inner_dashbd_img_text_size"
+                    android:textColor="@color/colorAccentDark"
+                    android:text="@string/faqs" />
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/inner_dashbd_card_view_margin"
+            android:layout_weight="1"
+            android:foreground="?android:attr/selectableItemBackground"
+            card_view:cardBackgroundColor="@color/cardview_light_background"
+            card_view:cardCornerRadius="@dimen/inner_dashbd_card_view_corners">
+
+            <RelativeLayout
+                android:id="@+id/rel_road_safety_tips"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/iv_traffic_violations_fines"
-                android:gravity="center_horizontal"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
-                android:textStyle="bold"
-                android:text="@string/traffic_violation_fines" />
+                android:layout_height="wrap_content">
 
-        </RelativeLayout>
+                <ImageView
+                    android:id="@+id/iv_road_safety_tips"
+                    android:layout_width="@dimen/inner_dashbd_img_width"
+                    android:layout_height="@dimen/inner_dashbd_img_height"
+                    android:layout_gravity="center"
+                    android:layout_centerHorizontal="true"
+                    android:contentDescription="@null"
+                    android:paddingStart="@dimen/inner_dashbd_img_padding_left"
+                    android:paddingLeft="@dimen/inner_dashbd_img_padding_left"
+                    android:paddingTop="@dimen/inner_dashbd_img_padding_top"
+                    android:paddingEnd="@dimen/inner_dashbd_img_padding_right"
+                    android:paddingRight="@dimen/inner_dashbd_img_padding_right"
+                    android:paddingBottom="@dimen/inner_dashbd_img_padding_bottom"
+                    android:src="@drawable/ic_roadsafety" />
 
-        <RelativeLayout
-            android:id="@+id/rel_useful_websites"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
+                <TextView
+                    android:id="@+id/tv_road_safety_tips"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/iv_road_safety_tips"
+                    android:gravity="center_horizontal"
+                    android:paddingStart="@dimen/inner_dashbd_img_text_padding_left"
+                    android:paddingLeft="@dimen/inner_dashbd_img_text_padding_left"
+                    android:paddingTop="@dimen/inner_dashbd_img_text_padding_top"
+                    android:paddingEnd="@dimen/inner_dashbd_img_text_padding_right"
+                    android:paddingRight="@dimen/inner_dashbd_img_text_padding_right"
+                    android:paddingBottom="@dimen/inner_dashbd_img_text_padding_bottom"
+                    android:textSize="@dimen/inner_dashbd_img_text_size"
+                    android:textColor="@color/colorAccentDark"
+                    android:text="@string/road_safety_tips" />
 
-            <ImageView
-                android:id="@+id/iv_useful_websites"
-                android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:layout_gravity="center"
-                android:contentDescription="@null"
-                android:padding="8dp"
-                android:src="@drawable/ic_usefulwebsites" />
+            </RelativeLayout>
 
-            <TextView
-                android:id="@+id/tv_useful_websites"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/iv_useful_websites"
-                android:gravity="center_horizontal"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
-                android:textStyle="bold"
-                android:text="@string/useful_websites" />
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/rel_faqs"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
-
-            <ImageView
-                android:id="@+id/iv_faqs"
-                android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:layout_gravity="center"
-                android:contentDescription="@null"
-                android:padding="8dp"
-                android:src="@drawable/ic_faq" />
-
-            <TextView
-                android:id="@+id/tv_faqs"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/iv_faqs"
-                android:gravity="center_horizontal"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
-                android:textStyle="bold"
-                android:text="@string/faqs" />
-
-        </RelativeLayout>
+        </android.support.v7.widget.CardView>
 
     </LinearLayout>
 
@@ -102,92 +246,111 @@
         android:layout_below="@id/horz_layout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginStart="@dimen/inner_dashbd_horz_layout_margin_left"
+        android:layout_marginLeft="@dimen/inner_dashbd_horz_layout_margin_left"
+        android:layout_marginEnd="@dimen/inner_dashbd_horz_layout_margin_right"
+        android:layout_marginRight="@dimen/inner_dashbd_horz_layout_margin_right"
         android:orientation="horizontal"
-        android:weightSum="3"
-        android:baselineAligned="false">
+        android:weightSum="2">
 
-        <RelativeLayout
-            android:id="@+id/rel_road_safety_tips"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
+        <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/inner_dashbd_card_view_margin"
+            android:layout_weight="1"
+            android:foreground="?android:attr/selectableItemBackground"
+            card_view:cardBackgroundColor="@color/cardview_light_background"
+            card_view:cardCornerRadius="@dimen/inner_dashbd_card_view_corners">
 
-            <ImageView
-                android:id="@+id/iv_road_safety_tips"
+            <RelativeLayout
+                android:id="@+id/rel_traffic_signs"
                 android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:contentDescription="@null"
-                android:padding="8dp"
-                android:src="@drawable/ic_roadsafety" />
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/tv_road_safety_tips"
+                <ImageView
+                    android:id="@+id/iv_traffic_signs"
+                    android:layout_width="@dimen/inner_dashbd_img_width"
+                    android:layout_height="@dimen/inner_dashbd_img_height"
+                    android:layout_gravity="center"
+                    android:layout_centerHorizontal="true"
+                    android:contentDescription="@null"
+                    android:paddingStart="@dimen/inner_dashbd_img_padding_left"
+                    android:paddingLeft="@dimen/inner_dashbd_img_padding_left"
+                    android:paddingTop="@dimen/inner_dashbd_img_padding_top"
+                    android:paddingEnd="@dimen/inner_dashbd_img_padding_right"
+                    android:paddingRight="@dimen/inner_dashbd_img_padding_right"
+                    android:paddingBottom="@dimen/inner_dashbd_img_padding_bottom"
+                    android:src="@drawable/ic_trafficsignage" />
+
+                <TextView
+                    android:id="@+id/tv_traffic_signs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/iv_traffic_signs"
+                    android:gravity="center_horizontal"
+                    android:paddingStart="@dimen/inner_dashbd_img_text_padding_left"
+                    android:paddingLeft="@dimen/inner_dashbd_img_text_padding_left"
+                    android:paddingTop="@dimen/inner_dashbd_img_text_padding_top"
+                    android:paddingEnd="@dimen/inner_dashbd_img_text_padding_right"
+                    android:paddingRight="@dimen/inner_dashbd_img_text_padding_right"
+                    android:paddingBottom="@dimen/inner_dashbd_img_text_padding_bottom"
+                    android:textSize="@dimen/inner_dashbd_img_text_size"
+                    android:textColor="@color/colorAccentDark"
+                    android:text="@string/traffic_signs" />
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/inner_dashbd_card_view_margin"
+            android:layout_weight="1"
+            android:foreground="?android:attr/selectableItemBackground"
+            card_view:cardBackgroundColor="@color/cardview_light_background"
+            card_view:cardCornerRadius="@dimen/inner_dashbd_card_view_corners">
+
+            <RelativeLayout
+                android:id="@+id/rel_htl_on_fb"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/iv_road_safety_tips"
-                android:gravity="center_horizontal"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
-                android:textStyle="bold"
-                android:text="@string/road_safety_tips" />
+                android:layout_height="wrap_content">
 
-        </RelativeLayout>
+                <ImageView
+                    android:id="@+id/iv_htl_on_fb"
+                    android:layout_width="@dimen/inner_dashbd_img_width"
+                    android:layout_height="@dimen/inner_dashbd_img_height"
+                    android:layout_gravity="center"
+                    android:layout_centerHorizontal="true"
+                    android:contentDescription="@null"
+                    android:paddingStart="@dimen/inner_dashbd_img_padding_left"
+                    android:paddingLeft="@dimen/inner_dashbd_img_padding_left"
+                    android:paddingTop="@dimen/inner_dashbd_img_padding_top"
+                    android:paddingEnd="@dimen/inner_dashbd_img_padding_right"
+                    android:paddingRight="@dimen/inner_dashbd_img_padding_right"
+                    android:paddingBottom="@dimen/inner_dashbd_img_padding_bottom"
+                    android:src="@drawable/ic_facebook" />
 
-        <RelativeLayout
-            android:id="@+id/rel_traffic_signs"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
+                <TextView
+                    android:id="@+id/tv_htl_on_fb"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/iv_htl_on_fb"
+                    android:gravity="center_horizontal"
+                    android:paddingStart="@dimen/inner_dashbd_img_text_padding_left"
+                    android:paddingLeft="@dimen/inner_dashbd_img_text_padding_left"
+                    android:paddingTop="@dimen/inner_dashbd_img_text_padding_top"
+                    android:paddingEnd="@dimen/inner_dashbd_img_text_padding_right"
+                    android:paddingRight="@dimen/inner_dashbd_img_text_padding_right"
+                    android:paddingBottom="@dimen/inner_dashbd_img_text_padding_bottom"
+                    android:textSize="@dimen/inner_dashbd_img_text_size"
+                    android:textColor="@color/colorAccentDark"
+                    android:text="@string/htl_on_fb" />
 
-            <ImageView
-                android:id="@+id/iv_traffic_signs"
-                android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:layout_gravity="center"
-                android:contentDescription="@null"
-                android:padding="8dp"
-                android:src="@drawable/ic_trafficsignage" />
+            </RelativeLayout>
 
-            <TextView
-                android:id="@+id/tv_traffic_signs"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/iv_traffic_signs"
-                android:gravity="center_horizontal"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
-                android:textStyle="bold"
-                android:text="@string/traffic_signs" />
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/rel_htl_on_fb"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
-
-            <ImageView
-                android:id="@+id/iv_htl_on_fb"
-                android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:layout_gravity="center"
-                android:contentDescription="@null"
-                android:padding="8dp"
-                android:src="@drawable/ic_socialmedia" />
-
-            <TextView
-                android:id="@+id/tv_htl_on_fb"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/iv_htl_on_fb"
-                android:gravity="center_horizontal"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
-                android:textStyle="bold"
-                android:text="@string/htl_on_fb" />
-
-        </RelativeLayout>
+        </android.support.v7.widget.CardView>
 
     </LinearLayout>
 

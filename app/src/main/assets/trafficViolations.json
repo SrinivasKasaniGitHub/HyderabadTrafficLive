@@ -1,0 +1,574 @@
+{
+  "respCode": 1,
+  "respDesc": "Success",
+  "respRemark": [
+    {
+      "offence_cd": 1,
+      "section": "S 129/177",
+      "offence_desc": "Driving without Helmet",
+      "fine_min": 100,
+      "fine_max": 200,
+      "penalty_points": 1
+    },
+    {
+      "offence_cd": 2,
+      "section": "S 177(21), 184",
+      "offence_desc": "Triple Riding",
+      "fine_min": 1200,
+      "fine_max": 1200,
+      "penalty_points": 0
+    },
+    {
+      "offence_cd": 3,
+      "section": "S 184",
+      "offence_desc": "Using mobile phone while driving",
+      "fine_min": 1000,
+      "fine_max": 1000,
+      "penalty_points": 2
+    },
+    {
+      "offence_cd": 4,
+      "section": "R 436/177",
+      "offence_desc": "Violation of Traffic Signal (Signal Jumping)",
+      "fine_min": 1000,
+      "fine_max": 1000,
+      "penalty_points": 2
+    },
+    {
+      "offence_cd": 6,
+      "section": "S 184",
+      "offence_desc": "Dangerous Driving",
+      "fine_min": 1000,
+      "fine_max": 1000,
+      "penalty_points": 0
+    },
+    {
+      "offence_cd": 10,
+      "section": "S 122/177",
+      "offence_desc": "Park/Wait near Bus stop",
+      "fine_min": 100,
+      "fine_max": 200,
+      "penalty_points": 0
+    },
+    {
+      "offence_cd": 13,
+      "section": "R 80 (A)/177",
+      "offence_desc": "Defective number plate",
+      "fine_min": 100,
+      "fine_max": 200,
+      "penalty_points": 0
+    },
+    {
+      "offence_cd": 18,
+      "section": "119/177",
+      "offence_desc": "Yellow Line Violation",
+      "fine_min": 200,
+      "fine_max": 200,
+      "penalty_points": 0
+    },
+    {
+      "offence_cd": 19,
+      "section": "R 435/177",
+      "offence_desc": "Failure to yield to pedestrians at Zebra Crossing",
+      "fine_min": 100,
+      "fine_max": 200,
+      "penalty_points": 0
+    },
+    {
+      "offence_cd": 20,
+      "section": "CR 119(II)/177",
+      "offence_desc": "Using Pressure Horn",
+      "fine_min": 100,
+      "fine_max": 200,
+      "penalty_points": 0
+    },
+    {
+      "offence_cd": 21,
+      "section": "CR 119(II)/177",
+      "offence_desc": "Honking Horn",
+      "fine_min": 1000,
+      "fine_max": 1000,
+      "penalty_points": 0
+    },
+    {
+      "offence_cd": 22,
+      "section": "CR 119(II)/177",
+      "offence_desc": "Using Horn in Prohibited Zones",
+      "fine_min": 100,
+      "fine_max": 200,
+      "penalty_points": 0
+    },
+    {
+      "offence_cd": 23,
+      "section": "CR 119(II)/178",
+      "offence_desc": "Using loud speakers inside the vehicle",
+      "fine_min": 100,
+      "fine_max": 200,
+      "penalty_points": 0
+    },
+    {
+      "offence_cd": 24,
+      "section": "S 190(II)",
+      "offence_desc": "Emitting dark smoke causing air pollution",
+      "fine_min": 1000,
+      "fine_max": 1000,
+      "penalty_points": 0
+    },
+    {
+      "offence_cd": 25,
+      "section": "CR 120/S 190(II)",
+      "offence_desc": "Emitting deafening sound through exhaust causing noise pollution",
+      "fine_min": 300,
+      "fine_max": 300,
+      "penalty_points": 0
+    },
+    {
+      "offence_cd": 26,
+      "section": "S 184/177",
+      "offence_desc": "Over speeding/ Dangerous Driving",
+      "fine_min": 1000,
+      "fine_max": 1000,
+      "penalty_points": 0
+    },
+    {
+      "offence_cd": 27,
+      "section": "S 119/177, 184",
+      "offence_desc": "Driving against the flow of Traffic",
+      "fine_min": 1100,
+      "fine_max": 1100,
+      "penalty_points": 2
+    },
+    {
+      "offence_cd": 28,
+      "section": "S 190(I)/177",
+      "offence_desc": "Driving vehicle in unsafe condition",
+      "fine_min": 100,
+      "fine_max": 300,
+      "penalty_points": 0
+    },
+    {
+      "offence_cd": 29,
+      "section": "S 119/177",
+      "offence_desc": "Taking Prohibited left/right turn/U turn",
+      "fine_min": 100,
+      "fine_max": 200,
+      "penalty_points": 0
+    },
+    {
+      "offence_cd": 30,
+      "section": "S 181",
+      "offence_desc": "A minor driving the vehicle",
+      "fine_min": 500,
+      "fine_max": 500,
+      "penalty_points": 0
+    },
+    {
+      "offence_cd": 31,
+      "section": "S 184",
+      "offence_desc": "Zig-Zag and reckless driving",
+      "fine_min": 200,
+      "fine_max": 200,
+      "penalty_points": 0
+    },
+    {
+      "offence_cd": 32,
+      "section": "11RRR/177",
+      "offence_desc": "Failure to give right of way",
+      "fine_min": 100,
+      "fine_max": 200,
+      "penalty_points": 0
+    },
+    {
+      "offence_cd": 33,
+      "section": "S 185(a)",
+      "offence_desc": "Driving under intoxication",
+      "fine_min": 0,
+      "fine_max": 0,
+      "penalty_points": 3
+    },
+    {
+      "offence_cd": 34,
+      "section": "CR 15(G)/177",
+      "offence_desc": "Abrupt overtaking endangering other's life",
+      "fine_min": 100,
+      "fine_max": 300,
+      "penalty_points": 0
+    },
+    {
+      "offence_cd": 35,
+      "section": "S 184",
+      "offence_desc": "Taking sudden turn without indication endangering others life",
+      "fine_min": 200,
+      "fine_max": 200,
+      "penalty_points": 0
+    },
+    {
+      "offence_cd": 37,
+      "section": "24 RRR/177",
+      "offence_desc": "Erratic Braking endangering others life",
+      "fine_min": 100,
+      "fine_max": 300,
+      "penalty_points": 0
+    },
+    {
+      "offence_cd": 38,
+      "section": "CR 105/177",
+      "offence_desc": "Driving in the night without head lights",
+      "fine_min": 100,
+      "fine_max": 300,
+      "penalty_points": 0
+    },
+    {
+      "offence_cd": 39,
+      "section": "R 435/177",
+      "offence_desc": "Violation of stop line",
+      "fine_min": 100,
+      "fine_max": 200,
+      "penalty_points": 0
+    },
+    {
+      "offence_cd": 40,
+      "section": "S 119/177",
+      "offence_desc": "Violation of one way rule",
+      "fine_min": 100,
+      "fine_max": 200,
+      "penalty_points": 0
+    },
+    {
+      "offence_cd": 41,
+      "section": "S 119/177",
+      "offence_desc": "Violation of sign board",
+      "fine_min": 100,
+      "fine_max": 300,
+      "penalty_points": 0
+    },
+    {
+      "offence_cd": 42,
+      "section": "S 119/177",
+      "offence_desc": "Violation of Restriction on plying of vehicles",
+      "fine_min": 100,
+      "fine_max": 300,
+      "penalty_points": 0
+    },
+    {
+      "offence_cd": 43,
+      "section": "S 119/177",
+      "offence_desc": "Using prohibtitted routes",
+      "fine_min": 100,
+      "fine_max": 300,
+      "penalty_points": 0
+    },
+    {
+      "offence_cd": 51,
+      "section": "R 422(IV)/177",
+      "offence_desc": "Carrying Goods dangerously without being properly secured",
+      "fine_min": 100,
+      "fine_max": 200,
+      "penalty_points": 0
+    },
+    {
+      "offence_cd": 52,
+      "section": "S 122/177",
+      "offence_desc": "Wrong Parking in the carriage way",
+      "fine_min": 100,
+      "fine_max": 200,
+      "penalty_points": 0
+    },
+    {
+      "offence_cd": 53,
+      "section": "S 122/177",
+      "offence_desc": "Parking on carriage way  causing Traffic Obstructrion.",
+      "fine_min": 100,
+      "fine_max": 300,
+      "penalty_points": 0
+    },
+    {
+      "offence_cd": 54,
+      "section": "S 190(2)",
+      "offence_desc": "Improper parking at parking lot",
+      "fine_min": 200,
+      "fine_max": 200,
+      "penalty_points": 0
+    },
+    {
+      "offence_cd": 55,
+      "section": "S 122/177",
+      "offence_desc": "Parking on service roads/any road causing Traffic obstruction",
+      "fine_min": 100,
+      "fine_max": 300,
+      "penalty_points": 0
+    },
+    {
+      "offence_cd": 58,
+      "section": "S 122/177",
+      "offence_desc": "Unauthorised parking at Bars/Restaurants causing Traffic Obstruction",
+      "fine_min": 100,
+      "fine_max": 300,
+      "penalty_points": 0
+    },
+    {
+      "offence_cd": 59,
+      "section": "S 122/177",
+      "offence_desc": "Unauthorised parking at function halls causing Traffic obstruction",
+      "fine_min": 100,
+      "fine_max": 300,
+      "penalty_points": 0
+    },
+    {
+      "offence_cd": 60,
+      "section": "S 122/177",
+      "offence_desc": "Unauthorised parking at Commercial Establishments Causing Traffic obstruction",
+      "fine_min": 100,
+      "fine_max": 300,
+      "penalty_points": 0
+    },
+    {
+      "offence_cd": 61,
+      "section": "S 122/177",
+      "offence_desc": "Unauthorised parking infront of Transport Offices cauisng Traffic obstruction",
+      "fine_min": 100,
+      "fine_max": 300,
+      "penalty_points": 0
+    },
+    {
+      "offence_cd": 62,
+      "section": "S 122/177",
+      "offence_desc": "Parking in front of entry/exit gates of Residential/Commercial complexes",
+      "fine_min": 100,
+      "fine_max": 300,
+      "penalty_points": 0
+    },
+    {
+      "offence_cd": 63,
+      "section": "S 130/177",
+      "offence_desc": "Driving Without documents",
+      "fine_min": 100,
+      "fine_max": 200,
+      "penalty_points": 0
+    },
+    {
+      "offence_cd": 64,
+      "section": "S 181/177",
+      "offence_desc": "Driving Without Driving Licence",
+      "fine_min": 500,
+      "fine_max": 500,
+      "penalty_points": 0
+    },
+    {
+      "offence_cd": 65,
+      "section": "S 196/177",
+      "offence_desc": "Driving Without Insurance documents",
+      "fine_min": 200,
+      "fine_max": 200,
+      "penalty_points": 0
+    },
+    {
+      "offence_cd": 66,
+      "section": "S 192 (i) /177",
+      "offence_desc": "Driving the Vehicle Without the Registration/Permit",
+      "fine_min": 2000,
+      "fine_max": 5000,
+      "penalty_points": 0
+    },
+    {
+      "offence_cd": 67,
+      "section": "S 179/177",
+      "offence_desc": "Refusing to show the document evidence",
+      "fine_min": 150,
+      "fine_max": 500,
+      "penalty_points": 0
+    },
+    {
+      "offence_cd": 68,
+      "section": "S 3A/177",
+      "offence_desc": "Driving without L-board for the Learners",
+      "fine_min": 100,
+      "fine_max": 200,
+      "penalty_points": 0
+    },
+    {
+      "offence_cd": 69,
+      "section": "S 80(A)/177",
+      "offence_desc": "Driving without Number Plate",
+      "fine_min": 100,
+      "fine_max": 300,
+      "penalty_points": 0
+    },
+    {
+      "offence_cd": 70,
+      "section": "S 422/177",
+      "offence_desc": "Extra Projection on top",
+      "fine_min": 100,
+      "fine_max": 200,
+      "penalty_points": 0
+    },
+    {
+      "offence_cd": 71,
+      "section": "S 132/177",
+      "offence_desc": "N/S Signal by the police",
+      "fine_min": 100,
+      "fine_max": 200,
+      "penalty_points": 0
+    },
+    {
+      "offence_cd": 74,
+      "section": "S 119/177",
+      "offence_desc": "No Entry",
+      "fine_min": 100,
+      "fine_max": 200,
+      "penalty_points": 0
+    },
+    {
+      "offence_cd": 75,
+      "section": "41(i) C.P.Act",
+      "offence_desc": "41(i) C.P.Act",
+      "fine_min": 150,
+      "fine_max": 1000,
+      "penalty_points": 0
+    },
+    {
+      "offence_cd": 81,
+      "section": "S 422/177",
+      "offence_desc": "Extra Projection",
+      "fine_min": 100,
+      "fine_max": 200,
+      "penalty_points": 0
+    },
+    {
+      "offence_cd": 82,
+      "section": "S 122/177",
+      "offence_desc": "Cause an obstruction to pedestrian walkway",
+      "fine_min": 200,
+      "fine_max": 200,
+      "penalty_points": 0
+    },
+    {
+      "offence_cd": 83,
+      "section": "S 180/177",
+      "offence_desc": "Allowing unauthorised person to drive",
+      "fine_min": 1000,
+      "fine_max": 1000,
+      "penalty_points": 0
+    },
+    {
+      "offence_cd": 84,
+      "section": "S 122/177",
+      "offence_desc": "Wheel clamp for wrong parking",
+      "fine_min": 200,
+      "fine_max": 200,
+      "penalty_points": 0
+    },
+    {
+      "offence_cd": 85,
+      "section": "S 184",
+      "offence_desc": "Extra Projection either side",
+      "fine_min": 1000,
+      "fine_max": 1000,
+      "penalty_points": 0
+    },
+    {
+      "offence_cd": 89,
+      "section": "S 177(11)",
+      "offence_desc": "Disobeying Traffic Signal/ No entry/No right/No ‘U’ turn",
+      "fine_min": 100,
+      "fine_max": 200,
+      "penalty_points": 0
+    },
+    {
+      "offence_cd": 95,
+      "section": "S 179(1)",
+      "offence_desc": "Disobedience of orders",
+      "fine_min": 500,
+      "fine_max": 500,
+      "penalty_points": 0
+    },
+    {
+      "offence_cd": 104,
+      "section": "S 189",
+      "offence_desc": "Racing and Trail of speed",
+      "fine_min": 500,
+      "fine_max": 500,
+      "penalty_points": 0
+    },
+    {
+      "offence_cd": 109,
+      "section": "S 50",
+      "offence_desc": "Not Transfer of Ownership",
+      "fine_min": 100,
+      "fine_max": 100,
+      "penalty_points": 0
+    },
+    {
+      "offence_cd": 111,
+      "section": "106 CMVR/177",
+      "offence_desc": "High Beam Violation",
+      "fine_min": 200,
+      "fine_max": 200,
+      "penalty_points": 0
+    },
+    {
+      "offence_cd": 116,
+      "section": "S 179(1)",
+      "offence_desc": "Out Side/Other district vehicle",
+      "fine_min": 500,
+      "fine_max": 500,
+      "penalty_points": 0
+    },
+    {
+      "offence_cd": 119,
+      "section": "S 181",
+      "offence_desc": "Without Batch",
+      "fine_min": 500,
+      "fine_max": 500,
+      "penalty_points": 0
+    },
+    {
+      "offence_cd": 121,
+      "section": "S 119/177,S 179(1)",
+      "offence_desc": "No Entry and Disobedience of orders",
+      "fine_min": 600,
+      "fine_max": 700,
+      "penalty_points": 0
+    },
+    {
+      "offence_cd": 122,
+      "section": "S 119",
+      "offence_desc": "Obstruction of free left",
+      "fine_min": 100,
+      "fine_max": 200,
+      "penalty_points": 0
+    },
+    {
+      "offence_cd": 123,
+      "section": "S 130/177",
+      "offence_desc": "Driving without carrying Driving License",
+      "fine_min": 100,
+      "fine_max": 100,
+      "penalty_points": 0
+    },
+    {
+      "offence_cd": 125,
+      "section": "S 190(2)/177",
+      "offence_desc": "Driving or Causing or allowing to drive in a public place a motor vehicle in violation of noise pollution",
+      "fine_min": 1000,
+      "fine_max": 2000,
+      "penalty_points": 0
+    },
+    {
+      "offence_cd": 126,
+      "section": "S 184",
+      "offence_desc": "Dangerous Driving L and O",
+      "fine_min": 1000,
+      "fine_max": 1000,
+      "penalty_points": 0
+    },
+    {
+      "offence_cd": 127,
+      "section": "S 184",
+      "offence_desc": "Extra projection back side",
+      "fine_min": 1000,
+      "fine_max": 1000,
+      "penalty_points": 0
+    }
+  ]
+}

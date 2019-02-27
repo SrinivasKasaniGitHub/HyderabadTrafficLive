@@ -3,164 +3,258 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ic_bg"
     tools:context=".activities.PublicComplaintsActivity">
 
     <include
-        android:id="@+id/toolbar_main"
+        android:id="@+id/toolbar_pub_complaints"
         layout="@layout/toolbar_home" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/footer"
-        android:layout_below="@id/toolbar_main">
+        android:layout_below="@id/toolbar_pub_complaints">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
+            android:layout_margin="@dimen/pub_complaints_lnr_lyt_margin"
             android:orientation="vertical"
-            tools:ignore="UselessParent">
+            android:padding="@dimen/pub_complaints_lnr_lyt_padding">
+
+            <TextView
+                style="@style/text_view_style_heading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:singleLine="false"
+                android:text="@string/public_complaints"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold" />
 
             <TextView
                 style="@style/text_view_style"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/complaint_against_all_public_services" />
+                android:layout_marginTop="@dimen/pub_complaints_tv_label_margin_top"
+                android:paddingLeft="@dimen/pub_complaints_tv_label_padding_left"
+                android:paddingStart="@dimen/pub_complaints_tv_label_padding_left"
+                android:paddingRight="@dimen/pub_complaints_tv_label_padding_right"
+                android:paddingEnd="@dimen/pub_complaints_tv_label_padding_right"
+                android:text="@string/complaint"
+                android:textColor="@color/colorBlack" />
 
             <EditText
                 android:id="@+id/et_complaint"
-                style="@style/edit_text_style"
+                style="@style/edit_text_style_drawable"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:hint="@string/complaint"
+                android:layout_marginTop="@dimen/pub_complaints_et_margin_top"
+                android:hint="@string/enter_complaint"
                 android:inputType="text"
-                android:maxLines="1" />
-
-            <EditText
-                android:id="@+id/et_complaint_type"
-                style="@style/edit_text_style"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:hint="@string/complaint_type"
-                android:inputType="text"
-                android:maxLines="1" />
-
-            <EditText
-                android:id="@+id/et_vehicle_no"
-                style="@style/edit_text_style"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:hint="@string/enter_vehicle_no"
-                android:inputType="textCapCharacters"
-                android:maxLines="1" />
-
-            <EditText
-                android:id="@+id/et_drivers_name"
-                style="@style/edit_text_style"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:hint="@string/enter_driver_name"
-                android:inputType="text"
-                android:maxLines="1" />
-
-            <EditText
-                android:id="@+id/et_type_a_complaint"
-                style="@style/edit_text_style"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginTop="8dp"
-                android:hint="@string/type_a_complaint"
-                android:inputType="text"
-                android:maxLines="4" />
+                android:maxLines="1"
+                tools:ignore="Autofill" />
 
             <TextView
                 style="@style/text_view_style"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:text="@string/your_details" />
+                android:layout_marginTop="@dimen/pub_complaints_tv_label_margin_top"
+                android:paddingLeft="@dimen/pub_complaints_tv_label_padding_left"
+                android:paddingStart="@dimen/pub_complaints_tv_label_padding_left"
+                android:paddingRight="@dimen/pub_complaints_tv_label_padding_right"
+                android:paddingEnd="@dimen/pub_complaints_tv_label_padding_right"
+                android:text="@string/complaint_type"
+                android:textColor="@color/colorBlack" />
+
+            <EditText
+                android:id="@+id/et_complaint_type"
+                style="@style/edit_text_style_drawable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pub_complaints_et_margin_top"
+                android:hint="@string/enter_complaint_type"
+                android:inputType="text"
+                android:maxLines="1"
+                tools:ignore="Autofill" />
+
+            <TextView
+                style="@style/text_view_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pub_complaints_tv_label_margin_top"
+                android:paddingLeft="@dimen/pub_complaints_tv_label_padding_left"
+                android:paddingStart="@dimen/pub_complaints_tv_label_padding_left"
+                android:paddingRight="@dimen/pub_complaints_tv_label_padding_right"
+                android:paddingEnd="@dimen/pub_complaints_tv_label_padding_right"
+                android:text="@string/vehicle_number"
+                android:textColor="@color/colorBlack" />
+
+            <EditText
+                android:id="@+id/et_vehicle_no"
+                style="@style/edit_text_style_drawable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pub_complaints_et_margin_top"
+                android:hint="@string/enter_vehicle_no"
+                android:inputType="textCapCharacters"
+                android:maxLines="1"
+                android:maxLength="12"
+                tools:ignore="Autofill" />
+
+            <TextView
+                style="@style/text_view_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pub_complaints_tv_label_margin_top"
+                android:paddingLeft="@dimen/pub_complaints_tv_label_padding_left"
+                android:paddingStart="@dimen/pub_complaints_tv_label_padding_left"
+                android:paddingRight="@dimen/pub_complaints_tv_label_padding_right"
+                android:paddingEnd="@dimen/pub_complaints_tv_label_padding_right"
+                android:text="@string/name"
+                android:textColor="@color/colorBlack" />
+
+            <EditText
+                android:id="@+id/et_drivers_name"
+                style="@style/edit_text_style_drawable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pub_complaints_et_margin_top"
+                android:hint="@string/driver_name"
+                android:inputType="text"
+                android:maxLines="1"
+                tools:ignore="Autofill" />
+
+            <TextView
+                style="@style/text_view_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pub_complaints_tv_label_margin_top"
+                android:paddingLeft="@dimen/pub_complaints_tv_label_padding_left"
+                android:paddingStart="@dimen/pub_complaints_tv_label_padding_left"
+                android:paddingRight="@dimen/pub_complaints_tv_label_padding_right"
+                android:paddingEnd="@dimen/pub_complaints_tv_label_padding_right"
+                android:text="@string/comment"
+                android:textColor="@color/colorBlack" />
+
+            <EditText
+                android:id="@+id/et_type_a_complaint"
+                style="@style/edit_text_style_drawable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pub_complaints_et_margin_top"
+                android:hint="@string/enter_comment"
+                android:inputType="text"
+                android:maxLines="1"
+                tools:ignore="Autofill" />
+
+            <TextView
+                android:id="@+id/tv_app_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/pub_complaints_your_details_label_margin_top"
+                android:paddingTop="@dimen/pub_complaints_your_details_label_padding_top"
+                android:paddingBottom="@dimen/pub_complaints_your_details_label_padding_bottom"
+                android:text="@string/your_details"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="@dimen/dashboard_htp_header_text_size"
+                android:textStyle="bold" />
+
+            <TextView
+                style="@style/text_view_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pub_complaints_tv_label_margin_top"
+                android:paddingLeft="@dimen/pub_complaints_tv_label_padding_left"
+                android:paddingStart="@dimen/pub_complaints_tv_label_padding_left"
+                android:paddingRight="@dimen/pub_complaints_tv_label_padding_right"
+                android:paddingEnd="@dimen/pub_complaints_tv_label_padding_right"
+                android:text="@string/your_name"
+                android:textColor="@color/colorBlack" />
 
             <EditText
                 android:id="@+id/et_your_name"
-                style="@style/edit_text_style"
+                style="@style/edit_text_style_drawable"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:hint="@string/your_name"
+                android:layout_marginTop="@dimen/pub_complaints_et_margin_top"
+                android:hint="@string/enter_your_name"
                 android:inputType="text"
-                android:maxLines="1" />
+                android:maxLines="1"
+                tools:ignore="Autofill" />
+
+            <TextView
+                style="@style/text_view_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pub_complaints_tv_label_margin_top"
+                android:paddingLeft="@dimen/pub_complaints_tv_label_padding_left"
+                android:paddingStart="@dimen/pub_complaints_tv_label_padding_left"
+                android:paddingRight="@dimen/pub_complaints_tv_label_padding_right"
+                android:paddingEnd="@dimen/pub_complaints_tv_label_padding_right"
+                android:text="@string/your_email_id"
+                android:textColor="@color/colorBlack" />
 
             <EditText
                 android:id="@+id/et_your_email_id"
-                style="@style/edit_text_style"
+                style="@style/edit_text_style_drawable"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:hint="@string/your_email_id"
+                android:layout_marginTop="@dimen/pub_complaints_et_margin_top"
+                android:hint="@string/enter_your_email_id"
                 android:inputType="textEmailAddress"
-                android:maxLines="1" />
+                android:maxLines="1"
+                tools:ignore="Autofill" />
+
+            <TextView
+                style="@style/text_view_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pub_complaints_tv_label_margin_top"
+                android:paddingLeft="@dimen/pub_complaints_tv_label_padding_left"
+                android:paddingStart="@dimen/pub_complaints_tv_label_padding_left"
+                android:paddingRight="@dimen/pub_complaints_tv_label_padding_right"
+                android:paddingEnd="@dimen/pub_complaints_tv_label_padding_right"
+                android:text="@string/your_mobile_no"
+                android:textColor="@color/colorBlack" />
 
             <EditText
                 android:id="@+id/et_your_mobile_no"
-                style="@style/edit_text_style"
+                style="@style/edit_text_style_drawable"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:hint="@string/your_mobile_no"
+                android:layout_marginTop="@dimen/pub_complaints_et_margin_top"
+                android:layout_marginBottom="@dimen/pub_complaints_et_margin_bottom"
+                android:hint="@string/enter_your_mobile_no"
                 android:inputType="phone"
                 android:maxLength="10"
-                android:maxLines="1" />
-
-            <TextView
-                android:id="@+id/tv_already_have_an_account"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="@string/false_report_to_police_is_a_punishable_offence"
-                android:textColor="@color/colorRed"
-                android:textStyle="bold|italic" />
+                android:maxLines="1"
+                tools:ignore="Autofill" />
 
             <Button
                 android:id="@+id/btn_submit"
                 style="@style/button_style"
+                android:layout_width="@dimen/button_width"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/pub_complaints_submit_btn_margin_top"
+                android:layout_marginBottom="@dimen/pub_complaints_submit_btn_margin_bottom"
+                android:text="@string/submit" />
+
+            <TextView
+                android:id="@+id/tv_already_have_an_account"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
-                android:text="@string/submit" />
+                android:layout_marginTop="@dimen/pub_complaints_note_text_margin_top"
+                android:layout_marginBottom="@dimen/pub_complaints_note_text_margin_bottom"
+                android:gravity="center_horizontal"
+                android:textSize="@dimen/pub_complaints_note_text_size"
+                android:text="@string/false_report_to_police_is_a_punishable_offence"
+                android:textColor="@color/colorRed" />
 
         </LinearLayout>
 
     </ScrollView>
-
-    <!--<LinearLayout
-        android:id="@+id/ll_btns"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/footer"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp">
-
-        <Button
-            android:id="@+id/btn_submit"
-            style="@style/button_style"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/submit" />
-
-    </LinearLayout>-->
-
-    <TextView
-        android:id="@+id/footer"
-        style="@style/footer_text_style"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
 
 </RelativeLayout>

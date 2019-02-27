@@ -1,15 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/colorPrimary">
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/img_fare_estimation_close"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="4dp"
+        android:contentDescription="@null"
+        android:src="@drawable/ic_close_red" />
 
     <TextView
-        android:id="@+id/tv_vehicle_details"
+        android:id="@+id/tv_fare_estimation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="6dp"
+        android:gravity="center_horizontal"
+        android:paddingStart="12dp"
+        android:paddingLeft="12dp"
+        android:paddingTop="6dp"
+        android:paddingEnd="6dp"
+        android:paddingRight="6dp"
+        android:paddingBottom="6dp"
         android:text="@string/fare_estimation"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="20sp"
@@ -19,9 +34,10 @@
         android:id="@+id/tbl_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tv_vehicle_details"
+        android:layout_below="@id/tv_fare_estimation"
         android:orientation="vertical"
         android:paddingLeft="12dp"
+        android:paddingTop="6dp"
         android:paddingRight="12dp"
         android:shrinkColumns="*"
         android:stretchColumns="*">
@@ -29,7 +45,7 @@
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorBlack">
+            android:background="@color/colorWhite">
 
             <TextView
                 android:layout_width="match_parent"
@@ -39,11 +55,11 @@
                 android:layout_marginTop="1dp"
                 android:layout_marginEnd="1dp"
                 android:layout_marginRight="1dp"
-                android:background="@color/colorWhite"
+                android:background="@color/colorPrimaryDark"
                 android:gravity="center"
                 android:padding="4dp"
-                android:text="Approx. Distance"
-                android:textColor="@color/colorBlack"
+                android:text="@string/approx_distance"
+                android:textColor="@color/colorWhite"
                 android:textStyle="bold" />
 
             <TextView
@@ -54,11 +70,11 @@
                 android:layout_marginTop="1dp"
                 android:layout_marginEnd="1dp"
                 android:layout_marginRight="1dp"
-                android:background="@color/colorWhite"
+                android:background="@color/colorPrimaryDark"
                 android:gravity="center"
                 android:padding="4dp"
-                android:text="Min. Fare"
-                android:textColor="@color/colorBlack"
+                android:text="@string/min_fare"
+                android:textColor="@color/colorWhite"
                 android:textStyle="bold" />
 
             <TextView
@@ -69,21 +85,21 @@
                 android:layout_marginTop="1dp"
                 android:layout_marginEnd="1dp"
                 android:layout_marginRight="1dp"
-                android:background="@color/colorWhite"
+                android:background="@color/colorPrimaryDark"
                 android:gravity="center"
                 android:padding="4dp"
-                android:text="Max. Passengers"
-                android:textColor="@color/colorBlack"
+                android:text="@string/max_passengers"
+                android:textColor="@color/colorWhite"
                 android:textStyle="bold" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorBlack">
+            android:background="@color/colorWhite">
 
             <TextView
-                android:id="@+id/tv_Distance"
+                android:id="@+id/tv_distance"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="1dp"
@@ -92,14 +108,14 @@
                 android:layout_marginEnd="1dp"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                android:background="@color/colorWhite"
+                android:background="@color/colorEdtTxtBg"
                 android:gravity="center"
                 android:padding="4dp"
                 android:text="@string/zero_km"
-                android:textColor="#000000" />
+                android:textColor="@color/colorBlack" />
 
             <TextView
-                android:id="@+id/tv_MinFare"
+                android:id="@+id/tv_min_fare"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="0dp"
@@ -108,10 +124,11 @@
                 android:layout_marginEnd="1dp"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                android:background="@color/colorWhite"
+                android:background="@color/colorEdtTxtBg"
                 android:gravity="center"
                 android:padding="4dp"
-                android:textColor="#000000" />
+                android:text="@string/day_inr"
+                android:textColor="@color/colorBlack" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -122,65 +139,14 @@
                 android:layout_marginEnd="1dp"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                android:background="@color/colorWhite"
+                android:background="@color/colorEdtTxtBg"
                 android:gravity="center"
                 android:padding="4dp"
-                android:text="3"
-                android:textColor="#000000" />
+                android:text="@string/_3"
+                android:textColor="@color/colorBlack" />
         </TableRow>
 
     </TableLayout>
-
-    <!--<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/tbl_layout2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tbl_layout"
-        android:orientation="vertical"
-        android:paddingBottom="12dp"
-        android:paddingLeft="12dp"
-        android:paddingRight="12dp"
-        android:shrinkColumns="1"
-        android:stretchColumns="1">
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorWhite"
-            android:gravity="center">
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/colorWhite"
-                android:hint="Select Destination"
-                android:gravity="center"
-                android:padding="4dp"
-                android:layout_gravity="center"
-                android:textSize="12sp"/>
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorWhite"
-            android:gravity="center">
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/colorWhite"
-                android:hint="Fare Estimation"
-                android:gravity="center"
-                android:padding="4dp"
-                android:layout_gravity="center"
-                android:textSize="12sp"/>
-
-        </TableRow>
-
-
-    </TableLayout>-->
 
     <LinearLayout
         android:id="@+id/lnr_content"
@@ -195,7 +161,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorBlack"
+            android:background="@color/colorWhite"
             android:orientation="vertical">
 
             <EditText
@@ -207,11 +173,12 @@
                 android:layout_marginLeft="1dp"
                 android:layout_marginEnd="1dp"
                 android:layout_marginRight="1dp"
-                android:background="@color/colorWhite"
+                android:background="@color/colorEdtTxtBg"
                 android:gravity="center"
                 android:hint="@string/select_destination"
                 android:padding="4dp"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                tools:ignore="Autofill,TextFields" />
 
             <ListView
                 android:id="@+id/lv_locations"
@@ -225,7 +192,7 @@
                 android:visibility="gone" />
 
             <TextView
-                android:id="@+id/tv_FareEstm"
+                android:id="@+id/tv_fare_estm_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -235,11 +202,11 @@
                 android:layout_marginEnd="1dp"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                android:background="@color/colorWhite"
+                android:background="@color/colorEdtTxtBg"
                 android:gravity="center"
                 android:hint="@string/fare_estimation"
                 android:padding="4dp"
-                android:textColor="#119960"
+                android:textColor="@color/colorApprox"
                 android:textSize="14sp"
                 android:textStyle="bold" />
 
@@ -253,14 +220,14 @@
             android:weightSum="3">
 
             <TextView
-                android:id="@+id/tv_Day"
+                android:id="@+id/tv_day"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:padding="4dp"
-                android:text="Day"
-                android:textColor="@color/colorAccent"
+                android:text="@string/day"
+                android:textColor="@color/colorPrimaryDark"
                 android:textStyle="bold" />
 
             <TextView
@@ -269,30 +236,48 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:padding="4dp"
-                android:text="(OR)"
+                android:text="@string/or"
                 android:textColor="@color/colorBlack" />
 
             <TextView
-                android:id="@+id/tv_Night"
+                android:id="@+id/tv_night"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:padding="4dp"
-                android:text="Night"
-                android:textColor="@color/colorAccent"
+                android:text="@string/night"
+                android:textColor="@color/colorPrimaryDark"
                 android:textStyle="bold" />
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_note_text"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:text="@string/fare_estimation_note"
-            android:textColor="@color/colorBlack"
-            android:textStyle="italic" />
+            android:background="@drawable/layout_border_style"
+            android:orientation="vertical"
+            android:padding="6dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/note"
+                android:textColor="@color/colorRed"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_note_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="6dp"
+                android:paddingRight="6dp"
+                android:paddingBottom="6dp"
+                android:text="@string/fare_estimation_note"
+                android:textColor="@color/colorBlack" />
+
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/ll_public_complaints"
@@ -302,16 +287,18 @@
             android:layout_marginTop="12dp"
             android:gravity="center"
             android:orientation="vertical"
-            android:padding="4dp">
+            android:padding="4dp"
+            tools:ignore="UseCompoundDrawables">
 
             <ImageView
-                android:id="@+id/img_rate_chart"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
+                android:id="@+id/img_public_complaints"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
                 android:contentDescription="@null"
-                android:src="@drawable/ic_public_complaint" />
+                android:src="@drawable/ic_public_complaints_accent" />
 
             <TextView
+                android:id="@+id/tv_public_complaints"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -322,16 +309,5 @@
         </LinearLayout>
 
     </LinearLayout>
-
-    <Button
-        android:id="@+id/btn_fare_estimation_dialog_close"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/lnr_content"
-        android:background="@color/colorBlack"
-        android:text="@string/close"
-        android:textColor="@color/colorWhite"
-        android:textSize="16sp"
-        android:textStyle="bold" />
 
 </RelativeLayout>

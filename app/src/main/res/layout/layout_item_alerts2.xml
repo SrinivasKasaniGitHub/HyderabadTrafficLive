@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/alerts_lyt_item_padding">
+
+    <TextView
+        android:id="@+id/tv_alert_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/alert_text"
+        android:textColor="@color/colorBlack"/>
+
+    <TextView
+        android:id="@+id/tv_alert_updated_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/alerts_date_margin_top"
+        android:text="@string/updated_dt_text"
+        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="italic" />
+
+</LinearLayout>

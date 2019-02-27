@@ -3,119 +3,140 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ic_bg"
     tools:context=".activities.SuggestionsActivity">
 
     <include
-        android:id="@+id/toolbar_main"
+        android:id="@+id/toolbar_suggestions"
         layout="@layout/toolbar_home" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/footer"
-        android:layout_below="@id/toolbar_main">
+        android:layout_below="@id/toolbar_suggestions">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
+            android:layout_margin="@dimen/suggestions_lnr_lyt_margin"
             android:orientation="vertical"
-            tools:ignore="UselessParent">
+            android:padding="@dimen/suggestions_lnr_lyt_padding">
 
             <TextView
-                style="@style/text_view_style"
+                style="@style/text_view_style_heading"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:singleLine="false"
                 android:text="@string/we_are_waiting_for_your_valuable_suggestions"
-                android:textColor="@color/colorAccent" />
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/tv_alert_text"
+                style="@style/text_view_style"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="@string/please_let_us_know_your_valuable_suggestions"
+                android:layout_marginTop="@dimen/pub_complaints_tv_label_margin_top"
+                android:paddingLeft="@dimen/pub_complaints_tv_label_padding_left"
+                android:paddingStart="@dimen/pub_complaints_tv_label_padding_left"
+                android:paddingRight="@dimen/pub_complaints_tv_label_padding_right"
+                android:paddingEnd="@dimen/pub_complaints_tv_label_padding_right"
+                android:text="@string/name"
                 android:textColor="@color/colorBlack" />
 
             <EditText
                 android:id="@+id/et_name"
-                style="@style/edit_text_style"
+                style="@style/edit_text_style_drawable"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:hint="@string/name"
+                android:layout_marginTop="@dimen/pub_complaints_et_margin_top"
+                android:hint="@string/enter_name"
                 android:inputType="text"
-                android:maxLines="1" />
+                android:maxLines="1"
+                tools:ignore="Autofill" />
+
+            <TextView
+                style="@style/text_view_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pub_complaints_tv_label_margin_top"
+                android:paddingLeft="@dimen/pub_complaints_tv_label_padding_left"
+                android:paddingStart="@dimen/pub_complaints_tv_label_padding_left"
+                android:paddingRight="@dimen/pub_complaints_tv_label_padding_right"
+                android:paddingEnd="@dimen/pub_complaints_tv_label_padding_right"
+                android:text="@string/email"
+                android:textColor="@color/colorBlack" />
 
             <EditText
                 android:id="@+id/et_email_id"
-                style="@style/edit_text_style"
+                style="@style/edit_text_style_drawable"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:hint="@string/email"
+                android:layout_marginTop="@dimen/pub_complaints_et_margin_top"
+                android:hint="@string/enter_email"
                 android:inputType="textEmailAddress"
-                android:maxLines="1" />
+                android:maxLines="1"
+                tools:ignore="Autofill" />
+
+            <TextView
+                style="@style/text_view_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pub_complaints_tv_label_margin_top"
+                android:paddingLeft="@dimen/pub_complaints_tv_label_padding_left"
+                android:paddingStart="@dimen/pub_complaints_tv_label_padding_left"
+                android:paddingRight="@dimen/pub_complaints_tv_label_padding_right"
+                android:paddingEnd="@dimen/pub_complaints_tv_label_padding_right"
+                android:text="@string/mobile_no"
+                android:textColor="@color/colorBlack" />
 
             <EditText
                 android:id="@+id/et_contact_no"
-                style="@style/edit_text_style"
+                style="@style/edit_text_style_drawable"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:hint="@string/contact_no"
+                android:layout_marginTop="@dimen/pub_complaints_et_margin_top"
+                android:hint="@string/enter_mobile_no"
                 android:inputType="phone"
-                android:maxLength="10"
-                android:maxLines="1" />
+                android:maxLines="1"
+                tools:ignore="Autofill" />
+
+            <TextView
+                style="@style/text_view_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pub_complaints_tv_label_margin_top"
+                android:paddingLeft="@dimen/pub_complaints_tv_label_padding_left"
+                android:paddingStart="@dimen/pub_complaints_tv_label_padding_left"
+                android:paddingRight="@dimen/pub_complaints_tv_label_padding_right"
+                android:paddingEnd="@dimen/pub_complaints_tv_label_padding_right"
+                android:text="@string/message"
+                android:textColor="@color/colorBlack" />
 
             <EditText
                 android:id="@+id/et_suggestion"
-                style="@style/edit_text_style"
+                style="@style/edit_text_style_square"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginTop="8dp"
-                android:hint="@string/write_a_suggestion"
+                android:layout_height="@dimen/suggestions_et_height"
+                android:layout_marginTop="@dimen/pub_complaints_et_margin_top"
+                android:layout_marginBottom="@dimen/pub_complaints_et_margin_bottom"
+                android:hint="@string/type_a_message"
                 android:inputType="text"
-                android:maxLines="4" />
+                android:maxLines="1"
+                tools:ignore="Autofill" />
 
             <Button
                 android:id="@+id/btn_submit"
                 style="@style/button_style"
-                android:layout_width="match_parent"
+                android:layout_width="@dimen/button_width"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/pub_complaints_submit_btn_margin_top"
+                android:layout_marginBottom="@dimen/pub_complaints_submit_btn_margin_bottom"
                 android:text="@string/submit" />
 
         </LinearLayout>
 
     </ScrollView>
-
-    <!--<LinearLayout
-        android:id="@+id/ll_btns"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/footer"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp">
-
-        <Button
-            android:id="@+id/btn_submit"
-            style="@style/button_style"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/submit" />
-
-    </LinearLayout>-->
-
-    <TextView
-        android:id="@+id/footer"
-        style="@style/footer_text_style"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
 
 </RelativeLayout>

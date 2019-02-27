@@ -8,13 +8,15 @@
     <string name="footer_text">TELANGANA STATE POLICE</string>
     <string name="app_version">1.0.0</string>
     <string name="public_interface">Public Interface</string>
+    <string name="public_interface_caps">PUBLIC INTERFACE</string>
     <string name="auto_fare_estimation">Auto Fare Estimation</string>
     <string name="live_traffic">Live Traffic</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="submit">Submit</string>
     <string name="enter_phone_no">Enter Phone No.</string>
+    <string name="phone_no">Phone No.</string>
     <string name="when_why_whom_and_how">When, Why, Whom and How ?</string>
-    <string name="type_location">Type Location</string>
+    <string name="type_location">Type a Location</string>
     <string name="camera">Camera</string>
     <string name="gallery">Gallery</string>
     <string name="false_report_to_police_is_a_punishable_offence">* Note: False report to police is a punishable offence</string>
@@ -22,30 +24,31 @@
     <string name="get_data">Get Data</string>
     <string name="enter_above_captcha">Enter Above Captcha</string>
     <string name="enter_valid_captcha">Enter Valid Captcha</string>
-    <string name="enter_vehicle_no">Enter Vehicle No.</string>
+    <string name="enter_vehicle_no">Enter Vehicle Number</string>
     <string name="vehicle_details">Vehicle Details</string>
     <string name="captcha_text">14214</string>
     <string name="settings">Settings</string>
     <string name="language">Language</string>
     <string name="home">Home</string>
-    <string name="hyderabad_traffic_live">Hyderabad Traffic Live</string>
+    <string name="hyderabad_traffic_live">HYDERABAD TRAFFIC LIVE</string>
     <string name="public_complaints">Public Complaints</string>
     <string name="public_information">Public Information</string>
     <string name="vehicle_rta_details">Vehicle\nRTA Details</string>
     <string name="find_your_towed_vehicle">Find your\nTowed Vehicle</string>
     <string name="e_challan_status">e-Challan Status</string>
     <string name="near_by">Near by</string>
-    <string name="comment">Comment</string>
+    <string name="comment">Comments</string>
     <string name="enter_driver_name">Enter Drivers Name</string>
     <string name="complaint_type">Complaint Type</string>
     <string name="complaint">Complaint</string>
     <string name="type_a_complaint">Type a complaint</string>
     <string name="cancel">Cancel</string>
+    <string name="neutral">Neutral</string>
     <string name="select_file">Select File</string>
     <string name="browse">Browse</string>
     <string name="regn_no">Regn. No.</string>
     <string name="close">Close</string>
-    <string name="please_contact_htc_room">* Note: Please contact Hyderabad Traffic Control Room at Phone: 9010203626</string>
+    <string name="please_contact_htc_room">* Please contact Hyderabad Traffic Control Room at Phone: 9010203626</string>
     <string name="towed_vehicle_details">Towed Vehicle Details</string>
     <string name="owner_name">Owner Name</string>
     <string name="detained_date">Detained Date</string>
@@ -62,12 +65,12 @@
     <string name="day_inr">Day\n(INR)</string>
     <string name="night_inr">Night\n(INR)</string>
     <string name="note">Note:</string>
-    <string name="auto_fare_chart_note">* Minimum fare: \u20B9 20 for first 1.6km.\n* Fare above minimum fare: \u20B9 11 per km.\n* Waiting charges per hour \u20B9 30.\n* Night charges apply from 11:00pm to 05:00am.</string>
+    <string name="auto_fare_chart_note">1. Minimum fare: \u20B9 20 for first 1.6km.\n2. Fare above minimum fare: \u20B9 11 per km.\n3. Waiting charges per hour \u20B9 30.\n4. Night charges apply from 11:00pm to 05:00am.</string>
     <string name="Rs">\u20B9</string>
     <string name="rs">\u20A8</string>
     <string name="fare_estimation">Fare Estimation</string>
     <string name="select_destination">Select Destination</string>
-    <string name="fare_estimation_note">* Note: The above fare and Kilometers are approx. values, this may vary depends on the route journey, waiting time amd journey time, Fare is subject Local RTA.</string>
+    <string name="fare_estimation_note">* The above fare and Kilometers are approx. values, this may vary depends on the route journey, waiting time amd journey time, Fare is subject Local RTA.</string>
     <string name="title_activity_maps">Map</string>
     <string name="title_activity_liva_traffic">Map</string>
     <string name="enter_source">Enter Source</string>
@@ -80,12 +83,21 @@
     <string name="about_traffic_police">About Traffic Police</string>
     <string name="alert_text">Dt: 12–09–2018 at 09:22 hrs - Slow movement of traffic from Karkhana to Secunderabad club.</string>
     <string name="updated_dt_text">Updated Dt: 12–09–2018 09:25hrs</string>
+    <string name="updated_dt_text2">Updated on\n12/09/2018 09:25</string>
     <string name="load_more"><u>Load More</u></string>
     <string name="we_are_waiting_for_your_valuable_suggestions">We are waiting for your valuable Suggestions</string>
     <string name="please_let_us_know_your_valuable_suggestions">Please let us know your valuable suggestions</string>
     <string name="name">Name</string>
+    <string name="driver_name">Driver\'s Name</string>
     <string name="email">Email</string>
+    <string name="enter_email">Enter email</string>
     <string name="contact_no">Contact No.</string>
+    <string name="mobile_no">Mobile No.</string>
+    <string name="enter_mobile_no">Enter Mobile No.</string>
+    <string name="enter_contact_no">Enter Contact No.</string>
+    <string name="suggestion">Suggestion</string>
+    <string name="message">Message</string>
+    <string name="type_a_message">Type a message</string>
     <string name="write_a_suggestion">Write a Suggestion</string>
     <string name="complaint_against_all_public_services">Complaint against all Public services</string>
     <string name="your_details">Your Details</string>
@@ -139,7 +151,7 @@
             3) It allows sliding on road surfaces\n
             4) It protects the face and temples\n
         The foam liner:This is a molding of polystyrene beads or polyurethane foam. It provides a stopping distance for the head.
-        The foam can compress by 90 Percentage during an impact, although it recovers partially afterwards.
+        The foam can compress by 90% during an impact, although it recovers partially afterwards.
         But this helps increase the stopping distance thus reducing the peak deceleration of the head.
         It also protects as much as possible of the head. Proper strapping system:
         It is essential to wear a well-fitting helmet for the effective working of chinstrap system.
@@ -153,7 +165,7 @@
         Provided further that the state government may, by such rules, provide for such expectations as it may think fit.
         Explanation ? protective headgear ? means a helmet which-By virtue of its shape, material and construction,
         could reasonably be expected to afford to the person driving or riding on a motorcycle a degree of protection
-        from injury in the event of an accident; and is securely fastened to lthe head of the wearer by means of straps or other fastening provided on the headgear.
+        from injury in the event of an accident; and is securely fastened to the head of the wearer by means of straps or other fastening provided on the headgear.
     </string>
 
     <string name="tip_seat_belt">Seat Belt - SEAT BELTS: STAY SAFE AND SECURE:\n A seat belt or seat belt, sometimes called a safety belt,
@@ -184,13 +196,13 @@
             overtaking - as road users underestimate this speed and overestimate the distance of an approaching vehicle. Further, in developing countries
         with a mixed traffic and high volume of vulnerable road users, increased speed has significantly contributed to an
         increasing trend of fatalities on Indian roads.\n
-        Empirical evidence from speed studies has shown that an increase of one KM per hour in mean traffic speed typically results in a 3 Percentage
-        increase in the incidence of injury crashes or an increase of 4 Percentage to 5 Percentage for fatal crashes. Speed has an exponentially detrimental effect on safety.
+        Empirical evidence from speed studies has shown that an increase of one KM per hour in mean traffic speed typically results in a 3%
+        increase in the incidence of injury crashes or an increase of 4% to 5% for fatal crashes. Speed has an exponentially detrimental effect on safety.
         As speed increase so do the number and severity of injuries. Studies show that the higher the impact speed the greater the likelihood of serious and
         fatal injuries.\n
-        1) For car occupant, an increase in speed from 20 Kms to 100 Kms, the probability of fatal injuries increases from close to zero to almost 100 Percentage.\n
+        1) For car occupant, an increase in speed from 20 Kms to 100 Kms, the probability of fatal injuries increases from close to zero to almost 100%.\n
         2) The probability of serious injury for belted front seat occupants is three times as great at 48 km/hrs. and four times as great at 64 km/hr., compared with the risk at 32 km/hr.\n
-        3) Pedestrians have a 90 Percentage chance of surviving car crashes at 30 km/hrs. Or below, but less than a 50 Percentage chance of surviving impacts at 45 km/hrs. or above.\n
+        3) Pedestrians have a 90% chance of surviving car crashes at 30 km/hrs. Or below, but less than a 50% chance of surviving impacts at 45 km/hrs. or above.\n
         4) The probability of pedestrians being killed rises by a factor of 8 as the impact speed of the car increases from 30 km/hr. to 50 km/hr.\n
         Older pedestrians are even more physically vulnerable as speed increases. SPEEDING CAN BE A CAUSE OF SEVERE CRASH\n
         1) Drivers get lesser time to avoid mishap and the stopping distance lengthens which increases both the likelihood of crashing and the severity of the crashes.\n
@@ -210,6 +222,7 @@
     </string>
     <string name="dummy_phone_no">9985672798</string>
     <string name="no_details_found">No details found !</string>
+    <string name="no_address_returned">No address returned !</string>
     <string name="about_htp_text">Hyderabad Traffic Live Mobile application is a bridge between Hyderabad Traffic Police and traffic commuters for getting immediate information. Main aim of Hyderabad Traffic Police is commuters to have traffic police information on their hands, with this Hyderabad Traffic Live mobile application commuters or users can easily get the information about local traffic police station address with concern officer contact numbers to know traffic rules and regulations, road safety tips, emergency contact information, traffic violation fines, vehicle towed status, auto fare, etc., Moreover mobile users can see live traffic view.</string>
     <string name="traffic_cell">TRAFFIC CELL</string>
     <string name="network_error">Network Error, Please check your internet connection</string>
@@ -218,6 +231,7 @@
     <string name="permission_denied">Permission denied</string>
     <string name="please_wait">Please wait…</string>
     <string name="error">Error !</string>
+    <string name="success">Success</string>
     <string name="empty_response">Empty response</string>
     <string name="something_went_wrong">Something went wrong !</string>
     <string name="parking_details">Parking Details</string>
@@ -237,16 +251,19 @@
     <string name="search_contact_no">Search Contact Number</string>
     <string name="zero_km">0.0 km</string>
     <string name="please_select_destination_place">Please select destination place</string>
-    <string name="day_price">Rs: 20 in Day</string>
-    <string name="night_price">Rs: 30 in Night</string>
+    <string name="day_price">Rs: 20\n in Day</string>
+    <string name="night_price">Rs: 30\n in Night</string>
     <string name="user_canceled_the_operation">User canceled the operation</string>
     <string name="please_select_category">Please select category</string>
     <string name="please_attach_photo">Please select photo</string>
     <string name="please_select_the_reason">Please select the reason</string>
     <string name="please_enter_phone_no">Please enter phone no.</string>
+    <string name="please_type_a_reason">Please type a Reason</string>
     <string name="please_enter_a_location">Please enter a location</string>
     <string name="enter_complaint">Enter Complaint</string>
+    <string name="enter_comment">Enter Comment</string>
     <string name="enter_complaint_type">Enter Complaint type</string>
+    <string name="enter_name">Enter name</string>
     <string name="enter_your_name">Enter your Name</string>
     <string name="enter_your_email_id">Enter your Email ID</string>
     <string name="enter_your_mobile_no">Enter your Mobile No.</string>
@@ -259,6 +276,28 @@
     <string name="ready_to_recieve_push_notifications">Ready to receive Push Notifications</string>
     <string name="gcm_registration_error">GCM Registration Error!</string>
     <string name="error_occured">Error Occurred</string>
+    <string name="you_are_here">You are here</string>
+    <string name="ok">OK</string>
+    <string name="reason">Reason</string>
+    <string name="s_no">S.NO</string>
+    <string name="name_of_the_offence">Name of the Offence</string>
+    <string name="penal_section">Penal Section</string>
+    <string name="amount">Amount (INR)</string>
+    <string name="saved">Saved</string>
+    <string name="please_enter_remarks">Please enter Remarks</string>
+    <string name="approx_distance">Approx. Distance</string>
+    <string name="min_fare">Min. Fare</string>
+    <string name="max_passengers">Max. Passengers</string>
+    <string name="_3">3</string>
+    <string name="rs_58_64_approximately">Rs. 58 – 64 Approximately</string>
+    <string name="secunderabad_telangana_india">Secunderabad, Telangana, India.</string>
+    <string name="day">Day</string>
+    <string name="or">(OR)</string>
+    <string name="night">Night</string>
+    <string name="vehicle_number">Vehicle Number</string>
+    <string name="question">Question</string>
+    <string name="answer">Answer</string>
+    <string name="_12345">12345</string>
 
     <string-array name="categories">
         <item>-- Select Category --</item>

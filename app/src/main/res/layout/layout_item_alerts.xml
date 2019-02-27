@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/alerts_lyt_item_padding">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true">
+
+        <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_margin="@dimen/dashboard_card_view_margin"
+            android:foreground="?android:attr/selectableItemBackground"
+            card_view:cardBackgroundColor="@color/cardview_light_background"
+            card_view:cardCornerRadius="@dimen/alerts_lyt_item_card_view_corners">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_alert_text_left"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="16dp"
+                    android:paddingLeft="16dp"
+                    android:paddingTop="16dp"
+                    android:paddingEnd="120dp"
+                    android:paddingRight="120dp"
+                    android:paddingBottom="16dp"
+                    android:text="@string/alert_text"
+                    android:textColor="@color/colorBlack"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/tv_alert_text_right"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="120dp"
+                    android:paddingLeft="120dp"
+                    android:paddingTop="16dp"
+                    android:paddingEnd="16dp"
+                    android:paddingRight="16dp"
+                    android:paddingBottom="16dp"
+                    android:text="@string/alert_text"
+                    android:textColor="@color/colorBlack"
+                    android:visibility="gone" />
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/img_shape_left"
+        android:layout_width="110dp"
+        android:layout_height="150dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:contentDescription="@null"
+        android:src="@drawable/ic_alerts_left_shape"
+        android:visibility="gone" />
+
+    <RelativeLayout
+        android:id="@+id/rel_lyt_updated_date_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:gravity="center"
+        android:visibility="gone"
+        tools:ignore="RelativeOverlap">
+
+        <TextView
+            android:id="@+id/tv_updated_date_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/updated_dt_text2"
+            android:textColor="@color/colorWhite"
+            android:textSize="10sp" />
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/img_shape_right"
+        android:layout_width="110dp"
+        android:layout_height="150dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:contentDescription="@null"
+        android:src="@drawable/ic_alerts_right_shape"
+        android:visibility="visible" />
+
+    <RelativeLayout
+        android:id="@+id/rel_lyt_updated_date_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:gravity="center"
+        android:visibility="visible"
+        tools:ignore="RelativeOverlap">
+
+        <TextView
+            android:id="@+id/tv_updated_date_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/updated_dt_text2"
+            android:textColor="@color/colorWhite"
+            android:textSize="10sp" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

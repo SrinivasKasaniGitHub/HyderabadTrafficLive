@@ -14,7 +14,7 @@ import android.widget.ImageView;
 import com.tspolice.htplive.R;
 import com.tspolice.htplive.activities.FAQsActivity;
 import com.tspolice.htplive.activities.RoadSafetyTipsActivity;
-import com.tspolice.htplive.activities.TrafficViolationsActivity;
+import com.tspolice.htplive.activities.TrViolationsActivity;
 import com.tspolice.htplive.activities.UsefulWebsitesActivity;
 import com.tspolice.htplive.network.Networking;
 import com.tspolice.htplive.network.URLs;
@@ -62,7 +62,7 @@ public class RulesInformationFrag extends Fragment implements
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.iv_traffic_violations_fines:
-                nextActivity(TrafficViolationsActivity.class);
+                nextActivity(TrViolationsActivity.class);
                 break;
             case R.id.iv_useful_websites:
                 nextActivity(UsefulWebsitesActivity.class);
@@ -87,7 +87,7 @@ public class RulesInformationFrag extends Fragment implements
 
     public void nextActivity(Class<?> mClass) {
         if (!Networking.isNetworkAvailable(getActivity())) {
-            mUiHelper.showToastLong(getResources().getString(R.string.network_error));
+            mUiHelper.showToastLongCentre(getResources().getString(R.string.network_error));
         } else {
             mUiHelper.intent(mClass);
         }

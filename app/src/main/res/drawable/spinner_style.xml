@@ -4,19 +4,22 @@
         <shape>
             <solid android:color="@color/colorWhite" />
             <padding
-                android:bottom="2dp"
+                android:bottom="4dp"
                 android:left="8dp"
                 android:right="8dp"
-                android:top="2dp" />
+                android:top="4dp" />
+
             <stroke
-                android:width="0.05dp"
-                android:color="@color/colorStroke" />
-            <corners android:radius="5dp" />
+                android:width="0dp"
+                android:color="@color/colorEdtTxtBg" />
+
+            <corners android:radius="24dp" />
+
             <gradient
                 android:angle="270"
-                android:centerColor="@color/colorWhite"
-                android:endColor="@color/colorWhite"
-                android:startColor="@color/colorWhite"
+                android:centerColor="@color/colorEdtTxtBg"
+                android:endColor="@color/colorEdtTxtBg"
+                android:startColor="@color/colorEdtTxtBg"
                 android:type="linear" />
         </shape>
     </item>

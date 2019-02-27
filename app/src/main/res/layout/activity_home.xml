@@ -6,14 +6,14 @@
     tools:context=".activities.HomeActivity">
 
     <include
-        android:id="@+id/toolbar_main"
+        android:id="@+id/toolbar_home"
         layout="@layout/toolbar_home" />
 
     <FrameLayout
         android:id="@+id/content_frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/toolbar_main"
+        android:layout_below="@+id/toolbar_home"
         android:layout_above="@id/footer"/>
 
     <TextView

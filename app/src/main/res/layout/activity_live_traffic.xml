@@ -6,49 +6,58 @@
     tools:context=".activities.LiveTrafficActivity">
 
     <LinearLayout
+        android:id="@+id/lnr_lyt_source_destination"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/footer"
-        android:layout_alignParentTop="true"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/header_background">
+
+        <EditText
+            android:id="@+id/et_source"
+            style="@style/edit_text_style_square"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/live_traffic_source_et_margin_left"
+            android:layout_marginLeft="@dimen/live_traffic_source_et_margin_left"
+            android:layout_marginTop="@dimen/live_traffic_source_et_margin_top"
+            android:layout_marginEnd="@dimen/live_traffic_source_et_margin_right"
+            android:layout_marginRight="@dimen/live_traffic_source_et_margin_right"
+            android:hint="@string/enter_source"
+            android:inputType="text"
+            android:maxLines="1"
+            tools:ignore="Autofill" />
+
+        <EditText
+            android:id="@+id/et_destination"
+            style="@style/edit_text_style_square"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/live_traffic_destination_et_margin_left"
+            android:layout_marginLeft="@dimen/live_traffic_destination_et_margin_left"
+            android:layout_marginTop="@dimen/live_traffic_destination_et_margin_top"
+            android:layout_marginEnd="@dimen/live_traffic_destination_et_margin_right"
+            android:layout_marginRight="@dimen/live_traffic_destination_et_margin_right"
+            android:layout_marginBottom="@dimen/live_traffic_destination_et_margin_bottom"
+            android:hint="@string/enter_destination"
+            android:inputType="text"
+            android:maxLines="1"
+            tools:ignore="Autofill" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_below="@+id/lnr_lyt_source_destination"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <fragment xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:tools="http://schemas.android.com/tools"
             android:id="@+id/map"
             android:name="com.google.android.gms.maps.SupportMapFragment"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
 
-    </LinearLayout>
-
-    <EditText
-        android:id="@+id/et_source"
-        style="@style/edit_text_style"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="12dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginRight="12dp"
-        android:layout_marginEnd="12dp"
-        android:hint="@string/enter_source"
-        android:inputType="text"
-        android:maxLines="1" />
-
-    <EditText
-        android:id="@+id/et_destination"
-        style="@style/edit_text_style"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/et_source"
-        android:layout_marginTop="6dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginRight="12dp"
-        android:layout_marginEnd="12dp"
-        android:hint="@string/enter_destination"
-        android:inputType="text"
-        android:maxLines="1" />
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -59,18 +68,11 @@
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/img_rate_chart"
-            android:layout_width="40dp"
+            android:layout_width="@dimen/live_traffic_tr_img_width"
             android:layout_height="wrap_content"
             android:contentDescription="@null"
             android:src="@drawable/ic_traffic_movement" />
 
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/footer"
-        style="@style/footer_text_style"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
 
 </RelativeLayout>

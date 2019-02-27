@@ -1,0 +1,30 @@
+{
+  "destination_addresses" : [
+    "Regimental Bazar Main Rd, Regimental Bazaar, Shivaji Nagar, Secunderabad, Telangana 500003, India"
+  ],
+  "origin_addresses" : [
+    "3-6-345/D, Avanti Nagar, Basheer Bagh, Hyderabad, Telangana 500029, India"
+  ],
+  "rows" : [
+    {
+      "elements" : [
+        {
+          "distance" : {
+            "text" : "6.3 km",
+            "value" : 6259
+          },
+          "duration" : {
+            "text" : "20 mins",
+            "value" : 1171
+          },
+          "duration_in_traffic" : {
+            "text" : "24 mins",
+            "value" : 1466
+          },
+          "status" : "OK"
+        }
+      ]
+    }
+  ],
+  "status" : "OK"
+}

@@ -10,6 +10,7 @@ import android.widget.FrameLayout;
 
 import com.tspolice.htplive.R;
 import com.tspolice.htplive.fragments.HomeFragment;
+import com.tspolice.htplive.utils.Constants;
 import com.tspolice.htplive.utils.UiHelper;
 
 public class HomeActivity extends AppCompatActivity {
@@ -26,7 +27,7 @@ public class HomeActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         mFragmentManager = getSupportFragmentManager();
-        mUiHelper = new UiHelper(this);
+        mUiHelper = new UiHelper(HomeActivity.this);
 
         FrameLayout frameLayout =  findViewById(R.id.content_frame);
         overridePendingTransition(R.anim.fade_enter, R.anim.fade_leave);
@@ -45,17 +46,9 @@ public class HomeActivity extends AppCompatActivity {
     public void onBackPressed() {
         Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.content_frame);
         if (fragment instanceof HomeFragment) {
-            mUiHelper.alertDialogOkCancel(getResources().getString(R.string.do_you_want_exit), false, "HOME");
+            mUiHelper.alertDialogOkCancel(getResources().getString(R.string.do_you_want_exit), false, Constants.HOME);
         } else {
             super.onBackPressed();
         }
     }
-
-    /*public void setTitle(int resource) {
-        Objects.requireNonNull(((AppCompatActivity) getApplicationContext()).getSupportActionBar()).setTitle(resource);
-    }
-
-    public void setSubTitle(int resource) {
-        Objects.requireNonNull(((AppCompatActivity) getApplicationContext()).getSupportActionBar()).setSubtitle(resource);
-    }*/
 }

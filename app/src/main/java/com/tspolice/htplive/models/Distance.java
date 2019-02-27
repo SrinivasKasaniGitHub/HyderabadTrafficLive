@@ -2,7 +2,8 @@ package com.tspolice.htplive.models;
 
 public class Distance {
 
-    private String text, value;
+    private String text;
+    private String value;
 
     public String getText() {
         return text;

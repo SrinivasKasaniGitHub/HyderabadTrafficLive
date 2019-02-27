@@ -1,9 +1,27 @@
 [
-	{"id" :1,"question":"What documents should a driver carry when driving?"},
-	{"id" :2,"question":"Is it Mandatory to carry Original Documents and license?"},
-	{"id" :3,"question":"What is the rule for use of mobile phone while driving?"},
-	{"id" :4,"question":"Can other occupants of the motor vehicle use the mobile phone?"},
-	{"id" :5,"question":"Under what conditions is the towing of a vehicle allowed? "},
-	{"id" :6,"question":"Is wearing helmet compulsory for Scooter and Motorcycle riders? "}
+  {
+    "id": 1,
+    "question": "What documents should a driver carry when driving?"
+  },
+  {
+    "id": 2,
+    "question": "Is it Mandatory to carry Original Documents and license?"
+  },
+  {
+    "id": 3,
+    "question": "What is the rule for use of mobile phone while driving?"
+  },
+  {
+    "id": 4,
+    "question": "Can other occupants of the motor vehicle use the mobile phone?"
+  },
+  {
+    "id": 5,
+    "question": "Under what conditions is the towing of a vehicle allowed? "
+  },
+  {
+    "id": 6,
+    "question": "Is wearing helmet compulsory for Scooter and Motorcycle riders? "
+  }
 ]
 

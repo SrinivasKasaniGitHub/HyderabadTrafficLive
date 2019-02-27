@@ -24,26 +24,20 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.VolleyLog;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.tspolice.htplive.R;
 import com.tspolice.htplive.network.URLParams;
 import com.tspolice.htplive.network.URLs;
-import com.tspolice.htplive.network.VolleyMultipartRequest;
 import com.tspolice.htplive.network.VolleySingleton;
 import com.tspolice.htplive.utils.Constants;
 import com.tspolice.htplive.utils.PermissionUtil;
 import com.tspolice.htplive.utils.SharedPrefManager;
 import com.tspolice.htplive.utils.UiHelper;
+import com.tspolice.htplive.utils.ValidationUtils;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
@@ -51,11 +45,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.URL;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class PublicInterfaceActivity extends AppCompatActivity implements
@@ -65,10 +55,11 @@ public class PublicInterfaceActivity extends AppCompatActivity implements
     private static final String TAG = "PublicInterfaceFrag-->";
     private UiHelper mUiHelper;
     private Spinner spinner_category;
-    private ImageView iv_camera, iv_gallery, iv_display;
-    EditText et_when_why_whom_and_how, et_phone_no, et_location;
+    private ImageView iv_camera, iv_gallery, iv_display, iv_arrow_next;
+    private EditText et_when_why_whom_and_how, et_phone_no, et_reason, et_location;
+    private View view;
     private Button btn_submit;
-    private String imageFlag = "0", imageData = "", category = "", remarks, phoneNo, location;
+    private String imageFlag = "0", imageData = "", category = "";
     private SharedPrefManager mSharedPrefManager;
 
     @Override
@@ -93,7 +84,8 @@ public class PublicInterfaceActivity extends AppCompatActivity implements
         iv_camera.setOnClickListener(this);
         iv_gallery.setOnClickListener(this);
 
-        btn_submit.setOnClickListener(this);
+        //btn_submit.setOnClickListener(this);
+        iv_arrow_next.setOnClickListener(this);
     }
 
     private void initViews() {
@@ -102,12 +94,14 @@ public class PublicInterfaceActivity extends AppCompatActivity implements
         iv_camera = findViewById(R.id.iv_camera);
         iv_gallery = findViewById(R.id.iv_gallery);
         iv_display = findViewById(R.id.iv_display);
+        iv_arrow_next = findViewById(R.id.iv_arrow_next);
 
         et_when_why_whom_and_how = findViewById(R.id.et_when_why_whom_and_how);
         et_phone_no = findViewById(R.id.et_phone_no);
+        et_reason = findViewById(R.id.et_reason);
         et_location = findViewById(R.id.et_location);
-
-        btn_submit = findViewById(R.id.btn_submit);
+        view = findViewById(R.id.view);
+        //btn_submit = findViewById(R.id.btn_submit);
     }
 
     private void initObjects() {
@@ -117,7 +111,6 @@ public class PublicInterfaceActivity extends AppCompatActivity implements
 
     @Override
     public void onClick(View v) {
-        final String finalCategory = "-- Select Category --", finalImageFlag = "0";
         switch (v.getId()) {
             case R.id.iv_camera:
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -155,22 +148,32 @@ public class PublicInterfaceActivity extends AppCompatActivity implements
                     PermissionUtil.redirectAppSettings(this);
                 }
                 break;
-            case R.id.btn_submit:
-                remarks = et_when_why_whom_and_how.getText().toString();
-                phoneNo = et_phone_no.getText().toString().trim();
-                location = et_location.getText().toString();
-                if (finalImageFlag.equals(imageFlag)) {
-                    mUiHelper.showToastShort(getString(R.string.please_attach_photo));
-                } else if (finalCategory.equals(category)) {
-                    mUiHelper.showToastShort(getString(R.string.please_select_category));
+            case R.id.iv_arrow_next:
+                String remarks = et_when_why_whom_and_how.getText().toString();
+                String phoneNo = et_phone_no.getText().toString().trim();
+                String reason = et_reason.getText().toString().trim();
+                String location = et_location.getText().toString();
+                if (Constants.finalImageFlag.equals(imageFlag)) {
+                    mUiHelper.showToastShortCentre(getString(R.string.please_attach_photo));
+                } else if (Constants.finalCategory.equals(category)) {
+                    mUiHelper.showToastShortCentre(getString(R.string.please_select_category));
                 } else if (remarks.isEmpty()) {
-                    mUiHelper.showToastShort(getString(R.string.please_select_the_reason));
+                    mUiHelper.showToastShortCentre(getString(R.string.please_enter_remarks));
+                    mUiHelper.requestFocus(et_when_why_whom_and_how);
                 } else if (phoneNo.isEmpty()) {
-                    mUiHelper.showToastShort(getString(R.string.please_enter_phone_no));
+                    mUiHelper.showToastShortCentre(getString(R.string.please_enter_phone_no));
+                    mUiHelper.requestFocus(et_phone_no);
+                } else if (!ValidationUtils.isValidMobile(phoneNo)) {
+                    mUiHelper.showToastShortCentre(getString(R.string.enter_valid_contact_no));
+                    mUiHelper.requestFocus(et_phone_no);
+                } else if (reason.isEmpty()) {
+                    mUiHelper.showToastShortCentre(getString(R.string.please_type_a_reason));
+                    mUiHelper.requestFocus(et_reason);
                 } else if (location.isEmpty()) {
-                    mUiHelper.showToastShort(getString(R.string.please_enter_a_location));
+                    mUiHelper.showToastShortCentre(getString(R.string.please_enter_a_location));
+                    mUiHelper.requestFocus(et_location);
                 } else {
-                    saveCapturedImage();
+                    saveCapturedImage(remarks, phoneNo, reason, location);
                 }
                 break;
             default:
@@ -178,17 +181,18 @@ public class PublicInterfaceActivity extends AppCompatActivity implements
         }
     }
 
-    private void saveCapturedImage() {
+    // finished with test url
+    private void saveCapturedImage(String remarks, String phoneNo, String reason, String location) {
         mUiHelper.showProgressDialog(getResources().getString(R.string.please_wait), false);
         JSONObject jsonRequest;
         final String mRequestBody;
         Map<String, String> params = new HashMap<>();
-        params.put(URLParams.mobileNumber, phoneNo);
-        params.put(URLParams.geoLocation, location);
-        params.put(URLParams.remarks, remarks);
-        params.put(URLParams.category, category);
         params.put(URLParams.image, imageData);
-        params.put(URLParams.reason, "It is a Sample Reason");
+        params.put(URLParams.category, category);
+        params.put(URLParams.remarks, remarks);
+        params.put(URLParams.mobileNumber, phoneNo);
+        params.put(URLParams.reason, reason);
+        params.put(URLParams.geoLocation, location);
         jsonRequest = new JSONObject(params);
         mRequestBody = jsonRequest.toString();
 
@@ -197,71 +201,38 @@ public class PublicInterfaceActivity extends AppCompatActivity implements
                     @Override
                     public void onResponse(String response) {
                         mUiHelper.dismissProgressDialog();
-                        mUiHelper.showToastLong(response);
+                        mUiHelper.showToastShortCentre(response);
+                        Log.i(TAG, "response-->"+response);
+                        imageData = "";
+                        imageFlag = "0";
+                        iv_display.setImageDrawable(getResources().getDrawable(R.drawable.ic_gallery2));
+                        iv_display.setVisibility(View.GONE);
+                        view.setVisibility(View.VISIBLE);
+                        spinner_category.setSelection(0);
+                        et_when_why_whom_and_how.setText("");
+                        et_when_why_whom_and_how.setHint(getString(R.string.when_why_whom_and_how));
+                        et_phone_no.setText("");
+                        et_phone_no.setHint(getString(R.string.phone_no));
+                        et_reason.setText("");
+                        et_reason.setHint(getString(R.string.reason));
+                        et_location.setText("");
+                        et_location.setHint(getString(R.string.type_location));
                     }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        mUiHelper.dismissProgressDialog();
-                        mUiHelper.showToastShort(getResources().getString(R.string.error));
-                    }
-                }) {
+                }, new Response.ErrorListener() {
             @Override
-            public String getBodyContentType() {
-                return URLs.contentType;
+            public void onErrorResponse(VolleyError error) {
+                mUiHelper.dismissProgressDialog();
+                mUiHelper.showToastShortCentre(getResources().getString(R.string.error));
+                Log.i(TAG, "response-->"+error.toString());
             }
-
-            @Override
-            public byte[] getBody() {
-                try {
-                    return mRequestBody == null ? null : mRequestBody.getBytes(URLs.utf_8);
-                } catch (UnsupportedEncodingException uee) {
-                    VolleyLog.wtf(URLs.unSupportedEncodingException, mRequestBody, "utf-8");
-                    return null;
-                }
-            }
-        });
-
-        /*VolleyMultipartRequest multipartRequest = new VolleyMultipartRequest(Request.Method.POST,
-                URLs.saveCapturedImage,
-                new Response.Listener<NetworkResponse>() {
-                    @Override
-                    public void onResponse(NetworkResponse response) {
-                        mUiHelper.dismissProgressDialog();
-                        Log.d(TAG, "onResponse() called with: response = [" + response + "]");
-                        try {
-                            JSONObject obj = new JSONObject(response.toString());
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.d(TAG, "onErrorResponse() called with: error = [" + error + "]");
-                    }
-                }) {
+        }) {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
-                params.put("mobileNumber", phoneNo);
-                params.put("geoLocation", location);
-                params.put("remarks", remarks);
-                params.put("category", "Traffic Violation");
+                params.put(URLParams.jsonData, mRequestBody);
                 return params;
             }
-
-            @Override
-            protected Map<String, VolleyMultipartRequest.DataPart> getByteData() {
-                Map<String, DataPart> params = new HashMap<>();
-                long imagename = System.currentTimeMillis();
-                params.put("image", new DataPart(imagename + ".png", getFileDataFromDrawable(bitmap)));
-                return params;
-            }
-        };
-        Volley.newRequestQueue(this).add(multipartRequest);*/
+        });
     }
 
     public byte[] getFileDataFromDrawable(Bitmap bitmap) {
@@ -296,14 +267,14 @@ public class PublicInterfaceActivity extends AppCompatActivity implements
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     openCamera();
                 } else {
-                    mUiHelper.showToastShort(getResources().getString(R.string.permission_denied));
+                    mUiHelper.showToastLongCentre(getResources().getString(R.string.permission_denied));
                 }
                 break;
             case Constants.REQUEST_STORAGE:
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     openGallery();
                 } else {
-                    mUiHelper.showToastShort(getResources().getString(R.string.permission_denied));
+                    mUiHelper.showToastLongCentre(getResources().getString(R.string.permission_denied));
                 }
                 break;
             default:
@@ -360,6 +331,7 @@ public class PublicInterfaceActivity extends AppCompatActivity implements
         }
         imageFlag = "1";
         iv_display.setVisibility(View.VISIBLE);
+        view.setVisibility(View.GONE);
         iv_display.setImageBitmap(bitmap);
         imageData = bitmapToString(bitmap);
         Log.i(TAG, "imageData-->" + imageData);
@@ -376,6 +348,7 @@ public class PublicInterfaceActivity extends AppCompatActivity implements
         }
         imageFlag = "2";
         iv_display.setVisibility(View.VISIBLE);
+        view.setVisibility(View.GONE);
         iv_display.setImageBitmap(bitmap);
         imageData = bitmapToString(bitmap);
         Log.i(TAG, "imageData-->" + imageData);

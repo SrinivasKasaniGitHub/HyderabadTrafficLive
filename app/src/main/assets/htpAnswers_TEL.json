@@ -1,38 +1,33 @@
-[   
-   {
-	"question_1":
-		
-		  { "answer":"Original Driving License,Original Registration Certificate,Taxation Certificate,Emission Test Certificate,Insurance Certificate,Fitness Certificate & Permit (in case of transport vehicles)"}
-		
-   },
-   {
-	"question_2":
-		
-		   {"answer":"Yes"}
-		
-   },
-   {
-	"question_3":
-				   {"answer":"No driver while driving a motor vehicle shall use a mobile phone. (250 (A) MMVR, r/w 177 M.V.Act)"}
-		
-   },
-   {
-	"question_4":
-		
-		   {"answer":"Yes. Other than driver, occupants of the motor vehicle can use mobile phone"}
-		
-   },
-   {
-	"question_5":
-		
-		   {"answer":"Abandoned vehicle or unattended vehicle or Parked in a parking restricted zone or Parked in a way causing obstruction to other road user can be towed away."}
-		
-   },
-   {
-	"question_6":
-		
-		   {"answer":"Yes. Wearing helmet is compulsory. Violators will be charged U/sec.129/177 of M.V.Act-1988 for which Compounding Amount is Rs.100/- "}
-		
-   }
+[
+  {
+    "question_1": {
+      "answer": "Original Driving License,Original Registration Certificate,Taxation Certificate,Emission Test Certificate,Insurance Certificate,Fitness Certificate & Permit (in case of transport vehicles)"
+    }
+  },
+  {
+    "question_2": {
+      "answer": "Yes"
+    }
+  },
+  {
+    "question_3": {
+      "answer": "No driver while driving a motor vehicle shall use a mobile phone. (250 (A) MMVR, r/w 177 M.V.Act)"
+    }
+  },
+  {
+    "question_4": {
+      "answer": "Yes. Other than driver, occupants of the motor vehicle can use mobile phone"
+    }
+  },
+  {
+    "question_5": {
+      "answer": "Abandoned vehicle or unattended vehicle or Parked in a parking restricted zone or Parked in a way causing obstruction to other road user can be towed away."
+    }
+  },
+  {
+    "question_6": {
+      "answer": "Yes. Wearing helmet is compulsory. Violators will be charged U/sec.129/177 of M.V.Act-1988 for which Compounding Amount is Rs.100/- "
+    }
+  }
 ]
 

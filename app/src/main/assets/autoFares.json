@@ -1,31 +1,142 @@
 [
-	{"meter":1.6,"day":20.0,"night":30.0},
-	{"meter":2.1,"day":25.5,"night":38.0},
-	{"meter":2.6,"day":31.0,"night":46.5},
-	{"meter":3.1,"day":36.5,"night":55.0},
-	{"meter":3.6,"day":42.0,"night":63.0},
-	{"meter":4.1,"day":47.5,"night":71.0},
-	{"meter":4.6,"day":53.0,"night":80.0},
-	{"meter":5.1,"day":58.5,"night":88.0},
-	{"meter":5.6,"day":64.0,"night":96.0},
-	{"meter":6.1,"day":69.5,"night":104.0},
-	{"meter":6.6,"day":75.0,"night":112.5},
-	{"meter":7.1,"day":80.5,"night":121.0},
-	{"meter":7.6,"day":86.0,"night":129.0},
-	{"meter":8.1,"day":91.5,"night":137.0},
-	{"meter":8.6,"day":97.0,"night":146.0},
-	{"meter":9.1,"day":102.5,"night":154.0},
-	{"meter":9.6,"day":108.0,"night":162.0},
-	{"meter":10.1,"day":113.5,"night":170.0},
-	{"meter":10.6,"day":119.0,"night":178.5},
-	{"meter":11.1,"day":124.5,"night":187.0},
-	{"meter":11.6,"day":130.0,"night":195.0},
-	{"meter":12.1,"day":135.5,"night":203.0},
-	{"meter":12.6,"day":141.0,"night":211.5},
-	{"meter":13.1,"day":146.5,"night":220.0},
-	{"meter":13.6,"day":152.0,"night":228.0},
-	{"meter":14.1,"day":157.5,"night":236.0},
-	{"meter":14.6,"day":163.0,"night":244.5},
-	{"meter":15,"day":170,"night":250}
-
+  {
+    "meter": 1.6,
+    "day": 20.0,
+    "night": 30.0
+  },
+  {
+    "meter": 2.1,
+    "day": 25.5,
+    "night": 38.0
+  },
+  {
+    "meter": 2.6,
+    "day": 31.0,
+    "night": 46.5
+  },
+  {
+    "meter": 3.1,
+    "day": 36.5,
+    "night": 55.0
+  },
+  {
+    "meter": 3.6,
+    "day": 42.0,
+    "night": 63.0
+  },
+  {
+    "meter": 4.1,
+    "day": 47.5,
+    "night": 71.0
+  },
+  {
+    "meter": 4.6,
+    "day": 53.0,
+    "night": 80.0
+  },
+  {
+    "meter": 5.1,
+    "day": 58.5,
+    "night": 88.0
+  },
+  {
+    "meter": 5.6,
+    "day": 64.0,
+    "night": 96.0
+  },
+  {
+    "meter": 6.1,
+    "day": 69.5,
+    "night": 104.0
+  },
+  {
+    "meter": 6.6,
+    "day": 75.0,
+    "night": 112.5
+  },
+  {
+    "meter": 7.1,
+    "day": 80.5,
+    "night": 121.0
+  },
+  {
+    "meter": 7.6,
+    "day": 86.0,
+    "night": 129.0
+  },
+  {
+    "meter": 8.1,
+    "day": 91.5,
+    "night": 137.0
+  },
+  {
+    "meter": 8.6,
+    "day": 97.0,
+    "night": 146.0
+  },
+  {
+    "meter": 9.1,
+    "day": 102.5,
+    "night": 154.0
+  },
+  {
+    "meter": 9.6,
+    "day": 108.0,
+    "night": 162.0
+  },
+  {
+    "meter": 10.1,
+    "day": 113.5,
+    "night": 170.0
+  },
+  {
+    "meter": 10.6,
+    "day": 119.0,
+    "night": 178.5
+  },
+  {
+    "meter": 11.1,
+    "day": 124.5,
+    "night": 187.0
+  },
+  {
+    "meter": 11.6,
+    "day": 130.0,
+    "night": 195.0
+  },
+  {
+    "meter": 12.1,
+    "day": 135.5,
+    "night": 203.0
+  },
+  {
+    "meter": 12.6,
+    "day": 141.0,
+    "night": 211.5
+  },
+  {
+    "meter": 13.1,
+    "day": 146.5,
+    "night": 220.0
+  },
+  {
+    "meter": 13.6,
+    "day": 152.0,
+    "night": 228.0
+  },
+  {
+    "meter": 14.1,
+    "day": 157.5,
+    "night": 236.0
+  },
+  {
+    "meter": 14.6,
+    "day": 163.0,
+    "night": 244.5
+  },
+  {
+    "meter": 15.0,
+    "day": 170.0,
+    "night": 250.0
+  }
 ]
