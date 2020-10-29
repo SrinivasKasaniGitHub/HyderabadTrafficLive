@@ -19,8 +19,7 @@ import android.widget.EditText;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.common.api.Status;
-import com.google.android.gms.location.places.Place;
-import com.google.android.gms.location.places.ui.PlaceAutocomplete;
+
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -213,17 +212,17 @@ public class LiveTrafficActivity extends FragmentActivity implements
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.et_source:
-                autoCompleteMethod(SOURCE_PLACE_AUTO_COMPLETE_REQUEST_CODE);
+              //  autoCompleteMethod(SOURCE_PLACE_AUTO_COMPLETE_REQUEST_CODE);
                 break;
             case R.id.et_destination:
-                autoCompleteMethod(DEST_PLACE_AUTO_COMPLETE_REQUEST_CODE);
+             //   autoCompleteMethod(DEST_PLACE_AUTO_COMPLETE_REQUEST_CODE);
                 break;
             default:
                 break;
         }
     }
 
-    public void autoCompleteMethod(final int placeCode) {
+   /* public void autoCompleteMethod(final int placeCode) {
         try {
             startActivityForResult(new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_OVERLAY).build(this), placeCode);
         } catch (GooglePlayServicesRepairableException | GooglePlayServicesNotAvailableException e) {
@@ -264,5 +263,5 @@ public class LiveTrafficActivity extends FragmentActivity implements
                 Log.e(TAG, "status-->" + status.toString());
             }
         }
-    }
+    }*/
 }

@@ -6,8 +6,6 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.google.firebase.iid.FirebaseInstanceId;
-import com.google.firebase.iid.FirebaseInstanceIdService;
 import com.tspolice.htplive.R;
 import com.tspolice.htplive.network.URLs;
 import com.tspolice.htplive.network.VolleySingleton;
@@ -16,9 +14,9 @@ import com.tspolice.htplive.utils.HardwareUtils;
 import com.tspolice.htplive.utils.SharedPrefManager;
 import com.tspolice.htplive.utils.UiHelper;
 
-public class MyFirebaseInstanceIdService extends FirebaseInstanceIdService {
+public class MyFirebaseInstanceIdService  {
 
-    private static final String TAG = "InstanceIdService-->";
+   /* private static final String TAG = "InstanceIdService-->";  extends FirebaseInstanceIdService
 
     @Override
     public void onTokenRefresh() {
@@ -44,5 +42,5 @@ public class MyFirebaseInstanceIdService extends FirebaseInstanceIdService {
                 Log.i(TAG, "error-->"+error.toString());
             }
         }));
-    }
+    }*/
 }

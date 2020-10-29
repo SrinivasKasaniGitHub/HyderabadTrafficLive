@@ -91,7 +91,7 @@
         </service>-->
 
         <!--GCM Receiver -->
-        <receiver
+        <!--<receiver
             android:name="com.google.android.gms.gcm.GcmReceiver"
             android:exported="true"
             android:permission="com.google.android.c2dm.permission.SEND">
@@ -100,7 +100,8 @@
 
                 <category android:name="com.gnirt69.gcmexample" />
             </intent-filter>
-        </receiver>
+        </receiver>-->
+        <service android:name=".utils.LocationTrack"/>
 
         <!--GCM Receiver Service -->
         <service

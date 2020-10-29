@@ -12,24 +12,21 @@ import android.net.Uri;
 import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
-
-import com.google.firebase.messaging.FirebaseMessagingService;
-import com.google.firebase.messaging.RemoteMessage;
 import com.tspolice.htplive.R;
 import com.tspolice.htplive.activities.AlertsActivity;
 
 import java.util.Map;
 
-public class MyFirebaseMessagingService extends FirebaseMessagingService {
+public class MyFirebaseMessagingService  {
 
-    private static final String TAG = "MessagingService-->";
+   /* private static final String TAG = "MessagingService-->";  extends FirebaseMessagingService
     private Context context = this;
     private static int count = 0;
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         super.onMessageReceived(remoteMessage);
-        if (remoteMessage.getData().size() > 0) {
+       *//* if (remoteMessage.getData().size() > 0) {
             String title = remoteMessage.getNotification().getTitle();
             String body = remoteMessage.getNotification().getBody();
             Log.d(TAG, "Message data payload: " + remoteMessage.getData());
@@ -37,7 +34,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
             sendUserNotification(title, body);
 
-            if (/* Check if data needs to be processed by long running job */ true) {
+            if (*//**//* Check if data needs to be processed by long running job *//**//* true) {
                 // For long-running tasks (10 seconds or more) use Firebase Job Dispatcher.
                 //scheduleJob();
             } else {
@@ -49,7 +46,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         // Check if message contains a notification payload.
         if (remoteMessage.getNotification() != null) {
             Log.d(TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody());
-        }
+        }*//*
 
         // Also if you intend on generating your own notifications as a result of a received FCM
         // message, here is where that should be initiated. See sendNotification method below.
@@ -104,7 +101,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             notificationManager.createNotificationChannel(mChannel);
         }
         if (notificationManager != null) {
-            notificationManager.notify(notifyID /* ID of notification */, notificationBuilder.build());
+            notificationManager.notify(notifyID *//* ID of notification *//*, notificationBuilder.build());
         }
     }
 
@@ -116,5 +113,5 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         } else {
             return R.mipmap.ic_launcher;
         }
-    }
+    }*/
 }

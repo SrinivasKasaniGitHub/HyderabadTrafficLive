@@ -4,19 +4,24 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.IntentSender;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.location.Address;
 import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationListener;
 import android.os.Build;
 import android.os.StrictMode;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -35,11 +40,18 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.PendingResult;
+import com.google.android.gms.common.api.Result;
+import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
-import com.google.android.gms.location.places.Place;
-import com.google.android.gms.location.places.ui.PlaceAutocomplete;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.LocationSettingsRequest;
+import com.google.android.gms.location.LocationSettingsStatusCodes;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -47,6 +59,10 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.libraries.places.api.Places;
+import com.google.android.libraries.places.api.model.Place;
+import com.google.android.libraries.places.widget.Autocomplete;
+import com.google.android.libraries.places.widget.model.AutocompleteActivityMode;
 import com.google.gson.Gson;
 import com.google.gson.JsonParser;
 import com.tspolice.htplive.R;
@@ -57,6 +73,7 @@ import com.tspolice.htplive.models.Elements;
 import com.tspolice.htplive.models.Rows;
 import com.tspolice.htplive.network.URLs;
 import com.tspolice.htplive.network.VolleySingleton;
+import com.tspolice.htplive.utils.ConnectivityUtils;
 import com.tspolice.htplive.utils.Constants;
 import com.tspolice.htplive.utils.LocationTrack;
 import com.tspolice.htplive.utils.PermissionUtil;
@@ -67,19 +84,18 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.net.URL;
 import java.text.NumberFormat;
 import java.text.ParseException;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
-public class AutoFareEstmActivity extends FragmentActivity implements
+public class AutoFareEstmActivity extends AppCompatActivity implements
         OnMapReadyCallback,
-        //GoogleApiClient.ConnectionCallbacks,
-        //GoogleApiClient.OnConnectionFailedListener,
-        //LocationListener,
         GoogleMap.OnCameraMoveStartedListener,
         GoogleMap.OnCameraMoveListener,
-        GoogleMap.OnCameraMoveCanceledListener,
+        GoogleMap.OnCameraMoveCanceledListener, LocationListener,
         View.OnClickListener {
 
     private static final String TAG = "AutoFareEstmActivity-->";
@@ -87,8 +103,6 @@ public class AutoFareEstmActivity extends FragmentActivity implements
     private TextView tv_distance, tv_min_fare, tv_fare_estm_price, tv_day, tv_night;
 
     private GoogleMap mMap;
-    //private GoogleApiClient mGoogleApiClient;
-    //private LocationRequest mLocationRequest;
     private UiHelper mUiHelper;
     private LocationTrack mLocationTrack;
     private SharedPrefManager mSharedPrefManager;
@@ -108,9 +122,14 @@ public class AutoFareEstmActivity extends FragmentActivity implements
         assert mapFragment != null;
         mapFragment.getMapAsync(this);
 
+
+        if (!Places.isInitialized()) {
+            Places.initialize(getApplicationContext(), URLs.googleApiKey);
+        }
         initViews();
 
         initObjects();
+
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (PermissionUtil.checkPermission(this, Constants.INT_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -122,7 +141,7 @@ public class AutoFareEstmActivity extends FragmentActivity implements
                 } else {
                     PermissionUtil.redirectAppSettings(this);
                 }
-            //} else {
+                //} else {
                 //mMap.setMyLocationEnabled(true);
             }
         } else {
@@ -141,7 +160,8 @@ public class AutoFareEstmActivity extends FragmentActivity implements
 
     public void initObjects() {
         mUiHelper = new UiHelper(this);
-        mLocationTrack = new LocationTrack(this);
+        //mLocationTrack = new LocationTrack(this);
+        ConnectivityUtils.getLocation(AutoFareEstmActivity.this);
         mSharedPrefManager = SharedPrefManager.getInstance(this);
     }
 
@@ -156,6 +176,7 @@ public class AutoFareEstmActivity extends FragmentActivity implements
                         }
                     }*/
                     setEnableCurrentLocationOnPermission();
+
                 } else {
                     mUiHelper.showToastLongCentre(getResources().getString(R.string.permission_denied));
                 }
@@ -165,25 +186,16 @@ public class AutoFareEstmActivity extends FragmentActivity implements
         }
     }
 
-    /*protected synchronized void buildGoogleApiClient() {
-        mGoogleApiClient = new GoogleApiClient.Builder(this)
-                .addConnectionCallbacks(this)
-                .addOnConnectionFailedListener(this)
-                .addApi(LocationServices.API).build();
-        mGoogleApiClient.connect();
-    }*/
-
     private void setEnableCurrentLocationOnPermission() {
         try {
             mMap.setMyLocationEnabled(true);
-            if (mLocationTrack.canGetLocation()) {
-                mLatitude = mLocationTrack.getLatitude();
-                mLongitude = mLocationTrack.getLongitude();
-                mLatLng = new LatLng(mLatitude, mLongitude);
-                et_search.setText(getAddressFromLatLng(mLatitude, mLongitude));
-                addMapMarker(mLatLng);
-                mMap.setOnCameraMoveStartedListener(this);
-            }
+            mLatitude = ConnectivityUtils.latitude;
+            mLongitude = ConnectivityUtils.longitude;
+            mLatLng = new LatLng(mLatitude, mLongitude);
+            et_search.setText(getAddressFromLatLng(mLatitude, mLongitude));
+            addMapMarker(mLatLng);
+            mMap.setOnCameraMoveStartedListener(this);
+
         } catch (SecurityException e) {
             e.printStackTrace();
         }
@@ -251,34 +263,6 @@ public class AutoFareEstmActivity extends FragmentActivity implements
         mMap.setOnCameraMoveStartedListener(this);
     }
 
-    /*@Override
-    public void onConnected(@Nullable Bundle bundle) {
-        mLocationRequest = new LocationRequest();
-        mLocationRequest.setInterval(1000);
-        mLocationRequest.setFastestInterval(1000);
-        mLocationRequest.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, this);
-        }
-    }
-
-    @Override
-    public void onConnectionSuspended(int i) {
-
-    }
-
-    @Override
-    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-
-    }
-
-    @Override
-    public void onLocationChanged(Location location) {
-        if (location != null) {
-            mLatitude = location.getLatitude();
-            mLongitude = location.getLongitude();
-        }
-    }*/
 
     @Override
     public void onClick(View v) {
@@ -314,10 +298,12 @@ public class AutoFareEstmActivity extends FragmentActivity implements
     }
 
     public void autoCompleteMethod(final int placeCode) {
+        List<Place.Field> fields = Arrays.asList(Place.Field.ID, Place.Field.NAME, Place.Field.ADDRESS, Place.Field.LAT_LNG);
         try {
-            Intent intent = new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_OVERLAY).build(this);
+            Intent intent = new Autocomplete.IntentBuilder(AutocompleteActivityMode.OVERLAY, fields)
+                    .build(this);
             startActivityForResult(intent, placeCode);
-        } catch (GooglePlayServicesRepairableException | GooglePlayServicesNotAvailableException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -326,20 +312,20 @@ public class AutoFareEstmActivity extends FragmentActivity implements
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == SOURCE_PLACE_AUTO_COMPLETE_REQUEST_CODE) {
             if (resultCode == RESULT_OK) {
-                Place place = PlaceAutocomplete.getPlace(this, data);
+                Place place = Autocomplete.getPlaceFromIntent(data);
                 addMapMarker(place.getLatLng());
                 et_search.setText(place.getAddress());
                 mLatitude = place.getLatLng().latitude;
                 mLongitude = place.getLatLng().longitude;
                 Log.d(TAG, "mLatitude-->" + mLatitude + ", mLongitude-->" + mLongitude);
-            } else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
+            } /*else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
                 Status status = PlaceAutocomplete.getStatus(this, data);
                 Log.i(TAG, "onActivityResult: source_status-->" + status.toString());
             } else if (resultCode == RESULT_CANCELED) {
                 mUiHelper.showToastLong(getString(R.string.user_canceled_the_operation));
-            }
+            }*/
         } else if (requestCode == DEST_PLACE_AUTO_COMPLETE_REQUEST_CODE) {
-            if (resultCode == RESULT_OK) {
+           /* if (resultCode == RESULT_OK) {
                 Place place = PlaceAutocomplete.getPlace(this, data);
                 et_destination.setText(place.getAddress());
                 double destLatitude = place.getLatLng().latitude;
@@ -352,7 +338,7 @@ public class AutoFareEstmActivity extends FragmentActivity implements
                 Log.i(TAG, "onActivityResult: dest_status-->" + status.toString());
             } else if (resultCode == RESULT_CANCELED) {
                 mUiHelper.showToastLong(getString(R.string.user_canceled_the_operation));
-            }
+            }*/
         }
     }
 
@@ -681,5 +667,31 @@ public class AutoFareEstmActivity extends FragmentActivity implements
                 }
             }
         });
+    }
+
+    @Override
+    public void onLocationChanged(Location location) {
+        if (location != null) {
+            mLatitude =  location.getLatitude();
+            mLongitude =  location.getLongitude();
+        } else {
+            mLatitude = 0.0;
+            mLongitude = 0.0;
+        }
+    }
+
+    @Override
+    public void onStatusChanged(String provider, int status, Bundle extras) {
+
+    }
+
+    @Override
+    public void onProviderEnabled(String provider) {
+
+    }
+
+    @Override
+    public void onProviderDisabled(String provider) {
+
     }
 }

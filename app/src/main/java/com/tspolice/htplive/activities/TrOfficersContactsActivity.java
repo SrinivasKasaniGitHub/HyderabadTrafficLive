@@ -21,6 +21,8 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.google.gson.JsonObject;
 import com.tspolice.htplive.R;
 import com.tspolice.htplive.adapters.CommonRecyclerAdapter;
 import com.tspolice.htplive.adapters.MyRecyclerViewItemDecoration;
@@ -58,7 +60,7 @@ public class TrOfficersContactsActivity extends AppCompatActivity {
 
         initObjects();
 
-        getTrafficOfficers();
+        getTrafficOfficersList();
 
         et_search_tr_officers.addTextChangedListener(new TextWatcher() {
             @Override
@@ -116,6 +118,70 @@ public class TrOfficersContactsActivity extends AppCompatActivity {
                                     model.setMobileNumber(jsonObject.getString("mobileNumber"));
                                     model.setPhotoPath(jsonObject.getString("photoPath"));
                                     model.setLanguage(jsonObject.getString("language"));
+                                    mCommonList.add(model);
+                                }
+                                mCommonRecyclerAdapter = new CommonRecyclerAdapter("" + Constants.TRAFFIC_OFFICERS, mCommonList,
+                                        new CommonRecyclerAdapter.OnItemClickListener() {
+                                            @Override
+                                            public void onItemClick(CommonModel item, int position) {
+                                                mCommonModel = item;
+                                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                                                    if (PermissionUtil.checkPermission(TrOfficersContactsActivity.this, Constants.INT_CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                                                        if (ActivityCompat.shouldShowRequestPermissionRationale(TrOfficersContactsActivity.this, Manifest.permission.CALL_PHONE)) {
+                                                            PermissionUtil.showPermissionExplanation(TrOfficersContactsActivity.this, Constants.INT_CALL_PHONE);
+                                                        } else if (!mSharedPrefManager.getBoolean(Constants.CALL_PHONE)) {
+                                                            PermissionUtil.requestPermission(TrOfficersContactsActivity.this, Constants.INT_CALL_PHONE);
+                                                            mSharedPrefManager.putBoolean(Constants.CALL_PHONE, true);
+                                                        } else {
+                                                            PermissionUtil.redirectAppSettings(TrOfficersContactsActivity.this);
+                                                        }
+                                                    } else {
+                                                        makeCall();
+                                                    }
+                                                } else {
+                                                    PermissionUtil.redirectAppSettings(TrOfficersContactsActivity.this);
+                                                }
+                                            }
+                                        }, TrOfficersContactsActivity.this);
+                                mRecyclerView.setAdapter(mCommonRecyclerAdapter);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                                mUiHelper.showToastShortCentre(getResources().getString(R.string.something_went_wrong));
+                            }
+                        } else {
+                            mUiHelper.showToastShortCentre(getResources().getString(R.string.empty_response));
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                mUiHelper.dismissProgressDialog();
+                mUiHelper.showToastShortCentre(getResources().getString(R.string.error));
+            }
+        }));
+    }
+
+    public void getTrafficOfficersList() {
+
+
+        mUiHelper.showProgressDialog(getResources().getString(R.string.please_wait), false);
+        VolleySingleton.getInstance(this).addToRequestQueue(new JsonObjectRequest(Request.Method.GET,
+                URLs.getTrafficOficersList, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        mUiHelper.dismissProgressDialog();
+                        if (response != null && !"".equals(response.toString())
+                                && !"null".equals(response.toString()) && response.length() > 0) {
+                            try {
+                                JSONArray jsonArray=response.getJSONArray("trafficOfficerDetailsMaster");
+                                mCommonList = new ArrayList<>(jsonArray.length());
+                                for (int i = 0; i < jsonArray.length(); i++) {
+                                    JSONObject jsonObject = jsonArray.getJSONObject(i);
+                                    CommonModel model = new CommonModel();
+                                    model.setName(jsonObject.getString("NAME"));
+                                    model.setDesignation(jsonObject.getString("DESIGNATION"));
+                                    model.setMobileNumber(jsonObject.getString("MOBILE_NO"));
                                     mCommonList.add(model);
                                 }
                                 mCommonRecyclerAdapter = new CommonRecyclerAdapter("" + Constants.TRAFFIC_OFFICERS, mCommonList,

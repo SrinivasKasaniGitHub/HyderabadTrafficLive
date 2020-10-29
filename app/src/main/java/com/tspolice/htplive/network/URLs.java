@@ -6,6 +6,8 @@ public class URLs {
 
     private static final String rootUrl = "http://117.239.149.90:8080/HTP/rest/htpService/";
 
+    private static final String rootLocalUrl = "http://125.16.1.70:8080/HydLive/Traffic/service/";
+
     private static final String testUrl = "http://61.95.168.181:8282/";
 
     private static final String sectionsUrl = "http://61.95.168.181:8080/echallan/";
@@ -15,6 +17,8 @@ public class URLs {
     public static final String getAutoFares = rootUrl + "getAutoFares";
 
     private static final String getAutoFaresByDistance = rootUrl + "getAutoFaresByDistance";
+
+    public static final String getTrafficOficersList = rootLocalUrl + "getTrafficOfficersDetails";
 
     public static String getAutoFaresByDistance(String distance) {
         return getAutoFaresByDistance + "?" + URLParams.distance + "=" + distance;
@@ -34,9 +38,9 @@ public class URLs {
 
     private static final String googleDirectionsApi = "https://maps.googleapis.com/maps/api/distancematrix/json";
 
-    private static final String googleApiKey = "AIzaSyAdJ3Z4n1oMYfyViKxK2G1rjCf1pUYpY6Y";
+    public static final String googleApiKey = "AIzaSyAdJ3Z4n1oMYfyViKxK2G1rjCf1pUYpY6Y";
 
-    private static final String googleApiKey2 = "AIzaSyDL4r9owIihPTqBSW13hUWYeJ2B9Qaaxy4";
+    public static final String googleApiKey2 = "AIzaSyDL4r9owIihPTqBSW13hUWYeJ2B9Qaaxy4";
 
     public static String getGoogleDirectionsApi(double latitude, double longitude, double destLatitude, double destLongitude) {
         return googleDirectionsApi + "?" + URLParams.origins + "=" + latitude + "," + longitude
@@ -105,6 +109,7 @@ public class URLs {
     }
 
     private static final String saveRegIds = testUrl + "saveRegIds";
+
     public static String saveRegIds(String regId, String deviceType, String deviceId) {
         return saveRegIds + "?" + URLParams.regId + "=" + regId
                 + "&" + URLParams.deviceType + "=" + deviceType
@@ -112,6 +117,7 @@ public class URLs {
     }
 
     private static final String sectionMasterByWheeler = sectionsUrl + "sectionMasterByWheeler";
+
     public static String sectionMasterByWheeler(String wheelerCd) {
         return sectionMasterByWheeler + "?" + URLParams.wheelerCd + "=" + wheelerCd;
     }
