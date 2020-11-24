@@ -21,6 +21,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.tspolice.htplive.R;
 import com.tspolice.htplive.adapters.MyRecyclerViewItemDecoration;
 import com.tspolice.htplive.adapters.TrPSInfoAdapter;
@@ -116,38 +117,33 @@ public class TrPSInfoActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mRecyclerView.setSelected(true);
-        //mRecyclerView.addItemDecoration(new MyRecyclerViewItemDecoration(this, DividerItemDecoration.VERTICAL, 8));
     }
 
     private void getHydPoliceStations() {
         mUiHelper.showProgressDialog(getResources().getString(R.string.please_wait), false);
-        VolleySingleton.getInstance(this).addToRequestQueue(new JsonArrayRequest(Request.Method.GET,
+        VolleySingleton.getInstance(this).addToRequestQueue(new JsonObjectRequest(Request.Method.GET,
                 URLs.getHydPoliceStations, null,
-                new Response.Listener<JSONArray>() {
+                new Response.Listener<JSONObject>() {
                     @Override
-                    public void onResponse(JSONArray response) {
+                    public void onResponse(JSONObject response) {
                         mUiHelper.dismissProgressDialog();
                         if (response != null && !"".equals(response.toString())
                                 && !"null".equals(response.toString()) && response.length() > 0) {
                             try {
-                                mTrPSInfoList = new ArrayList<>(response.length());
-                                for (int i = 0; i < response.length(); i++) {
-                                    JSONObject jsonObject = response.getJSONObject(i);
+                                JSONArray jsonArray=response.getJSONArray("PoliceStationsInfo");
+
+                                mTrPSInfoList = new ArrayList<>(jsonArray.length());
+                                for (int i = 0; i < jsonArray.length(); i++) {
+                                    JSONObject jsonObject = jsonArray.getJSONObject(i);
                                     TrPSInfoModel trPSInfoModel = new TrPSInfoModel();
-                                    trPSInfoModel.setId(Integer.parseInt(jsonObject.getString("id")));
-                                    trPSInfoModel.setCreatedDate(jsonObject.getString("createdDate"));
-                                    trPSInfoModel.setUpdatedDate(jsonObject.getString("updatedDate"));
-                                    trPSInfoModel.setStationName(jsonObject.getString("stationName"));
-                                    trPSInfoModel.setMobileNumber(jsonObject.getString("mobileNumber"));
-                                    trPSInfoModel.setLanguage(jsonObject.getString("language"));
-                                    trPSInfoModel.setLatitude(jsonObject.getString("latitude"));
-                                    trPSInfoModel.setLongitude(jsonObject.getString("langitude"));
-                                    trPSInfoModel.setMobileAppSimNo(jsonObject.getString("mobileAppSimNo"));
-                                    trPSInfoModel.setInspectorNo(jsonObject.getString("inspectorNo"));
-                                    trPSInfoModel.setAcpNo(jsonObject.getString("acpNo"));
-                                    trPSInfoModel.setConstableNo2(jsonObject.getString("constableNo2"));
-                                    trPSInfoModel.setConstableNo3(jsonObject.getString("constableNo3"));
-                                    trPSInfoModel.setConstableNo4(jsonObject.getString("constableNo4"));
+                                    trPSInfoModel.setId(Integer.parseInt(jsonObject.getString("ID")));
+                                    trPSInfoModel.setStationName(jsonObject.getString("STATIONNAME"));
+                                    trPSInfoModel.setMobileNumber(jsonObject.getString("CONTACT_NO"));
+                                    trPSInfoModel.setLatitude(jsonObject.getString("GPS_LATTI"));
+                                    trPSInfoModel.setLongitude(jsonObject.getString("GPS_LONG"));
+                                   // trPSInfoModel.setMobileAppSimNo(jsonObject.getString("mobileAppSimNo"));
+                                    trPSInfoModel.setInspectorNo(jsonObject.getString("INSP_NO"));
+                                   // trPSInfoModel.setAcpNo(jsonObject.getString("ACP_NO"));
                                     mTrPSInfoList.add(trPSInfoModel);
                                 }
                                 mTrPSInfoAdapter = new TrPSInfoAdapter(mTrPSInfoList, new TrPSInfoAdapter.OnItemClickListener() {
@@ -233,4 +229,5 @@ public class TrPSInfoActivity extends AppCompatActivity {
             finish();
         }
     }
+
 }

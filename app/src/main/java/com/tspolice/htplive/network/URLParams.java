@@ -2,7 +2,7 @@ package com.tspolice.htplive.network;
 
 public class URLParams {
     // getAutoFares params
-    static final String distance = "distance";
+    static final String distance = "distMtrs";
     static final String regNo = "regNo";
     static final String ctrl = "ctrl";
 
@@ -43,7 +43,7 @@ public class URLParams {
     public static final String category = "category";
     public static final String image = "image";
     public static final String reason = "reason";
-    public static final String jsonData = "jsonData";
+    public static final String jsonData = "reqJson";
 
     // saveAutocomplainData params
     public static final String type = "type";

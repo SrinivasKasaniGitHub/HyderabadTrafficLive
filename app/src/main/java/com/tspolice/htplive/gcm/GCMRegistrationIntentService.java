@@ -10,16 +10,15 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.google.android.gms.gcm.GoogleCloudMessaging;
-import com.google.android.gms.iid.InstanceID;
+
 import com.tspolice.htplive.network.URLs;
 import com.tspolice.htplive.network.VolleySingleton;
 import com.tspolice.htplive.utils.Constants;
 import com.tspolice.htplive.utils.HardwareUtils;
 
-public class GCMRegistrationIntentService extends IntentService {
+public class GCMRegistrationIntentService {
 
-    private static final String TAG = "GCMRegnIntentService-->";
+  /*  private static final String TAG = "GCMRegnIntentService-->";
 
     public GCMRegistrationIntentService() {
         super("");
@@ -65,5 +64,5 @@ public class GCMRegistrationIntentService extends IntentService {
                 Log.i(TAG, "sendGcmTokenToServer--> Error");
             }
         }));
-    }
+    }*/
 }

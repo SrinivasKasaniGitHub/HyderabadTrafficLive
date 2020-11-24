@@ -58,11 +58,12 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:layout_marginTop="24dp"
                 android:layout_marginLeft="48dp"
+                android:layout_marginTop="24dp"
                 android:layout_marginRight="48dp"
                 android:layout_marginBottom="@dimen/pub_complaints_et_margin_bottom"
                 android:orientation="horizontal"
+                android:visibility="gone"
                 android:weightSum="1">
 
                 <EditText
@@ -89,29 +90,36 @@
 
             </LinearLayout>
 
-            <TextView
-                style="@style/text_view_style"
+            <LinearLayout
+                android:id="@+id/lyt_ChassisNo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/pub_complaints_tv_label_margin_top"
-                android:paddingStart="@dimen/pub_complaints_tv_label_padding_left"
-                android:paddingLeft="@dimen/pub_complaints_tv_label_padding_left"
-                android:paddingEnd="@dimen/pub_complaints_tv_label_padding_right"
-                android:paddingRight="@dimen/pub_complaints_tv_label_padding_right"
-                android:text="@string/captcha"
-                android:textColor="@color/colorBlack" />
+                android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/et_enter_above_captcha"
-                style="@style/edit_text_style_drawable"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/pub_complaints_et_margin_top"
-                android:layout_marginBottom="@dimen/pub_complaints_et_margin_bottom"
-                android:hint="@string/enter_above_captcha"
-                android:inputType="number"
-                android:maxLines="1"
-                tools:ignore="Autofill" />
+                <TextView
+                    style="@style/text_view_style"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/pub_complaints_tv_label_margin_top"
+                    android:paddingStart="@dimen/pub_complaints_tv_label_padding_left"
+                    android:paddingLeft="@dimen/pub_complaints_tv_label_padding_left"
+                    android:paddingEnd="@dimen/pub_complaints_tv_label_padding_right"
+                    android:paddingRight="@dimen/pub_complaints_tv_label_padding_right"
+                    android:text="Chassis Number"
+                    android:textColor="@color/colorBlack" />
+
+                <EditText
+                    android:id="@+id/et_enter_above_captcha"
+                    style="@style/edit_text_style_drawable"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/pub_complaints_et_margin_top"
+                    android:layout_marginBottom="@dimen/pub_complaints_et_margin_bottom"
+                    android:hint="Enter last 5 digits of Chassis No"
+                    android:inputType="number"
+                    android:maxLines="1"
+                    tools:ignore="Autofill" />
+            </LinearLayout>
 
             <Button
                 android:id="@+id/btn_submit"

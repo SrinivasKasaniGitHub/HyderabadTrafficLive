@@ -16,7 +16,7 @@ import com.tspolice.htplive.utils.UiHelper;
 
 public class MyFirebaseInstanceIdService  {
 
-   /* private static final String TAG = "InstanceIdService-->";  extends FirebaseInstanceIdService
+   /* private static final String TAG = "InstanceIdService-->";
 
     @Override
     public void onTokenRefresh() {

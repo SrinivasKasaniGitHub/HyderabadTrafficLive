@@ -160,11 +160,11 @@ public class NearByActivity extends FragmentActivity implements
 
     private void getHydPoliceStations() {
         mUiHelper.showProgressDialog(getResources().getString(R.string.please_wait), false);
-        VolleySingleton.getInstance(this).addToRequestQueue(new JsonArrayRequest(Request.Method.GET,
+        VolleySingleton.getInstance(this).addToRequestQueue(new JsonObjectRequest(Request.Method.GET,
                 URLs.getHydPoliceStations, null,
-                new Response.Listener<JSONArray>() {
+                new Response.Listener<JSONObject>() {
                     @Override
-                    public void onResponse(JSONArray response) {
+                    public void onResponse(JSONObject response) {
                         mUiHelper.dismissProgressDialog();
                         if (response != null && !"".equals(response.toString())
                                 && !"null".equals(response.toString()) && response.length() > 0) {
@@ -173,10 +173,11 @@ public class NearByActivity extends FragmentActivity implements
                             ArrayList<Double> lang = new ArrayList<>();
                             ArrayList<Integer> psIds = new ArrayList<>();
                             try {
-                                for (int i = 0; i < response.length(); i++) {
-                                    JSONObject jsonObject = response.getJSONObject(i);
-                                    String stLat = jsonObject.getString("latitude");
-                                    String stLong = jsonObject.getString("langitude");
+                                JSONArray jsonArray = response.getJSONArray("PoliceStationsInfo");
+                                for (int i = 0; i < jsonArray.length(); i++) {
+                                    JSONObject jsonObject = jsonArray.getJSONObject(i);
+                                    String stLat = jsonObject.getString("GPS_LATTI");
+                                    String stLong = jsonObject.getString("GPS_LONG");
                                     if (stLat != null && !"null".equals(stLat) && stLat.length() > 0
                                             && stLong != null && !"null".equals(stLong) && stLong.length() > 0) {
                                         MarkerOptions markerOptions = new MarkerOptions();
@@ -187,7 +188,7 @@ public class NearByActivity extends FragmentActivity implements
                                             lat.add(psLatitude);
                                             lang.add(psLongitude);
                                             markerOptions.position(new LatLng(psLatitude, psLongitude));
-                                            int psId1 = Integer.parseInt(jsonObject.getString("id"));
+                                            int psId1 = Integer.parseInt(jsonObject.getString("ID"));
                                             psIds.add(psId1);
                                         } catch (NumberFormatException e) {
                                             e.printStackTrace();
@@ -201,7 +202,7 @@ public class NearByActivity extends FragmentActivity implements
                                         double distance = radius * c;
                                         distances.add(distance);
                                         DecimalFormat df = new DecimalFormat("#.##");
-                                        String stationName = jsonObject.getString("stationName");
+                                        String stationName = jsonObject.getString("STATIONNAME");
                                         if (stationName != null && !"null".equals(stationName) && stationName.length() > 0) {
                                             markerOptions.title(stationName + " (" + String.valueOf(df.format(distance)) + "km)");
                                         }
@@ -296,7 +297,7 @@ public class NearByActivity extends FragmentActivity implements
     private void getZones() {
         mUiHelper.showProgressDialog(getResources().getString(R.string.please_wait), false);
         VolleySingleton.getInstance(this).addToRequestQueue(new JsonObjectRequest(Request.Method.GET,
-                URLs.getZones, null,
+                URLs.getVehicleType, null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -304,11 +305,11 @@ public class NearByActivity extends FragmentActivity implements
                         if (response != null && !"".equals(response.toString())
                                 && !"null".equals(response.toString()) && response.length() > 0) {
                             try {
-                                JSONArray jsonArray = response.getJSONArray("vehicleTypes");
+                                JSONArray jsonArray = response.getJSONArray("vehicleTypeMaster");
                                 vehicleTypes = new ArrayList<>(jsonArray.length());
                                 for (int i = 0; i < jsonArray.length(); i++) {
                                     JSONObject jsonObject = jsonArray.getJSONObject(i);
-                                    vehicleTypes.add(jsonObject.getString("name"));
+                                    vehicleTypes.add(jsonObject.getString("NAME"));
                                 }
                                 parkingSpaceDialog();
                             } catch (JSONException e) {
@@ -428,7 +429,7 @@ public class NearByActivity extends FragmentActivity implements
 
     }
 
-    public void getParkingDetails() {
+    public void getParkingDetailsEX() {
         setCurrentLocation();
         getHydPoliceStations();
         mUiHelper.showProgressDialog(getResources().getString(R.string.please_wait), false);
@@ -594,4 +595,145 @@ public class NearByActivity extends FragmentActivity implements
             mUiHelper.showToastShortCentre(getResources().getString(R.string.something_went_wrong));
         }
     }
+
+    public void getParkingDetails() {
+        setCurrentLocation();
+        getHydPoliceStations();
+        mUiHelper.showProgressDialog(getResources().getString(R.string.please_wait), false);
+        try {
+            VolleySingleton.getInstance(this).addToRequestQueue(new JsonObjectRequest(Request.Method.GET,
+                    URLs.getParkingDetails(String.valueOf(psId), String.valueOf(vehicleTypeId), String.valueOf(parkingTypeId)), null,
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            mUiHelper.dismissProgressDialog();
+                            if (response != null && !"".equals(response)
+                                    && !"null".equals(response) && response.length() > 0) {
+                                try {
+
+                                    JSONArray jsonArray = response.getJSONArray("ParkingDetailsInfo");
+                                    if (jsonArray.length() > 0) {
+                                        for (int i = 0; i < jsonArray.length(); i++) {
+                                            JSONObject jsonObject = jsonArray.getJSONObject(i);
+
+                                            ParkingDetailsModel parkingDetails = new ParkingDetailsModel();
+                                            parkingDetails.setId(jsonObject.getInt("ID"));
+
+                                            int vehicleTypeNewId = 0;
+                                            try {
+                                                vehicleTypeNewId = Integer.parseInt(jsonObject.getString("VEHICLETYPEID"));
+                                            } catch (NumberFormatException e) {
+                                                e.printStackTrace();
+                                            }
+
+                                            String vehicleTypeName = jsonObject.getString("VEHICLETYPENAME");
+
+
+                                            int parkingTypeNewId = 0;
+                                            try {
+                                                parkingTypeNewId = Integer.parseInt(jsonObject.getString("PARKINGTYPEID"));
+                                            } catch (NumberFormatException e) {
+                                                e.printStackTrace();
+                                            }
+
+
+                                            String parkingTypeName = jsonObject.getString("PARKINGTYPENAME");
+
+
+                                            parkingDetails.setLocation(jsonObject.getString("LOCATION"));
+                                            parkingDetails.setRemarks(jsonObject.getString("REMARKS"));
+
+                                            String stLat = jsonObject.getString("GPS_LAT");
+                                            String stLong = jsonObject.getString("GPS_LONG");
+                                            parkingDetails.setLatitude(stLat);
+                                            parkingDetails.setLongitude(stLong);
+
+                                            //parkingDetailsList.add(parkingDetails);
+
+                                            if (stLat != null && !"null".equals(stLat) && stLat.length() > 0
+                                                    && stLong != null && !"null".equals(stLong) && stLong.length() > 0) {
+                                                MarkerOptions markerOptions = new MarkerOptions();
+                                                try {
+                                                    double psLatitude, psLongitude;
+                                                    psLatitude = Double.parseDouble(stLat);
+                                                    psLongitude = Double.parseDouble(stLong);
+                                                    markerOptions.position(new LatLng(psLatitude, psLongitude));
+                                                    markerOptions.title(parkingDetails.getLocation() + "/" + parkingTypeName);
+                                                } catch (NumberFormatException e) {
+                                                    e.printStackTrace();
+                                                }
+
+                                                if (vehicleTypeName != null && !"null".equals(vehicleTypeName) && vehicleTypeName.length() > 0) {
+                                                    //  markerOptions.title(vehicleTypeName);
+                                                    if (vehicleTypeNewId == 1) {
+                                                        markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW)); // need logo
+                                                    }
+                                                    if (vehicleTypeNewId == 2) {
+                                                        markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW)); // need logo
+                                                    }
+                                                    if (vehicleTypeNewId == 3) {
+                                                        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_auto));
+                                                    }
+                                                    if (vehicleTypeNewId == 4) {
+                                                        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_bus));
+                                                    }
+                                                    if (vehicleTypeNewId == 5) {
+                                                        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_bus));
+                                                    }
+                                                    if (vehicleTypeNewId == 6) {
+                                                        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_bus));
+                                                    }
+                                                }
+
+                                                if (parkingTypeName != null && !"null".equals(parkingTypeName) && parkingTypeName.length() > 0) {
+                                                    //  markerOptions.title(parkingTypeName);
+                                                    if (parkingTypeNewId == 1) {
+                                                        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_bigbus));// all icon
+                                                    }
+                                                    if (parkingTypeNewId == 2) {
+                                                        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_bigfreepark));
+                                                    }
+                                                    if (parkingTypeNewId == 3) {
+                                                        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_paidpark));
+                                                    }
+                                                    if (parkingTypeNewId == 4) {
+                                                        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_water));
+                                                    }
+                                                    if (parkingTypeNewId == 5) {
+                                                        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_bigbus));
+                                                    }
+                                                    if (parkingTypeNewId == 6) {
+                                                        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_bigauto));
+                                                    }
+                                                }
+                                                mMap.addMarker(markerOptions);
+                                            }
+                                        }
+                                    } else {
+                                        mUiHelper.showToastShortCentre("No Parking Space is Available !");
+                                    }
+                                    mDialogParkingSpace.dismiss();
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                    mUiHelper.dismissProgressDialog();
+                                    mUiHelper.showToastShortCentre(getResources().getString(R.string.something_went_wrong));
+                                }
+                            } else {
+                                mUiHelper.showToastShortCentre(getResources().getString(R.string.empty_response));
+                            }
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    mUiHelper.dismissProgressDialog();
+                    mUiHelper.showToastShortCentre(getResources().getString(R.string.error));
+                }
+            }));
+        } catch (Exception e) {
+            e.printStackTrace();
+            mUiHelper.dismissProgressDialog();
+            mUiHelper.showToastShortCentre(getResources().getString(R.string.something_went_wrong));
+        }
+    }
+
 }

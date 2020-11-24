@@ -44,6 +44,7 @@ public class RtaTowingActivity extends AppCompatActivity implements
     private TextView tv_rta_towing;
     private EditText et_vehicle_no, et_captcha, et_enter_above_captcha;
     private ImageView img_refresh;
+    LinearLayout lyt_ChassisNo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,13 +58,15 @@ public class RtaTowingActivity extends AppCompatActivity implements
 
         initObjects();
 
-        if (Constants.TOWING.equals(mSharedPrefManager.getString(Constants.RTA_TOWING))) {
+        if (Constants.RTA.equals(mSharedPrefManager.getString(Constants.RTA_TOWING))) {
             tv_rta_towing.setText(getResources().getString(R.string.vehicle_details));
+            lyt_ChassisNo.setVisibility(View.VISIBLE);
         } else {
             tv_rta_towing.setText(getResources().getString(R.string.towed_vehicle_details));
+            lyt_ChassisNo.setVisibility(View.GONE);
         }
 
-        getCaptchaForVehicleDetails();
+        // getCaptchaForVehicleDetails();
     }
 
     private void initViews() {
@@ -71,6 +74,7 @@ public class RtaTowingActivity extends AppCompatActivity implements
         et_vehicle_no = findViewById(R.id.et_vehicle_no);
         et_captcha = findViewById(R.id.et_captcha);
         et_enter_above_captcha = findViewById(R.id.et_enter_above_captcha);
+        lyt_ChassisNo = findViewById(R.id.lyt_ChassisNo);
         img_refresh = findViewById(R.id.img_refresh);
         Button btn_submit = findViewById(R.id.btn_submit);
         img_refresh.setOnClickListener(this);
@@ -80,6 +84,7 @@ public class RtaTowingActivity extends AppCompatActivity implements
     private void initObjects() {
         mUiHelper = new UiHelper(this);
         mSharedPrefManager = SharedPrefManager.getInstance(this);
+
     }
 
     private void getCaptchaForVehicleDetails() {
@@ -129,67 +134,58 @@ public class RtaTowingActivity extends AppCompatActivity implements
             case R.id.btn_submit:
                 final String vehicleNo = et_vehicle_no.getText().toString().trim();
                 final String captcha = et_captcha.getText().toString().trim();
-                Log.i(TAG, "onClick: captcha-->" + captcha);
-                final String matchCaptcha = et_enter_above_captcha.getText().toString().trim();
+                final String chasisNo = et_enter_above_captcha.getText().toString().trim();
                 if (TextUtils.isEmpty(vehicleNo)) {
                     mUiHelper.showToastShortCentre(getResources().getString(R.string.enter_vehicle_no));
                     et_vehicle_no.requestFocus();
-                } else if (TextUtils.isEmpty(matchCaptcha)) {
-                    mUiHelper.showToastShortCentre(getResources().getString(R.string.enter_above_captcha));
-                    et_enter_above_captcha.requestFocus();
-                } else if (!matchCaptcha.equals(captcha)) {
-                    mUiHelper.showToastShortCentre(getResources().getString(R.string.enter_valid_captcha));
+                } else if (TextUtils.isEmpty(chasisNo) && !Constants.TOWING.equals(mSharedPrefManager.getString(Constants.RTA_TOWING))) {
+                    mUiHelper.showToastShortCentre("Enter last 5 digits of Chassis No");
                     et_enter_above_captcha.requestFocus();
                 } else {
-                    getTowingDetails(vehicleNo);
+                    getTowingDetails(vehicleNo, chasisNo);
                 }
-                break;
-            case R.id.btn_dialog_towed_detials_close:
-                towingRTAInfoDialog.dismiss();
-                et_vehicle_no.setText("");
-                et_vehicle_no.setHint(getResources().getString(R.string.enter_vehicle_no));
-                et_enter_above_captcha.setText("");
-                et_enter_above_captcha.setHint(getResources().getString(R.string.enter_above_captcha));
-                getCaptchaForVehicleDetails();
                 break;
             case R.id.btn_dialog_rta_details_close:
                 towingRTAInfoDialog.dismiss();
                 et_vehicle_no.setText("");
                 et_vehicle_no.setHint(getResources().getString(R.string.enter_vehicle_no));
                 et_enter_above_captcha.setText("");
-                et_enter_above_captcha.setHint(getResources().getString(R.string.enter_above_captcha));
-                getCaptchaForVehicleDetails();
+                et_enter_above_captcha.setHint("Enter last 5 digits of Chassis No");
+
                 break;
+
             case R.id.img_towed_vehicle_details_close:
                 towingRTAInfoDialog.dismiss();
                 et_vehicle_no.setText("");
                 et_vehicle_no.setHint(getResources().getString(R.string.enter_vehicle_no));
                 et_enter_above_captcha.setText("");
-                et_enter_above_captcha.setHint(getResources().getString(R.string.enter_above_captcha));
-                getCaptchaForVehicleDetails();
+                et_enter_above_captcha.setHint("Enter last 5 digits of Chassis No");
+
             case R.id.img_vehicle_details_close:
                 towingRTAInfoDialog.dismiss();
                 et_vehicle_no.setText("");
                 et_vehicle_no.setHint(getResources().getString(R.string.enter_vehicle_no));
                 et_enter_above_captcha.setText("");
-                et_enter_above_captcha.setHint(getResources().getString(R.string.enter_above_captcha));
-                getCaptchaForVehicleDetails();
+                et_enter_above_captcha.setHint("Enter last 5 digits of Chassis No");
+
                 break;
             default:
                 break;
         }
     }
 
-    private void getTowingDetails(String vehicleNo) {
+    private void getTowingDetails(String vehicleNo, String chassisNo) {
         mUiHelper.showProgressDialog(getResources().getString(R.string.please_wait), false);
-        String ctrl;
+        String url;
         if ("TOWING".equals(mSharedPrefManager.getString(Constants.RTA_TOWING))) {
-            ctrl = Constants.towing;
+            url = URLs.rootLocalUrl + "getTowingVehicle?regNo=" + vehicleNo;
+
         } else {
-            ctrl = Constants.RTA;
+
+            url = URLs.rootLocalUrl + "getRTADetails?regNo=" + vehicleNo + "&chasNo=" + chassisNo;
         }
         VolleySingleton.getInstance(this).addToRequestQueue(new JsonObjectRequest(Request.Method.GET,
-                "" + URLs.getVehicleDetails("" + vehicleNo, "" + ctrl), null,
+                "" + url, null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -233,50 +229,57 @@ public class RtaTowingActivity extends AppCompatActivity implements
             img_towed_vehicle_details_close.setOnClickListener(this);
 
             try {
-                String regNum = response.getString("regNum");
-                if (regNum != null && !"".equals(regNum) && !"null".equals(regNum)) {
-                    tv_regn_no.setText(regNum);
+                if (response.getString("RESPONSE_CODE").equalsIgnoreCase("1")) {
+
+                    String regNum = response.getString("REGN_NO");
+                    if (regNum != null && !"".equals(regNum) && !"null".equals(regNum)) {
+                        tv_regn_no.setText(regNum);
+                    } else {
+                        tv_regn_no.setText("");
+                    }
+                   /* String ownerName = response.getString("O_NAME");
+                    if (ownerName != null && !"".equals(ownerName) && !"null".equals(ownerName)) {
+                        tv_owner_name.setText(ownerName);
+                    } else {
+                        tv_owner_name.setText("");
+                    }*/
+                    String detainedDate = response.getString("DETAINED_DT");
+                    if (detainedDate != null && !"".equals(detainedDate) && !"null".equals(detainedDate)) {
+                        tv_detained_date.setText(detainedDate);
+                    } else {
+                        tv_detained_date.setText("");
+                    }
+                    String trpsName = response.getString("PS_JURIS");
+                    if (trpsName != null && !"".equals(trpsName) && !"null".equals(trpsName)) {
+                        tv_trps_name.setText(trpsName);
+                    } else {
+                        tv_trps_name.setText("");
+                    }
+                    String location = response.getString("POINT_NAME");
+                    if (location != null && !"".equals(location) && !"null".equals(location)) {
+                        tv_location.setText(location);
+                    } else {
+                        tv_location.setText("");
+                    }
+                    String officer = response.getString("DTN_BY_PID_NAME");
+                    if (officer != null && !"".equals(officer) && !"null".equals(officer)) {
+                        tv_officer_name.setText(officer);
+                    } else {
+                        tv_officer_name.setText("");
+                    }
+                    String policeMobile = response.getString("CONTACT_NO");
+                    if (policeMobile != null && !"".equals(policeMobile)
+                            && !"null".equals(policeMobile) ) {
+
+                        tv_trps_contact_no.setText(policeMobile);
+                    } else {
+                        tv_trps_contact_no.setText("");
+                    }
                 } else {
-                    tv_regn_no.setText("");
+                    mUiHelper.showToastShortCentre(getResources().getString(R.string.something_went_wrong));
                 }
-                String ownerName = response.getString("ownerName");
-                if (ownerName != null && !"".equals(ownerName) && !"null".equals(ownerName)) {
-                    tv_owner_name.setText(ownerName);
-                } else {
-                    tv_owner_name.setText("");
-                }
-                String detainedDate = response.getString("detainedDate");
-                if (detainedDate != null && !"".equals(detainedDate) && !"null".equals(detainedDate)) {
-                    tv_detained_date.setText(detainedDate);
-                } else {
-                    tv_detained_date.setText("");
-                }
-                String trpsName = response.getString("trpsName");
-                if (trpsName != null && !"".equals(trpsName) && !"null".equals(trpsName)) {
-                    tv_trps_name.setText(trpsName);
-                } else {
-                    tv_trps_name.setText("");
-                }
-                String location = response.getString("location");
-                if (location != null && !"".equals(location) && !"null".equals(location)) {
-                    tv_location.setText(location);
-                } else {
-                    tv_location.setText("");
-                }
-                String officer = response.getString("officer");
-                if (officer != null && !"".equals(officer) && !"null".equals(officer)) {
-                    tv_officer_name.setText(officer);
-                } else {
-                    tv_officer_name.setText("");
-                }
-                String policeMobile = response.getString("policeMobile");
-                if (policeMobile != null && !"".equals(policeMobile)
-                        && !"null".equals(policeMobile) && policeMobile.contains(":")) {
-                    String[] split = policeMobile.split(":");
-                    tv_trps_contact_no.setText(split[1].trim());
-                } else {
-                    tv_trps_contact_no.setText("");
-                }
+
+
             } catch (JSONException e) {
                 e.printStackTrace();
                 mUiHelper.showToastShortCentre(getResources().getString(R.string.something_went_wrong));
@@ -298,37 +301,39 @@ public class RtaTowingActivity extends AppCompatActivity implements
             img_vehicle_details_close.setOnClickListener(this);
 
             try {
-                String regNum = response.getString("regNum");
-                if (regNum != null && !"".equals(regNum) && !"null".equals(regNum)) {
-                    tv_regn_no.setText(regNum);
-                } else {
-                    tv_regn_no.setText("");
-                }
-                String fulelType = response.getString("fulelType");
-                if (fulelType != null && !"".equals(fulelType) && !"null".equals(fulelType)) {
-                    tv_fuel_type.setText(fulelType);
-                } else {
-                    tv_fuel_type.setText("");
-                }
-                String ownerName = response.getString("ownerName");
-                if (fulelType != null && !"".equals(fulelType) && !"null".equals(fulelType)) {
-                    tv_owner_name.setText(ownerName);
-                } else {
-                    tv_owner_name.setText("");
-                }
-                String makerName = response.getString("makerName");
-                if (makerName != null && !"".equals(makerName) && !"null".equals(makerName)) {
-                    tv_makers_name.setText(makerName);
-                } else {
-                    tv_makers_name.setText("");
-                }
-                String mfgyr = response.getString("mfgyr");
-                if (mfgyr != null && !"".equals(mfgyr) && !"null".equals(mfgyr)) {
-                    tv_mfg_year.setText(mfgyr);
-                } else {
-                    tv_mfg_year.setText("");
-                }
-                String dtOfReg = response.getString("dtOfReg");
+                if (response.getString("RESPONSE_CODE").equalsIgnoreCase("1")) {
+
+                    String regNum = response.getString("REGN_NO");
+                    if (regNum != null && !"".equals(regNum) && !"null".equals(regNum)) {
+                        tv_regn_no.setText(regNum);
+                    } else {
+                        tv_regn_no.setText("");
+                    }
+                    String fulelType = response.getString("FUEL");
+                    if (fulelType != null && !"".equals(fulelType) && !"null".equals(fulelType)) {
+                        tv_fuel_type.setText(fulelType);
+                    } else {
+                        tv_fuel_type.setText("");
+                    }
+                    String ownerName = response.getString("O_NAME");
+                    if (fulelType != null && !"".equals(fulelType) && !"null".equals(fulelType)) {
+                        tv_owner_name.setText(ownerName);
+                    } else {
+                        tv_owner_name.setText("");
+                    }
+                    String makerName = response.getString("MKR_NAME");
+                    if (makerName != null && !"".equals(makerName) && !"null".equals(makerName)) {
+                        tv_makers_name.setText(makerName);
+                    } else {
+                        tv_makers_name.setText("");
+                    }
+                    String mfgyr = response.getString("MKR_CLAS");
+                    if (mfgyr != null && !"".equals(mfgyr) && !"null".equals(mfgyr)) {
+                        tv_mfg_year.setText(mfgyr);
+                    } else {
+                        tv_mfg_year.setText("");
+                    }
+               /* String dtOfReg = response.getString("dtOfReg");
                 if (dtOfReg != null && !"".equals(dtOfReg) && !"null".equals(dtOfReg)) {
                     tv_date_of_registration.setText(dtOfReg);
                 } else {
@@ -339,12 +344,15 @@ public class RtaTowingActivity extends AppCompatActivity implements
                     tv_chassis_no.setText(chasisNo);
                 } else {
                     tv_chassis_no.setText("");
-                }
-                String color = response.getString("color");
-                if (color != null && !"".equals(color) && !"null".equals(color)) {
-                    tv_vehicle_color.setText(color);
-                } else {
-                    tv_vehicle_color.setText("");
+                }*/
+                    String color = response.getString("COLOUR");
+                    if (color != null && !"".equals(color) && !"null".equals(color)) {
+                        tv_vehicle_color.setText(color);
+                    } else {
+                        tv_vehicle_color.setText("");
+                    }
+                }else{
+                    mUiHelper.showToastShortCentre(getResources().getString(R.string.something_went_wrong));
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -362,4 +370,5 @@ public class RtaTowingActivity extends AppCompatActivity implements
         super.onBackPressed();
         finish();
     }
+
 }

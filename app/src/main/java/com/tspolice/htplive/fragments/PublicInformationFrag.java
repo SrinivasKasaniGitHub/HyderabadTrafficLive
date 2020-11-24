@@ -75,4 +75,5 @@ public class PublicInformationFrag extends Fragment implements
             mUiHelper.intent(mClass);
         }
     }
+
 }

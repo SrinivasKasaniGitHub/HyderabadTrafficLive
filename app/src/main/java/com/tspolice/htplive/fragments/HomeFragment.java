@@ -121,4 +121,5 @@ public class HomeFragment extends Fragment implements
             mUiHelper.intent(mClass);
         }
     }
+
 }

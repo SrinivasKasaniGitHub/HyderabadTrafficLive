@@ -4,9 +4,22 @@ import android.net.Uri;
 
 public class URLs {
 
+    /*getTrafficOfficersDetails ---
+            getAboutApp
+    getAutoFares
+            getDivisions
+    getZones----
+            getVehicleType-----
+    getUserType
+            getHtpWebsites ---
+    getFAQ ---
+            getPoliceStations ***
+    getParkingDetails
+            getParkingType*/
+
     private static final String rootUrl = "http://117.239.149.90:8080/HTP/rest/htpService/";
 
-    private static final String rootLocalUrl = "http://125.16.1.70:8080/HydLive/Traffic/service/";
+    public static final String rootLocalUrl = "http://125.16.1.70:8080/HydLive/Traffic/service/";
 
     private static final String testUrl = "http://61.95.168.181:8282/";
 
@@ -14,15 +27,22 @@ public class URLs {
 
     public static final String saveCapturedImage = testUrl + "saveCapturedImage";
 
-    public static final String getAutoFares = rootUrl + "getAutoFares";
+    public static final String getAutoFares = rootLocalUrl + "getAutoFares";
 
-    private static final String getAutoFaresByDistance = rootUrl + "getAutoFaresByDistance";
+    private static final String getAutoFaresByDistance = rootLocalUrl + "getAutoFares";
 
     public static final String getTrafficOficersList = rootLocalUrl + "getTrafficOfficersDetails";
+
+    public static final String getHtpWebsites = rootLocalUrl + "getHtpWebsites";
+
+    public static final String getHtpQuestions = rootLocalUrl + "getFAQ";
+
+    public static final String getHydPoliceStations = rootLocalUrl + "getPoliceStations";
 
     public static String getAutoFaresByDistance(String distance) {
         return getAutoFaresByDistance + "?" + URLParams.distance + "=" + distance;
     }
+    // http://localhost:8080/HydLive/Traffic/service/getAutoFares?distMtrs=12
 
     //2.3
     /*private static final String googleDirectionsApi = "http://maps.google.com/maps/api/directions/xml";
@@ -51,15 +71,18 @@ public class URLs {
 
     //https://maps.googleapis.com/maps/api/distancematrix/json?origins=17.4014434,78.4765565&destinations=17.439929499999998,78.4982741&departure_time=now&key=AIzaSyAdJ3Z4n1oMYfyViKxK2G1rjCf1pUYpY6Y
 
-    public static final String getHydPoliceStations = rootUrl + "getHydPoliceStations"
-            + "?" + URLParams.updatedDate + "=" + URLParams.updatedDate
-            + "&" + URLParams.language + "=" + URLParams.ENG;
 
-    public static final String getZones = rootUrl + "getZones";
+    public static final String getZones = rootLocalUrl + "getZones";
 
-    public static final String getParkingDetails = rootUrl + "getParkingDetails";
+    public static final String getVehicleType = rootLocalUrl + "getVehicleType";
 
-    public static final String eChallanStatus = "https://www.echallan.org/publicview/";
+    public static final String getParkingDetails = rootLocalUrl + "getParkingDetails";
+
+    public static String getParkingDetails(String psID, String vehID,String parkingID) {
+        return getParkingDetails + "?psID=" + psID + "&vehID=" + vehID+"&parkingID="+parkingID;
+    }
+
+    public static final String eChallanStatus = "https://echallan.tspolice.gov.in/publicview/";
 
     public static final String getCaptchaForVehicleDetails = rootUrl + "getCaptchaForVehicleDetails";
 
@@ -70,11 +93,11 @@ public class URLs {
                 + "&" + URLParams.ctrl + "=" + ctrl;
     }
 
-    public static final String saveAutocomplainData = testUrl + "saveAutocomplainData";
+    public static final String saveAutocomplainData = rootLocalUrl + "getPublicComplaints";
 
     public static final String saveSuggestions = rootUrl + "saveSuggestions";
 
-    public static final String getPublicAdvisaryData = rootUrl + "getPublicAdvisaryData";
+    public static final String getPublicAdvisaryData = rootLocalUrl + "getPublicAdvisaryData";
 
     private static final String loadPubAdvNextRec = rootUrl + "loadPubAdvNextRec";
 
@@ -86,13 +109,6 @@ public class URLs {
             + "?" + URLParams.updatedDate + "=" + URLParams.updatedDate
             + "&" + URLParams.language + "=" + URLParams.ENG;
 
-    public static final String getHtpWebsites = rootUrl + "getHtpWebsites"
-            + "?" + URLParams.updatedDate + "=" + URLParams.updatedDate
-            + "&" + URLParams.language + "=" + URLParams.ENG;
-
-    public static final String getHtpQuestions = rootUrl + "getHtpQuestions"
-            + "?" + URLParams.updatedDate + "=" + URLParams.updatedDate
-            + "&" + URLParams.language + "=" + URLParams.ENG;
 
     public static final String htpOnFacebook = "https://www.facebook.com/HYDTP?sk=wall";
 
@@ -100,15 +116,13 @@ public class URLs {
             + "?" + URLParams.updatedDate + "=" + URLParams.updatedDate
             + "&" + URLParams.language + "=" + URLParams.ENG;
 
-    private static final String getEmergencyContacts = rootUrl + "getEmergencyContacts";
+    private static final String getEmergencyContacts = rootLocalUrl + "getEmergencyContacts";
 
     public static String getEmergencyContacts(String serviceType) {
-        return getEmergencyContacts + "?" + URLParams.serviceType + "=" + serviceType
-                + "&" + URLParams.updatedDate + "=" + URLParams.updatedDate
-                + "&" + URLParams.language + "=" + URLParams.ENG;
+        return getEmergencyContacts + "?" + URLParams.serviceType + "=" + serviceType;
     }
 
-    private static final String saveRegIds = testUrl + "saveRegIds";
+    private static final String saveRegIds = rootLocalUrl + "saveRegIds";
 
     public static String saveRegIds(String regId, String deviceType, String deviceId) {
         return saveRegIds + "?" + URLParams.regId + "=" + regId
@@ -127,4 +141,5 @@ public class URLs {
     public static final String utf_8 = "utf-8";
 
     public static final String unSupportedEncodingException = "Unsupported Encoding while trying to get the bytes of %s using %s";
+
 }

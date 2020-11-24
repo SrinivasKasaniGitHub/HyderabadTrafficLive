@@ -30,7 +30,7 @@
                     android:paddingStart="16dp"
                     android:paddingLeft="16dp"
                     android:paddingTop="16dp"
-                    android:paddingEnd="120dp"
+                    android:paddingEnd="60dp"
                     android:paddingRight="120dp"
                     android:paddingBottom="16dp"
                     android:text="@string/alert_text"
@@ -59,8 +59,8 @@
 
     <ImageView
         android:id="@+id/img_shape_left"
-        android:layout_width="110dp"
-        android:layout_height="150dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
@@ -95,8 +95,8 @@
 
     <ImageView
         android:id="@+id/img_shape_right"
-        android:layout_width="110dp"
-        android:layout_height="150dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
@@ -115,7 +115,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:gravity="center"
-        android:visibility="visible"
+        android:visibility="gone"
         tools:ignore="RelativeOverlap">
 
         <TextView
@@ -125,7 +125,8 @@
             android:gravity="center"
             android:text="@string/updated_dt_text2"
             android:textColor="@color/colorWhite"
-            android:textSize="10sp" />
+            android:textSize="10sp"
+            android:visibility="gone"/>
 
     </RelativeLayout>
 

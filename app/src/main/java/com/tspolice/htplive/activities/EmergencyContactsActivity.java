@@ -18,6 +18,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.tspolice.htplive.R;
 import com.tspolice.htplive.adapters.CommonRecyclerAdapter;
 import com.tspolice.htplive.models.CommonModel;
@@ -131,26 +132,22 @@ public class EmergencyContactsActivity extends AppCompatActivity {
 
     public void getEmergencyContacts(String serviceType) {
         mUiHelper.showProgressDialog(getResources().getString(R.string.please_wait), false);
-        VolleySingleton.getInstance(this).addToRequestQueue(new JsonArrayRequest(Request.Method.GET,
+        VolleySingleton.getInstance(this).addToRequestQueue(new JsonObjectRequest(Request.Method.GET,
                 "" + URLs.getEmergencyContacts("" + serviceType), null,
-                new Response.Listener<JSONArray>() {
+                new Response.Listener<JSONObject>() {
                     @Override
-                    public void onResponse(JSONArray response) {
+                    public void onResponse(JSONObject response) {
                         mUiHelper.dismissProgressDialog();
                         if (response != null && !"".equals(response.toString())
                                 && !"null".equals(response.toString()) && response.length() > 0) {
                             try {
-                                mCommonList = new ArrayList<>(response.length());
-                                for (int i = 0; i < response.length(); i++) {
-                                    JSONObject jsonObject = response.getJSONObject(i);
+                                JSONArray jsonArray=response.getJSONArray("EmergencyContacts");
+                                mCommonList = new ArrayList<>(jsonArray.length());
+                                for (int i = 0; i < jsonArray.length(); i++) {
+                                    JSONObject jsonObject = jsonArray.getJSONObject(i);
                                     CommonModel model = new CommonModel();
-                                    model.setId(Integer.parseInt(jsonObject.getString("id")));
-                                    model.setCreatedDate(jsonObject.getString("createdDate"));
-                                    model.setUpdatedDate(jsonObject.getString("updatedDate"));
-                                    model.setServiceName(jsonObject.getString("serviceName"));
-                                    model.setContactNumber(jsonObject.getString("contactNumber"));
-                                    model.setServiceType(jsonObject.getString("serviceType"));
-                                    model.setLanguage(jsonObject.getString("language"));
+                                    model.setServiceName(jsonObject.getString("SERVICE_NAME"));
+                                    model.setContactNumber(jsonObject.getString("CONTACT_NO"));
                                     mCommonList.add(model);
                                 }
                                 mCommonRecyclerAdapter = new CommonRecyclerAdapter(Constants.EMERGENCY_CONTACTS, mCommonList,

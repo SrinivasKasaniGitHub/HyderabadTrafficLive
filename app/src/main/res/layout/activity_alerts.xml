@@ -37,7 +37,8 @@
                 android:text="@string/load_more"
                 android:gravity="center_horizontal"
                 android:textColor="@color/colorAccentDark"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:visibility="gone"/>
 
         </LinearLayout>
 

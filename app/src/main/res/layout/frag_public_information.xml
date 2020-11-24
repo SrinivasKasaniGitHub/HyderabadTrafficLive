@@ -35,7 +35,8 @@
             android:layout_weight="1"
             android:foreground="?android:attr/selectableItemBackground"
             card_view:cardBackgroundColor="@color/cardview_light_background"
-            card_view:cardCornerRadius="@dimen/inner_dashbd_card_view_corners">
+            card_view:cardCornerRadius="@dimen/inner_dashbd_card_view_corners"
+            android:visibility="visible">
 
             <RelativeLayout
                 android:id="@+id/rel_public_interface"
@@ -84,7 +85,8 @@
             android:layout_weight="1"
             android:foreground="?android:attr/selectableItemBackground"
             card_view:cardBackgroundColor="@color/cardview_light_background"
-            card_view:cardCornerRadius="@dimen/inner_dashbd_card_view_corners">
+            card_view:cardCornerRadius="@dimen/inner_dashbd_card_view_corners"
+            android:visibility="visible">
 
             <RelativeLayout
                 android:id="@+id/rel_suggestions"

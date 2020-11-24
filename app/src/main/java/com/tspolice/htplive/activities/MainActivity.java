@@ -16,12 +16,23 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.tspolice.htplive.R;
+import com.tspolice.htplive.firebase.MyFirebaseMessagingService;
 import com.tspolice.htplive.gcm.GCMRegistrationIntentService;
 import com.tspolice.htplive.network.Networking;
+import com.tspolice.htplive.network.URLs;
+import com.tspolice.htplive.network.VolleySingleton;
 import com.tspolice.htplive.utils.Constants;
+import com.tspolice.htplive.utils.HardwareUtils;
+import com.tspolice.htplive.utils.SharedPrefManager;
 import com.tspolice.htplive.utils.UiHelper;
 
 import java.util.Objects;
@@ -39,8 +50,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        FirebaseApp.initializeApp(this);
+       /* String fcmToken = FirebaseInstanceId.getInstance().getToken();
+        SharedPrefManager mSharedPrefManager = SharedPrefManager.getInstance(this);
+        mSharedPrefManager.putString(Constants.FCM_TOKEN, fcmToken);
+        Log.i(TAG, "fcmToken-->" + fcmToken);
+        sendRegistrationToServer(fcmToken);*/
 
         btn_english = findViewById(R.id.btn_english);
+
 
         mUiHelper = new UiHelper(MainActivity.this);
 
@@ -53,6 +71,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 @Override
                 public void run() {
                     removeDialog(SPLASH_DIALOG);
+                    mUiHelper.intent(HomeActivity.class);
                 }
             }, SPLASH_TIME_OUT);
         }
@@ -86,8 +105,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             } else {
                 mUiHelper.showToastLong("This device does not support for Google Play Service!");
             }
+            startService(new Intent(MainActivity.this, MyFirebaseMessagingService.class));
         } else {
-            startService(new Intent(MainActivity.this, GCMRegistrationIntentService.class));
+            startService(new Intent(MainActivity.this, MyFirebaseMessagingService.class));
         }
     }
 
@@ -163,5 +183,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 doubleBackToExitPressedOnce = false;
             }
         }, SPLASH_TIME_OUT);
+    }
+
+    private void sendRegistrationToServer(String fcmToken) {
+        VolleySingleton.getInstance(MainActivity.this).addToRequestQueue(new StringRequest(Request.Method.GET,
+                URLs.saveRegIds(fcmToken, Constants.ANDROID, HardwareUtils.getDeviceUUID(MainActivity.this)),
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Log.i(TAG, "response-->" + response);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.i(TAG, "error-->" + error.toString());
+            }
+        }));
     }
 }

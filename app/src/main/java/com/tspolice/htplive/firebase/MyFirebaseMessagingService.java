@@ -12,21 +12,34 @@ import android.net.Uri;
 import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
+
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.messaging.FirebaseMessagingService;
+import com.google.firebase.messaging.RemoteMessage;
 import com.tspolice.htplive.R;
 import com.tspolice.htplive.activities.AlertsActivity;
+import com.tspolice.htplive.network.URLs;
+import com.tspolice.htplive.network.VolleySingleton;
+import com.tspolice.htplive.utils.Constants;
+import com.tspolice.htplive.utils.HardwareUtils;
+import com.tspolice.htplive.utils.SharedPrefManager;
 
 import java.util.Map;
 
-public class MyFirebaseMessagingService  {
+public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
-   /* private static final String TAG = "MessagingService-->";  extends FirebaseMessagingService
+    private static final String TAG = "MessagingService-->";
     private Context context = this;
     private static int count = 0;
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         super.onMessageReceived(remoteMessage);
-       *//* if (remoteMessage.getData().size() > 0) {
+        if (remoteMessage.getData().size() > 0) {
             String title = remoteMessage.getNotification().getTitle();
             String body = remoteMessage.getNotification().getBody();
             Log.d(TAG, "Message data payload: " + remoteMessage.getData());
@@ -34,7 +47,7 @@ public class MyFirebaseMessagingService  {
 
             sendUserNotification(title, body);
 
-            if (*//**//* Check if data needs to be processed by long running job *//**//* true) {
+            if (/* Check if data needs to be processed by long running job */ true) {
                 // For long-running tasks (10 seconds or more) use Firebase Job Dispatcher.
                 //scheduleJob();
             } else {
@@ -46,7 +59,7 @@ public class MyFirebaseMessagingService  {
         // Check if message contains a notification payload.
         if (remoteMessage.getNotification() != null) {
             Log.d(TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody());
-        }*//*
+        }
 
         // Also if you intend on generating your own notifications as a result of a received FCM
         // message, here is where that should be initiated. See sendNotification method below.
@@ -101,7 +114,7 @@ public class MyFirebaseMessagingService  {
             notificationManager.createNotificationChannel(mChannel);
         }
         if (notificationManager != null) {
-            notificationManager.notify(notifyID *//* ID of notification *//*, notificationBuilder.build());
+            notificationManager.notify(notifyID /* ID of notification */, notificationBuilder.build());
         }
     }
 
@@ -113,5 +126,31 @@ public class MyFirebaseMessagingService  {
         } else {
             return R.mipmap.ic_launcher;
         }
-    }*/
+    }
+
+    @Override
+    public void onNewToken(String s) {
+        super.onNewToken(s);
+        String fcmToken = FirebaseInstanceId.getInstance().getToken();
+        SharedPrefManager mSharedPrefManager = SharedPrefManager.getInstance(this);
+        mSharedPrefManager.putString(Constants.FCM_TOKEN, fcmToken);
+        Log.i(TAG, "fcmToken-->" + fcmToken);
+        sendRegistrationToServer(fcmToken);
+    }
+
+    private void sendRegistrationToServer(String fcmToken) {
+        VolleySingleton.getInstance(MyFirebaseMessagingService.this).addToRequestQueue(new StringRequest(Request.Method.GET,
+                URLs.saveRegIds(fcmToken, Constants.ANDROID, HardwareUtils.getDeviceUUID(MyFirebaseMessagingService.this)),
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Log.i(TAG, "response-->"+response);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.i(TAG, "error-->"+error.toString());
+            }
+        }));
+    }
 }

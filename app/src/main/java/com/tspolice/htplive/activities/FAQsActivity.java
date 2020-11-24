@@ -10,6 +10,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.tspolice.htplive.R;
 import com.tspolice.htplive.adapters.CommonRecyclerAdapter;
 import com.tspolice.htplive.models.CommonModel;
@@ -51,25 +52,23 @@ public class FAQsActivity extends AppCompatActivity {
 
     public void getHtpQuestions() {
         mUiHelper.showProgressDialog(getResources().getString(R.string.please_wait), false);
-        VolleySingleton.getInstance(this).addToRequestQueue(new JsonArrayRequest(Request.Method.GET,
+        VolleySingleton.getInstance(this).addToRequestQueue(new JsonObjectRequest(Request.Method.GET,
                 URLs.getHtpQuestions, null,
-                new Response.Listener<JSONArray>() {
+                new Response.Listener<JSONObject>() {
                     @Override
-                    public void onResponse(JSONArray response) {
+                    public void onResponse(JSONObject response) {
                         mUiHelper.dismissProgressDialog();
                         if (response != null && !"".equals(response.toString())
                                 && !"null".equals(response.toString()) && response.length() > 0) {
                             try {
-                                mCommonList = new ArrayList<>(response.length());
-                                for (int i = 0; i < response.length(); i++) {
-                                    JSONObject jsonObject = response.getJSONObject(i);
+                                JSONArray jsonArray=response.getJSONArray("FAQMaster");
+                                mCommonList = new ArrayList<>(jsonArray.length());
+                                for (int i = 0; i < jsonArray.length(); i++) {
+                                    JSONObject jsonObject = jsonArray.getJSONObject(i);
                                     CommonModel model = new CommonModel();
-                                    model.setId(Integer.parseInt(jsonObject.getString("id")));
-                                    model.setCreatedDate(jsonObject.getString("createdDate"));
-                                    model.setUpdatedDate(jsonObject.getString("updatedDate"));
-                                    model.setQuestion(jsonObject.getString("question"));
-                                    model.setAnswer(jsonObject.getString("answer"));
-                                    model.setLanguage(jsonObject.getString("language"));
+                                    model.setId(Integer.parseInt(jsonObject.getString("ID")));
+                                    model.setQuestion(jsonObject.getString("QUESTION"));
+                                    model.setAnswer(jsonObject.getString("ANSWER"));
                                     mCommonList.add(model);
                                 }
                                 mCommonRecyclerAdapter = new CommonRecyclerAdapter(Constants.FAQS, mCommonList, FAQsActivity.this);

@@ -1,6 +1,7 @@
 package com.tspolice.htplive.activities;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ import android.widget.EditText;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.tspolice.htplive.R;
 import com.tspolice.htplive.network.URLParams;
@@ -30,6 +32,7 @@ import com.tspolice.htplive.utils.SharedPrefManager;
 import com.tspolice.htplive.utils.UiHelper;
 import com.tspolice.htplive.utils.ValidationUtils;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -179,7 +182,6 @@ public class PublicComplaintsActivity extends AppCompatActivity implements
         }
     }
 
-    // not finished
     public void saveAutocomplainData(String complaint, String complaintType, String vehicleNo, String driversName,
                                      String typeComplaint, String yourName, String yourEmailId, String yourMobileNo) {
         mUiHelper.showProgressDialog(getResources().getString(R.string.please_wait), false);
@@ -190,7 +192,7 @@ public class PublicComplaintsActivity extends AppCompatActivity implements
         params.put(URLParams.type, complaintType);
         params.put(URLParams.vehicleNo, vehicleNo);
         params.put(URLParams.driverName, driversName);
-        params.put(URLParams.complaintTravelBy, typeComplaint);
+        params.put(URLParams.complaintTravelBy, "");
         params.put(URLParams.name, yourName);
         params.put(URLParams.email, yourEmailId);
         params.put(URLParams.mobileNo, yourMobileNo);
@@ -198,15 +200,25 @@ public class PublicComplaintsActivity extends AppCompatActivity implements
         params.put(URLParams.lang, String.valueOf(mLongitude));
         params.put(URLParams.deviceId, HardwareUtils.getDeviceUUID(PublicComplaintsActivity.this));
         jsonRequest = new JSONObject(params);
-        mRequestBody = jsonRequest.toString();
 
-        VolleySingleton.getInstance(this).addToRequestQueue(new StringRequest(Request.Method.POST,
-                URLs.saveAutocomplainData,
-                new Response.Listener<String>() {
+
+        VolleySingleton.getInstance(this).addToRequestQueue(new JsonObjectRequest(URLs.saveAutocomplainData, jsonRequest,
+                new Response.Listener<JSONObject>() {
                     @Override
-                    public void onResponse(String response) {
+                    public void onResponse(JSONObject response) {
                         mUiHelper.dismissProgressDialog();
-                        mUiHelper.showToastShortCentre(response);
+                        try {
+                            if (response.getInt("getPublicComplaints") == 1) {
+                                mUiHelper.showToastShortCentre("Successfully registered your Complaint !");
+                                Intent intent = new Intent(PublicComplaintsActivity.this, HomeActivity.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                startActivity(intent);
+                            } else {
+                                mUiHelper.showToastShortCentre("Registration Error !\n Please try again ");
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                         Log.i(TAG, "response-->" + response);
                     }
                 }, new Response.ErrorListener() {
@@ -216,13 +228,7 @@ public class PublicComplaintsActivity extends AppCompatActivity implements
                 mUiHelper.showToastShortCentre(getResources().getString(R.string.error));
                 Log.i(TAG, "response-->" + error.toString());
             }
-        }) {
-            @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<>();
-                params.put(URLParams.jsonData, mRequestBody);
-                return params;
-            }
-        });
+        }));
     }
+
 }

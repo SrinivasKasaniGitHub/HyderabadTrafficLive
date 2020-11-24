@@ -90,6 +90,7 @@ import java.text.ParseException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 
 public class AutoFareEstmActivity extends AppCompatActivity implements
         OnMapReadyCallback,
@@ -99,9 +100,9 @@ public class AutoFareEstmActivity extends AppCompatActivity implements
         View.OnClickListener {
 
     private static final String TAG = "AutoFareEstmActivity-->";
+
     private EditText et_search, et_destination;
     private TextView tv_distance, tv_min_fare, tv_fare_estm_price, tv_day, tv_night;
-
     private GoogleMap mMap;
     private UiHelper mUiHelper;
     private LocationTrack mLocationTrack;
@@ -160,7 +161,6 @@ public class AutoFareEstmActivity extends AppCompatActivity implements
 
     public void initObjects() {
         mUiHelper = new UiHelper(this);
-        //mLocationTrack = new LocationTrack(this);
         ConnectivityUtils.getLocation(AutoFareEstmActivity.this);
         mSharedPrefManager = SharedPrefManager.getInstance(this);
     }
@@ -263,7 +263,6 @@ public class AutoFareEstmActivity extends AppCompatActivity implements
         mMap.setOnCameraMoveStartedListener(this);
     }
 
-
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -315,7 +314,7 @@ public class AutoFareEstmActivity extends AppCompatActivity implements
                 Place place = Autocomplete.getPlaceFromIntent(data);
                 addMapMarker(place.getLatLng());
                 et_search.setText(place.getAddress());
-                mLatitude = place.getLatLng().latitude;
+                mLatitude = Objects.requireNonNull(place.getLatLng()).latitude;
                 mLongitude = place.getLatLng().longitude;
                 Log.d(TAG, "mLatitude-->" + mLatitude + ", mLongitude-->" + mLongitude);
             } /*else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
@@ -325,15 +324,15 @@ public class AutoFareEstmActivity extends AppCompatActivity implements
                 mUiHelper.showToastLong(getString(R.string.user_canceled_the_operation));
             }*/
         } else if (requestCode == DEST_PLACE_AUTO_COMPLETE_REQUEST_CODE) {
-           /* if (resultCode == RESULT_OK) {
-                Place place = PlaceAutocomplete.getPlace(this, data);
+            if (resultCode == RESULT_OK) {
+                Place place = Autocomplete.getPlaceFromIntent(data);
                 et_destination.setText(place.getAddress());
-                double destLatitude = place.getLatLng().latitude;
+                double destLatitude = Objects.requireNonNull(place.getLatLng()).latitude;
                 double destLongitude = place.getLatLng().longitude;
                 Log.d(TAG, "destLatitude" + destLatitude + ", destLongitude" + destLongitude);
                 getDistanceOnRoad(mLatitude, mLongitude, destLatitude, destLongitude);
-                tv_min_fare.setText(getString(R.string.day_price));
-            } else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
+                //tv_min_fare.setText(getString(R.string.day_price));
+            } /* else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
                 Status status = PlaceAutocomplete.getStatus(this, data);
                 Log.i(TAG, "onActivityResult: dest_status-->" + status.toString());
             } else if (resultCode == RESULT_CANCELED) {
@@ -387,40 +386,42 @@ public class AutoFareEstmActivity extends AppCompatActivity implements
     public void getAutoFaresByDistance(String kms) {
         mUiHelper.showProgressDialog(getResources().getString(R.string.please_wait), false);
         kms = kms.replace(" km", "");
+        float klmtrs= Float.parseFloat(kms);
+        float ktms=Math.round(klmtrs);
+        kms= String.valueOf(ktms);
         final String finalDistance = kms;
-        VolleySingleton.getInstance(this).addToRequestQueue(new JsonArrayRequest(Request.Method.GET,
+        VolleySingleton.getInstance(this).addToRequestQueue(new JsonObjectRequest(Request.Method.GET,
                 URLs.getAutoFaresByDistance(kms), null,
-                new Response.Listener<JSONArray>() {
+                new Response.Listener<JSONObject>() {
                     @Override
-                    public void onResponse(JSONArray response) {
+                    public void onResponse(JSONObject response) {
                         mUiHelper.dismissProgressDialog();
                         if (response != null && !"".equals(response.toString())
                                 && !"null".equals(response.toString()) && response.length() > 0) {
                             try {
-                                for (int i = 0; i < response.length(); i++) {
-                                    JSONObject jsonObject = response.getJSONObject(i);
-                                    length = jsonObject.getLong("meter");
-                                    day = jsonObject.getLong("day");
-                                    night = jsonObject.getLong("night");
-                                    try {
-                                        float difference = Math.round(NumberFormat.getInstance().parse(finalDistance).floatValue()) - Math.round(length);
-                                        if (difference >= 1) {
-                                            int extraDay = (int) ((difference * 11) + day);
-                                            int extraNight = (int) ((difference * 11) + night);
-                                            dayPrice = "Rs: " + Math.round(extraDay * 0.9) + " to " + (Math.round(extraDay * 0.9) + 6) + " Approximately";
-                                            nightPrice = "Rs: " + Math.round(extraNight * 0.9) + " to " + (Math.round(extraNight * 0.9) + 10) + " Approximately";
-                                            tv_fare_estm_price.setText(dayPrice);
-                                            tv_day.setTextColor(getResources().getColor(R.color.colorGreen));
-                                        } else {
-                                            dayPrice = "Rs: " + Math.round(day * 0.9) + " to " + (Math.round(day * 0.9) + 6) + " Approximately";
-                                            nightPrice = "Rs: " + Math.round(night * 0.9) + " to " + (Math.round(night * 0.9) + 10) + " Approximately";
-                                            tv_fare_estm_price.setText(dayPrice);
-                                            tv_day.setTextColor(getResources().getColor(R.color.colorGreen));
-                                        }
-                                    } catch (NumberFormatException e) {
-                                        e.printStackTrace();
+                                JSONObject jsonObject = response.getJSONObject("autoFaresMaster");
+                                length = jsonObject.getLong("METER");
+                                day = jsonObject.getLong("DAY");
+                                night = jsonObject.getLong("NIGHT");
+                                try {
+                                    float difference = Math.round(NumberFormat.getInstance().parse(finalDistance).floatValue()) - Math.round(length);
+                                    if (difference >= 1) {
+                                        int extraDay = (int) ((difference * 11) + day);
+                                        int extraNight = (int) ((difference * 11) + night);
+                                        dayPrice = "Rs: " + Math.round(extraDay * 0.9) + " to " + (Math.round(extraDay * 0.9) + 6) + " Approximately";
+                                        nightPrice = "Rs: " + Math.round(extraNight * 0.9) + " to " + (Math.round(extraNight * 0.9) + 10) + " Approximately";
+                                        tv_fare_estm_price.setText(dayPrice);
+                                        tv_day.setTextColor(getResources().getColor(R.color.colorGreen));
+                                    } else {
+                                        dayPrice = "Rs: " + Math.round(day * 0.9) + " to " + (Math.round(day * 0.9) + 6) + " Approximately";
+                                        nightPrice = "Rs: " + Math.round(night * 0.9) + " to " + (Math.round(night * 0.9) + 10) + " Approximately";
+                                        tv_fare_estm_price.setText(dayPrice);
+                                        tv_day.setTextColor(getResources().getColor(R.color.colorGreen));
                                     }
+                                } catch (NumberFormatException e) {
+                                    e.printStackTrace();
                                 }
+
                             } catch (JSONException | ParseException e) {
                                 e.printStackTrace();
                                 mUiHelper.showToastShortCentre(getResources().getString(R.string.something_went_wrong));
@@ -464,14 +465,19 @@ public class AutoFareEstmActivity extends AppCompatActivity implements
 
     public void getAutoFares() {
         mUiHelper.showProgressDialog(getResources().getString(R.string.please_wait), false);
-        VolleySingleton.getInstance(this).addToRequestQueue(new JsonArrayRequest(Request.Method.GET,
+        VolleySingleton.getInstance(this).addToRequestQueue(new JsonObjectRequest(Request.Method.GET,
                 URLs.getAutoFares, null,
-                new Response.Listener<JSONArray>() {
+                new Response.Listener<JSONObject>() {
                     @Override
-                    public void onResponse(JSONArray response) {
+                    public void onResponse(JSONObject response) {
                         if (response != null && !"".equals(response.toString())
                                 && !"null".equals(response.toString()) && response.length() > 0) {
-                            rateChart(response);
+                            try {
+                                JSONArray jsonArray = response.getJSONArray("autoFaresMaster");
+                                rateChart(jsonArray);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
                         } else {
                             try {
                                 String jsonString = mUiHelper.loadJSONFromAssets("autoFares.json");
@@ -550,9 +556,9 @@ public class AutoFareEstmActivity extends AppCompatActivity implements
         try {
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
-                String meter = jsonObject.getString("meter");
-                String day = jsonObject.getString("day");
-                String night = jsonObject.getString("night");
+                String meter = jsonObject.getString("METER");
+                String day = jsonObject.getString("DAY");
+                String night = jsonObject.getString("NIGHT");
 
                 final TableRow tableRow1 = new TableRow(AutoFareEstmActivity.this);
                 tableRow1.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
@@ -591,6 +597,7 @@ public class AutoFareEstmActivity extends AppCompatActivity implements
                         tableRow1.addView(tv);
                     }
                 }
+
                 tbl_rate_chart.addView(tableRow1);
             }
             mUiHelper.dismissProgressDialog();
@@ -623,6 +630,7 @@ public class AutoFareEstmActivity extends AppCompatActivity implements
 
         img_fare_estimation_close.setOnClickListener(AutoFareEstmActivity.this);
         ll_public_complaints.setOnClickListener(this);
+
         //Button btn_fare_estimation_dialog_close = view.findViewById(R.id.btn_fare_estimation_dialog_close);
 
         //btn_fare_estimation_dialog_close.setOnClickListener(AutoFareEstmActivity.this);
@@ -672,8 +680,8 @@ public class AutoFareEstmActivity extends AppCompatActivity implements
     @Override
     public void onLocationChanged(Location location) {
         if (location != null) {
-            mLatitude =  location.getLatitude();
-            mLongitude =  location.getLongitude();
+            mLatitude = location.getLatitude();
+            mLongitude = location.getLongitude();
         } else {
             mLatitude = 0.0;
             mLongitude = 0.0;
@@ -694,4 +702,5 @@ public class AutoFareEstmActivity extends AppCompatActivity implements
     public void onProviderDisabled(String provider) {
 
     }
+
 }

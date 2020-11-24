@@ -78,17 +78,17 @@
         <activity android:name=".activities.RtaTowingActivity" />
         <activity android:name=".activities.SuggestionsActivity" />
 
-        <!--<service android:name=".firebase.MyFirebaseInstanceIdService">
+      <!--  <service android:name=".firebase.MyFirebaseInstanceIdService">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
-        </service>
+        </service>-->
 
         <service android:name=".firebase.MyFirebaseMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
-        </service>-->
+        </service>
 
         <!--GCM Receiver -->
         <!--<receiver
@@ -104,7 +104,7 @@
         <service android:name=".utils.LocationTrack"/>
 
         <!--GCM Receiver Service -->
-        <service
+       <!-- <service
             android:name=".gcm.GCMPushReceiverService"
             android:exported="false">
             <intent-filter>
@@ -112,14 +112,14 @@
             </intent-filter>
         </service>
 
-        <!--GCM Registration Intent Service -->
+        &lt;!&ndash;GCM Registration Intent Service &ndash;&gt;
         <service
             android:name=".gcm.GCMRegistrationIntentService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.android.gms.iid.InstanceID" />
             </intent-filter>
-        </service>
+        </service>-->
 
     </application>
 

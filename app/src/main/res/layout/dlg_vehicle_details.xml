@@ -219,7 +219,8 @@
             android:layout_height="wrap_content"
             android:background="@color/colorLayoutBorder"
             android:orientation="horizontal"
-            android:weightSum="1">
+            android:weightSum="1"
+            android:visibility="gone">
 
             <TextView
                 android:layout_width="match_parent"
@@ -254,7 +255,8 @@
             android:layout_height="wrap_content"
             android:background="@color/colorLayoutBorder"
             android:orientation="horizontal"
-            android:weightSum="1">
+            android:weightSum="1"
+            android:visibility="gone">
 
             <TextView
                 android:layout_width="match_parent"
@@ -289,7 +291,8 @@
             android:layout_height="wrap_content"
             android:background="@color/colorLayoutBorder"
             android:orientation="horizontal"
-            android:weightSum="1">
+            android:weightSum="1"
+            android:visibility="gone">
 
             <TextView
                 android:layout_width="match_parent"

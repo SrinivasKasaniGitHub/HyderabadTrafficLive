@@ -9,13 +9,13 @@ import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
-import com.google.android.gms.gcm.GcmListenerService;
+
 import com.tspolice.htplive.R;
 import com.tspolice.htplive.activities.AlertsActivity;
 
-public class GCMPushReceiverService extends GcmListenerService {
-
-    private static final String TAG = "GCMReceiverService-->";
+public class GCMPushReceiverService  {
+/*
+    private static final String TAG = "GCMReceiverService-->";extends GcmListenerService
     private Context context = this;
 
     @Override
@@ -48,5 +48,5 @@ public class GCMPushReceiverService extends GcmListenerService {
         builder.setContentText(message);
         NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         notificationManager.notify(1, builder.build());
-    }
+    }*/
 }
