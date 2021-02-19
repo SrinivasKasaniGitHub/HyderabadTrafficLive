@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         FirebaseApp.initializeApp(this);
+
        /* String fcmToken = FirebaseInstanceId.getInstance().getToken();
         SharedPrefManager mSharedPrefManager = SharedPrefManager.getInstance(this);
         mSharedPrefManager.putString(Constants.FCM_TOKEN, fcmToken);
@@ -59,10 +60,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         btn_english = findViewById(R.id.btn_english);
 
-
         mUiHelper = new UiHelper(MainActivity.this);
 
         showDialog(SPLASH_DIALOG);
+        mUiHelper.intent(HomeActivity.class);
 
         if (!Networking.isNetworkAvailable(MainActivity.this)) {
             mUiHelper.showToastLong(getResources().getString(R.string.network_error));
@@ -71,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 @Override
                 public void run() {
                     removeDialog(SPLASH_DIALOG);
-                    mUiHelper.intent(HomeActivity.class);
+
                 }
             }, SPLASH_TIME_OUT);
         }
@@ -191,13 +192,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Log.i(TAG, "response-->" + response);
+                        Log.d(TAG, "response-->" + response);
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.i(TAG, "error-->" + error.toString());
+                Log.e(TAG, "error-->" + error.toString());
             }
         }));
     }
+
 }

@@ -45,7 +45,6 @@
 
     <style name="text_view_style_heading">
         <item name="android:textColor">@color/colorAccentDark</item>
-        <item name="android:singleLine">true</item>
         <item name="android:textSize">18sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:paddingTop">6dp</item>

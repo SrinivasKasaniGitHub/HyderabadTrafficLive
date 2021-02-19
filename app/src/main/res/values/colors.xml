@@ -19,4 +19,9 @@
     <color name="colorTableRow">#dcdbdb</color>
     <color name="colorLayoutBorder">#fc757584</color>
     <color name="colorRecyclerViewItem">#d7e7fd</color>
+    <color name="colorbtnBg">#EBEBEB</color>
+    <color name="lightGreen">#08AC06</color>
+    <color name="bgClr">#F9EFF4</color>
+
+
 </resources>

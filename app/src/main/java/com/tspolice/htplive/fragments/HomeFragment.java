@@ -17,6 +17,7 @@ import com.tspolice.htplive.activities.NearByActivity;
 import com.tspolice.htplive.activities.PublicComplaintsActivity;
 import com.tspolice.htplive.activities.PublicInterfaceActivity;
 import com.tspolice.htplive.activities.RtaTowingActivity;
+import com.tspolice.htplive.activities.T20TestActivity;
 import com.tspolice.htplive.network.Networking;
 import com.tspolice.htplive.network.URLs;
 import com.tspolice.htplive.utils.Constants;
@@ -30,7 +31,7 @@ public class HomeFragment extends Fragment implements
         View.OnClickListener {
 
     private ImageView iv_public_interface, iv_auto_fare_estimation, iv_live_traffic, iv_near_by,
-            iv_echallan_status, iv_find_towed_vhcl, iv_getRTADetails, iv_public_complaints, iv_public_info;
+            iv_echallan_status, iv_find_towed_vhcl, iv_getRTADetails, iv_public_complaints, iv_public_info, iv_T20Test;
     private UiHelper mUiHelper;
     private SharedPrefManager mSharedPrefManager;
     private GPSTracker mGpsTracker;
@@ -53,6 +54,7 @@ public class HomeFragment extends Fragment implements
         iv_getRTADetails = view.findViewById(R.id.iv_getRTADetails);
         iv_public_complaints = view.findViewById(R.id.iv_public_complaints);
         iv_public_info = view.findViewById(R.id.iv_public_info);
+        iv_T20Test=view.findViewById(R.id.iv_T20Test);
 
         return view;
     }
@@ -69,6 +71,7 @@ public class HomeFragment extends Fragment implements
         iv_getRTADetails.setOnClickListener(this);
         iv_public_complaints.setOnClickListener(this);
         iv_public_info.setOnClickListener(this);
+        iv_T20Test.setOnClickListener(this);
     }
 
     @Override
@@ -105,6 +108,9 @@ public class HomeFragment extends Fragment implements
                 break;
             case R.id.iv_public_complaints:
                 nextActivity(PublicComplaintsActivity.class);
+                break;
+            case R.id.iv_T20Test:
+                nextActivity(T20TestActivity.class);
                 break;
             case R.id.iv_public_info:
                 mUiHelper.replaceFragment(new PublicInformationFrag());

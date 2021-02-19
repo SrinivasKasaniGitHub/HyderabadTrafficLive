@@ -3,6 +3,7 @@ package com.tspolice.htplive.activities;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -20,6 +21,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PolylineOptions;
 import com.tspolice.htplive.R;
 import com.tspolice.htplive.network.URLParams;
 import com.tspolice.htplive.network.URLs;
@@ -32,9 +37,13 @@ import com.tspolice.htplive.utils.SharedPrefManager;
 import com.tspolice.htplive.utils.UiHelper;
 import com.tspolice.htplive.utils.ValidationUtils;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -49,6 +58,7 @@ public class PublicComplaintsActivity extends AppCompatActivity implements
     private GPSTracker mGpsTracker;
     private SharedPrefManager mSharedPrefManager;
     private double mLatitude, mLongitude;
+    int psId = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +84,7 @@ public class PublicComplaintsActivity extends AppCompatActivity implements
                 }
             } else {
                 getCurrentLocation();
+                getHydPoliceStations();
             }
         } else {
             PermissionUtil.redirectAppSettings(this);
@@ -100,6 +111,78 @@ public class PublicComplaintsActivity extends AppCompatActivity implements
         mUiHelper = new UiHelper(this);
         mGpsTracker = new GPSTracker(this);
         mSharedPrefManager = SharedPrefManager.getInstance(this);
+    }
+
+    private void getHydPoliceStations() {
+        //mUiHelper.showProgressDialog(getResources().getString(R.string.please_wait), false);
+        VolleySingleton.getInstance(this).addToRequestQueue(new JsonObjectRequest(Request.Method.GET,
+                URLs.getHydPoliceStations, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        // mUiHelper.dismissProgressDialog();
+                        if (response != null && !"".equals(response.toString())
+                                && !"null".equals(response.toString()) && response.length() > 0) {
+                            ArrayList<Double> distances = new ArrayList<>();
+                            ArrayList<Double> lat = new ArrayList<>();
+                            ArrayList<Double> lang = new ArrayList<>();
+                            ArrayList<Integer> psIds = new ArrayList<>();
+                            try {
+                                JSONArray jsonArray = response.getJSONArray("PoliceStationsInfo");
+                                for (int i = 0; i < jsonArray.length(); i++) {
+                                    JSONObject jsonObject = jsonArray.getJSONObject(i);
+                                    String stLat = jsonObject.getString("GPS_LATTI");
+                                    String stLong = jsonObject.getString("GPS_LONG");
+                                    if (stLat != null && !"null".equals(stLat) && stLat.length() > 0
+                                            && stLong != null && !"null".equals(stLong) && stLong.length() > 0) {
+                                        MarkerOptions markerOptions = new MarkerOptions();
+                                        double psLatitude = 0.0, psLongitude = 0.0;
+                                        try {
+                                            psLatitude = Double.parseDouble(stLat);
+                                            psLongitude = Double.parseDouble(stLong);
+                                            lat.add(psLatitude);
+                                            lang.add(psLongitude);
+                                            markerOptions.position(new LatLng(psLatitude, psLongitude));
+                                            int psId1 = Integer.parseInt(jsonObject.getString("ID"));
+                                            psIds.add(psId1);
+                                        } catch (NumberFormatException e) {
+                                            e.printStackTrace();
+                                        }
+                                        int radius = 6371;
+                                        double dLat = Math.toRadians(psLatitude - mLatitude);
+                                        double dLon = Math.toRadians(psLongitude - mLongitude);
+                                        double a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(Math.toRadians(mLatitude))
+                                                * Math.cos(Math.toRadians(psLatitude)) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+                                        double c = 2 * Math.asin(Math.sqrt(a));
+                                        double distance = radius * c;
+                                        distances.add(distance);
+
+                                    }
+                                }
+                                int minDistance = minIndex(distances);
+                                if (minDistance <= distances.size()) {
+                                    psId = psIds.get(minDistance);
+                                    Log.d("PSID", "" + psId);
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                                //  mUiHelper.showToastShortCentre(getResources().getString(R.string.something_went_wrong));
+                            }
+                        } else {
+                            // mUiHelper.showToastShortCentre(getResources().getString(R.string.empty_response));
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+               /* mUiHelper.dismissProgressDialog();
+                mUiHelper.showToastShortCentre(getResources().getString(R.string.error));*/
+            }
+        }));
+    }
+
+    public static int minIndex(ArrayList<Double> list) {
+        return list.indexOf(Collections.min(list));
     }
 
     @Override
@@ -199,6 +282,7 @@ public class PublicComplaintsActivity extends AppCompatActivity implements
         params.put(URLParams.lat, String.valueOf(mLatitude));
         params.put(URLParams.lang, String.valueOf(mLongitude));
         params.put(URLParams.deviceId, HardwareUtils.getDeviceUUID(PublicComplaintsActivity.this));
+        params.put("psID", "11");
         jsonRequest = new JSONObject(params);
 
 

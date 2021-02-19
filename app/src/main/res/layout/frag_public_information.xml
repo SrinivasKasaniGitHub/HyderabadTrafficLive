@@ -241,6 +241,90 @@
 
         </android.support.v7.widget.CardView>
 
+
+
     </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/horz_layout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/horz_layout1"
+        android:layout_marginStart="@dimen/inner_dashbd_horz_layout_margin_left"
+        android:layout_marginLeft="@dimen/inner_dashbd_horz_layout_margin_left"
+        android:layout_marginEnd="@dimen/inner_dashbd_horz_layout_margin_right"
+        android:layout_marginRight="@dimen/inner_dashbd_horz_layout_margin_right"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:visibility="gone">
+
+        <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/inner_dashbd_card_view_margin"
+            android:layout_weight="1"
+            android:foreground="?android:attr/selectableItemBackground"
+            card_view:cardBackgroundColor="@color/cardview_light_background"
+            card_view:cardCornerRadius="@dimen/inner_dashbd_card_view_corners">
+
+            <RelativeLayout
+                android:id="@+id/rel_T20"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/iv_T20"
+                    android:layout_width="@dimen/inner_dashbd_img_width"
+                    android:layout_height="@dimen/inner_dashbd_img_height"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center"
+                    android:contentDescription="@null"
+                    android:paddingStart="@dimen/inner_dashbd_img_padding_left"
+                    android:paddingLeft="@dimen/inner_dashbd_img_padding_left"
+                    android:paddingTop="@dimen/inner_dashbd_img_padding_top"
+                    android:paddingEnd="@dimen/inner_dashbd_img_padding_right"
+                    android:paddingRight="@dimen/inner_dashbd_img_padding_right"
+                    android:paddingBottom="@dimen/inner_dashbd_img_padding_bottom"
+                    android:src="@drawable/ic_rules_information" />
+
+                <TextView
+                    android:id="@+id/tv_T20"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/iv_T20"
+                    android:gravity="center_horizontal"
+                    android:paddingStart="@dimen/inner_dashbd_img_text_padding_left"
+                    android:paddingLeft="@dimen/inner_dashbd_img_text_padding_left"
+                    android:paddingTop="@dimen/inner_dashbd_img_text_padding_top"
+                    android:paddingEnd="@dimen/inner_dashbd_img_text_padding_right"
+                    android:paddingRight="@dimen/inner_dashbd_img_text_padding_right"
+                    android:paddingBottom="@dimen/inner_dashbd_img_text_padding_bottom"
+                    android:text="T20 Test"
+                    android:textColor="@color/colorAccentDark"
+                    android:textSize="@dimen/inner_dashbd_img_text_size" />
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/inner_dashbd_card_view_margin"
+            android:layout_weight="1"
+            android:visibility="invisible"
+            android:foreground="?android:attr/selectableItemBackground"
+            card_view:cardBackgroundColor="@color/cardview_light_background"
+            card_view:cardCornerRadius="@dimen/inner_dashbd_card_view_corners">
+
+
+
+        </android.support.v7.widget.CardView>
+
+
+
+    </LinearLayout>
+
 
 </RelativeLayout>

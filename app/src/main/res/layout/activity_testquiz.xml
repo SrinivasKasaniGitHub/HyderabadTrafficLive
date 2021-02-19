@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.PublicComplaintsActivity">
+
+    <include
+        android:id="@+id/toolbar_pub_complaints"
+        layout="@layout/toolbar_home" />
+
+    <ScrollView
+        android:id="@+id/scrl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar_pub_complaints">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/pub_complaints_lnr_lyt_margin"
+            android:orientation="vertical"
+            android:padding="@dimen/pub_complaints_lnr_lyt_padding">
+
+            <TextView
+                style="@style/text_view_style_heading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:singleLine="false"
+                android:text="T20 Test"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold" />
+
+
+            <TextView
+                style="@style/text_view_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pub_complaints_tv_label_margin_top"
+                android:paddingStart="@dimen/pub_complaints_tv_label_padding_left"
+                android:paddingLeft="@dimen/pub_complaints_tv_label_padding_left"
+                android:paddingEnd="@dimen/pub_complaints_tv_label_padding_right"
+                android:paddingRight="@dimen/pub_complaints_tv_label_padding_right"
+                android:text="@string/name"
+                android:textColor="@color/colorBlack" />
+
+            <EditText
+                android:id="@+id/et_Name"
+                style="@style/edit_text_style_drawable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pub_complaints_et_margin_top"
+                android:hint="@string/enter_name"
+                android:inputType="text"
+                android:maxLines="1"
+                tools:ignore="Autofill" />
+
+            <TextView
+                style="@style/text_view_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pub_complaints_tv_label_margin_top"
+                android:paddingStart="@dimen/pub_complaints_tv_label_padding_left"
+                android:paddingLeft="@dimen/pub_complaints_tv_label_padding_left"
+                android:paddingEnd="@dimen/pub_complaints_tv_label_padding_right"
+                android:paddingRight="@dimen/pub_complaints_tv_label_padding_right"
+                android:text="Age"
+                android:textColor="@color/colorBlack" />
+
+            <EditText
+                android:id="@+id/et_Age"
+                style="@style/edit_text_style_drawable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pub_complaints_et_margin_top"
+                android:hint="Enter Age"
+                android:inputType="number"
+                android:maxLines="1"
+                tools:ignore="Autofill" />
+
+
+            <TextView
+                style="@style/text_view_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pub_complaints_tv_label_margin_top"
+                android:paddingStart="@dimen/pub_complaints_tv_label_padding_left"
+                android:paddingLeft="@dimen/pub_complaints_tv_label_padding_left"
+                android:paddingEnd="@dimen/pub_complaints_tv_label_padding_right"
+                android:paddingRight="@dimen/pub_complaints_tv_label_padding_right"
+                android:text="Gender"
+                android:textColor="@color/colorBlack" />
+
+            <RadioGroup
+                android:id="@+id/radioGroup_gender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <RadioButton
+                    android:id="@+id/rBtn_Male"
+                    style="@style/text_view_style"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Male"
+                    android:textColor="@color/colorBlack" />
+
+                <RadioButton
+                    android:id="@+id/rBtn_FeMale"
+                    style="@style/text_view_style"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Female"
+                    android:textColor="@color/colorBlack" />
+
+                <RadioButton
+                    android:id="@+id/rBtn_Others"
+                    style="@style/text_view_style"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Others"
+                    android:textColor="@color/colorBlack" />
+            </RadioGroup>
+
+
+            <TextView
+                style="@style/text_view_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:paddingStart="@dimen/pub_complaints_tv_label_padding_left"
+                android:paddingLeft="@dimen/pub_complaints_tv_label_padding_left"
+                android:paddingEnd="@dimen/pub_complaints_tv_label_padding_right"
+                android:paddingRight="@dimen/pub_complaints_tv_label_padding_right"
+                android:text="Language"
+                android:textColor="@color/colorBlack" />
+
+            <RadioGroup
+                android:id="@+id/radioGroup_Lng"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <RadioButton
+                    android:id="@+id/rBtn_English"
+                    style="@style/text_view_style"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="English"
+                    android:textColor="@color/colorBlack" />
+
+                <RadioButton
+                    android:id="@+id/rBtn_Telugu"
+                    style="@style/text_view_style"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Telugu"
+                    android:textColor="@color/colorBlack" />
+
+
+                <RadioButton
+                    android:id="@+id/rBtn_Hindi"
+                    style="@style/text_view_style"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Hindi"
+                    android:textColor="@color/colorBlack" />
+            </RadioGroup>
+
+
+            <Button
+                android:id="@+id/btn_StartQuiz"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="50dp"
+                android:background="@drawable/button_style"
+                android:text="Start" />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</RelativeLayout>

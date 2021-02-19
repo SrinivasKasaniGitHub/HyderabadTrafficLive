@@ -473,7 +473,8 @@ public class AutoFareEstmActivity extends AppCompatActivity implements
                         if (response != null && !"".equals(response.toString())
                                 && !"null".equals(response.toString()) && response.length() > 0) {
                             try {
-                                JSONArray jsonArray = response.getJSONArray("autoFaresMaster");
+                                JSONArray jsonArray = response.getJSONArray("AutoFares" +
+                                        "MasterList");
                                 rateChart(jsonArray);
                             } catch (Exception e) {
                                 e.printStackTrace();

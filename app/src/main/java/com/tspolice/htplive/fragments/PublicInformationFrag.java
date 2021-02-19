@@ -12,13 +12,14 @@ import android.widget.ImageView;
 import com.tspolice.htplive.R;
 import com.tspolice.htplive.activities.AlertsActivity;
 import com.tspolice.htplive.activities.SuggestionsActivity;
+import com.tspolice.htplive.activities.T20TestActivity;
 import com.tspolice.htplive.network.Networking;
 import com.tspolice.htplive.utils.UiHelper;
 
 public class PublicInformationFrag extends Fragment implements
         View.OnClickListener {
 
-    private ImageView iv_alerts, iv_suggestions, iv_rules_info, iv_about_traffic_ps;
+    private ImageView iv_alerts, iv_suggestions, iv_rules_info, iv_about_traffic_ps,iv_T20;
     private UiHelper mUiHelper;
 
     public PublicInformationFrag() {
@@ -35,6 +36,7 @@ public class PublicInformationFrag extends Fragment implements
         iv_suggestions = view.findViewById(R.id.iv_suggestions);
         iv_rules_info = view.findViewById(R.id.iv_rules_info);
         iv_about_traffic_ps = view.findViewById(R.id.iv_about_traffic_ps);
+        iv_T20=view.findViewById(R.id.iv_T20);
 
         return view;
     }
@@ -46,6 +48,7 @@ public class PublicInformationFrag extends Fragment implements
         iv_suggestions.setOnClickListener(this);
         iv_rules_info.setOnClickListener(this);
         iv_about_traffic_ps.setOnClickListener(this);
+        iv_T20.setOnClickListener(this);
     }
 
     @Override
@@ -62,6 +65,9 @@ public class PublicInformationFrag extends Fragment implements
                 break;
             case R.id.iv_about_traffic_ps:
                 mUiHelper.replaceFragment(new AboutTrafficPoliceFrag());
+                break;
+            case R.id.iv_T20:
+                nextActivity(T20TestActivity.class);
                 break;
             default:
                 break;

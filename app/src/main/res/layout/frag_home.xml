@@ -513,4 +513,69 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/horz_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/horz_layout3"
+        android:layout_marginStart="@dimen/dashboard_horz_layout_margin_left"
+        android:layout_marginLeft="@dimen/dashboard_horz_layout_margin_left"
+        android:layout_marginEnd="@dimen/dashboard_horz_layout_margin_right"
+        android:layout_marginRight="@dimen/dashboard_horz_layout_margin_right"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="3">
+
+        <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/dashboard_card_view_margin"
+            android:layout_weight="1"
+            android:foreground="?android:attr/selectableItemBackground"
+            card_view:cardBackgroundColor="@color/cardview_light_background"
+            card_view:cardCornerRadius="@dimen/dashboard_card_view_corners">
+
+            <RelativeLayout
+                android:id="@+id/rel_T20Test"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/iv_T20Test"
+                    android:layout_width="@dimen/dashboard_img_width"
+                    android:layout_height="@dimen/dashboard_img_height"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center"
+                    android:contentDescription="@null"
+                    android:paddingStart="@dimen/dashboard_img_padding_left"
+                    android:paddingLeft="@dimen/dashboard_img_padding_left"
+                    android:paddingTop="@dimen/dashboard_img_padding_top"
+                    android:paddingEnd="@dimen/dashboard_img_padding_right"
+                    android:paddingRight="@dimen/dashboard_img_padding_right"
+                    android:paddingBottom="@dimen/dashboard_img_padding_bottom"
+                    android:src="@drawable/celeb_cup" />
+
+                <TextView
+                    android:id="@+id/tv_T20Test"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/iv_T20Test"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="@dimen/dashboard_img_text_padding_left"
+                    android:paddingStart="@dimen/dashboard_img_text_padding_left"
+                    android:paddingRight="@dimen/dashboard_img_text_padding_right"
+                    android:paddingEnd="@dimen/dashboard_img_text_padding_right"
+                    android:paddingBottom="@dimen/dashboard_img_text_padding_bottom"
+                    android:text="T20 Test"
+                    android:textColor="@color/colorAccentDark"
+                    android:textSize="@dimen/dashboard_img_text_size" />
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+
+
+    </LinearLayout>
+
+
 </RelativeLayout>

@@ -24,6 +24,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,6 +32,7 @@ public class TrViolationsActivity extends AppCompatActivity {
 
     private UiHelper mUiHelper;
     private List<ViolationsModel> violationsList;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -207,4 +209,5 @@ public class TrViolationsActivity extends AppCompatActivity {
             mUiHelper.showToastShortCentre(getResources().getString(R.string.something_went_wrong));
         }
     }
+
 }

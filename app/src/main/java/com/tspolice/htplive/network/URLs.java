@@ -25,9 +25,9 @@ public class URLs {
 
     private static final String sectionsUrl = "http://61.95.168.181:8080/echallan/";
 
-    public static final String saveCapturedImage = testUrl + "saveCapturedImage";
+    public static final String saveCapturedImage = rootLocalUrl + "publicInterface";
 
-    public static final String getAutoFares = rootLocalUrl + "getAutoFares";
+    public static final String getAutoFares = rootLocalUrl + "getAutoFaresList";
 
     private static final String getAutoFaresByDistance = rootLocalUrl + "getAutoFares";
 
@@ -42,9 +42,11 @@ public class URLs {
     public static String getAutoFaresByDistance(String distance) {
         return getAutoFaresByDistance + "?" + URLParams.distance + "=" + distance;
     }
+
     // http://localhost:8080/HydLive/Traffic/service/getAutoFares?distMtrs=12
 
     //2.3
+
     /*private static final String googleDirectionsApi = "http://maps.google.com/maps/api/directions/xml";
     public static String getGoogleDirectionsApi(double latitude, double longitude, double dest_latitude, double dest_longitude) {
         return googleDirectionsApi + "?origin=" + latitude + "," + longitude + "&destination="
@@ -71,7 +73,6 @@ public class URLs {
 
     //https://maps.googleapis.com/maps/api/distancematrix/json?origins=17.4014434,78.4765565&destinations=17.439929499999998,78.4982741&departure_time=now&key=AIzaSyAdJ3Z4n1oMYfyViKxK2G1rjCf1pUYpY6Y
 
-
     public static final String getZones = rootLocalUrl + "getZones";
 
     public static final String getVehicleType = rootLocalUrl + "getVehicleType";
@@ -95,7 +96,16 @@ public class URLs {
 
     public static final String saveAutocomplainData = rootLocalUrl + "getPublicComplaints";
 
-    public static final String saveSuggestions = rootUrl + "saveSuggestions";
+    public static final String saveSuggestions = rootLocalUrl + "getSuggestions";
+
+    public static String saveSuggestions(String sugGESTION, String emaIL, String mobILE_NO,String namE) {
+        return saveSuggestions + "?sugGESTION=" + sugGESTION
+                + "&emaIL=" + emaIL
+                + "&mobILE_NO=" + mobILE_NO
+                + "&namE=" + namE;
+    }
+
+
 
     public static final String getPublicAdvisaryData = rootLocalUrl + "getPublicAdvisaryData";
 
@@ -108,7 +118,6 @@ public class URLs {
     public static final String getTrafficOfficers = rootUrl + "getTrafficOfficers"
             + "?" + URLParams.updatedDate + "=" + URLParams.updatedDate
             + "&" + URLParams.language + "=" + URLParams.ENG;
-
 
     public static final String htpOnFacebook = "https://www.facebook.com/HYDTP?sk=wall";
 
@@ -141,5 +150,18 @@ public class URLs {
     public static final String utf_8 = "utf-8";
 
     public static final String unSupportedEncodingException = "Unsupported Encoding while trying to get the bytes of %s using %s";
+
+
+   // Quiz
+
+    public static String getRandomQstns_Url="http://61.95.168.181:8181/HydLive/Traffic/service/";
+
+    public static String getRandomQuestions(final String langId){
+        return getRandomQstns_Url+"getRandomQuestions?languageId="+langId;
+    }
+
+    public static String loginUserURL=getRandomQstns_Url+"loginT20Test";
+
+    public static String testResultUrl=getRandomQstns_Url+"finalSubmitT20Test";
 
 }

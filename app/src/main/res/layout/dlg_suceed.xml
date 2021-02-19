@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
+    tools:context=".activities.PublicComplaintsActivity"
+    android:background="#F6F2F4">
+
+    <include
+        android:id="@+id/toolbar_pub_complaints"
+        layout="@layout/toolbar_home" />
+
+    <RelativeLayout
+        android:id="@+id/lyt_Time_No"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar_pub_complaints"
+        android:layout_margin="@dimen/pub_complaints_lnr_lyt_margin"
+        android:padding="@dimen/pub_complaints_lnr_lyt_padding">
+
+        <TextView
+            android:id="@+id/tv_QNO"
+            style="@style/text_view_style_heading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="You won the Cup !"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold" />
+
+
+
+
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lyt_Time_No"
+        android:layout_above="@+id/btn_Done"
+        android:layout_margin="10dp"
+        android:src="@drawable/celeb_cup"/>
+
+
+
+
+    <Button
+        android:id="@+id/btn_Done"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="5dp"
+        android:textColor="@color/colorWhite"
+        android:background="@drawable/button_style"
+        android:text="Done"/>
+
+</RelativeLayout>

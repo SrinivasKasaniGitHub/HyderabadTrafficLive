@@ -35,6 +35,7 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
         <activity android:name=".activities.MainActivity">
             <intent-filter>
@@ -43,7 +44,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.HomeActivity" />
-        <activity android:name=".activities.PublicInterfaceActivity"/>
+        <activity android:name=".activities.PublicInterfaceActivity" />
         <activity android:name=".activities.PublicComplaintsActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -77,12 +78,14 @@
         <activity android:name=".activities.RoadSafetyTipResultActivity" />
         <activity android:name=".activities.RtaTowingActivity" />
         <activity android:name=".activities.SuggestionsActivity" />
+        <activity android:name=".activities.T20TestActivity" />
+        <activity android:name=".activities.T20QuestionsActivity" />
 
-      <!--  <service android:name=".firebase.MyFirebaseInstanceIdService">
-            <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
-            </intent-filter>
-        </service>-->
+        <!--  <service android:name=".firebase.MyFirebaseInstanceIdService">
+              <intent-filter>
+                  <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+              </intent-filter>
+          </service>-->
 
         <service android:name=".firebase.MyFirebaseMessagingService">
             <intent-filter>
@@ -101,25 +104,25 @@
                 <category android:name="com.gnirt69.gcmexample" />
             </intent-filter>
         </receiver>-->
-        <service android:name=".utils.LocationTrack"/>
+        <service android:name=".utils.LocationTrack" />
 
         <!--GCM Receiver Service -->
-       <!-- <service
-            android:name=".gcm.GCMPushReceiverService"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-            </intent-filter>
-        </service>
+        <!-- <service
+             android:name=".gcm.GCMPushReceiverService"
+             android:exported="false">
+             <intent-filter>
+                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+             </intent-filter>
+         </service>
 
-        &lt;!&ndash;GCM Registration Intent Service &ndash;&gt;
-        <service
-            android:name=".gcm.GCMRegistrationIntentService"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="com.google.android.gms.iid.InstanceID" />
-            </intent-filter>
-        </service>-->
+         &lt;!&ndash;GCM Registration Intent Service &ndash;&gt;
+         <service
+             android:name=".gcm.GCMRegistrationIntentService"
+             android:exported="false">
+             <intent-filter>
+                 <action android:name="com.google.android.gms.iid.InstanceID" />
+             </intent-filter>
+         </service>-->
 
     </application>
 

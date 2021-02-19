@@ -24,10 +24,14 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.tspolice.htplive.R;
 import com.tspolice.htplive.network.URLParams;
 import com.tspolice.htplive.network.URLs;
@@ -37,6 +41,7 @@ import com.tspolice.htplive.utils.PermissionUtil;
 import com.tspolice.htplive.utils.SharedPrefManager;
 import com.tspolice.htplive.utils.UiHelper;
 import com.tspolice.htplive.utils.ValidationUtils;
+import com.tspolice.htplive.utils.VolleyMultipartRequest;
 
 import org.json.JSONObject;
 
@@ -61,11 +66,13 @@ public class PublicInterfaceActivity extends AppCompatActivity implements
     private Button btn_submit;
     private String imageFlag = "0", imageData = "", category = "";
     private SharedPrefManager mSharedPrefManager;
+    RequestQueue requestQueue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_public_interface);
+        requestQueue = Volley.newRequestQueue(this);
 
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE
                 | WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
@@ -184,10 +191,9 @@ public class PublicInterfaceActivity extends AppCompatActivity implements
     // finished with test url
     private void saveCapturedImage(String remarks, String phoneNo, String reason, String location) {
         mUiHelper.showProgressDialog(getResources().getString(R.string.please_wait), false);
-        JSONObject jsonRequest;
+        final JSONObject jsonRequest;
         final String mRequestBody;
         Map<String, String> params = new HashMap<>();
-        params.put(URLParams.image, imageData);
         params.put(URLParams.category, category);
         params.put(URLParams.remarks, remarks);
         params.put(URLParams.mobileNumber, phoneNo);
@@ -196,7 +202,60 @@ public class PublicInterfaceActivity extends AppCompatActivity implements
         jsonRequest = new JSONObject(params);
         mRequestBody = jsonRequest.toString();
 
-        VolleySingleton.getInstance(this).addToRequestQueue(new StringRequest(Request.Method.POST, URLs.saveCapturedImage,
+        VolleyMultipartRequest spotGenReq = new VolleyMultipartRequest(Request.Method.POST, URLs.saveCapturedImage,
+                new Response.Listener<NetworkResponse>() {
+                    @Override
+                    public void onResponse(NetworkResponse response) {
+                        try {
+                            mUiHelper.dismissProgressDialog();
+                            String resPonse = new String(response.data);
+                            Log.d("PublicInterface", "" + resPonse);
+                            mUiHelper.showToastShortCentre(resPonse);
+                            imageData = "";
+                            imageFlag = "0";
+                            iv_display.setImageDrawable(getResources().getDrawable(R.drawable.ic_gallery2));
+                            iv_display.setVisibility(View.GONE);
+                            view.setVisibility(View.VISIBLE);
+                            spinner_category.setSelection(0);
+                            et_when_why_whom_and_how.setText("");
+                            et_when_why_whom_and_how.setHint(getString(R.string.when_why_whom_and_how));
+                            et_phone_no.setText("");
+                            et_phone_no.setHint(getString(R.string.phone_no));
+                            et_reason.setText("");
+                            et_reason.setHint(getString(R.string.reason));
+                            et_location.setText("");
+                            et_location.setHint(getString(R.string.type_location));
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                mUiHelper.dismissProgressDialog();
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("msg", mRequestBody);
+                return params;
+            }
+
+            @Override
+            protected Map<String, DataPart> getByteData() {
+                Map<String, DataPart> params = new HashMap<>();
+                long imagename = System.currentTimeMillis();
+                params.put("uploadFile", new DataPart(imagename + ".png", getFileDataFromDrawable(bitmap)));
+                return params;
+            }
+        };
+        requestQueue.add(spotGenReq);
+
+
+        /*VolleySingleton.getInstance(this).addToRequestQueue(new StringRequest(Request.Method.POST, URLs.saveCapturedImage,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -232,7 +291,7 @@ public class PublicInterfaceActivity extends AppCompatActivity implements
                 params.put(URLParams.jsonData, mRequestBody);
                 return params;
             }
-        });
+        });*/
     }
 
     public byte[] getFileDataFromDrawable(Bitmap bitmap) {
@@ -334,7 +393,7 @@ public class PublicInterfaceActivity extends AppCompatActivity implements
         view.setVisibility(View.GONE);
         iv_display.setImageBitmap(bitmap);
         imageData = bitmapToString(bitmap);
-        Log.i(TAG, "imageData-->" + imageData);
+        //   Log.i(TAG, "imageData-->" + imageData);
     }
 
     private void onSelectFromGalleryResult(Intent data) {
@@ -351,7 +410,7 @@ public class PublicInterfaceActivity extends AppCompatActivity implements
         view.setVisibility(View.GONE);
         iv_display.setImageBitmap(bitmap);
         imageData = bitmapToString(bitmap);
-        Log.i(TAG, "imageData-->" + imageData);
+        // Log.i(TAG, "imageData-->" + imageData);
     }
 
     public String bitmapToString(Bitmap bitmap) {
@@ -376,4 +435,5 @@ public class PublicInterfaceActivity extends AppCompatActivity implements
         //super.onBackPressed();
         finish();
     }
+
 }

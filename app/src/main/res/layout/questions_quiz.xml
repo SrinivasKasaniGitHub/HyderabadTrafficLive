@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
+    tools:context=".activities.PublicComplaintsActivity"
+    android:background="#F6F2F4">
+
+    <include
+        android:id="@+id/toolbar_pub_complaints"
+        layout="@layout/toolbar_home" />
+
+    <RelativeLayout
+        android:id="@+id/lyt_Time_No"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar_pub_complaints"
+        android:layout_margin="@dimen/pub_complaints_lnr_lyt_margin"
+        android:padding="@dimen/pub_complaints_lnr_lyt_padding">
+
+        <TextView
+            android:id="@+id/tv_QNO"
+            style="@style/text_view_style_heading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:text="1"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_CntTimer"
+            style="@style/text_view_style_heading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:text="60"
+            android:textColor="@color/colorRed"
+            android:textStyle="bold" />
+
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp"
+        android:layout_below="@id/lyt_Time_No"
+        android:layout_above="@+id/btn_Next">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txt_Question"
+                style="@style/text_view_style_heading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:lines="4"
+                android:maxLines="4"
+                android:text="Question"
+                android:textColor="@color/cardview_dark_background"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/img_Qstn"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="5dp"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_margin="5dp">
+
+                <info.hoang8f.widget.FButton
+                    android:id="@+id/btn_OptA"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_margin="5dp"
+                    fbutton:buttonColor="@color/colorAccent"
+                    android:text="Option 1"
+                    android:textSize="12sp"/>
+
+                <info.hoang8f.widget.FButton
+                    android:id="@+id/btn_OptB"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_margin="5dp"
+                    android:text="Option 1"
+                    android:textSize="12sp"/>
+
+                <info.hoang8f.widget.FButton
+                    android:id="@+id/btn_OptC"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_margin="5dp"
+                    android:text="Option 1"
+                    android:textSize="12sp"/>
+
+                <info.hoang8f.widget.FButton
+                    android:id="@+id/btn_OptD"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_margin="5dp"
+                    android:text="Option 1"
+                    android:textSize="12sp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lyt_Remarks"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="20dp"
+                android:visibility="gone">
+
+                <TextView
+                    style="@style/text_view_style"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/pub_complaints_tv_label_margin_top"
+                    android:paddingStart="@dimen/pub_complaints_tv_label_padding_left"
+                    android:paddingLeft="@dimen/pub_complaints_tv_label_padding_left"
+                    android:paddingEnd="@dimen/pub_complaints_tv_label_padding_right"
+                    android:paddingRight="@dimen/pub_complaints_tv_label_padding_right"
+                    android:text="Remarks"
+                    android:textColor="@color/colorBlack" />
+
+                <EditText
+                    android:id="@+id/et_Remarks"
+                    style="@style/edit_text_style_drawable"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/pub_complaints_et_margin_top"
+                    android:hint="Enter Remark"
+                    tools:ignore="Autofill" />
+
+
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+    <Button
+        android:id="@+id/btn_Next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="5dp"
+        android:background="@drawable/button_style"
+        android:text="Next"/>
+
+</RelativeLayout>

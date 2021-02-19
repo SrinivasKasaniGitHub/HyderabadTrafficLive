@@ -97,17 +97,8 @@ public class SuggestionsActivity extends AppCompatActivity implements View.OnCli
 
     private void saveSuggestions(String name, String email, String contactNo, String suggestion) {
         mUiHelper.showProgressDialog(getResources().getString(R.string.please_wait), false);
-        JSONObject jsonRequest;
-        final String mRequestBody;
-        Map<String, String> params = new HashMap<>();
-        params.put(URLParams.name, name);
-        params.put(URLParams.email, email);
-        params.put(URLParams.mobileNumber, contactNo);
-        params.put(URLParams.suggestion, suggestion);
-        jsonRequest = new JSONObject(params);
-        mRequestBody = jsonRequest.toString();
 
-        VolleySingleton.getInstance(this).addToRequestQueue(new StringRequest(Request.Method.POST, URLs.saveSuggestions,
+        VolleySingleton.getInstance(this).addToRequestQueue(new StringRequest(Request.Method.POST, URLs.saveSuggestions(suggestion,email,contactNo,name),
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -128,21 +119,6 @@ public class SuggestionsActivity extends AppCompatActivity implements View.OnCli
                 mUiHelper.dismissProgressDialog();
                 mUiHelper.showToastShortCentre(error.toString());
             }
-        }) {
-            @Override
-            public String getBodyContentType() {
-                return URLs.contentType;
-            }
-
-            @Override
-            public byte[] getBody() {
-                try {
-                    return mRequestBody == null ? null : mRequestBody.getBytes(URLs.utf_8);
-                } catch (UnsupportedEncodingException uee) {
-                    VolleyLog.wtf(URLs.unSupportedEncodingException, mRequestBody, URLs.utf_8);
-                    return null;
-                }
-            }
-        });
+        }));
     }
 }

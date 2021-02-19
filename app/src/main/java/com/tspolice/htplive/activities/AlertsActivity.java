@@ -175,4 +175,5 @@ public class AlertsActivity extends AppCompatActivity {
         //super.onBackPressed();
         finish();
     }
+
 }
