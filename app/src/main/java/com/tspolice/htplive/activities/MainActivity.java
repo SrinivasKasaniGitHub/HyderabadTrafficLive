@@ -52,11 +52,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         FirebaseApp.initializeApp(this);
 
-       /* String fcmToken = FirebaseInstanceId.getInstance().getToken();
+        String fcmToken="";
         SharedPrefManager mSharedPrefManager = SharedPrefManager.getInstance(this);
-        mSharedPrefManager.putString(Constants.FCM_TOKEN, fcmToken);
+        fcmToken = mSharedPrefManager.getString(Constants.FCM_TOKEN);
         Log.i(TAG, "fcmToken-->" + fcmToken);
-        sendRegistrationToServer(fcmToken);*/
+        if ("".equalsIgnoreCase(fcmToken)) {
+            fcmToken = FirebaseInstanceId.getInstance().getToken();
+            mSharedPrefManager.putString(Constants.FCM_TOKEN, fcmToken);
+            Log.i(TAG, "fcmToken-->" + fcmToken);
+        }
+
+        sendRegistrationToServer(fcmToken);
 
         btn_english = findViewById(R.id.btn_english);
 

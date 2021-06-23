@@ -21,7 +21,7 @@ import java.io.InputStream;
 
 public class UiHelper {
 
-    private ProgressDialog mProgressDialog;
+    public ProgressDialog mProgressDialog;
     private Context mContext;
 
     public UiHelper(Context context) {
@@ -68,9 +68,9 @@ public class UiHelper {
                 if (Constants.HOME.equals(actionFlag)) {
                     Activity activity = (Activity) mContext;
                     activity.finish();
-                    Intent intent_Login = new Intent(mContext, MainActivity.class);
+                    /*Intent intent_Login = new Intent(mContext, MainActivity.class);
                     intent_Login.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    mContext.startActivity(intent_Login);
+                    mContext.startActivity(intent_Login);*/
                 }
             }
         });

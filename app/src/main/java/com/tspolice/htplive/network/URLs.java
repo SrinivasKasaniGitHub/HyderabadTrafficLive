@@ -152,16 +152,16 @@ public class URLs {
     public static final String unSupportedEncodingException = "Unsupported Encoding while trying to get the bytes of %s using %s";
 
 
-   // Quiz
+    // Quiz
 
     public static String getRandomQstns_Url="http://61.95.168.181:8181/HydLive/Traffic/service/";
 
     public static String getRandomQuestions(final String langId){
-        return getRandomQstns_Url+"getRandomQuestions?languageId="+langId;
+        return rootLocalUrl+"getRandomQuestions?languageId="+langId;
     }
 
-    public static String loginUserURL=getRandomQstns_Url+"loginT20Test";
+    public static String loginUserURL=rootLocalUrl+"loginT20Test";
 
-    public static String testResultUrl=getRandomQstns_Url+"finalSubmitT20Test";
+    public static String testResultUrl=rootLocalUrl+"finalSubmitT20Test";
 
 }
