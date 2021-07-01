@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.RtaTowingActivity">
+
+    <include
+        android:id="@+id/toolbar_rta_towing"
+        layout="@layout/toolbar_home" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar_rta_towing">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/rta_towing_lnr_lyt_margin"
+            android:orientation="vertical"
+            android:padding="@dimen/rta_towing_lnr_lyt_padding">
+
+            <TextView
+                android:id="@+id/tv_rta_towing"
+                style="@style/text_view_style_heading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:singleLine="false"
+                android:text="@string/vehicle_details"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"
+                android:visibility="gone" />
+
+            <TextView
+                style="@style/text_view_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pub_complaints_tv_label_margin_top"
+                android:paddingStart="@dimen/pub_complaints_tv_label_padding_left"
+                android:paddingLeft="@dimen/pub_complaints_tv_label_padding_left"
+                android:paddingEnd="@dimen/pub_complaints_tv_label_padding_right"
+                android:paddingRight="@dimen/pub_complaints_tv_label_padding_right"
+                android:text="@string/vehicle_number"
+                android:textColor="@color/colorBlack" />
+
+            <EditText
+                android:id="@+id/et_vehicle_no"
+                style="@style/edit_text_style_drawable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pub_complaints_et_margin_top"
+                android:hint="@string/enter_vehicle_no"
+                android:inputType="textCapCharacters"
+                android:maxLines="1"
+                tools:ignore="Autofill" />
+
+
+            <Button
+                android:id="@+id/btn_submit"
+                style="@style/button_style"
+                android:layout_width="@dimen/button_width"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/pub_complaints_submit_btn_margin_top"
+                android:layout_marginBottom="@dimen/pub_complaints_submit_btn_margin_bottom"
+                android:gravity="center"
+                android:text="@string/submit" />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

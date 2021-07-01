@@ -7,7 +7,7 @@
     <string name="language_english">English</string>
     <string name="footer_text">TELANGANA STATE POLICE</string>
     <string name="app_version">1.0.0</string>
-    <string name="public_interface">Public Interface</string>
+    <string name="public_interface">Traffic Complaints</string>
     <string name="public_interface_caps">PUBLIC INTERFACE</string>
     <string name="auto_fare_estimation">Auto Fare Estimation</string>
     <string name="live_traffic">Live Traffic</string>
@@ -30,7 +30,7 @@
     <string name="settings">Settings</string>
     <string name="language">Language</string>
     <string name="home">Home</string>
-    <string name="hyderabad_traffic_live">HYDERABAD TRAFFIC LIVE</string>
+    <string name="hyderabad_traffic_live">TELANGANA TRAFFIC LIVE</string>
     <string name="public_complaints">Public Complaints</string>
     <string name="public_information">Public Information</string>
     <string name="vehicle_rta_details">Vehicle\nRTA Details</string>
@@ -139,6 +139,9 @@
     <string name="chassis_no">Chassis No.</string>
     <string name="tr_ps_gopalapuram">Tr.PS Gopalapuram</string>
     <string name="app_next">Next</string>
+    <string name="you_can_only_select_upto">You can only select up to </string>
+    <string name="option"> option</string>
+    <string name="options"> options</string>
 
     <string name="tip_helmet">Helmet - Why wear a safety helmet ?. A safety helmet is one of the most important items of
         personal protective equipment used by motorcycle riders primarily to protect the head against impact.
@@ -299,6 +302,7 @@
     <string name="question">Question</string>
     <string name="answer">Answer</string>
     <string name="_12345">12345</string>
+    <string name="txt_pateints">List of Challans</string>
 
     <string-array name="categories">
         <item>-- Select Category --</item>

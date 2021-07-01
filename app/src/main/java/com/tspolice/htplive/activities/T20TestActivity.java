@@ -115,7 +115,7 @@ public class T20TestActivity extends AppCompatActivity implements View.OnClickLi
                 } else if ("".equalsIgnoreCase(str_Lang)) {
                     mUiHelper.showToastShortCentre("Please select Language ");
                 } else {
-                   loginUser(et_Name.getText().toString().trim(),et_Age.getText().toString().trim(),str_Gender);
+                    loginUser(et_Name.getText().toString().trim(), et_Age.getText().toString().trim(), str_Gender);
                 }
                 break;
             default:
@@ -124,15 +124,16 @@ public class T20TestActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     private void loginUser(final String name, final String age, final String gender) {
-        JSONObject jsonObject=null;
-        try{
-            jsonObject=new JSONObject();
-            jsonObject.put("name",name);
-            jsonObject.put("age",age);
-            jsonObject.put("gender",gender);
-        }catch (Exception e){
+        JSONObject jsonObject = null;
+        try {
+            jsonObject = new JSONObject();
+            jsonObject.put("name", name);
+            jsonObject.put("age", age);
+            jsonObject.put("gender", gender);
+        } catch (Exception e) {
             e.printStackTrace();
         }
+        mUiHelper.showProgressDialog("Please wait..", false);
 
         VolleySingleton.getInstance(this).addToRequestQueue(new JsonObjectRequest(Request.Method.POST, URLs.loginUserURL,
                 jsonObject, new Response.Listener<JSONObject>() {

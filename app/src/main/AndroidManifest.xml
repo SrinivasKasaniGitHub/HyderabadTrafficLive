@@ -80,6 +80,7 @@
         <activity android:name=".activities.SuggestionsActivity" />
         <activity android:name=".activities.T20TestActivity" />
         <activity android:name=".activities.T20QuestionsActivity" />
+        <activity android:name=".activities.PendingChallansActivity" />
 
         <!--  <service android:name=".firebase.MyFirebaseInstanceIdService">
               <intent-filter>
@@ -104,7 +105,8 @@
                 <category android:name="com.gnirt69.gcmexample" />
             </intent-filter>
         </receiver>-->
-        <service android:name=".utils.LocationTrack" />
+        <service android:name=".utils.LocationTrack"
+            tools:ignore="Instantiatable" />
 
         <!--GCM Receiver Service -->
         <!-- <service

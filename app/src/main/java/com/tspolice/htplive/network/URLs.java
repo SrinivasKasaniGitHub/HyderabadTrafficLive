@@ -19,7 +19,15 @@ public class URLs {
 
     private static final String rootUrl = "http://117.239.149.90:8080/HTP/rest/htpService/";
 
-    public static final String rootLocalUrl = "http://125.16.1.70:8080/HydLive/Traffic/service/";
+    //public static final String rootLocalUrl = "http://125.16.1.70:8080/HydLive/Traffic/service/";
+
+    public static final String rootLocalUrl = "https://echallan.tspolice.gov.in/TSTrafficLiveRS/Traffic/service/";
+
+    public static final String pendingChalnsUrl="https://echallan.tspolice.gov.in/HackEyeService/tspolice/pendChallansByRegn?regnNo=";
+
+    //public static final String pendingChalnsUrl = "http://61.95.168.181:8080/HackEyeService/tspolice/pendChallansByRegn?regnNo=";
+
+    public static final String paymentChalnsUrl = "https://echallan.tspolice.gov.in/publicview/?regnNumber=";
 
     private static final String testUrl = "http://61.95.168.181:8282/";
 
@@ -79,15 +87,15 @@ public class URLs {
 
     public static final String getParkingDetails = rootLocalUrl + "getParkingDetails";
 
-    public static String getParkingDetails(String psID, String vehID,String parkingID) {
-        return getParkingDetails + "?psID=" + psID + "&vehID=" + vehID+"&parkingID="+parkingID;
+    public static String getParkingDetails(String psID, String vehID, String parkingID) {
+        return getParkingDetails + "?psID=" + psID + "&vehID=" + vehID + "&parkingID=" + parkingID;
     }
 
     public static final String eChallanStatus = "https://echallan.tspolice.gov.in/publicview/";
 
-    public static final String getCaptchaForVehicleDetails = rootUrl + "getCaptchaForVehicleDetails";
+    public static final String getCaptchaForVehicleDetails = rootLocalUrl + "getCaptchaForVehicleDetails";
 
-    private static final String getVehicleDetails = rootUrl + "getVehicleDetails";
+    private static final String getVehicleDetails = rootLocalUrl + "getVehicleDetails";
 
     public static String getVehicleDetails(String vehicleNo, String ctrl) {
         return getVehicleDetails + "?" + URLParams.regNo + "=" + vehicleNo
@@ -98,13 +106,12 @@ public class URLs {
 
     public static final String saveSuggestions = rootLocalUrl + "getSuggestions";
 
-    public static String saveSuggestions(String sugGESTION, String emaIL, String mobILE_NO,String namE) {
+    public static String saveSuggestions(String sugGESTION, String emaIL, String mobILE_NO, String namE) {
         return saveSuggestions + "?sugGESTION=" + sugGESTION
                 + "&emaIL=" + emaIL
                 + "&mobILE_NO=" + mobILE_NO
                 + "&namE=" + namE;
     }
-
 
 
     public static final String getPublicAdvisaryData = rootLocalUrl + "getPublicAdvisaryData";
@@ -154,14 +161,14 @@ public class URLs {
 
     // Quiz
 
-    public static String getRandomQstns_Url="http://61.95.168.181:8181/HydLive/Traffic/service/";
+    public static String getRandomQstns_Url = "http://61.95.168.181:8181/HydLive/Traffic/service/";
 
-    public static String getRandomQuestions(final String langId){
-        return rootLocalUrl+"getRandomQuestions?languageId="+langId;
+    public static String getRandomQuestions(final String langId) {
+        return rootLocalUrl + "getRandomQuestions?languageId=" + langId;
     }
 
-    public static String loginUserURL=rootLocalUrl+"loginT20Test";
+    public static String loginUserURL = rootLocalUrl + "loginT20Test";
 
-    public static String testResultUrl=rootLocalUrl+"finalSubmitT20Test";
+    public static String testResultUrl = rootLocalUrl + "finalSubmitT20Test";
 
 }
