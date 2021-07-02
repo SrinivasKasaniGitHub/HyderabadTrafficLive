@@ -74,8 +74,8 @@ public class HomeActivity extends AppCompatActivity {
         if (fragment instanceof HomeFragment) {
             mUiHelper.alertDialogOkCancel(getResources().getString(R.string.do_you_want_exit), false, Constants.HOME);
         } else {*/
-        //   super.onBackPressed();
-        finish();
+           super.onBackPressed();
+        //finish();
         //}
     }
 

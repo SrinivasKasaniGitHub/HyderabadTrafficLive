@@ -23,7 +23,7 @@ public class URLs {
 
     public static final String rootLocalUrl = "https://echallan.tspolice.gov.in/TSTrafficLiveRS/Traffic/service/";
 
-    public static final String pendingChalnsUrl="https://echallan.tspolice.gov.in/HackEyeService/tspolice/pendChallansByRegn?regnNo=";
+    public static final String pendingChalnsUrl="https://echallan.tspolice.gov.in/publicviewRS/tspolice/pendChallansByRegn?regnNo=";
 
     //public static final String pendingChalnsUrl = "http://61.95.168.181:8080/HackEyeService/tspolice/pendChallansByRegn?regnNo=";
 

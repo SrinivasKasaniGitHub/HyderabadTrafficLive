@@ -56,6 +56,7 @@ dependencies {
         exclude group: 'com.google.android.gms', module: 'play-services'
 
     }
+    //noinspection GradleCompatible
     implementation 'com.android.support:support-v4:28.0.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
@@ -68,6 +69,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-messaging:18.0.0'
     implementation 'com.google.firebase:firebase-core:16.0.9'
     implementation 'info.hoang8f:fbutton:1.0.5'
+    implementation 'com.github.chrisbanes:PhotoView:2.0.0'
 
 }
 
